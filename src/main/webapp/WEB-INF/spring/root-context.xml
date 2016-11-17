@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:security="http://www.springframework.org/schema/security"
+   xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+   <security:http>
+      <security:form-login login-page="/Login"
+         authentication-failure-url="/Login?error" default-target-url="/main" />
+
+      <security:logout logout-success-url="/main" />
+   </security:http>
+
+   <security:authentication-manager>
+   <security:authentication-provider>
+
+         <!-- JDBC 연동코드 -->
+         <security:jdbc-user-service
+            data-source-ref="dataSource"
+            users-by-username-query="SELECT ID AS ID, PWD AS PWD, 1 ENABLED FROM users WHERE ID = ?"
+            authorities-by-username-query="SELECT ID AS USERNAME, RIGHTRANK AS ROLL_NAME FROM userRank WHERE ID = ?" />
+      </security:authentication-provider>
+   </security:authentication-manager>
+
+   <!-- Mybatis를 사용하는 패키지 경로를 적어준다. -->
+   <context:component-scan base-package="com.kosta.finalproject" />
+
+   <!-- MyBatis -->
+   <bean id="dataSource"
+      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+      <!-- 아래의 부분은 오라클 버전이나 계정에따라 다르게적는다. -->
+      <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+      <property name="username" value="cha" />
+      <property name="password" value="oracle" />
+   </bean>
+
+   <!-- 트랜잭션 -->
+   <bean id="transactionManager"
+      class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name="dataSource" ref="dataSource" />
+   </bean>
+
+   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+      <property name="dataSource" ref="dataSource" />
+      <!-- 아래부분은 매핑할 xml파일이 있는 패키지경로를 설정한다. -->
+      <property name="typeAliasesPackage" value="com.kosta.finalproject" />
+      <property name="mapperLocations"
+         value="classpath:com/kosta/finalproject/mapper/*.xml" />
+   </bean>
+
+   <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+      <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+   </bean>
+</beans>

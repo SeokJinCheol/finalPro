@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 여기는 매핑할 MemberMapper.java의 풀패키지명을 적어준다 -->
+<mapper namespace="com.kosta.finalproject.dao.BoardMapper">
+	<resultMap type="BoardVO" id="BoardResultMap">
+		<result property="bnum" column="bnum"/>
+		<result property="bgnum" column="bgnum"/>
+		<result property="date" column="bDate"/>
+		<result property="groupnum" column="groupnum"/>
+		<result property="ranknum" column="ranknum"/>
+		<result property="count" column="count"/>
+		<result property="title" column="title"/>
+		<result property="contents" column="contents"/>
+		<result property="id" column="id"/>
+		<result property="img" column="img"/>
+		<result property="category" column="category"/>
+		<result property="replyCount" column="replCount"/>
+	</resultMap>
+	
+	<select id="getContent" resultMap="BoardResultMap">
+		SELECT TITLE,ID,CONTENT FROM FREEBOARD WHERE BGNUM=#{bgnum}
+	</select>
+	
+	<insert id="writeMain" parameterType="com.kosta.finalproject.vo.BoardVO">
+		INSERT INTO FREEBOARD VALUES(fb_seq.NEXTVAL,#{bgnum},#{title},sysdate,#{contents},1,0,#{id},#{img},0,#{category})
+	</insert>
+	
+	<select id="showAll" resultMap="BoardResultMap"  parameterType="com.kosta.finalproject.vo.BoardVO">
+      select * from (select * from (select rownum rnum ,bnum,category,title,id,count,(SELECT COUNT(*) FROM freeboard B WHERE B.bgnum=a.bnum) replyCount from freeBoard a where bgnum = 0 )
+       where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow}
+   </select>
+	
+	<select id="showthis" resultMap="BoardResultMap" parameterType="com.kosta.finalproject.vo.BoardVO">
+      select * from freeBoard where bnum = #{bnum}
+   </select>
+	
+	<update id="updateCount" parameterType="com.kosta.finalproject.vo.BoardVO">
+		UPDATE FREEBOARD SET COUNT = COUNT+1 WHERE BNUM=#{bnum}
+	</update>
+	
+	<select id="selectReply" parameterType="com.kosta.finalproject.vo.BoardVO" resultMap="BoardResultMap">
+		SELECT ID, CONTENTS, BNUM, BGNUM FROM FREEBOARD WHERE BGNUM = #{bnum}
+	</select>
+	
+	<select id="selectTitle" parameterType="com.kosta.finalproject.vo.BoardVO" resultMap="BoardResultMap">
+      select * from (select * from (select rownum rnum,bnum,category,title,id,count from freeBoard where bgnum= 0 and title like  '%' || #{title} || '%' )
+       where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow}
+   </select>
+	
+	<select id="getListAllCount" resultType="Integer">
+      SELECT COUNT(*) FROM freeboard where bgnum= 0
+   	</select>
+   	
+   	<select id="getListTitleCount" resultType="Integer" parameterType="com.kosta.finalproject.vo.BoardVO">
+      SELECT COUNT(*) FROM freeboard where bgnum= 0 and title like  '%' || #{title} || '%'
+   </select>
+   
+   <select id="getListIDCount" resultType="Integer" parameterType="com.kosta.finalproject.vo.BoardVO">
+      SELECT COUNT(*) FROM freeboard where bgnum= 0 and id like  '%' || #{id} || '%'
+   </select>
+   
+	<select id="selectId" parameterType="com.kosta.finalproject.vo.BoardVO" resultMap="BoardResultMap">
+      select * from (select * from (select rownum as rnum ,bnum,category,title,id,count from freeBoard where bgnum= 0 and id like  '%' || #{id}  || '%')
+      where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow}
+   </select>
+   
+   <delete id="delete" parameterType="com.kosta.finalproject.vo.BoardVO">
+      delete from freeboard where bnum = #{bnum}
+   </delete>
+   
+   <update id="updateDetail" parameterType="com.kosta.finalproject.vo.BoardVO">
+      update freeBoard set title = #{title},contents=#{contents},category=#{category},img=#{img} where bnum= #{bnum}
+   </update>
+</mapper>
