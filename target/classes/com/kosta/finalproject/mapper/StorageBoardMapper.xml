@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 여기는 매핑할 MemberMapper.java의 풀패키지명을 적어준다 -->
+<mapper namespace="com.kosta.finalproject.dao.StorageBoardMapper">
+
+	<resultMap type="StorageBoardVO" id="StorageBoard">
+		<result property="sNum" column="sNum" />
+		<result property="codeNum" column="codeNum" />
+		<result property="startDate" column="startDate" />
+		<result property="endDate" column="endDate" />
+		<result property="rentter" column="rentter" />
+		<result property="bill" column="bill" />
+		<result property="deposit" column="deposit" />
+		<result property="packageStatus" column="packageStatus" />
+	</resultMap>
+
+	<select id="storageCount" resultMap="StorageBoard">
+		SELECT count(*) sNum FROM storageBoard
+	</select>
+
+	<select id="storageAll" resultMap="StorageBoard">
+		SELECT * FROM storageBoard
+	</select>
+
+	<select id="codeNumCount" resultMap="StorageBoard">
+		SELECT count(*)+1 sNum FROM storageBoard WHERE codeNum = #{codeNum}
+	</select>
+
+	<select id="codeNumCount1" resultMap="StorageBoard">
+		SELECT count(*) sNum FROM storageBoard WHERE codeNum = #{codeNum}
+	</select>
+
+	<insert id="storageinsert" parameterType="com.kosta.finalproject.vo.StorageBoardVO">
+		INSERT INTO storageBoard(sNum, codeNum, startDate, rentter, bill, deposit,
+		packageStatus)
+		VALUES(#{sNum}, #{codeNum}, #{startDate}, #{rentter}, #{bill}, #{deposit},
+		#{packageStatus})
+	</insert>
+
+	<update id="storageend" parameterType="com.kosta.finalproject.vo.StorageBoardVO">
+		UPDATE storageBoard SET endDate = #{endDate} WHERE sNum = #{sNum} AND
+		codeNum = #{codeNum}
+	</update>
+</mapper>

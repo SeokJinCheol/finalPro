@@ -20,12 +20,12 @@ public interface BoardMapper {
 	public int getListAllCount();
 
 	public int getListTitleCount(BoardVO vo);
-	
+
 	public ArrayList<BoardVO> selectId(BoardVO vo);
-	
+
 	public int getListIDCount(BoardVO vo);
-	
+
 	public void delete(BoardVO vo);
-	
+
 	public void updateDetail(BoardVO vo);
 }

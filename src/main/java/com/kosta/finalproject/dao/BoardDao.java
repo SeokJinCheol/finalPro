@@ -20,12 +20,12 @@ public interface BoardDao {
 	public int getListAllCount();
 
 	public int getListTitleCount(String title);
-	
-	public ArrayList<BoardVO> selectId(String id,int startrow,int endrow);
-	
+
+	public ArrayList<BoardVO> selectId(String id, int startrow, int endrow);
+
 	public int getListIDCount(String id);
-	
+
 	public void delete(int bnum);
-	
+
 	public void updateDetail(BoardVO vo);
 }

@@ -1,5 +1,7 @@
 package com.kosta.finalproject.controller.top;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.util.Collections;
@@ -14,9 +16,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kosta.finalproject.dao.QandADaoImpl;
 import com.kosta.finalproject.vo.QandAVO;
+import com.kosta.finalproject.vo.UploadVO;
 
 @Controller
 public class QandAController {
@@ -106,21 +110,46 @@ public class QandAController {
 		model.addAttribute("bgnum", new Integer(bgnum));
 		model.addAttribute("groupnum", new Integer(groupnum));
 		model.addAttribute("ranknum", new Integer(ranknum));
-		
+
 		model.addAttribute("LEFT", "Q&A/left.jsp");
 		model.addAttribute("CONTENT", "Q&A/insertForm.jsp");
-		
 
 		return "main";
 	}
 
 	// QA 게시글 작성 (입력)
 	@RequestMapping(value = "/insertForm", method = RequestMethod.POST)
-	public String insert2(HttpServletRequest request, Model model) throws Exception {
+	public String insert2(HttpServletRequest request, Model model, UploadVO dto) throws Exception {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 
 		request.setCharacterEncoding("utf-8");
+
+		String fileName = null;
+
+		// 이미지 처리
+		System.out.println("이미지 처리 시작");
+		MultipartFile uploadfile = dto.getFile();
+		if (uploadfile != null) {
+			fileName = uploadfile.getOriginalFilename();
+			dto.setOname(fileName);
+			try {
+				File file = new File("C:/finalproject/team4/src/main/webapp/resources/QandAImg/" + fileName);
+				while (file.exists()) {
+					int indexes = fileName.lastIndexOf(".");
+					System.out.println("순서 = " + indexes);
+					String extension = fileName.substring(indexes);
+					System.out.println("확장자 = " + extension);
+					String newFileName = fileName.substring(0, indexes) + "_" + extension;
+					System.out.println("새 파일 이름 = " + newFileName);
+					fileName = newFileName;
+					file = new File("C:/finalproject/team4/src/main/webapp/resources/QandAImg/" + newFileName);
+				}
+				uploadfile.transferTo(file);
+			} catch (IOException e) {
+				e.printStackTrace();
+			} // try - catch
+		} // if
 
 		QandAVO vo = new QandAVO();
 
@@ -136,7 +165,7 @@ public class QandAController {
 			vo.setCategory(request.getParameter("category"));
 			vo.setTitle(request.getParameter("title"));
 			vo.setContents(request.getParameter("contents"));
-			vo.setImg(request.getParameter("img"));
+			vo.setImg(fileName);
 			vo.setBgnum(bgnum);
 			vo.setGroupnum(groupnum);
 			vo.setRanknum(ranknum);
@@ -192,7 +221,6 @@ public class QandAController {
 		model.addAttribute("bgnum", vo.getBgnum());
 
 		model.addAttribute("CONTENT", "Q&A/insertPro.jsp");
-
 
 		return "main";
 	}

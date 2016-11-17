@@ -13,7 +13,7 @@
 </head>
 <body>	
 	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height:500px; vertical-align:middle; display:table-cell;">
-		<form action="freeboard_update" method=post>
+		<form action="freeboard_update" method=post enctype="multipart/form-data">
 			<input type="hidden" name="bnum" value="${bnum}">
 			<table border="1">
 				<tr>
@@ -34,9 +34,10 @@
 				</tr>
 				
 				<tr>
-					<td>이미지파일:</td>
-					<td><input type="text" name="img" value="${img}" required></td>
-				</tr>
+              	 	<td>이미지파일:</td>
+               		<td><input type="file" name="file" required></td>
+            	</tr>
+
 				
 				<tr>
 					<td>제목:</td>

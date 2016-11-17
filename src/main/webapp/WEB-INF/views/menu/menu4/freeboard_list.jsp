@@ -42,6 +42,7 @@
 		<table border="1">
 			<tr>
 				<td>글번호</td>
+				<td>이미지</td>
 				<td>카테고리</td>
 				<td>글제목</td>
 				<td>작성자</td>
@@ -52,6 +53,7 @@
 			<c:forEach items="${list}" var="list">
 				<tr>
 					<td>${list.rnum}</td>
+					<td style="width: 10%"><img src="/team4/resources/BoardImg/${list.img }" style="width: 100%; height: 50px;"></td>
 					<td>${list.category}</td>
 					<td><a href="freeboard_content?bnum=${list.bnum}">${list.title}</a></td>
 					<td>${list.id}</td>

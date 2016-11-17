@@ -12,7 +12,7 @@ import com.kosta.finalproject.vo.QandAVO;
 public class QandADaoImpl implements QandADao {
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	// 게시글 등록
 	public void qainsertMember(QandAVO vo) {
 		QandAMapper qandAMapper = sqlSession.getMapper(QandAMapper.class);
