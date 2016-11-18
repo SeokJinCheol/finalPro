@@ -34,7 +34,7 @@
 						<td>
 							<a href="https://www.facebook.com/BillyBury4/" target="_blank"><img src="/team4/resources/images/facebook.png"></a>
 							<a href="https://www.instagram.com/billybury4/" target="_blank"><img src="/team4/resources/images/instagram.png"></a>
-							<img src="/team4/resources/images/twitter.png">
+							<a href="https://twitter.com/BillyBury" target="_blank"><img src="/team4/resources/images/twitter.png"></a>
 						</td>
 					</tr>
 				</table>　
