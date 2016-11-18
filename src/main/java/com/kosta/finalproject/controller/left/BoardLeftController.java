@@ -54,24 +54,28 @@ public class BoardLeftController {
 		String session_id = auth.getName();
 
 		String fileName = null;
-
-		// 이미지 처리
-		System.out.println("이미지 처리 시작");
 		MultipartFile uploadfile = dto.getFile();
-		if (uploadfile != null) {
+		
+		// 이미지 처리
+		if (uploadfile == null) {
+		} else {
 			fileName = uploadfile.getOriginalFilename();
 			dto.setOname(fileName);
 			try {
 				File file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + fileName);
-				while (file.exists()) {
-					int indexes = fileName.lastIndexOf(".");
-					System.out.println("순서 = " + indexes);
-					String extension = fileName.substring(indexes);
-					System.out.println("확장자 = " + extension);
-					String newFileName = fileName.substring(0, indexes) + "_" + extension;
-					System.out.println("새 파일 이름 = " + newFileName);
-					fileName = newFileName;
-					file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + newFileName);
+
+				int indexes = fileName.lastIndexOf(".");
+				if (indexes != -1) {
+					while (file.exists()) {
+						indexes = fileName.lastIndexOf(".");
+						System.out.println("순서 = " + indexes);
+						String extension = fileName.substring(indexes);
+						System.out.println("확장자 = " + extension);
+						String newFileName = fileName.substring(0, indexes) + "_" + extension;
+						System.out.println("새 파일 이름 = " + newFileName);
+						fileName = newFileName;
+						file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + newFileName);
+					}
 				}
 				uploadfile.transferTo(file);
 			} catch (IOException e) {
@@ -131,21 +135,29 @@ public class BoardLeftController {
 
 		// 이미지 처리
 		System.out.println("이미지 처리 시작");
+		
 		MultipartFile uploadfile = dto.getFile();
-		if (uploadfile != null) {
+		
+		
+		if (uploadfile == null) {
+		} else {
 			fileName = uploadfile.getOriginalFilename();
 			dto.setOname(fileName);
 			try {
 				File file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + fileName);
-				while (file.exists()) {
-					int indexes = fileName.lastIndexOf(".");
-					System.out.println("순서 = " + indexes);
-					String extension = fileName.substring(indexes);
-					System.out.println("확장자 = " + extension);
-					String newFileName = fileName.substring(0, indexes) + "_" + extension;
-					System.out.println("새 파일 이름 = " + newFileName);
-					fileName = newFileName;
-					file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + newFileName);
+
+				int indexes = fileName.lastIndexOf(".");
+				if (indexes != -1) {
+					while (file.exists()) {
+						indexes = fileName.lastIndexOf(".");
+						System.out.println("순서 = " + indexes);
+						String extension = fileName.substring(indexes);
+						System.out.println("확장자 = " + extension);
+						String newFileName = fileName.substring(0, indexes) + "_" + extension;
+						System.out.println("새 파일 이름 = " + newFileName);
+						fileName = newFileName;
+						file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + newFileName);
+					}
 				}
 				uploadfile.transferTo(file);
 			} catch (IOException e) {

@@ -30,4 +30,9 @@ public class UploadVO {
 		this.nname = nname;
 	}
 
+	@Override
+	public String toString() {
+		return "UploadVO [oname=" + oname + ", nname=" + nname + ", file=" + file + "]";
+	}
+
 }
