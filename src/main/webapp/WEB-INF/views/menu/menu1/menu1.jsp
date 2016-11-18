@@ -25,14 +25,11 @@
 			<c:forEach items="${requestlist}" var="requestlist">
 				<div style="width: 33.33%">
 					<table border="1">
-						<tr>
-							<td colspan="2">No. ${requestlist.codeNum}</td>
-						</tr>
-						<tr>
-							<td colspan="2"><a href="requestcontent?codeNum=${requestlist.codeNum}"> 
-							<img src="/team4/resources/RequestImg/${requestlist.img }" tyle="width: 100%; height: 130px;"></a></td>
-						</tr>
-					</table>
+		<tr><td colspan="2">No. ${requestlist.codeNum} </td></tr>
+		<tr><td colspan="2">
+		<a   href="requestcontent?codeNum=${requestlist.codeNum}">
+		<img src="/team4/resources/RequestImg/${requestlist.img }" style="width: 100%; height: 130px;"></a></td></tr>
+		</table>
 
 					<table border="1">
 

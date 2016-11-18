@@ -1,6 +1,7 @@
 package com.kosta.finalproject.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,6 +102,14 @@ public class RequestBoardDaoImpl implements RequestBoardDao{
 	public void requestdelete(RequestBoardVO vo) {
 		RequestBoardMapper mapper = sqlSession.getMapper(RequestBoardMapper.class);
 		mapper.requestBoardDelete(vo);
+	}
+
+	public ArrayList<RequestBoardVO> requestcontent(int codeNum) {
+		ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();
+		RequestBoardMapper requestMapper = sqlSession.getMapper(RequestBoardMapper.class);
+		result = requestMapper.requestcontent(codeNum);
+
+		return result;
 	}
 	
 }
