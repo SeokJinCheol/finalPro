@@ -103,6 +103,7 @@ public class RequestBoardDaoImpl implements RequestBoardDao{
 		RequestBoardMapper mapper = sqlSession.getMapper(RequestBoardMapper.class);
 		mapper.requestBoardDelete(vo);
 	}
+<<<<<<< HEAD
 
 	public ArrayList<RequestBoardVO> requestcontent(int codeNum) {
 		ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();
@@ -112,4 +113,13 @@ public class RequestBoardDaoImpl implements RequestBoardDao{
 		return result;
 	}
 	
+=======
+	public ArrayList<RequestBoardVO> requestcontent(int codeNum) {
+	      ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();
+	      RequestBoardMapper requestMapper = sqlSession.getMapper(RequestBoardMapper.class);
+	      result = requestMapper.requestcontent(codeNum);
+
+	      return result;
+	   }
+>>>>>>> dacd6f9e0c4de31374f01eba574d04e0e6509496
 }

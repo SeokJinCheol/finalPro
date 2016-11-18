@@ -136,7 +136,7 @@ public class BoardLeftController {
 			fileName = uploadfile.getOriginalFilename();
 			dto.setOname(fileName);
 			try {
-				File file = new File("C:/finalproject/finalPro/src/main/webapp/resources/BoardImg/" + fileName);
+				File file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + fileName);
 				while (file.exists()) {
 					int indexes = fileName.lastIndexOf(".");
 					System.out.println("순서 = " + indexes);
@@ -145,7 +145,7 @@ public class BoardLeftController {
 					String newFileName = fileName.substring(0, indexes) + "_" + extension;
 					System.out.println("새 파일 이름 = " + newFileName);
 					fileName = newFileName;
-					file = new File("C:/finalproject/finalPro/src/main/webapp/resources/BoardImg/" + newFileName);
+					file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + newFileName);
 				}
 				uploadfile.transferTo(file);
 			} catch (IOException e) {

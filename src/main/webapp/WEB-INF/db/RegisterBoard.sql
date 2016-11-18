@@ -25,5 +25,5 @@ VALUES(1, 'ぞ', 'ぞ', 'ぞ', '2016-11-11', '2016-11-11', 200, 20000, 'ぞ', 'user1
 select * from registerboard;
 
 
-
+delete from requestBoard where codenum=22;
 

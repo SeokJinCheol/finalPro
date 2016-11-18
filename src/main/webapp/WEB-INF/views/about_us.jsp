@@ -28,43 +28,31 @@
 				
 			<table style="padding: 40px; padding-top: 10px;">
 				<tr style="margin-bottom: 20px;">
-					<td><img src="/team4/resources/images/use1.png" style="margin-right:40px;"></td>
-					<td><h5><b>이 상 선</b></h5>&nbsp;- Billy Bury는 서로의 신뢰를 중요시합니다.<br>&nbsp;- 간단한 정보와 주소, 카드 등으로 보다 쉽게 회원가입이 가능합니다.</td>
+					<td rowspan="2"><a href="#" class="rollover"><img src="/team4/resources/images/us1.png" style="margin-right:20px;"><img src="/team4/resources/images/us11.png" class="imgover"></a></td>
+					<td><h5><b>이 상 선</b><font size="2">&nbsp;(조 장)</font></h5>&nbsp;- 생 년 월 일 : 1989년 07월 13일<br>&nbsp;- 전 화 번 호 : 010 - 6627 - 0713<br>&nbsp;- E　-　mail : skydrower@gmail.com</td>
+					<td rowspan="2" style="width:50px;"></td>
+					<td rowspan="2"><a href="#" class="rollover"><img src="/team4/resources/images/us2.png" style="margin-right:20px;"><img src="/team4/resources/images/us22.png" class="imgover"></a></td>
+					<td><h5><b>석 진 철</b><font size="2">&nbsp;(부 조 장)</font></h5>&nbsp;- 생 년 월 일 : 1991년 12월 13일<br>&nbsp;- 전 화 번 호 : 010 - 4446 - 9112<br>&nbsp;- E　-　mail : tjrwlscjf13@naver.com</td>
 				</tr>
 				
 				<tr style="height: 5px;"></tr>
 				
 				<tr style="margin-bottom: 20px;">
-					<td><img src="/team4/resources/images/use2.png" style="margin-right:40px;"></td>
-					<td><h5><b>석 진 철</b></h5>&nbsp;- 회원가입 후 빌리고 싶은 물품이 있는지 대여 게시판에서 확인합니다.<br>&nbsp;- 물품등록을 하고 싶다면 절차에 맞게 물품을 등록해주세요.</td>
+					<td rowspan="2"><a href="#" class="rollover"><img src="/team4/resources/images/us3.png" style="margin-right:20px;"><img src="/team4/resources/images/us33.png" class="imgover"></a></td>
+					<td><h5><b>남 태 헌</b></h5>&nbsp;- 생 년 월 일 : 1984년 10월 07일<br>&nbsp;- 전 화 번 호 : 010 - 3021 - 1007<br>&nbsp;- E　-　mail : rankmon@naver.com</td>
+					<td rowspan="2" style="width:50px;"></td>
+					<td rowspan="2"><a href="#" class="rollover"><img src="/team4/resources/images/us4.png" style="margin-right:20px;"><img src="/team4/resources/images/us44.png" class="imgover"></a></td>
+					<td><h5><b>민 진 호</b></h5>&nbsp;- 생 년 월 일 : 1987년 11월 19일<br>&nbsp;- 전 화 번 호 : 010 - 8971 - 4038<br>&nbsp;- E　-　mail : mjcnova@naver.com</td>
 				</tr>
 				
 				<tr style="height: 5px;"></tr>
-				
+	
 				<tr style="margin-bottom: 20px;">
-					<td><img src="/team4/resources/images/use3.png" style="margin-right:40px;"></td>
-					<td><h5><b>남 태 헌</b></h5>&nbsp;- 대여 신청한 물품은 택배로 빠른시일 내에 배송됩니다.<br>&nbsp;- 반드시 수령 후, 수령확인을 눌러주세요.</td>
-				</tr>
-				
-				<tr style="height: 5px;"></tr>
-				
-				<tr style="margin-bottom: 20px;">
-					<td><img src="/team4/resources/images/use4.png" style="margin-right:40px;"></td>
-					<td><h5><b>민 진 호</b></h5>&nbsp;- 대여 기간이 끝난 물품은 포장하여 본사로 반납해주세요.<br>&nbsp;- 대여 기간을 잘 지켜주세요. 대여 기간을 초과하면 연체료가 부가 됩니다.</td>
-				</tr>
-				
-				<tr style="height: 5px;"></tr>
-
-				<tr style="margin-bottom: 20px;">
-					<td><img src="/team4/resources/images/use5.png" style="margin-right:40px;"></td>
-					<td><h5><b>김 형 윤</b></h5>&nbsp;- 대여료, 연체료 등은 개인정보에 등록된 카드에서 자동결제 됩니다.<br>&nbsp;- 상황에 따라 이용에 제한이 발생 할 수 있습니다.</td>
-				</tr>
-				
-				<tr style="height: 5px;"></tr>
-				
-				<tr style="margin-bottom: 20px;">
-					<td><img src="/team4/resources/images/use5.png" style="margin-right:40px;"></td>
-					<td><h5><b>차 지 훈</b></h5>&nbsp;- 대여료, 연체료 등은 개인정보에 등록된 카드에서 자동결제 됩니다.<br>&nbsp;- 상황에 따라 이용에 제한이 발생 할 수 있습니다.</td>
+					<td rowspan="2"><a href="#" class="rollover"><img src="/team4/resources/images/us5.png" style="margin-right:20px;"><img src="/team4/resources/images/us55.png" class="imgover"></a></td>
+					<td><h5><b>김 형 윤</b></h5>&nbsp;- 생 년 월 일 : 1991년 09월 02일<br>&nbsp;- 전 화 번 호 : 010 - 9126 - 6797<br>&nbsp;- E　-　mail : bigsons@naver.com</td>
+					<td rowspan="2" style="width:50px;"></td>
+					<td rowspan="2"><a href="#" class="rollover"><img src="/team4/resources/images/us6.png" style="margin-right:20px;"><img src="/team4/resources/images/us66.png" class="imgover"></a></td>
+					<td><h5><b>차 지 훈</b></h5>&nbsp;- 생 년 월 일 : 1992년 06월 09일<br>&nbsp;- 전 화 번 호 : 010 - 9265 - 2992<br>&nbsp;- E　-　mail : wltjs12394@naver.com</td>
 				</tr>
 			</table>
 		</div>

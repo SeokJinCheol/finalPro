@@ -25,11 +25,24 @@
 			<c:forEach items="${requestlist}" var="requestlist">
 				<div style="width: 33.33%">
 					<table border="1">
+<<<<<<< HEAD
 		<tr><td colspan="2">No. ${requestlist.codeNum} </td></tr>
 		<tr><td colspan="2">
 		<a   href="requestcontent?codeNum=${requestlist.codeNum}">
 		<img src="/team4/resources/RequestImg/${requestlist.img }" style="width: 100%; height: 130px;"></a></td></tr>
 		</table>
+=======
+						<tr>
+							<td colspan="2">No. ${requestlist.codeNum}</td>
+						</tr>
+						<tr>
+							<td colspan="2"><a
+								href="requestcontent?codeNum=${requestlist.codeNum}"> <img
+									src="/team4/resources/RequestImg/${requestlist.img }"
+									style="width: 100%; height: 130px;"></a></td>
+						</tr>
+					</table>
+>>>>>>> dacd6f9e0c4de31374f01eba574d04e0e6509496
 
 					<table border="1">
 
@@ -60,10 +73,8 @@
 							</c:if>
 						</tr>
 					</table>
-					<br>
-					<br>
-				</div>
-		</div>
+					<br> <br>
+				</div></div>
 		<!-- 중간 공간확보용 -->
 		<div>
 			<p></p>

@@ -222,6 +222,7 @@ public class RequestBoardLeftController {
 	}
 	
 	@RequestMapping("/requestcontent")
+<<<<<<< HEAD
 	public String content(HttpServletRequest request, Model model) throws Exception{
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
@@ -236,3 +237,20 @@ public class RequestBoardLeftController {
 		return "main";
 	}
 }
+=======
+	   public String content(HttpServletRequest request, Model model) throws Exception{
+	      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	      String session_id = auth.getName();
+	      
+	      int codeNum = Integer.parseInt(request.getParameter("codeNum"));
+	      
+	      List<RequestBoardVO> content = requestBoardDaoImpl.requestcontent(codeNum);
+	      
+	      model.addAttribute("result", content);
+	      model.addAttribute("LEFT", "menu/menu1/left.jsp");
+	      model.addAttribute("CONTENT", "menu/menu1/write/content.jsp");
+		return "main";
+	}
+	
+}
+>>>>>>> dacd6f9e0c4de31374f01eba574d04e0e6509496

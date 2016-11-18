@@ -67,8 +67,15 @@
 	<delete id="requestdelete" parameterType="com.kosta.finalproject.vo.RequestBoardVO">
 		DELETE FROM requestBoard WHERE codeNum = #{codeNum}
 	</delete>
+<<<<<<< HEAD
 	<select id="requestcontent" resultMap="RequestBoard"> 
 	    SELECT * FROM requestBoard WHERE codeNum=#{codeNum} 
 	</select>
 
+=======
+	
+	<select id="requestcontent" resultMap="RequestBoard"> 
+       SELECT * FROM requestBoard WHERE codeNum=#{codeNum} 
+    </select>
+>>>>>>> dacd6f9e0c4de31374f01eba574d04e0e6509496
 </mapper>
