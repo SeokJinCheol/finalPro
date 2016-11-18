@@ -102,5 +102,11 @@ public class RequestBoardDaoImpl implements RequestBoardDao{
 		RequestBoardMapper mapper = sqlSession.getMapper(RequestBoardMapper.class);
 		mapper.requestBoardDelete(vo);
 	}
-	
+	public ArrayList<RequestBoardVO> requestcontent(int codeNum) {
+	      ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();
+	      RequestBoardMapper requestMapper = sqlSession.getMapper(RequestBoardMapper.class);
+	      result = requestMapper.requestcontent(codeNum);
+
+	      return result;
+	   }
 }
