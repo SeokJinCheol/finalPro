@@ -96,6 +96,7 @@ public class RegisterBoardController {
 		vo.setDeposit(Integer.parseInt(request.getParameter("deposit")));
 		vo.setContents(request.getParameter("contents"));
 		vo.setReaquestId(request.getParameter("reaquestId"));
+		vo.setImg(request.getParameter("img"));
 		registerBoardDaoImpl.Registerinsert(vo);
 
 		// 등록게시판 상태바꾸기

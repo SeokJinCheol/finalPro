@@ -44,15 +44,14 @@ public class MainController {
 		return "main";
 	}
 
-	// Menu_5
-	@RequestMapping("/menu5")
-	public String menu5(Model model) {
-		model.addAttribute("CONTENT", "menu/menu5/menu5.jsp");
-		model.addAttribute("LEFT", "menu/menu5/left.jsp");
+	//////////////////////////////////////////////////////////////////////////////////////////////////
+	// about_us
+	@RequestMapping("/about_us")
+	public String about_us(Model model) {
+		model.addAttribute("CONTENT", "about_us.jsp");
 		return "main";
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////
 	// 로그인
 	@RequestMapping("/Login")
 	public String login(Model model) {
@@ -88,7 +87,7 @@ public class MainController {
 		List<UsersVO> userlist = finalDaoImpl.getMembers();
 
 		model.addAttribute("result", userlist);
-		
+
 		model.addAttribute("LEFT", "join/admin_left.jsp");
 		model.addAttribute("CONTENT", "join/list.jsp");
 
@@ -98,7 +97,7 @@ public class MainController {
 	// 회원가입_Form
 	@RequestMapping("/joinForm")
 	public String insert(Model model) {
-		
+
 		model.addAttribute("CONTENT", "join/joinForm.jsp");
 
 		return "main";
@@ -288,7 +287,7 @@ public class MainController {
 		UsersVO userlist = finalDaoImpl.updateMember(session_id);
 
 		model.addAttribute("result", userlist);
-		
+
 		model.addAttribute("LEFT", "join/mypage_left.jsp");
 		model.addAttribute("CONTENT", "join/mypage_update.jsp");
 

@@ -22,6 +22,7 @@
 		<table border="1">
 			<tr>
 				<td>글번호</td>
+				<td>이미지</td>
 				<td>제목</td>
 				<td>상황</td>
 				<td>작업</td>
@@ -30,6 +31,7 @@
 			<c:forEach items="${requestboardstatus}" var="requestboardstatus">
 				<tr>
 					<td>${requestboardstatus.codeNum}</td>
+					<td style="width: 20%"><img src="/team4/resources/RequestImg/${requestboardstatus.img }" style="width: 100%; height: 100px;"></td>
 					<td>${requestboardstatus.title}</td>
 					<td>${requestboardstatus.packageStatus}</td>
 					<td>

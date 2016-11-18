@@ -14,7 +14,7 @@
 </head>
 <body>	
 	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height:500px; vertical-align:middle; display:table-cell;">		
-		<table>
+		<table border=1>
 			<tr>
 				<td>대여자</td>
 				<td>대여일</td>

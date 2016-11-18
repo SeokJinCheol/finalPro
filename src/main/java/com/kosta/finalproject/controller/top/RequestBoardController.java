@@ -1,5 +1,7 @@
 package com.kosta.finalproject.controller.top;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,6 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kosta.finalproject.dao.CheckBoardDaoImpl;
 import com.kosta.finalproject.dao.RegisterBoardDaoImpl;
@@ -21,6 +24,7 @@ import com.kosta.finalproject.dao.RequestBoardDaoImpl;
 import com.kosta.finalproject.vo.CheckBoardVO;
 import com.kosta.finalproject.vo.RegisterBoardVO;
 import com.kosta.finalproject.vo.RequestBoardVO;
+import com.kosta.finalproject.vo.UploadVO;
 
 @Controller
 public class RequestBoardController {
@@ -72,12 +76,39 @@ public class RequestBoardController {
 	}
 
 	@RequestMapping("/requestboardwrite")
-	public String write(Model model, HttpServletRequest request) throws Exception {
+	public String write(Model model, HttpServletRequest request, UploadVO dto) throws Exception {
+		
 		SimpleDateFormat simpledate = new SimpleDateFormat("yyyy-MM-dd");
 		Date parsedDate1 = simpledate.parse(request.getParameter("startDate"));
 		Date parsedDate2 = simpledate.parse(request.getParameter("endDate"));
 		Timestamp startDate = new Timestamp(parsedDate1.getTime());
 		Timestamp endDate = new Timestamp(parsedDate2.getTime());
+
+		String fileName = null;
+	       
+	      //이미지 처리
+	       System.out.println("이미지 처리 시작");
+	        MultipartFile uploadfile = dto.getFile();
+	        if (uploadfile != null) {
+	            fileName = uploadfile.getOriginalFilename();
+	            dto.setOname(fileName);
+	            try {
+	                File file = new File("C:/finalproject/team4/src/main/webapp/resources/RequestImg/" + fileName);
+	                   while(file.exists()) {
+	                      int indexes = fileName.lastIndexOf(".");
+	                      System.out.println("순서 = "+indexes);
+	                      String extension = fileName.substring(indexes);
+	                      System.out.println("확장자 = "+extension);
+	                      String newFileName = fileName.substring(0, indexes)+"_"+extension;
+	                      System.out.println("새 파일 이름 = "+newFileName);
+	                      fileName = newFileName;
+	                      file = new File("C:/finalproject/team4/src/main/webapp/resources/RequestImg/" + newFileName);
+	                   }
+	                uploadfile.transferTo(file);
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            } // try - catch
+	        } // if
 
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -96,6 +127,7 @@ public class RequestBoardController {
 		vo.setBill(Integer.parseInt(request.getParameter("bill")));
 		vo.setDeposit(Integer.parseInt(request.getParameter("deposit")));
 		vo.setContents(request.getParameter("contents"));
+		vo.setImg(fileName);
 
 		requestBoardDaoImpl.requestinsert(vo);
 

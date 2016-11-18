@@ -22,6 +22,7 @@
 		<table border="1">
 			<tr>
 				<td>글번호</td>
+				<td>이미지</td>
 				<td>글쓴이</td>
 				<td>제목</td>
 				<td>상황</td>
@@ -31,6 +32,7 @@
 			<c:forEach items="${requestlist}" var="requestlist">
 				<tr>
 					<td>${requestlist.codeNum}</td>
+					<td style="width: 20%"><img src="/team4/resources/RequestImg/${requestlist.img }" style="width: 100%; height: 100px;"></td>
 					<td>${requestlist.reaquestId}</td>
 					<td>${requestlist.title}</td>
 					<td>${requestlist.packageStatus}</td>

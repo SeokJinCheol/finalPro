@@ -13,11 +13,26 @@
 	<div align=center>
 		<div  style="background:#6699DC; color:white; width:20%; height:100px; vertical-align:middle; display:table-cell;"><img src="/team4/resources/images/left-location.png"><font size="5">&nbsp;&nbsp;장 소 대 여</font></div><br>
 		
-		<div class="left-menu"><a href="menu3_1">menu3_1</a></div><br>
-		<div class="left-menu"><a href="menu3_2">menu3_2</a></div><br>
-		<div class="left-menu"><a href="menu3_3">menu3_3</a></div><br>
-		<div class="left-menu"><a href="menu3_4">menu3_4</a></div><br>
-		<div class="left-menu"><a href="menu3_5">menu3_5</a></div><br>
+		<div class="left-menu"><a href="#" class="rollover">
+			<img src="/team4/resources/images/#" style="margin-right:5px;">
+			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">
+			&nbsp;menu3_1</a></div><br>	
+		<div class="left-menu"><a href="#" class="rollover">
+			<img src="/team4/resources/images/#" style="margin-right:5px;">
+			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">
+			&nbsp;menu3_2</a></div><br>	
+		<div class="left-menu"><a href="#" class="rollover">
+			<img src="/team4/resources/images/#" style="margin-right:5px;">
+			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">
+			&nbsp;menu3_3</a></div><br>	
+		<div class="left-menu"><a href="#" class="rollover">
+			<img src="/team4/resources/images/#" style="margin-right:5px;">
+			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">
+			&nbsp;menu3_4</a></div><br>	
+		<div class="left-menu"><a href="#" class="rollover">
+			<img src="/team4/resources/images/#" style="margin-right:5px;">
+			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">
+			&nbsp;menu3_5</a></div><br>
 	</div>
 </body>
 </html>

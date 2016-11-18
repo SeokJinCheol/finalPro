@@ -16,6 +16,7 @@
 		<table border="1">
 			<tr>
 				<td>글번</td>
+				<td>이미지</td>
 				<td>카테고리</td>
 				<td>제목</td>
 				<td>상황</td>
@@ -25,6 +26,7 @@
 			<c:forEach items="${Registerselect}" var="Registerselect">
 				<tr>
 					<td>${Registerselect.codeNum}</td>
+					<td style="width: 20%"><img src="/team4/resources/RequestImg/${Registerselect.img }" style="width: 100%; height: 100px;"></td>
 					<td>${Registerselect.category}</td>
 					<td>${Registerselect.title}</td>
 					<td>${Registerselect.packageStatus}</td>

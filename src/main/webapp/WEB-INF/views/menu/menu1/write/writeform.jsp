@@ -19,7 +19,7 @@
 </head>
 <body>
 	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
-		<form action="requestboardwrite" method="post">
+		<form action="requestboardwrite" method="post" enctype="multipart/form-data">
 			<table border="1">
 				<tr>
 					<td>제목</td>
@@ -41,6 +41,10 @@
 							<option value="개인">개인</option>
 							<option value="업체">업체</option>
 					</select></td>
+				</tr>
+				<tr>
+					<td>이미지</td>
+					<td><input type="file" name="file"></td>
 				</tr>
 				<tr>
 					<td>대여시작일</td>

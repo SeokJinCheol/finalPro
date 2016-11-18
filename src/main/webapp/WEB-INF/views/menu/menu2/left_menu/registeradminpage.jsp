@@ -16,6 +16,7 @@
 		<table border="1">
 			<tr>
 				<td>글번호</td>
+				<td>이미지</td>
 		        <td>제목</td>
 		        <td>상황</td>
 		        <td>작업</td>
@@ -24,6 +25,7 @@
 		    <c:forEach items="${rentreadylist}" var="rentterlist">
 				<tr>
 		        	<td>${rentterlist.codeNum}</td>
+		        	<td style="width: 20%"><img src="/team4/resources/RequestImg/${rentreadylist.img}" style="width: 100%; height: 100px;"></td>
 		            <td>${rentterlist.title}</td>
 		            <td>${rentterlist.packageStatus}</td>
 		            <td>

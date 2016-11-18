@@ -24,7 +24,7 @@
 	</resultMap>
 	
 	<insert id="Registerinsert" parameterType="com.kosta.finalproject.vo.RegisterBoardVO" >
-		insert into registerBoard(codeNum, title, category, company, startDate, endDate, bill, deposit, contents, reaquestId) values(#{codeNum}, #{title}, #{category}, #{company}, #{startDate}, #{endDate}, #{bill}, #{deposit}, #{contents}, #{reaquestId})
+		insert into registerBoard(codeNum, title, category, company, startDate, endDate, bill, deposit, contents, reaquestId, img) values(#{codeNum}, #{title}, #{category}, #{company}, #{startDate}, #{endDate}, #{bill}, #{deposit}, #{contents}, #{reaquestId}, #{img})
 	</insert>
 	
 	<select id="Registerselect" resultMap="RegisterBoard">

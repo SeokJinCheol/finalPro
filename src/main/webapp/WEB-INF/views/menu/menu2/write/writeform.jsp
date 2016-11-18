@@ -15,6 +15,7 @@
 	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height:500px; vertical-align:middle; display:table-cell;">
 		<c:forEach items="${RegisterBoardform}" var="RegisterBoardform">
 			<form action="RegisterBoardWrite" method="post">
+				<input type="hidden" name="img" value="${RegisterBoardform.img }">
 				<table border="1">
 					<tr>
 						<td>글번호</td>
@@ -60,7 +61,6 @@
 						<td>대여종료일</td>
 						<td><input type="date" name="endDate" value="${RegisterBoardform.endDate}" required></td>
 					</tr>
-					
 					<tr>
 						<td>대여비</td>
 						<td><input type="text" name="bill" value="${RegisterBoardform.bill}" required>원</td>
@@ -70,7 +70,10 @@
 						<td>보증금</td>
 						<td><input type="text" name="deposit" value="${RegisterBoardform.deposit}" required>원</td>
 					</tr>
-					
+					<tr>
+						<td>이미지</td>
+						<td><img src="/team4/resources/RequestImg/${RegisterBoardform.img }" style="width: 100%; height: 300px;"></td>
+					</tr>
 					<tr>
 						<td>내용</td>
 						<td><textarea name="contents" cols="30" rows="15" required>${RegisterBoardform.contents}</textarea></td>
