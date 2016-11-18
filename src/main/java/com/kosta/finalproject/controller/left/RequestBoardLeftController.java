@@ -25,17 +25,17 @@ public class RequestBoardLeftController {
 
 	@RequestMapping("/menu1_1")
 	public String menu1_1(Model model) {
-		
+
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 		model.addAttribute("session_id", session_id);
-		
-		//기업 등록글 보기
+
+		// 기업 등록글 보기
 		String company = "업체";
 		List<RequestBoardVO> requestlist = requestBoardDaoImpl.companyselect(company);
 		model.addAttribute("requestlist", requestlist);
-		
+
 		model.addAttribute("CONTENT", "menu/menu1/left_menu/menu1_1.jsp");
 		model.addAttribute("LEFT", "menu/menu1/left.jsp");
 		return "main";
@@ -43,17 +43,17 @@ public class RequestBoardLeftController {
 
 	@RequestMapping("/menu1_2")
 	public String menu1_2(Model model) {
-		
+
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 		model.addAttribute("session_id", session_id);
-		
-		//개인 등록글 보기
+
+		// 개인 등록글 보기
 		String company = "개인";
 		List<RequestBoardVO> requestlist = requestBoardDaoImpl.companyselect(company);
 		model.addAttribute("requestlist", requestlist);
-		
+
 		model.addAttribute("CONTENT", "menu/menu1/left_menu/menu1_1.jsp");
 		model.addAttribute("LEFT", "menu/menu1/left.jsp");
 		return "main";
@@ -79,7 +79,7 @@ public class RequestBoardLeftController {
 	// 등록 글 수정폼
 	@RequestMapping("/RequestBoardUpdateForm")
 	public String RequestBoardUpdateForm(Model model, HttpServletRequest request) {
-		
+
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
@@ -99,8 +99,8 @@ public class RequestBoardLeftController {
 
 	@RequestMapping("/requestBoardUpdate")
 	public String requestBoardUpdate(Model model, HttpServletRequest request) throws Exception {
-		
-		//날짜 변환
+
+		// 날짜 변환
 		SimpleDateFormat simpledate = new SimpleDateFormat("yyyy-MM-dd");
 		Date parsedDate1 = simpledate.parse(request.getParameter("startDate"));
 		Date parsedDate2 = simpledate.parse(request.getParameter("endDate"));
@@ -143,114 +143,97 @@ public class RequestBoardLeftController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 		model.addAttribute("session_id", session_id);
-		
+
 		RequestBoardVO vo = new RequestBoardVO();
 		vo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
 		requestBoardDaoImpl.requestBoardDelete(vo);
 
 		List<RequestBoardVO> requestlist = requestBoardDaoImpl.RequestBoardUserSelectAll(session_id);
-		
+
 		model.addAttribute("CONTENT", "menu/menu1/left_menu/menu1_3.jsp");
 		model.addAttribute("LEFT", "menu/menu1/left.jsp");
 		model.addAttribute("requestlist", requestlist);
 
 		return "main";
 	}
-	
+
 	@RequestMapping("/RequestEnd")
-	public String RequestEnd(Model model, HttpServletRequest request){
-		
+	public String RequestEnd(Model model, HttpServletRequest request) {
+
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 		model.addAttribute("session_id", session_id);
-		
+
 		RequestBoardVO vo = new RequestBoardVO();
 		String packageStatus = "대여종료신청";
 		vo.setPackageStatus(packageStatus);
 		vo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
 		requestBoardDaoImpl.packageStatusupdate(vo);
-		
-		//내 목록보기
+
+		// 내 목록보기
 		List<RequestBoardVO> requestlist = requestBoardDaoImpl.RequestBoardUserSelectAll(session_id);
 		model.addAttribute("requestlist", requestlist);
-		
+
 		model.addAttribute("CONTENT", "menu/menu1/left_menu/menu1_3.jsp");
 		model.addAttribute("LEFT", "menu/menu1/left.jsp");
-		
+
 		return "main";
 	}
-	
-	//대여 심사 대기
+
+	// 대여 심사 대기
 	@RequestMapping("/rentready")
-	public String rentread(Model model){
-		
+	public String rentread(Model model) {
+
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 		model.addAttribute("session_id", session_id);
-		
+
 		String status = "심사중";
-		
+
 		List<RequestBoardVO> requestboardstatus = requestBoardDaoImpl.requeststatus(status);
-		
+
 		model.addAttribute("requestboardstatus", requestboardstatus);
 		model.addAttribute("CONTENT", "menu/menu1/left_menu/requeststatus.jsp");
 		model.addAttribute("LEFT", "menu/menu1/left.jsp");
-		
+
 		return "main";
 	}
-	
-	//대여 종료 대기
+
+	// 대여 종료 대기
 	@RequestMapping("/rentend")
-	public String rentend(Model model){
-		
+	public String rentend(Model model) {
+
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 		model.addAttribute("session_id", session_id);
-		
+
 		String status = "대여종료신청";
-		
+
 		List<RequestBoardVO> requestboardstatus = requestBoardDaoImpl.requeststatus(status);
-		
+
 		model.addAttribute("requestboardstatus", requestboardstatus);
 		model.addAttribute("CONTENT", "menu/menu1/left_menu/requeststatus.jsp");
 		model.addAttribute("LEFT", "menu/menu1/left.jsp");
-		
+
 		return "main";
 	}
-	
+
 	@RequestMapping("/requestcontent")
-<<<<<<< HEAD
-	public String content(HttpServletRequest request, Model model) throws Exception{
+	public String content(HttpServletRequest request, Model model) throws Exception {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
-		
+
 		int codeNum = Integer.parseInt(request.getParameter("codeNum"));
-		
+
 		List<RequestBoardVO> content = requestBoardDaoImpl.requestcontent(codeNum);
-		
+
 		model.addAttribute("result", content);
 		model.addAttribute("LEFT", "menu/menu1/left.jsp");
 		model.addAttribute("CONTENT", "menu/menu1/write/content.jsp");
 		return "main";
 	}
+
 }
-=======
-	   public String content(HttpServletRequest request, Model model) throws Exception{
-	      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	      String session_id = auth.getName();
-	      
-	      int codeNum = Integer.parseInt(request.getParameter("codeNum"));
-	      
-	      List<RequestBoardVO> content = requestBoardDaoImpl.requestcontent(codeNum);
-	      
-	      model.addAttribute("result", content);
-	      model.addAttribute("LEFT", "menu/menu1/left.jsp");
-	      model.addAttribute("CONTENT", "menu/menu1/write/content.jsp");
-		return "main";
-	}
-	
-}
->>>>>>> dacd6f9e0c4de31374f01eba574d04e0e6509496

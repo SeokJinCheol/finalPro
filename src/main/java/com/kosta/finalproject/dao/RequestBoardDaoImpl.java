@@ -10,8 +10,8 @@ import org.springframework.stereotype.Repository;
 import com.kosta.finalproject.vo.RequestBoardVO;
 
 @Repository
-public class RequestBoardDaoImpl implements RequestBoardDao{
-	
+public class RequestBoardDaoImpl implements RequestBoardDao {
+
 	@Autowired
 	private SqlSession sqlSession;
 
@@ -20,7 +20,7 @@ public class RequestBoardDaoImpl implements RequestBoardDao{
 		ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();
 		RequestBoardMapper mapper = sqlSession.getMapper(RequestBoardMapper.class);
 		result = mapper.RequestBoardSelectAll();
-		
+
 		return result;
 	}
 
@@ -32,21 +32,21 @@ public class RequestBoardDaoImpl implements RequestBoardDao{
 
 	@Override
 	public ArrayList<RequestBoardVO> RequestBoardUserSelectAll(String session_id) {
-		
+
 		ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();
 		RequestBoardMapper mapper = sqlSession.getMapper(RequestBoardMapper.class);
 		result = mapper.RequestBoardUserSelectAll(session_id);
-		
+
 		return result;
 	}
 
 	@Override
 	public ArrayList<RequestBoardVO> RequestBoardUpdateForm(int codeNum) {
-		
+
 		ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();
 		RequestBoardMapper mapper = sqlSession.getMapper(RequestBoardMapper.class);
 		result = mapper.RequestBoardUpdateForm(codeNum);
-		
+
 		return result;
 	}
 
@@ -64,11 +64,11 @@ public class RequestBoardDaoImpl implements RequestBoardDao{
 
 	@Override
 	public ArrayList<RequestBoardVO> RegisterBoardWriteForm(int codeNum) {
-		
+
 		ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();
 		RequestBoardMapper mapper = sqlSession.getMapper(RequestBoardMapper.class);
 		result = mapper.RegisterBoardWriteForm(codeNum);
-		
+
 		return result;
 	}
 
@@ -80,21 +80,21 @@ public class RequestBoardDaoImpl implements RequestBoardDao{
 
 	@Override
 	public ArrayList<RequestBoardVO> requeststatus(String status) {
-		
+
 		ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();
 		RequestBoardMapper mapper = sqlSession.getMapper(RequestBoardMapper.class);
 		result = mapper.requeststatus(status);
-		
+
 		return result;
 	}
 
 	@Override
 	public ArrayList<RequestBoardVO> companyselect(String company) {
-		
+
 		ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();
 		RequestBoardMapper mapper = sqlSession.getMapper(RequestBoardMapper.class);
 		result = mapper.companyselect(company);
-		
+
 		return result;
 	}
 
@@ -103,7 +103,6 @@ public class RequestBoardDaoImpl implements RequestBoardDao{
 		RequestBoardMapper mapper = sqlSession.getMapper(RequestBoardMapper.class);
 		mapper.requestBoardDelete(vo);
 	}
-<<<<<<< HEAD
 
 	public ArrayList<RequestBoardVO> requestcontent(int codeNum) {
 		ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();
@@ -112,14 +111,4 @@ public class RequestBoardDaoImpl implements RequestBoardDao{
 
 		return result;
 	}
-	
-=======
-	public ArrayList<RequestBoardVO> requestcontent(int codeNum) {
-	      ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();
-	      RequestBoardMapper requestMapper = sqlSession.getMapper(RequestBoardMapper.class);
-	      result = requestMapper.requestcontent(codeNum);
-
-	      return result;
-	   }
->>>>>>> dacd6f9e0c4de31374f01eba574d04e0e6509496
 }
