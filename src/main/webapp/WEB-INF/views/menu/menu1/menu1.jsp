@@ -29,8 +29,10 @@
 							<td colspan="2">No. ${requestlist.codeNum}</td>
 						</tr>
 						<tr>
-							<td colspan="2"><a href="requestcontent?codeNum=${requestlist.codeNum}"> 
-							<img src="/team4/resources/RequestImg/${requestlist.img }" tyle="width: 100%; height: 130px;"></a></td>
+							<td colspan="2"><a
+								href="requestcontent?codeNum=${requestlist.codeNum}"> <img
+									src="/team4/resources/RequestImg/${requestlist.img }"
+									style="width: 100%; height: 130px;"></a></td>
 						</tr>
 					</table>
 
@@ -63,10 +65,8 @@
 							</c:if>
 						</tr>
 					</table>
-					<br>
-					<br>
-				</div>
-		</div>
+					<br> <br>
+				</div></div>
 		<!-- 중간 공간확보용 -->
 		<div>
 			<p></p>
