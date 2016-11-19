@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 여기는 매핑할 MemberMapper.java의 풀패키지명을 적어준다 -->
+<mapper namespace="com.kosta.finalproject.dao.FinalMapper">
+	<resultMap type="UsersVO" id="UsersResultMap">
+		<result property="id" column="id" />
+		<result property="pwd" column="pwd" />
+		<result property="name" column="name" />
+		<result property="birthday" column="birthday" />
+		<result property="phoneNum1" column="phoneNum1" />
+		<result property="phoneNum2" column="phoneNum2" />
+		<result property="email" column="email" />
+		<result property="adress" column="adress" />
+		<result property="memberRank" column="memberRank" />
+		<result property="company" column="company" />
+	</resultMap>
+	
+	<resultMap type="EmailVO" id="EmailResultMap">
+		<result property="snedNum" column="send" />
+		<result property="empNum" column="empNum" />
+		<result property="contents" column="contents" />
+		<result property="readNum" column="readNum" />
+		<result property="sendDate" column="sendDate" />
+	</resultMap>
+	
+	<select id="readEmail" resultMap="EmailResultMap">
+		SELECT id FROM EmailVO
+	</select>
+
+	<select id="getMembers" resultMap="UsersResultMap">
+		SELECT * FROM users
+	</select>
+	
+	<insert id="insertMember" parameterType="com.kosta.finalproject.vo.UsersVO">
+		INSERT INTO users(id,pwd,name,birthday,phoneNum1,phoneNum2,email,adress,memberRank,company) values (#{id},#{pwd},#{name},#{birthday},#{phoneNum1},#{phoneNum2},#{email},#{adress},#{memberRank},#{company})
+	</insert>
+	
+	<delete id="deleteMember" parameterType="com.kosta.finalproject.vo.UsersVO">
+		DELETE from users WHERE (id=#{id} AND pwd=#{pwd})
+	</delete>	
+	
+	<delete id="deleteRank" parameterType="com.kosta.finalproject.vo.RankVO">
+		DELETE from userrank where id= (#{id})
+	</delete>
+
+	<delete id="admin_deleteMember" parameterType="com.kosta.finalproject.vo.UsersVO">
+		DELETE FROM users WHERE (id = #{id})
+	</delete>
+	
+	<delete id="admin_deleteMemberRank" parameterType="com.kosta.finalproject.vo.RankVO">
+		DELETE from userrank where id= (#{id})
+	</delete>
+	
+	<select id="updateMember" resultMap="UsersResultMap">
+		SELECT * FROM users WHERE (id=#{id})
+	</select>
+	
+	<update id="updateMemberPro" parameterType="com.kosta.finalproject.vo.UsersVO">
+	    UPDATE users SET name=#{name}, pwd=#{pwd}, birthday=#{birthday}, phoneNum1=#{phoneNum1}, phoneNum2=#{phoneNum2}, email=#{email}, adress=#{adress}, memberRank=#{memberRank}, company=#{company} WHERE id=#{id}
+	</update>
+	
+	<select id="confirmIdMember" resultMap="UsersResultMap">
+		SELECT * FROM users WHERE (id=#{id})
+	</select>
+	
+	<insert id="insertRank" parameterType="com.kosta.finalproject.vo.RankVO">
+		insert into userrank values(#{id}, #{rightrank})
+	</insert>
+</mapper>

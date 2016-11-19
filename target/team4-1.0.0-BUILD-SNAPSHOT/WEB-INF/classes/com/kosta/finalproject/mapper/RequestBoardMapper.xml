@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 여기는 매핑할 MemberMapper.java의 풀패키지명을 적어준다 -->
+<mapper namespace="com.kosta.finalproject.dao.RequestBoardMapper">
+
+	<resultMap type="RequestBoardVO" id="RequestBoard">
+		<result property="codeNum" column="codeNum" />
+		<result property="category" column="category" />
+		<result property="title" column="title" />
+		<result property="startDate" column="startDate" />
+		<result property="endDate" column="endDate" />
+		<result property="contents" column="contents" />
+		<result property="bill" column="bill" />
+		<result property="deposit" column="deposit" />
+		<result property="img" column="img" />
+		<result property="packageStatus" column="packageStatus" />
+		<result property="reaquestId" column="reaquestId" />
+		<result property="company" column="company" />
+	</resultMap>
+
+	<select id="RequestBoardSelectAll" resultMap="RequestBoard">
+		SELECT * FROM requestBoard
+	</select>
+
+	<insert id="requestinsert" parameterType="com.kosta.finalproject.vo.RequestBoardVO">
+		insert into requestBoard(codeNum, title, category, company, startDate, endDate, bill, deposit, contents, reaquestId, img) values(auto_increment.nextval, #{title}, #{category}, #{company}, #{startDate}, #{endDate}, #{bill}, #{deposit}, #{contents}, #{reaquestId}, #{img})
+	</insert>
+
+	<select id="RequestBoardUserSelectAll" resultMap="RequestBoard">
+		SELECT * FROM requestBoard WHERE reaquestId = #{session_id}
+	</select>
+	
+	<select id="RequestBoardUpdateForm" resultMap="RequestBoard">
+		SELECT * FROM requestBoard WHERE codeNum = #{codeNum}
+	</select>
+	
+	<update id="requestBoardUpdate" parameterType="com.kosta.finalproject.vo.RequestBoardVO">
+		UPDATE requestBoard SET title=#{title}, startDate=#{startDate}, endDate=#{endDate}, bill=#{bill}, deposit=#{deposit}, contents=#{contents}, category=#{category}, company=#{company} WHERE codeNum=#{codeNum}
+	</update>
+	
+	<select id="selectdate" resultMap="RequestBoard">
+		SELECT startDate, endDate FROM requestBoard WHERE codeNum = #{codeNum}
+	</select>
+	
+	<delete id="requestBoardDelete" parameterType="com.kosta.finalproject.vo.RequestBoardVO">
+		DELETE FROM requestBoard WHERE codeNum = #{codeNum}
+	</delete>
+	
+	<select id="RegisterBoardWriteForm" resultMap="RequestBoard">
+		SELECT * FROM requestBoard WHERE codeNum = #{codeNum}
+	</select>
+	
+	<update id="packageStatusupdate" parameterType="com.kosta.finalproject.vo.RequestBoardVO">
+		UPDATE requestBoard SET packageStatus = #{packageStatus} WHERE codeNum = #{codeNum}
+	</update>
+	
+	<select id="requeststatus" resultMap="RequestBoard">
+		SELECT * FROM requestBoard WHERE packageStatus = #{status}
+	</select>
+	
+	<select id="companyselect" resultMap="RequestBoard">
+		SELECT * FROM requestBoard WHERE company = #{company}
+	</select>
+	
+	<delete id="requestdelete" parameterType="com.kosta.finalproject.vo.RequestBoardVO">
+		DELETE FROM requestBoard WHERE codeNum = #{codeNum}
+	</delete>
+
+	<select id="requestcontent" resultMap="RequestBoard"> 
+       SELECT * FROM requestBoard WHERE codeNum=#{codeNum} 
+    </select>
+</mapper>

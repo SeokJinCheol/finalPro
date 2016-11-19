@@ -36,14 +36,6 @@ public class MainController {
 		return "main";
 	}
 
-	// Menu_3
-	@RequestMapping("/menu3")
-	public String menu3(Model model) {
-		model.addAttribute("CONTENT", "menu/menu3/menu3.jsp");
-		model.addAttribute("LEFT", "menu/menu3/left.jsp");
-		return "main";
-	}
-
 	//////////////////////////////////////////////////////////////////////////////////////////////////
 	// about_us
 	@RequestMapping("/about_us")

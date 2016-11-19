@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 여기는 매핑할 MemberMapper.java의 풀패키지명을 적어준다 -->
+<mapper namespace="com.kosta.finalproject.dao.CheckBoardMapper">
+
+	<resultMap type="CheckBoardVO" id="CheckBoard">
+		<result property="codeNum" column="codeNum" />
+		<result property="startDate" column="startDate" />
+		<result property="endDate" column="endDate" />
+		<result property="userstartDate" column="userstartDate"/>
+		<result property="userendDate" column="userendDate"/>
+		<result property="resister" column="resister" />
+		<result property="rentter" column="rentter" />
+		<result property="bill" column="bill" />
+		<result property="deposit" column="deposit" />
+		<result property="packageStatus" column="packageStatus" />
+	</resultMap>
+	
+	<insert id="CheckBoardInsert" parameterType="com.kosta.finalproject.vo.CheckBoardVO">
+		insert into checkBoard(codeNum, startDate, endDate, resister, bill, deposit) values(#{codeNum}, #{startDate}, #{endDate}, #{resister}, #{bill}, #{deposit})
+	</insert>
+	
+	<update id="Checkrentterup" parameterType="com.kosta.finalproject.vo.CheckBoardVO">
+		UPDATE checkBoard SET userstartDate = #{userstartDate}, userendDate = #{userendDate}, rentter = #{rentter}, packageStatus = #{packageStatus} WHERE codeNum = #{codeNum}
+	</update>
+	
+	<update id="packageStatus" parameterType="com.kosta.finalproject.vo.CheckBoardVO">
+		update checkBoard SET packageStatus = #{packageStatus} WHERE codeNum = #{codeNum}
+	</update>
+	
+	<delete id="checkdelect" parameterType="com.kosta.finalproject.vo.CheckBoardVO">
+		DELETE FROM checkBoard WHERE codeNum = #{codeNum}
+	</delete>
+	
+	<select id="codeNumselect" resultMap="CheckBoard">
+		SELECT * FROM checkBoard WHERE codeNum = #{codeNum}
+	</select>
+
+</mapper>

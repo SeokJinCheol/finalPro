@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 여기는 매핑할 MemberMapper.java의 풀패키지명을 적어준다 -->
+<mapper namespace="com.kosta.finalproject.dao.RegisterBoardMapper">
+
+	<resultMap type="RegisterBoardVO" id="RegisterBoard">
+		<result property="codeNum" column="codeNum" />
+		<result property="category" column="category" />
+		<result property="title" column="title" />
+		<result property="startDate" column="startDate" />
+		<result property="endDate" column="endDate" />
+		<result property="userstartDate" column="userstartDate" />
+		<result property="userendDate" column="userendDate" />
+		<result property="contents" column="contents" />
+		<result property="bill" column="bill" />
+		<result property="deposit" column="deposit" />
+		<result property="img" column="img" />
+		<result property="packageStatus" column="packageStatus" />
+		<result property="reaquestId" column="reaquestId" />
+		<result property="registerId" column="registerId" />
+		<result property="company" column="company" />
+	</resultMap>
+	
+	<insert id="Registerinsert" parameterType="com.kosta.finalproject.vo.RegisterBoardVO" >
+		insert into registerBoard(codeNum, title, category, company, startDate, endDate, bill, deposit, contents, reaquestId, img) values(#{codeNum}, #{title}, #{category}, #{company}, #{startDate}, #{endDate}, #{bill}, #{deposit}, #{contents}, #{reaquestId}, #{img})
+	</insert>
+	
+	<select id="Registerselect" resultMap="RegisterBoard">
+		SELECT * FROM registerBoard
+	</select>
+	
+	<select id="RegisterUpForm" resultMap="RegisterBoard">
+		SELECT * FROM registerBoard WHERE codeNum = #{codeNum}
+	</select>
+	
+	<update id="PackageStatusUP" parameterType="com.kosta.finalproject.vo.RegisterBoardVO">
+		UPDATE registerBoard SET packageStatus = #{packageStatus}, registerId = #{registerId}, userstartDate = #{userstartDate}, userendDate = #{userendDate} WHERE codeNum = #{codeNum}
+	</update>
+	
+	<update id="packageStatus" parameterType="com.kosta.finalproject.vo.RegisterBoardVO">
+		UPDATE registerBoard SET packageStatus = #{packageStatus} WHERE codeNum = #{codeNum}
+	</update>
+	
+	<select id="MyRegisterselect" resultMap="RegisterBoard">
+		SELECT * FROM registerBoard WHERE registerId = #{session_id}
+	</select>
+	
+	<select id="Registerpossibility" resultMap="RegisterBoard">
+		SELECT * FROM registerBoard WHERE packageStatus = #{possibility}
+	</select>
+	
+	<delete id="registerdelete" parameterType="com.kosta.finalproject.vo.RegisterBoardVO">
+		DELETE FROM registerBoard WHERE codeNum = #{codeNum}
+	</delete>
+	
+</mapper>
