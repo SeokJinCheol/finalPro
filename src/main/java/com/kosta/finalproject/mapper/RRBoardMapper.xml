@@ -3,37 +3,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kosta.finalproject.dao.RRBoardMapper">
 
-   <resultMap type="RRboardVO" id="RRBoardResultMap">
-      <result property="codeNum" column="codeNum"/>
-      <result property="bill" column="bill"/>
-      <result property="category" column="category"/>
-      <result property="title" column="title"/>
-      <result property="contents" column="contents"/>
-      <result property="adress" column="adress"/>
-      <result property="spotNum" column="spotNum"/>
-      <result property="packageStatus" column="packageStatus"/>
-      <result property="reaquestId" column="reaquestId"/>
-      <result property="registerId" column="registerId"/>
-      <result property="img" column="img"/>
-      <result property="company" column="company"/>
-      <result property="startDate" column="startDate"/>
-      <result property="endDate" column="endDate"/>
-      <result property="userstartDate" column="userstartDate"/>
-      <result property="userendDate" column="userendDate"/>
-   </resultMap>
-   
-   
    <select id="SelectALL" resultType="com.kosta.finalproject.vo.RRboardVO">
-      SELECT * from RRboard;
+	select * from RRBoard
    </select>
-   
    
 	<insert id="RRboardinsert" parameterType="com.kosta.finalproject.vo.RRboardVO">
 		insert into RRBoard(codeNum, title, category, company, startDate, endDate, bill, contents, reaquestId, img, adress, spotNum) 
-		values(1, #{title}, #{category}, #{company}, #{startDate},
-		#{endDate}, #{bill}, #{contents}, #{reaquestId}, #{img},
-		#{adress}, #{spotNum})
+		values(rrb_seq.nextval, #{title}, #{category}, #{company}, #{startDate}, #{endDate}, #{bill}, #{contents}, #{reaquestId}, #{img}, #{adress}, #{spotNum})
 	</insert>
 	
+	<select id="getcontents" resultType="com.kosta.finalproject.vo.RRboardVO">
+		select * from rrboard where codenum = #{codeNum}
+	</select>
 	
    </mapper>

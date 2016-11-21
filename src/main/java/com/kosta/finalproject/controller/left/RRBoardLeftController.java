@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kosta.finalproject.dao.RRBoardDao;
@@ -80,7 +81,7 @@ public class RRBoardLeftController {
 				} // if
 		
 		
-		//날짜 타입으로 변환
+	/*	//날짜 타입으로 변환
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date startDate=null, endDate=null;
 		try {
@@ -90,10 +91,10 @@ public class RRBoardLeftController {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-		vo.setStartDate(startDate);
-		vo.setEndDate(endDate);
+		}*/
+		//vo 삽입
+		vo.setStartDate(request.getParameter("startDate"));
+		vo.setEndDate(request.getParameter("endDate"));
 		vo.setReaquestId(session_id);
 		vo.setTitle(request.getParameter("title"));
 		vo.setCategory(request.getParameter("category"));
@@ -108,12 +109,46 @@ public class RRBoardLeftController {
 		System.out.println(vo.toString());
 
 		dao.RRboardinsert(vo);
-		
+		//모델 전송
 		model.addAttribute("id", session_id);
-		model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3.jsp");
+		model.addAttribute("CONTENT", "menu/menu3/menu3.jsp");
 		model.addAttribute("LEFT", "menu/menu3/left.jsp");
 		return "main";
 	}
+	
+	
+	@RequestMapping("/showContentsForm")
+	public String showContentsForm(Model model, @RequestParam("codeNum")int codeNum) {
+
+		//id 체크
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+		model.addAttribute("id", session_id);
+		
+		//체크
+		RRboardVO vo = dao.getcontents(codeNum);
+		System.out.println(vo.toString());
+		//vo 전송
+		model.addAttribute("vo", dao.getcontents(codeNum));
+		model.addAttribute("CONTENT", "menu/menu3/showContentsForm.jsp");
+		model.addAttribute("LEFT", "menu/menu3/left.jsp");
+		return "main";
+	}
+	
+	
+	@RequestMapping("/insertSubmit")
+	public String insertSubmit(Model model, @RequestParam("codeNum")int codeNum) {
+
+		//체크
+		RRboardVO vo = dao.getcontents(codeNum);
+		System.out.println(vo.toString());
+		//vo 전송
+		model.addAttribute("vo", dao.getcontents(codeNum));
+		model.addAttribute("CONTENT", "menu/menu3/showContentsForm.jsp");
+		model.addAttribute("LEFT", "menu/menu3/left.jsp");
+		return "main";
+	}	
+	
 	
 	@RequestMapping("/menu3_2")
 	public String menu3_2(Model model) {

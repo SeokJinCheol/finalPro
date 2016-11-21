@@ -19,7 +19,6 @@ public class RRBoardDaoImpl implements RRBoardDao {
 public List<RRboardVO> SelectALL(RRboardVO vo) {
 
 	List result = new ArrayList<RRboardVO>();
-	result = sqlSession.selectList("com.kosta.finalproject.mapper.RRBoardMapper.SelectALL");
 	
 	return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.SelectALL");
 }
@@ -31,6 +30,14 @@ public void RRboardinsert(RRboardVO vo) {
 	
 	sqlSession.insert("com.kosta.finalproject.dao.RRBoardMapper.RRboardinsert",vo);
 	
+}
+
+public RRboardVO getcontents(int codeNum) {
+	System.out.println("codeNum ="+ codeNum);
+	RRboardVO vo =sqlSession.selectOne("com.kosta.finalproject.dao.RRBoardMapper.getcontents", codeNum);
+	
+	
+	return vo;
 }
 
 }

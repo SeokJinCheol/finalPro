@@ -21,20 +21,21 @@ public class RRBoardController {
 	public String menu3(Model model) {
 		
 		RRboardVO vo = new RRboardVO();
-		String inpo=null;
+		String inpo="";
 		
 		List<RRboardVO> result=dao.SelectALL(vo);
 		
-		for(int i = 0; i> result.size(); i++){
-			
+		System.out.println("size="+result.size());
+		
+		for(int i = 0; i < result.size(); i++){
 			if(i!=0){
 				inpo+=",";
 			}
 			
-			inpo +="{ 'codNum' : "+ result.get(i).getCodeNum()+", 'spotNum' :  new daum.maps.LatLng" + result.get(i).getSpotNum()+
-					", 'adress' : "+ result.get(i).getAdress() + ", 'startDate' : "+result.get(i).getStartDate()+
-					", 'endDate' : "+ result.get(i).getEndDate()+", 'title' : " + result.get(i).getTitle()+
-					", 'contents' : "+ result.get(i).getContents()	+"}";
+			inpo +="{ codeNum : '"+ result.get(i).getCodeNum()+"', spotNum : new daum.maps.LatLng" + result.get(i).getSpotNum()+
+					", adress : '"+ result.get(i).getAdress() + "', startDate : '"+result.get(i).getStartDate()+
+					"', endDate : '"+ result.get(i).getEndDate()+"', title : '" + result.get(i).getTitle()+
+					"', contents : '"+ result.get(i).getContents()	+"'}";
 			
 		}
 		
