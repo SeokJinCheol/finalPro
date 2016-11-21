@@ -2,7 +2,7 @@ create table users(
 id varchar(15) PRIMARY KEY, 
 name varchar(25) Not null,
 pwd varchar(50) not null, 
-birthday date not null,
+birthday varchar(50) null,
 phoneNum1 varchar(15), 
 phoneNum2 varchar(15), 
 email varchar(50),
@@ -22,6 +22,8 @@ insert into users values('tt3','tt3','tt3','1982-01-13',0106224552,null,'user2r@
 
 select * from users;
 
+drop table users;
+
 create table userRank(
 id varchar(15), 
 rightrank varchar(15)
@@ -34,5 +36,7 @@ insert into userRank values('company1','role_com');insert into userRank values('
 insert into userRank values('tt1','role_com');
 insert into userRank values('tt2','role_com');
 insert into userRank values('tt3','role_com');
+
+DELETE from userRank WHERE ID = 'admin' and rightrank = 'role_user';
 
 select * from USERRANK;

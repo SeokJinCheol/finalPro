@@ -19,7 +19,7 @@
 					<h3> 회원 정보 수정 </h3>
 				</div>
 
-				<form action="admin_update" method="post">
+				<form action="admin_updatePro" method="post">
 					<table>
 						<tr>
 							<td>&nbsp;ID</td>

@@ -46,11 +46,24 @@
 					             <td>${member.adress }</td>
 					             <td>${member.memberRank }</td>
 					             <%--<td>${member.company }</td>--%>
-					             <td><input type=button value="" class="update-btn2 w3-card-4" onclick="location.href='admin_update?id=${member.id}'"></td>
+					             <%-- <td><input type=button value="" class="update-btn2 w3-card-4" onclick="location.href='admin_update?id=${member.id}'"></td>
 					             <td>
 					             	<input type=button value="" class="cancel-btn3 w3-card-4" onclick="checkDel('${member.id}')">
 					             	
 					             	<form action="admin_delete" method=post name="${member.id}">
+					             		<input type="hidden" name="m_id" value="${member.id}"/>
+					             	</form>
+					             </td> --%>
+					             <td>
+					                <form action="admin_update" method="post" name="adminupdate" >
+					                    <input type="submit" value="" class="update-btn2 w3-card-4" >
+					                    <input type="hidden" name="id" value="${member.id}"/>
+					                </form>
+					             </td>
+					             <td>
+					             	
+					             	<form action="admin_delete" method=post name="${member.id}">
+					             	    <input type="submit" value="" class="cancel-btn3 w3-card-4" onclick="checkDel('${member.id}')">
 					             		<input type="hidden" name="m_id" value="${member.id}"/>
 					             	</form>
 					             </td>

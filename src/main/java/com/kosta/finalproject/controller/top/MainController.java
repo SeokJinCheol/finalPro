@@ -313,20 +313,20 @@ public class MainController {
 	}
 
 	// admin_update
-	@RequestMapping(value = "/admin_update", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin_update", method = RequestMethod.POST)
 	public String admin_update(HttpServletRequest request, Model model) {
 		String id = request.getParameter("id");
 
 		UsersVO userlist = finalDaoImpl.updateMember(id);
-
+		
 		model.addAttribute("result", userlist);
 		model.addAttribute("CONTENT", "join/admin_update.jsp");
 
 		return "main";
 	}
 
-	@RequestMapping(value = "/admin_update", method = RequestMethod.POST)
-	public String admin_update2(HttpServletRequest request, Model model) throws Exception {
+	@RequestMapping(value = "/admin_updatePro", method = RequestMethod.POST)
+	public String admin_updatePro(HttpServletRequest request, Model model) throws Exception {
 		request.setCharacterEncoding("utf-8");
 
 		UsersVO vo = new UsersVO();
@@ -377,6 +377,7 @@ public class MainController {
 		model.addAttribute("id", request.getRequestedSessionId());
 		model.addAttribute("result", userlist);
 
+		model.addAttribute("LEFT", "join/admin_left.jsp");
 		model.addAttribute("CONTENT", "join/list.jsp");
 
 		return "main";
