@@ -16,13 +16,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kosta.finalproject.dao.CheckBoardDaoImpl;
 import com.kosta.finalproject.dao.RegisterBoardDaoImpl;
+import com.kosta.finalproject.dao.ReviewImpl;
 import com.kosta.finalproject.dao.StorageBoardDaoImpl;
 import com.kosta.finalproject.vo.CheckBoardVO;
 import com.kosta.finalproject.vo.RegisterBoardVO;
+import com.kosta.finalproject.vo.ReviewVO;
 import com.kosta.finalproject.vo.StorageBoardVO;
 
 @Controller
 public class RegisterBoardLeftController {
+	
+	@Autowired
+	private ReviewImpl reviewImpl;
 
 	@Autowired
 	private RegisterBoardDaoImpl registerBoardDaoImpl;
@@ -70,16 +75,40 @@ public class RegisterBoardLeftController {
 		model.addAttribute("LEFT", "menu/menu2/left.jsp");
 		return "main";
 	}
+	
+	//리뷰작성 대여종료
+	@RequestMapping("/reviewendrent")
+	public String reviewendrent(Model model, HttpServletRequest request){
+		
+		int codeNum = Integer.parseInt(request.getParameter("codeNum"));
+		model.addAttribute("codeNum", codeNum);
+		model.addAttribute("LEFT", "menu/menu2/left.jsp");
+		model.addAttribute("CONTENT", "menu/menu2/Review.jsp");
+		return "main";
+	}
 
 	// 반납 신청
 	@RequestMapping("/endrent")
 	public String endrent(Model model, HttpServletRequest request) {
+		
+
 
 		// 로그인 정보 확인
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 		model.addAttribute("session_id", session_id);
-
+		
+		//리뷰작성
+		String reviewtext = request.getParameter("reviewtext");
+		if(reviewtext != ""){
+			ReviewVO reviewvo = new ReviewVO();
+			reviewvo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
+			reviewvo.setReviewpoint(Integer.parseInt(request.getParameter("reviewpoint")));
+			reviewvo.setReviewtext(request.getParameter("reviewtext"));
+			reviewvo.setReviewid(session_id);
+			reviewImpl.reviewinsert(reviewvo);
+		}
+		
 		// 대여가능 게시판 반납신청
 		RegisterBoardVO registervo = new RegisterBoardVO();
 		String packageStatus = "반납신청";

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosta.finalproject.dao.ReviewMapper">
+
+	<resultMap type="ReviewVO" id="Review">
+		<result property="codeNum" column="codeNum"/>
+		<result property="reviewpoint" column="reviewpoint"/>
+		<result property="reviewid" column="reviewid" />
+		<result property="reviewtext" column="reviewtext" />
+	</resultMap>
+	
+	<insert id="reviewinsert" parameterType="com.kosta.finalproject.vo.ReviewVO">
+		INSERT INTO review(codeNum, reviewpoint, reviewid, reviewtext) VALUES (#{codeNum}, #{reviewpoint}, #{reviewid}, #{reviewtext})
+	</insert>
+	
+</mapper>

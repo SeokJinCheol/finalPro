@@ -2,13 +2,14 @@ package com.kosta.finalproject.vo;
 
 public class MailVO {
 	
-	private String mailNum, sid, rid, text;
-	
-	public String getMailNum() {
+	private String sid, rid, text;
+	private int mailNum;
+
+	public int getMailNum() {
 		return mailNum;
 	}
 
-	public void setMailNum(String mailNum) {
+	public void setMailNum(int mailNum) {
 		this.mailNum = mailNum;
 	}
 

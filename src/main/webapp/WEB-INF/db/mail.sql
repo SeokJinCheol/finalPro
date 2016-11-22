@@ -1,5 +1,5 @@
 create table mail(
-	mailNum number(100),
+	mailNum number(25),
 	sid varchar2(25),
 	rid varchar2(25),
 	text varchar2(1000)

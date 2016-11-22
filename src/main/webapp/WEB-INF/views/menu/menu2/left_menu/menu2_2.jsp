@@ -32,7 +32,7 @@
 						<td>${MyRegisterselect.userendDate}</td>
 						<td>
 							<c:if test="${MyRegisterselect.packageStatus == '대여중'}">
-								<form action="endrent" method="post">
+								<form action="reviewendrent" method="post">
 									<input type="hidden" value="${MyRegisterselect.codeNum}" name="codeNum">
 									<input type="submit" value="반납신청">
 								</form>
