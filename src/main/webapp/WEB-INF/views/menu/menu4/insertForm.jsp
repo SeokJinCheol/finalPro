@@ -31,16 +31,16 @@
 		               
 		               <tr>
 		                  <td>ID</td>
-		                  <td><input type="text" name="id"  required></td>
+		                  <td><input type="text" name="id"  value = "${session_id}"required></td>
 		               </tr>
 		                  
 		               <tr>
 		                  <td>CateGory</td>
 		                  <td>
 		                     <select name="category">
-		                        <option value="관리자">관리자</option>
-		                        <option value="판매자">판매자</option>
-		                        <option value="대여자">대여자</option>
+		                        <option value="물건요청">물건요청</option>
+		                        <option value="장소요청">장소요청</option>
+		                        
 		                        </select>
 		                     </td>
 		               </tr>

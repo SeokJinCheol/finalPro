@@ -19,7 +19,7 @@
 			등록 OK
 
 			<c:if test="${groupnum==0 }">			
-				<meta  http-equiv="Refresh" content="1; url=QandA_list">
+				<meta  http-equiv="Refresh" content="1; url=free_list">
 			</c:if>
 
 			<c:if test="${groupnum!=0 }">			

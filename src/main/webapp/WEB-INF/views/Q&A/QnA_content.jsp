@@ -66,7 +66,7 @@
 						<td>
 							<!-- 자신의 리플인 경우 -->
 							<c:if test="${reply.id == session_id}">
-								<form action="freeboard_re_delete" method=post>
+								<form action="QnA_re_delete" method=post>
 									<input type="submit" value="리플삭제">
 									<input type="hidden" name="reply_bnum" value="${reply.bnum}">
 									<input type="hidden" name="bnum" value="${vo.bnum}">
@@ -85,24 +85,24 @@
 			
 			<!-- 로그인 됬을 경우에 Reply 가능 -->
 			<security:authorize ifAnyGranted="role_user, role_com, role_master">
-				<input type="button" value="답변달기" onclick="location.href='freeboard_write?bnum=${vo.bnum}'">
+				<input type="button" value="답변달기" onclick="location.href='QnA_write?bnum=${vo.bnum}'">
 				
 				<!-- 내 게시물일 경우 가능!! -->
 				<c:if test="${vo.id == session_id}">
 					<!-- 게시물 삭제 -->	
-					<form action="freeboard_delete" method=post>
+					<form action="QnA_delete" method=post>
 						<input type="submit" value="게시글삭제">
 						<input type="hidden" name="bnum" value="${vo.bnum}">
 					</form>
 					
-					<form action="freeboard_update_get">
+					<form action="QnA_update_get">
 						<input type="submit" value="게시글수정">
 						<input type="hidden" name="bnum" value="${vo.bnum}">
 					</form>
 				</c:if>
 			</security:authorize>
 			
-			<input type="button" value="List" onclick="location.href='freeboard_list'">
+			<input type="button" value="List" onclick="location.href='QnA_list'">
 		</div>
 	</div>
 </body>

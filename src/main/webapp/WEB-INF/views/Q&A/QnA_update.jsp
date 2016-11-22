@@ -59,7 +59,7 @@
 			
 			<input type="hidden" name="bnum" value="${bnum}">
 			<input type="submit" value="글수정">
-			<input type="button" value="List" onclick="location.href='freeboard_list'">
+			<input type="button" value="List" onclick="location.href='QnA_list'">
 		</form>
 	</div>
 </body>

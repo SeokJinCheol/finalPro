@@ -12,10 +12,10 @@
 <body>
 	<div align=center>
 		<div  style="background:#6699DC; color:white; width:20%; height:100px; vertical-align:middle; display:table-cell;"><img src="/team4/resources/images/list1.png"><font size="5">&nbsp;&nbsp;게 시 판</font></div><br>
-		<div class="left-menu"><a href="freeboard_list" class="rollover">
+		<div class="left-menu"><a href="free_list" class="rollover">
 			<img src="/team4/resources/images/left-freeboard11.png" style="margin-right:5px;">
 			<img src="/team4/resources/images/left-freeboard12.png" class="imgover" style="margin-right:5px;">
-			&nbsp;자 유 게 시 판</a></div><br>
+			&nbsp;요 청 및 리 뷰</a></div><br>
 		<div class="left-menu"><a href="#" class="rollover">
 			<img src="/team4/resources/images/#" style="margin-right:5px;">
 			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">

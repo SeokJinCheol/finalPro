@@ -4,73 +4,126 @@
 
 <!-- 여기는 매핑할 MemberMapper.java의 풀패키지명을 적어준다 -->
 <mapper namespace="com.kosta.finalproject.dao.BoardMapper">
-   <resultMap type="BoardVO" id="BoardResultMap">
-      <result property="bnum" column="bnum"/>
-      <result property="bgnum" column="bgnum"/>
-      <result property="date" column="bDate"/>
-      <result property="groupnum" column="groupnum"/>
-      <result property="ranknum" column="ranknum"/>
-      <result property="count" column="count"/>
-      <result property="title" column="title"/>
-      <result property="contents" column="contents"/>
-      <result property="id" column="id"/>
-      <result property="img" column="img"/>
-      <result property="category" column="category"/>
-      <result property="replyCount" column="replCount"/>
-   </resultMap>
-   
-   <select id="getContent" resultMap="BoardResultMap">
-      SELECT TITLE,ID,CONTENT FROM FREEBOARD WHERE BGNUM=#{bgnum}
-   </select>
-   
-   <insert id="writeMain" parameterType="com.kosta.finalproject.vo.BoardVO">
-      INSERT INTO FREEBOARD VALUES(fb_seq.NEXTVAL, #{bgnum}, #{title}, sysdate, #{contents}, 1, 0, #{id}, #{img}, 0, #{category})
-   </insert>
-   
-   <select id="showAll" resultMap="BoardResultMap"  parameterType="com.kosta.finalproject.vo.BoardVO">
-      select * from (select * from (select rownum rnum ,bnum,category,title,id,img,count,(SELECT COUNT(*) FROM freeboard B WHERE B.bgnum=a.bnum) replyCount from freeBoard a where bgnum = 0 )
-       where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow}
-   </select>
-   
-   <select id="showthis" resultMap="BoardResultMap" parameterType="com.kosta.finalproject.vo.BoardVO">
-      select * from freeBoard where bnum = #{bnum}
-   </select>
-   
-   <update id="updateCount" parameterType="com.kosta.finalproject.vo.BoardVO">
-      UPDATE FREEBOARD SET COUNT = COUNT+1 WHERE BNUM=#{bnum}
-   </update>
-   
-   <select id="selectReply" parameterType="com.kosta.finalproject.vo.BoardVO" resultMap="BoardResultMap">
-      SELECT ID, CONTENTS, BNUM, BGNUM FROM FREEBOARD WHERE BGNUM = #{bnum}
-   </select>
-   
-   <select id="selectTitle" parameterType="com.kosta.finalproject.vo.BoardVO" resultMap="BoardResultMap">
-      select * from (select * from (select rownum rnum,bnum,category,title,id,img,count from freeBoard where bgnum= 0 and title like  '%' || #{title} || '%' )
-       where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow}
-   </select>
-   
-   <select id="getListAllCount" resultType="Integer">
-      SELECT COUNT(*) FROM freeboard where bgnum= 0
-      </select>
-      
-      <select id="getListTitleCount" resultType="Integer" parameterType="com.kosta.finalproject.vo.BoardVO">
-      SELECT COUNT(*) FROM freeboard where bgnum= 0 and title like  '%' || #{title} || '%'
-   </select>
-   
-   <select id="getListIDCount" resultType="Integer" parameterType="com.kosta.finalproject.vo.BoardVO">
-      SELECT COUNT(*) FROM freeboard where bgnum= 0 and id like  '%' || #{id} || '%'
-   </select>
-   
-   <select id="selectId" parameterType="com.kosta.finalproject.vo.BoardVO" resultMap="BoardResultMap">
-      select * from (select * from (select rownum as rnum ,bnum,category,title,id,img,count from freeBoard where bgnum= 0 and id like  '%' || #{id}  || '%')
-      where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow}
-   </select>
-   
-   <delete id="delete" parameterType="com.kosta.finalproject.vo.BoardVO">
-      delete from freeboard where bnum = #{bnum}
-   </delete>
-   
-   <update id="updateDetail" parameterType="com.kosta.finalproject.vo.BoardVO">
-      update freeBoard set title = #{title},contents=#{contents},category=#{category},img=#{img} where bnum= #{bnum}
-   </update>
+	 <resultMap type="BoardVO" id="boardResultMap">
+		<result property="id" column="id" />
+		<result property="category" column="category" />
+		<result property="title" column="title" />
+		<result property="contents" column="contents" />
+		<result property="img" column="img" />
+		<result property="bDate" column="bDate" />
+		<result property="bNum" column="bNum" />
+		<result property="groupnum" column="groupnum" />
+		<result property="ranknum" column="ranknum" />
+		<result property="bgnum" column="bgnum" />
+	</resultMap>
+
+	<!-- 게시판 댓글 관련 -->
+	<update id="update" parameterType="com.kosta.finalproject.vo.BoardVO">
+		UPDATE FreeBoard set groupnum
+		= (groupnum+1) where (bgnum=#{bgnum}) and
+		(groupnum>#{groupnum})
+	</update>
+
+	<!-- 게시판 insert -->
+	<insert id="insertMember" parameterType="com.kosta.finalproject.vo.BoardVO">
+		INSERT INTO
+		FreeBoard(bNum,id,category,title,contents,img,bDate,bgnum,groupnum,ranknum)
+		values
+		(fb_seq.nextVal,#{id},#{category},#{title},#{contents},#{img},#{bDate},#{bgnum},#{groupnum},#{ranknum})
+	</insert>
+
+	<!-- 게시판 insert (댓글) -->
+	<insert id="reinsertMember" parameterType="com.kosta.finalproject.vo.BoardVO">
+		INSERT INTO
+		freeBoard(bNum,id,contents,bDate,bgnum,groupnum,ranknum) values
+		(fb_seq.nextVal,#{id},#{contents},#{bDate},#{bgnum},#{groupnum},#{ranknum})
+	</insert>
+
+	<!-- 게시판 상세페이지 -->
+	<select id="contentgetMembers" resultMap="boardResultMap">
+		SELECT * FROM freeBoard
+		WHERE bgnum=#{bgnum} ORDER BY GROUPNUM ASC, RANKNUM	ASC
+	</select>
+
+	<!-- 게시판 조회수 관련 -->
+	<update id="readcountUpdate" parameterType="com.kosta.finalproject.vo.BoardVO">
+		UPDATE freeBoard SET READCOUNT = READCOUNT + 1 WHERE bNum = #{bNum}
+	</update>
+
+	<!-- 게시판 리스트뽑기, 페이징처리 -->
+	<select id="getSelectAll" resultMap="boardResultMap"
+		parameterType="com.kosta.finalproject.vo.BoardVO">
+      <![CDATA[ SELECT BNUM, GROUPNUM, RANKNUM, BGNUM, TITLE, CONTENTS, ID, IMG, CATEGORY, BDATE, READCOUNT, R FROM 
+         (SELECT BNUM, GROUPNUM, RANKNUM, BGNUM, TITLE, CONTENTS, ID, IMG, CATEGORY, BDATE, READCOUNT, ROWNUM R 
+         FROM (SELECT BNUM, GROUPNUM, RANKNUM, BGNUM, TITLE, CONTENTS, ID, IMG, CATEGORY, BDATE, READCOUNT FROM FreeBoard where BNUM=BGNUM
+         ORDER BY BGNUM DESC, GROUPNUM ASC, RANKNUM ASC) ) WHERE R >= #{startRow} AND R <= #{endRow} ]]>
+	</select>
+
+	<!-- 게시판 카운트 뽑기 -->
+	<select id="getListAllCount" resultType="Integer">
+		SELECT COUNT(*) FROM
+		FreeBoard WHERE BNUM=BGNUM
+	</select>
+
+	<!-- MaxNum 구하기 -->
+	<select id="getMaxNum" resultType="Integer">
+		select max(bNum) from FreeBoard
+	</select>
+
+	<!-- 게시판 수정하기 (이전글 부르기) -->
+	<select id="boardUpdate" resultMap="boardResultMap">
+		SELECT * FROM FreeBoard WHERE
+		(id=#{id})
+	</select>
+
+	<!-- 게시판 수정하기 (수정 삽입) -->
+	<update id="boardUpdatePro" parameterType="com.kosta.finalproject.vo.BoardVO">
+		UPDATE FreeBoard SET
+		category=#{category}, title=#{title},
+		contents=#{contents}, img=#{img}
+		WHERE id=#{id}
+	</update>
+
+	<!-- 게시판 답글 수정하기 (수정 삽입) -->
+	<update id="reboardUpdatePro" parameterType="com.kosta.finalproject.vo.BoardVO">
+		UPDATE FreeBoard SET
+		contents=#{contents} WHERE id=#{id}
+	</update>
+
+	<!-- 게시판 삭제하기 -->
+	<delete id="delete" parameterType="com.kosta.finalproject.vo.BoardVO">
+		DELETE from FreeBoard WHERE
+		(id=#{id}) AND (bNum=#{bNum})
+	</delete>
+
+	<!-- Title 검색관련 -->
+	<select id="getListTitleCount" resultType="Integer"
+		parameterType="com.kosta.finalproject.vo.BoardVO">
+		SELECT COUNT(*) FROM FreeBoard where BNUM=BGNUM and title
+		like '%' || #{title}
+		|| '%'
+	</select>
+
+	<select id="selectTitle" parameterType="com.kosta.finalproject.vo.BoardVO"
+		resultMap="boardResultMap">
+      <![CDATA[ select * from (select * from (select rownum rnum,bnum,bgnum,category,title,id,contents,img,bDate,readcount from FreeBoard where BNUM=BGNUM and title like  '%' || #{title} || '%' )
+       where rnum <= #{endRow}) where rnum >= #{startRow} ]]>
+	</select>
+
+	<!-- ID 검색 관련 -->
+	<select id="getListIDCount" resultType="Integer"
+		parameterType="com.kosta.finalproject.vo.BoardVO">
+		SELECT COUNT(*) FROM FreeBoard where BNUM=BGNUM and id
+		like '%' || #{id} ||
+		'%'
+	</select>
+
+	<select id="selectId" parameterType="com.kosta.finalproject.vo.BoardVO"
+		resultMap="boardResultMap">
+      <![CDATA[ select * from (select * from (select rownum as rnum ,bnum,bgnum,category,title,id,contents,img,bDate,readcount from FreeBoard where BNUM=BGNUM and id like  '%' || #{id}  || '%')
+      where rnum <= #{endRow}) where rnum >= #{startRow} ]]>
+	</select>
+
+
+
 </mapper>

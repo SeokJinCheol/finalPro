@@ -1,19 +1,19 @@
 package com.kosta.finalproject.vo;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class QandAVO {
-	int bNum, bgnum, groupnum, ranknum;
-	String title, contents, id, img, category;
-	Timestamp bDate;
-	int startRow, endRow, readcount;
+	private int bnum, bgnum, groupnum, ranknum, count, rnum, startRow, endRow, replyCount;
+	private String title, contents, id, img, category;
+	private Date date;
 
-	public int getReadcount() {
-		return readcount;
+	public int getReplyCount() {
+		return replyCount;
 	}
 
-	public void setReadcount(int readcount) {
-		this.readcount = readcount;
+	public void setReplyCount(int replyCount) {
+		this.replyCount = replyCount;
 	}
 
 	public int getStartRow() {
@@ -32,20 +32,28 @@ public class QandAVO {
 		this.endRow = endRow;
 	}
 
-	public Timestamp getbDate() {
-		return bDate;
+	public int getRnum() {
+		return rnum;
 	}
 
-	public void setbDate(Timestamp bDate) {
-		this.bDate = bDate;
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
 	}
 
-	public int getbNum() {
-		return bNum;
+	public int getBnum() {
+		return bnum;
 	}
 
-	public void setbNum(int bNum) {
-		this.bNum = bNum;
+	public void setBnum(int bnum) {
+		this.bnum = bnum;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public int getBgnum() {
@@ -54,6 +62,22 @@ public class QandAVO {
 
 	public void setBgnum(int bgnum) {
 		this.bgnum = bgnum;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public int getGroupnum() {
@@ -103,13 +127,4 @@ public class QandAVO {
 	public void setImg(String img) {
 		this.img = img;
 	}
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
 }

@@ -4,128 +4,74 @@
 
 <!-- 여기는 매핑할 MemberMapper.java의 풀패키지명을 적어준다 -->
 <mapper namespace="com.kosta.finalproject.dao.QandAMapper">
-	<resultMap type="QandAVO" id="QAboardResultMap">
-		<result property="id" column="id" />
-		<result property="category" column="category" />
-		<result property="title" column="title" />
-		<result property="contents" column="contents" />
-		<result property="img" column="img" />
-		<result property="bDate" column="bDate" />
-		<result property="bNum" column="bNum" />
-		<result property="groupnum" column="groupnum" />
-		<result property="ranknum" column="ranknum" />
-		<result property="bgnum" column="bgnum" />
-	</resultMap>
-
-	<!-- QA게시판 댓글 관련 -->
-	<update id="qaupdate" parameterType="com.kosta.finalproject.vo.QandAVO">
-		UPDATE QABoard set groupnum
-		= (groupnum+1) where (bgnum=#{bgnum}) and
-		(groupnum>#{groupnum})
-	</update>
-
-	<!-- QA게시판 insert -->
-	<insert id="qainsertMember" parameterType="com.kosta.finalproject.vo.QandAVO">
-		INSERT INTO
-		QABoard(bNum,id,category,title,contents,img,bDate,bgnum,groupnum,ranknum)
-		values
-		(QABOARD_BNUM.nextVal,#{id},#{category},#{title},#{contents},#{img},#{bDate},#{bgnum},#{groupnum},#{ranknum})
-	</insert>
-
-	<!-- QA게시판 insert (댓글) -->
-	<insert id="reqainsertMember" parameterType="com.kosta.finalproject.vo.QandAVO">
-		INSERT INTO
-		QABoard(bNum,id,contents,bDate,bgnum,groupnum,ranknum) values
-		(QABOARD_BNUM.nextVal,#{id},#{contents},#{bDate},#{bgnum},#{groupnum},#{ranknum})
-	</insert>
-
-	<!-- QA게시판 상세페이지 -->
-	<select id="contentgetMembers" resultMap="QAboardResultMap">
-		SELECT * FROM QABoard
-		WHERE (bgnum=#{bgnum}) ORDER BY GROUPNUM ASC, RANKNUM
-		ASC
-	</select>
-
-	<!-- QA게시판 조회수 관련 -->
-	<update id="readcountUpdate" parameterType="com.kosta.finalproject.vo.QandAVO">
-		UPDATE QABoard SET
-		READCOUNT = READCOUNT + 1 WHERE (bNum = #{bNum})
-	</update>
-
-	<!-- QA게시판 리스트뽑기, 페이징처리 -->
-	<select id="getSelectAll" resultMap="QAboardResultMap"
-		parameterType="com.kosta.finalproject.vo.QandAVO">
-      <![CDATA[ SELECT BNUM, GROUPNUM, RANKNUM, BGNUM, TITLE, CONTENTS, ID, IMG, CATEGORY, BDATE, READCOUNT, R FROM 
-         (SELECT BNUM, GROUPNUM, RANKNUM, BGNUM, TITLE, CONTENTS, ID, IMG, CATEGORY, BDATE, READCOUNT, ROWNUM R 
-         FROM (SELECT BNUM, GROUPNUM, RANKNUM, BGNUM, TITLE, CONTENTS, ID, IMG, CATEGORY, BDATE, READCOUNT FROM QABOARD where BNUM=BGNUM
-         ORDER BY BGNUM DESC, GROUPNUM ASC, RANKNUM ASC) ) WHERE R >= #{startRow} AND R <= #{endRow} ]]>
-	</select>
-
-	<!-- QA게시판 카운트 뽑기 -->
-	<select id="getListAllCount" resultType="Integer">
-		SELECT COUNT(*) FROM
-		QABoard WHERE BNUM=BGNUM
-	</select>
-
-	<!-- MaxNum 구하기 -->
-	<select id="getMaxNum" resultType="Integer">
-		select max(bNum) from QABoard
-	</select>
-
-	<!-- QA게시판 수정하기 (이전글 부르기) -->
-	<select id="boardUpdate" resultMap="QAboardResultMap">
-		SELECT * FROM QABoard WHERE
-		(id=#{id})
-	</select>
-
-	<!-- QA게시판 수정하기 (수정 삽입) -->
-	<update id="boardUpdatePro" parameterType="com.kosta.finalproject.vo.QandAVO">
-		UPDATE QABoard SET
-		category=#{category}, title=#{title},
-		contents=#{contents}, img=#{img}
-		WHERE id=#{id}
-	</update>
-
-	<!-- QA게시판 답글 수정하기 (수정 삽입) -->
-	<update id="reboardUpdatePro" parameterType="com.kosta.finalproject.vo.QandAVO">
-		UPDATE QABoard SET
-		contents=#{contents} WHERE id=#{id}
-	</update>
-
-	<!-- QA게시판 삭제하기 -->
-	<delete id="qadelete" parameterType="com.kosta.finalproject.vo.QandAVO">
-		DELETE from QABoard WHERE
-		(id=#{id}) AND (bNum=#{bNum})
-	</delete>
-
-	<!-- Title 검색관련 -->
-	<select id="getListTitleCount" resultType="Integer"
-		parameterType="com.kosta.finalproject.vo.QandAVO">
-		SELECT COUNT(*) FROM QAboard where BNUM=BGNUM and title
-		like '%' || #{title}
-		|| '%'
-	</select>
-
-	<select id="selectTitle" parameterType="com.kosta.finalproject.vo.QandAVO"
-		resultMap="QAboardResultMap">
-      <![CDATA[ select * from (select * from (select rownum rnum,bnum,bgnum,category,title,id,contents,img,bDate,readcount from QAboard where BNUM=BGNUM and title like  '%' || #{title} || '%' )
-       where rnum <= #{endRow}) where rnum >= #{startRow} ]]>
-	</select>
-
-	<!-- ID 검색 관련 -->
-	<select id="getListIDCount" resultType="Integer"
-		parameterType="com.kosta.finalproject.vo.QandAVO">
-		SELECT COUNT(*) FROM QAboard where BNUM=BGNUM and id
-		like '%' || #{id} ||
-		'%'
-	</select>
-
-	<select id="selectId" parameterType="com.kosta.finalproject.vo.QandAVO"
-		resultMap="QAboardResultMap">
-      <![CDATA[ select * from (select * from (select rownum as rnum ,bnum,bgnum,category,title,id,contents,img,bDate,readcount from QAboard where BNUM=BGNUM and id like  '%' || #{id}  || '%')
-      where rnum <= #{endRow}) where rnum >= #{startRow} ]]>
-	</select>
-
-
-
+<resultMap type="QandAVO" id="QAboardResultMap">
+     <result property="bnum" column="bnum"/>
+      <result property="bgnum" column="bgnum"/>
+      <result property="date" column="bDate"/>
+      <result property="groupnum" column="groupnum"/>
+      <result property="ranknum" column="ranknum"/>
+      <result property="count" column="count"/>
+      <result property="title" column="title"/>
+      <result property="contents" column="contents"/>
+      <result property="id" column="id"/>
+      <result property="img" column="img"/>
+      <result property="category" column="category"/>
+      <result property="replyCount" column="replCount"/>
+   </resultMap>
+   
+   <select id="getContent" resultMap="QAboardResultMap">
+      SELECT TITLE,ID,CONTENT FROM QABoard WHERE BGNUM=#{bgnum}
+   </select>
+   
+   <insert id="writeMain" parameterType="com.kosta.finalproject.vo.QandAVO">
+      INSERT INTO QABoard VALUES(QABOARD_BNUM.NEXTVAL, #{bgnum}, #{title}, sysdate, #{contents}, 1, 0, #{id}, #{img}, 0, #{category})
+   </insert>
+   
+   <select id="showAll" resultMap="QAboardResultMap"  parameterType="com.kosta.finalproject.vo.QandAVO">
+      select * from (select * from (select rownum rnum ,bnum,category,title,id,img,count,(SELECT COUNT(*) FROM QABoard B WHERE B.bgnum=a.bnum) replyCount from QABoard a where bgnum = 0 )
+       where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow}
+   </select>
+   
+   <select id="showthis" resultMap="QAboardResultMap" parameterType="com.kosta.finalproject.vo.QandAVO">
+      select * from QABoard where bnum = #{bnum}
+   </select>
+   
+   <update id="updateCount" parameterType="com.kosta.finalproject.vo.QandAVO">
+      UPDATE QABoard SET COUNT = COUNT+1 WHERE BNUM=#{bnum}
+   </update>
+   
+   <select id="selectReply" parameterType="com.kosta.finalproject.vo.QandAVO" resultMap="QAboardResultMap">
+      SELECT title,ID, CONTENTS, BNUM, BGNUM FROM QABoard WHERE BGNUM = #{bnum}
+   </select>
+   
+   <select id="selectTitle" parameterType="com.kosta.finalproject.vo.QandAVO" resultMap="QAboardResultMap">
+      select * from (select * from (select rownum rnum,bnum,category,title,id,img,count from QABoard where bgnum= 0 and title like  '%' || #{title} || '%' )
+       where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow}
+   </select>
+   
+   <select id="ListAllCount" resultType="int">
+      SELECT COUNT(*) FROM QABoard where bgnum= 0
+      </select>
+      
+      <select id="getListTitleCount" resultType="Integer" parameterType="com.kosta.finalproject.vo.QandAVO">
+      SELECT COUNT(*) FROM QABoard where bgnum= 0 and title like  '%' || #{title} || '%'
+   </select>
+   
+   <select id="getListIDCount" resultType="Integer" parameterType="com.kosta.finalproject.vo.QandAVO">
+      SELECT COUNT(*) FROM QABoard where bgnum= 0 and id like  '%' || #{id} || '%'
+   </select>
+   
+   <select id="selectId" parameterType="com.kosta.finalproject.vo.QandAVO" resultMap="QAboardResultMap">
+      select * from (select * from (select rownum as rnum ,bnum,category,title,id,img,count from QABoard where bgnum= 0 and id like  '%' || #{id}  || '%')
+      where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow}
+   </select>
+   
+   <delete id="delete" parameterType="com.kosta.finalproject.vo.QandAVO">
+      delete from QABoard where bnum = #{bnum}
+   </delete>
+   
+   <update id="updateDetail" parameterType="com.kosta.finalproject.vo.QandAVO">
+      update QABoard set title = #{title},contents=#{contents},category=#{category},img=#{img} where bnum= #{bnum}
+   </update>
 </mapper>
+

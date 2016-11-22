@@ -6,117 +6,146 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 import com.kosta.finalproject.vo.BoardVO;
 
 @Repository
 public class BoardDaoImpl implements BoardDao {
-   @Autowired
-   private SqlSession sqlSession;
+	@Autowired
+	private SqlSession sqlSession;
+	
+	public void insertMember(BoardVO vo) {
+		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
+		BoardMapper.insertMember(vo);
 
-   @Override
-   public void writeMain(BoardVO vo) {
-      BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
-      boardMapper.writeMain(vo);
-   }
+	}
 
-   @Override
-   public ArrayList<BoardVO> showAll(int startrow, int endrow) {
-      ArrayList<BoardVO> list = new ArrayList<BoardVO>();
-      BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
-      BoardVO vo = new BoardVO();
-      vo.setStartRow(startrow);
-      vo.setEndRow(endrow);
-      list = boardMapper.showAll(vo);
+	// 댓글 등록
+	public void reinsertMember(BoardVO vo) {
+		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
+		BoardMapper.reinsertMember(vo);
+	}
 
-      return list;
-   }
+	// 상세페이지
+	public ArrayList<BoardVO> contentgetMembers(int bgnum) {
+		ArrayList<BoardVO> result = new ArrayList<BoardVO>();
+		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
+		result = BoardMapper.contentgetMembers(bgnum);
 
-   @Override
-   public BoardVO showthis(int bnum) {
-      BoardVO vo = new BoardVO();
-      BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
-      vo = boardMapper.showthis(bnum);
-      return vo;
-   }
+		return result;
+	}
 
-   @Override
-   public void updateCount(int bnum) {
-      BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
-      boardMapper.updateCount(bnum);
-   }
+	// 조회수 관련
+	public void readcountUpdate(int bNum) {
+		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
+		BoardMapper.readcountUpdate(bNum);
+	}
 
-   @Override
-   public ArrayList<BoardVO> selectReply(int bnum) {
-      ArrayList<BoardVO> list = new ArrayList<BoardVO>();
-      BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
-      list = boardMapper.selectReply(bnum);
-      return list;
-   }
+	// 댓글 관련
+	public void update(BoardVO vo) {
+		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
+		BoardMapper.update(vo);
+	}
 
-   @Override
-   public int getListAllCount() {
-      BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
-      int num = boardMapper.getListAllCount();
+	// 게시글 수 확인
+	public int getListAllCount() {
+		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
+		int num = BoardMapper.getListAllCount();
+		return num;
+	}
 
-      return num;
-   }
+	// 전체 게시글 가져오기
+	public ArrayList<BoardVO> getSelectAll(BoardVO board) {
+		ArrayList<BoardVO> result = new ArrayList<BoardVO>();
+		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
+		result = BoardMapper.getSelectAll(board);
 
-   @Override
-   public ArrayList<BoardVO> selectTitle(String title, int startrow, int endrow) {
-      ArrayList<BoardVO> list = new ArrayList<BoardVO>();
-      BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
-      BoardVO vo = new BoardVO();
-      vo.setTitle(title);
-      vo.setStartRow(startrow);
-      vo.setEndRow(endrow);
-      list = boardMapper.selectTitle(vo);
-      return list;
-   }
+		return result;
+	}
 
-   @Override
-   public int getListTitleCount(String title) {
-      BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
+	// MaxNum 구하기
+	public int getMaxNum() {
+		Integer num = sqlSession.selectOne("com.kosta.finalproject.dao.BoardMapper.getMaxNum");
+		if (num == null) {
+			num = 0;
+		}
+		System.out.println(num);
+		return num;
+	}
 
-      BoardVO vo = new BoardVO();
-      vo.setTitle(title);
-      int num = boardMapper.getListTitleCount(vo);
-      return num;
-   }
+	// 수정하기 (이전 정보 받아오기)
+	public BoardVO boardUpdate(String id) {
+		BoardVO result = new BoardVO();
+		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
+		result = BoardMapper.boardUpdate(id);
 
-   @Override
-   public ArrayList<BoardVO> selectId(String id, int startrow, int endrow) {
-      BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
-      BoardVO vo = new BoardVO();
-      ArrayList<BoardVO> list = new ArrayList<BoardVO>();
-      vo.setId(id);
-      vo.setStartRow(startrow);
-      vo.setEndRow(endrow);
-      list = boardMapper.selectId(vo);
+		return result;
+	}
 
-      return list;
-   }
+	// 게시글 수정하기
+	public void boardUpdatePro(BoardVO vo) {
+		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
+		BoardMapper.boardUpdatePro(vo);
+	}
 
-   @Override
-   public int getListIDCount(String id) {
-      BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
-      BoardVO vo = new BoardVO();
-      vo.setId(id);
-      int num = boardMapper.getListIDCount(vo);
+	// 댓글 수정하기
+	public void reboardUpdatePro(BoardVO vo) {
+		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
+		BoardMapper.reboardUpdatePro(vo);
+	}
 
-      return num;
-   }
+	// 삭제하기
+	public void delete(String id, int bNum) {
+		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
+		BoardVO vo = new BoardVO();
+		vo.setId(id);
+		vo.setbNum(bNum);
+		BoardMapper.delete(vo);
+	}
 
-   @Override
-   public void delete(int bnum) {
-      BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
-      BoardVO vo = new BoardVO();
-      vo.setBnum(bnum);
-      boardMapper.delete(vo);
-   }
+	// Title 검색
+	public int getListTitleCount(String title) {
+		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
+		BoardVO vo = new BoardVO();
+		vo.setTitle(title);
+		int num = BoardMapper.getListTitleCount(vo);
+		return num;
+	}
 
-   @Override
-   public void updateDetail(BoardVO vo) {
-      BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
-      boardMapper.updateDetail(vo);
-   }
+	// Title 검색
+	public ArrayList<BoardVO> selectTitle(String title, int startRow, int endRow) {
+
+		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
+		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
+		BoardVO vo = new BoardVO();
+		vo.setTitle(title);
+		vo.setStartRow(startRow);
+		vo.setEndRow(endRow);
+		list = BoardMapper.selectTitle(vo);
+		return list;
+	}
+
+	// ID 검색
+	public int getListIDCount(String id) {
+		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
+		BoardVO vo = new BoardVO();
+		vo.setId(id);
+		int num = BoardMapper.getListIDCount(vo);
+		return num;
+	}
+
+	// ID 검색
+	public ArrayList<BoardVO> selectId(String id, int startRow, int endRow) {
+
+		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
+		BoardVO vo = new BoardVO();
+		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
+		vo.setId(id);
+		vo.setStartRow(startRow);
+		vo.setEndRow(endRow);
+		list = BoardMapper.selectId(vo);
+		return list;
+	}
+	///////////////
+   
 }

@@ -18,7 +18,7 @@
 			<security:authorize ifNotGranted="role_user, role_com, role_master">
 				<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="main"><img src="/team4/resources/images/home18.png">&nbsp;H o m e</a></li>
 				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><a href="about_us"><img src="/team4/resources/images/korea18.png">&nbsp;About us</a></li>
-				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QandA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
+				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QnA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
 				<li style="width:7%"><p></p></li>
 				<li style="width:30%; padding: 0 0 3px 0;"><img class="w3-animate-opacity" src="/team4/resources/images/test-top.png" onclick="location.href='main'"></li>
 				<li style="width:25%"><p></p></li>
@@ -32,7 +32,7 @@
 			<security:authorize ifAnyGranted="role_user, role_com">
 				<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="main"><img src="/team4/resources/images/home18.png">&nbsp;H o m e</a></li>
 				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><a href="about_us"><img src="/team4/resources/images/korea18.png">&nbsp;About us</a></li>
-				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QandA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
+				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QnA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
 				<li style="width:7%"><p></p></li>
 				<li style="width:30%; padding: 0 0 3px 0;"><img class="w3-animate-opacity" src="/team4/resources/images/test-top.png" onclick="location.href='main'"></li>
 				<li style="width:25%"><p></p></li>
@@ -45,7 +45,7 @@
 			<security:authorize ifAnyGranted="role_master">
 				<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="main"><img src="/team4/resources/images/home18.png">&nbsp;H o m e</a></li>
 				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><a href="about_us"><img src="/team4/resources/images/korea18.png">&nbsp;About us</a></li>
-				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QandA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
+				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QnA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
 				<li style="width:7%"><p></p></li>
 				<li style="width:30%; padding: 0 0 3px 0;"><img class="w3-animate-opacity" src="/team4/resources/images/test-top.png" onclick="location.href='main'"></li>
 				<li style="width:17%"><p></p></li>
@@ -147,7 +147,7 @@
 			
 			<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="freeboard_list">게 시 판&nbsp;<i class="fa fa-caret-down"></i></a>
 				<div class="w3-dropdown-content w3-white w3-card-4">
-			        <a href="freeboard_list">자 유 게 시 판</a>
+			        <a href="free_list">자 유 게 시 판</a>
 			    	<a href="menu4_2">menu4_2</a>
 			    	<a href="menu4_3">menu4_3</a>
 			    	<a href="menu4_4">menu4_4</a>
