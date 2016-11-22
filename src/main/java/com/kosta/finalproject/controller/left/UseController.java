@@ -21,23 +21,23 @@ public class UseController {
 		return "main";
 	}
 
-	@RequestMapping("/menu5_3")
+	@RequestMapping("/siteintro")
 	public String menu5_3(Model model) {
-		model.addAttribute("CONTENT", "menu/menu5/left_menu/menu5_3.jsp");
+		model.addAttribute("CONTENT", "menu/menu5/left_menu/siteintro.jsp");
 		model.addAttribute("LEFT", "menu/menu5/left.jsp");
 		return "main";
 	}
 
-	@RequestMapping("/menu5_4")
+	@RequestMapping("/provider")
 	public String menu5_4(Model model) {
-		model.addAttribute("CONTENT", "menu/menu5/left_menu/menu5_4.jsp");
+		model.addAttribute("CONTENT", "menu/menu5/left_menu/provider.jsp");
 		model.addAttribute("LEFT", "menu/menu5/left.jsp");
 		return "main";
 	}
 
-	@RequestMapping("/menu5_5")
+	@RequestMapping("/lender")
 	public String menu5_5(Model model) {
-		model.addAttribute("CONTENT", "menu/menu5/left_menu/menu5_5.jsp");
+		model.addAttribute("CONTENT", "menu/menu5/left_menu/lender.jsp");
 		model.addAttribute("LEFT", "menu/menu5/left.jsp");
 		return "main";
 	}
