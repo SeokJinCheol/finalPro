@@ -27,15 +27,13 @@ public List<RRboardVO> SelectALL(RRboardVO vo) {
 @Override
 public void RRboardinsert(RRboardVO vo) {
 
-	System.out.println(sqlSession.toString());
-	
 	sqlSession.insert("com.kosta.finalproject.dao.RRBoardMapper.RRboardinsert",vo);
 	
 }
 
 public RRboardVO getcontents(int codeNum) {
 	System.out.println("codeNum ="+ codeNum);
-	RRboardVO vo =sqlSession.selectOne("com.kosta.finalproject.dao.RRfBoardMapper.getcontents", codeNum);
+	RRboardVO vo =sqlSession.selectOne("com.kosta.finalproject.dao.RRBoardMapper.getcontents", codeNum);
 	
 	
 	return vo;
