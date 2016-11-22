@@ -18,12 +18,14 @@
 	
 			등록 OK
 
+			<!-- 새로운 글인 경우 -->
 			<c:if test="${groupnum==0 }">			
-				<meta  http-equiv="Refresh" content="1; url=free_list">
+				<meta http-equiv="Refresh" content="1; url=free_list">
 			</c:if>
 
+			<!-- 댓글일 경우 -->
 			<c:if test="${groupnum!=0 }">			
-				<meta  http-equiv="Refresh" content="1; url=content?bNum=${bNum}&bgnum=${bgnum}">
+				<meta http-equiv="Refresh" content="1; url=content?bNum=${bNum}&bgnum=${bgnum}">
 			</c:if>
 		</div>
 	</div>

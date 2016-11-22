@@ -55,7 +55,7 @@
 
 						<tr>
 							<td width="50px" align="center">bDate</td>
-							<td>${result.bDate }</td>
+							<td><fmt:formatDate value="${result.bDate }" pattern="yyyy-MM-dd"/></td>
 						</tr>
 			</table>
 

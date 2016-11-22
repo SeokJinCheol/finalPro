@@ -15,23 +15,23 @@
 		<div class="left-menu"><a href="free_list" class="rollover">
 			<img src="/team4/resources/images/left-freeboard11.png" style="margin-right:5px;">
 			<img src="/team4/resources/images/left-freeboard12.png" class="imgover" style="margin-right:5px;">
-			&nbsp;요 청 및 리 뷰</a></div><br>
+			<font size="3px">&nbsp;자 유 게 시 판</font></a></div><br>
 		<div class="left-menu"><a href="#" class="rollover">
 			<img src="/team4/resources/images/#" style="margin-right:5px;">
 			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">
-			&nbsp;menu4_2</a></div><br>	
+			<font size="3px">&nbsp;menu4_2</font></a></div><br>	
 		<div class="left-menu"><a href="#" class="rollover">
 			<img src="/team4/resources/images/#" style="margin-right:5px;">
 			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">
-			&nbsp;menu4_3</a></div><br>	
+			<font size="3px">&nbsp;menu4_3</font></a></div><br>	
 		<div class="left-menu"><a href="#" class="rollover">
 			<img src="/team4/resources/images/#" style="margin-right:5px;">
 			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">
-			&nbsp;menu4_4</a></div><br>	
+			<font size="3px">&nbsp;menu4_4</font></a></div><br>	
 		<div class="left-menu"><a href="#" class="rollover">
 			<img src="/team4/resources/images/#" style="margin-right:5px;">
 			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">
-			&nbsp;menu4_5</a></div><br>
+			<font size="3px">&nbsp;menu4_5</font></a></div><br>
 	</div>
 </body>
 </html>
