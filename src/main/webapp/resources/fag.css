@@ -1,0 +1,59 @@
+.faq {
+	font-size: 12px;
+	border-bottom: 1px solid #ddd;
+}
+
+.faq .hgroup {
+	position: relative;
+	*zoom: 1;
+}
+
+.faq .hgroup .trigger {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	font-size: 12px;
+	border: 0;
+	padding: 0;
+	overflow: visible;
+	background: none;
+	cursor: pointer;
+}
+
+.faq ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.faq .q {
+	margin: 0;
+	border-top: 1px solid #ddd;
+}
+
+.faq .q a.trigger {
+	display: block;
+	padding: 10px 15px;
+	text-align: left;
+	font-weight: bold;
+	color: #333;
+	background: #fafafa;
+	text-decoration: none !important;
+}
+
+.faq .hide .q a.trigger {
+	font-weight: normal;
+	background: none;
+}
+
+.faq .q a.trigger:hover, .faq .q a.trigger:active, .faq .q a.trigger:focus
+	{
+	color: #000;
+	background: #f8f8f8;
+}
+
+.faq .a {
+	margin: 0;
+	padding: 10px 15px;
+	line-height: 1.5;
+}
