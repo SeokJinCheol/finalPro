@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kosta.finalproject.dao.RRBoardDao;
 import com.kosta.finalproject.dao.RRBoardDaoImpl;
+import com.kosta.finalproject.vo.RPboardVO;
 import com.kosta.finalproject.vo.RRboardVO;
 import com.kosta.finalproject.vo.UploadVO;
 
@@ -95,7 +97,7 @@ public class RRBoardLeftController {
 		//vo 삽입
 		vo.setStartDate(request.getParameter("startDate"));
 		vo.setEndDate(request.getParameter("endDate"));
-		vo.setReaquestId(session_id);
+		vo.setRegisterId(session_id);
 		vo.setTitle(request.getParameter("title"));
 		vo.setCategory(request.getParameter("category"));
 		vo.setCompany(request.getParameter("company"));
@@ -103,7 +105,8 @@ public class RRBoardLeftController {
 		vo.setAdress(request.getParameter("adress"));
 		vo.setSpotNum(request.getParameter("spotNum"));
 		vo.setContents(request.getParameter("contents"));
-		vo.setImg(fileName);
+		if(fileName.equals(null)){vo.setImg("이미지없음");}else{
+		vo.setImg(fileName);}
 		
 		
 		System.out.println(vo.toString());
@@ -137,12 +140,43 @@ public class RRBoardLeftController {
 	
 	
 	@RequestMapping("/insertSubmit")
-	public String insertSubmit(Model model, @RequestParam("codeNum")int codeNum) {
-
-		//체크
-		RRboardVO vo = dao.getcontents(codeNum);
-		System.out.println(vo.toString());
-		//vo 전송
+	public String insertSubmit(Model model,
+			@RequestParam("codeNum")int codeNum,
+			@RequestParam("id")String id,
+			@RequestParam("contents")String contents,
+			@RequestParam("bill")int bill,
+			@RequestParam("startDate")String startDate,
+			@RequestParam("endDate")String endDate
+			) {
+		//세션 아이디 가져 오기
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+		//vo 생성
+		RPboardVO vo = new RPboardVO();
+		
+		//세팅1
+		vo.setCodeNum(codeNum);
+		vo.setReaquestId(id);
+		vo.setContents(contents);
+		vo.setUserendDate(endDate);
+		vo.setUserstartDate(startDate);
+		vo.setBill(bill);
+		
+		RRboardVO rrvo = dao.getcontents(codeNum);
+		
+		//세팅2
+		vo.setCompany(rrvo.getCompany());
+		vo.setRegisterId(rrvo.getRegisterId());
+		vo.setSpotNum(rrvo.getSpotNum());
+		vo.setAdress(rrvo.getAdress());
+		vo.setCategory(rrvo.getCategory());
+		vo.setImg(rrvo.getImg());
+		vo.setStartDate(rrvo.getStartDate());
+		vo.setEndDate(rrvo.getEndDate());
+		//vo.setBill(bill);
+		
+		dao.RPboardinsert(vo);
+		
 		model.addAttribute("vo", dao.getcontents(codeNum));
 		model.addAttribute("CONTENT", "menu/menu3/showContentsForm.jsp");
 		model.addAttribute("LEFT", "menu/menu3/left.jsp");
@@ -152,13 +186,21 @@ public class RRBoardLeftController {
 	
 	@RequestMapping("/menu3_2")
 	public String menu3_2(Model model) {
-		model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_2.jsp");
-		model.addAttribute("LEFT", "menu/menu3/left.jsp");
-		return "main";
+		//리스트 지도로 리다이렉트
+		return "redirect:menu3";
 	}
 
 	@RequestMapping("/menu3_3")
 	public String menu3_3(Model model) {
+		
+		RRboardVO vo = new RRboardVO();
+		
+		List<RRboardVO> result=dao.SelectALL(vo);
+		
+		System.out.println("size="+result.size());
+		
+		model.addAttribute("total", result.size());
+		model.addAttribute("list", result);
 		model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_3.jsp");
 		model.addAttribute("LEFT", "menu/menu3/left.jsp");
 		return "main";

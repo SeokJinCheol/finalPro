@@ -8,12 +8,16 @@
    </select>
    
 	<insert id="RRboardinsert" parameterType="com.kosta.finalproject.vo.RRboardVO">
-		insert into RRBoard(codeNum, title, category, company, startDate, endDate, bill, contents, reaquestId, img, adress, spotNum) 
-		values(rrb_seq.nextval, #{title}, #{category}, #{company}, #{startDate}, #{endDate}, #{bill}, #{contents}, #{reaquestId}, #{img}, #{adress}, #{spotNum})
+		insert into RRBoard(codeNum, title, category, company, startDate, endDate, bill, contents, registerId, img, adress, spotNum) 
+		values(rrb_seq.nextval, #{title}, #{category}, #{company}, #{startDate}, #{endDate}, #{bill}, #{contents}, #{registerId}, #{img}, #{adress}, #{spotNum})
 	</insert>
 	
 	<select id="getcontents" resultType="com.kosta.finalproject.vo.RRboardVO">
-		select * from rrboard where codenum = #{codeNum}
+		select * from rrboard where codeNum = #{codeNum}
 	</select>
-	
+
+	<insert id="RPboardinsert" parameterType="com.kosta.finalproject.vo.RPboardVO">
+		insert into RPBoard(seqNum,codeNum, company, startDate, endDate,userstartDate,userendDate, bill, contents, reaquestId,registerId, adress, spotNum) 
+		values(rpb_seq.nextval,#{codeNum}, #{company}, #{startDate}, #{endDate},#{userstartDate},#{userendDate}, #{bill}, #{contents}, #{reaquestId},#{registerId}, #{adress}, #{spotNum})
+	</insert>
    </mapper>

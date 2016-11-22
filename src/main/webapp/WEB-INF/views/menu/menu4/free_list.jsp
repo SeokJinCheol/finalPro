@@ -5,29 +5,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Q & A_List</title>
+<title>free_list</title>
 <!-- CSS 연결-->
+ <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/w3.css" type="text/css" media="screen">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/login.css" type="text/css" media="screen">
 </head>
 <body>
-	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
+	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
+		<img src="/team4/resources/images/free_list.png" style="margin-right:10px;">
+		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">자 유 게 시 판</font>
+	</div>	
+
+	<div align=center  style="background: #f5f6f7; width: 1000px; height: 500px; vertical-align: middle; display: table-cell;">
+		<!-- 검색 -->
+		<div class="w3-row">	
+			<form action="free_list" method=post class="searchform cf">
+				<select name="keyword" style="width:15%; text-align:center; height:27px;">
+					<option value="#" style="text-align:center;">선택하세요.</option>
+					<option value="title" style="text-align:center;">Title</option>
+					<option value="id" style="text-align:center;">I D</option>
+				</select>
+				
+				<input type="text" name="word" value="${word}" placeholder="&nbsp;Search..." style="width:50%;" required="required"/>
+				
+				<input type="submit" value ="검색" class=" " style="width:8%">
+			</form>
+		</div>
+		
+		<security:authorize ifAnyGranted="role_user, role_com, role_master">
+			<div class="w3-row">
+				<div class="w3-col w3-right w3-centered" style="width: 10%; margin-bottom:30px;">
+					<input type="button" value ="글쓰기" onclick="location='insertForm'">
+				</div>
+			</div>
+		</security:authorize>
+		
+	
 		<div style="margin-bottom: 20px; margin-top: 70px;">
-			<h4>- Q & A_List -</h4>
-			
-			<form action="QandA_list" method="post">
-			   <select name="keyword">
-			      <option value="title">Title</option>
-			      <option value="id">ID</option>
-			   </select>
-			   
-			   <input type="text" name="word" value="${word}"/><input type="submit" value ="검색"> 
-			   
-			   <!-- 글쓰기 버튼 테스트 -->
-			   <input type="button" value="글쓰기" onclick="location.href='insertForm'">
-			   <br>
-			   
 			   <table border=1>
 			     <tr>
 			         <td width="50px" align="center">ID</td>
@@ -46,7 +62,7 @@
 			            	<td>${member.category }</td>
 			             	<td><a href="content?bNum=${member.bNum}&pageNum=${currentPage}&bgnum=${member.bgnum}">${member.title }</a></td>
 			             	<td>${member.contents }</td>
-			             	<td style="width: 10%"><img src="/team4/resources/QandAImg/${member.img }" style="width: 100%; height: 50px;"></td>
+			             	<td style="width: 10%"><img src="/team4/resources/FreeBoardImg/${member.img }" style="width: 100%; height: 50px;"></td>
 			             	<td>${member.bDate }</td>
 			             	<td>${member.readcount }</td>
 			         	</tr>
@@ -78,33 +94,33 @@
 			                <ul>
 			                	<c:if test="${startPage>5}">
 				                    <c:if test="${word == null}">
-				                    	<a href="QandA_list?pageNum=${startPage-5}" >&laquo;</a>
+				                    	<a href="free_list?pageNum=${startPage-5}" >&laquo;</a>
 				                    </c:if>
 			                        
 			                        <c:if test="${word != null && keyword != null}">
-			                        	<a href="QandA_list?pageNum=${startPage-5}&word=${word}&keyword=${keyword}" >&laquo;</a>
+			                        	<a href="free_list?pageNum=${startPage-5}&word=${word}&keyword=${keyword}" >&laquo;</a>
 			                        </c:if>
 			                    </c:if>
 			      
 				     			<table>
 				                    <c:forEach var="i" begin="${startPage}" end="${endPage}">
 				                    	<c:if test="${word == null}">
-				                        	<td><a href="QandA_list?pageNum=${i}" >${i}</a></td>
+				                        	<td><a href="free_list?pageNum=${i}" >${i}</a></td>
 				                        </c:if>
 				                        
 				                        <c:if test="${word != null }">
-				                        	<td><a href="QandA_list?pageNum=${i}&word=${word}&keyword=${keyword}" >${i}</a></td>
+				                        	<td><a href="free_list?pageNum=${i}&word=${word}&keyword=${keyword}" >${i}</a></td>
 				                        </c:if>
 				                    </c:forEach>
 				                </table>
 				                    
 				                <c:if test="${endPage<pageCount}">
 				                	<c:if test="${word == null}">
-				                    	<a href="QandA_list?pageNum=${startPage+5}" >&raquo;</a>
+				                    	<a href="free_list?pageNum=${startPage+5}" >&raquo;</a>
 				                    </c:if>
 				                    
 				                    <c:if test="${word != null }">
-				                        <a href="QandA_list?pageNum=${startPage+5}&word=${word}&keyword=${keyword}" >&raquo;</a>
+				                        <a href="free_list?pageNum=${startPage+5}&word=${word}&keyword=${keyword}" >&raquo;</a>
 				                    </c:if>
 				                </c:if>                  
 			                </ul>

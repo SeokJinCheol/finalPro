@@ -13,7 +13,7 @@
 </head>
 <body>	
 	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height:500px; vertical-align:middle; display:table-cell;">
-		<form action="freeboard_update" method=post enctype="multipart/form-data">
+		<form action="QnA_update" method=post enctype="multipart/form-data">
 			<input type="hidden" name="bnum" value="${bnum}">
 			<table border="1">
 				<tr>
@@ -59,7 +59,7 @@
 			
 			<input type="hidden" name="bnum" value="${bnum}">
 			<input type="submit" value="글수정">
-			<input type="button" value="List" onclick="location.href='freeboard_list'">
+			<input type="button" value="List" onclick="location.href='QnA_list'">
 		</form>
 	</div>
 </body>

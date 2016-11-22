@@ -8,7 +8,7 @@
 </head>
 <body class="w3-container" style="background: #f5f6f7;">
    <div class="w3-container">
-      <form action="freeboard_write2" method=post enctype="multipart/form-data">
+      <form action="QnA_write2" method=post enctype="multipart/form-data">
          <table border="1">
             <tr>
                <td>category:</td>
@@ -16,12 +16,12 @@
                   <select name="category" required>
                      <c:if test="${bnum == null }">
                         <option value="">선택하세요</option>
-                        <option value="물건요청">물건요청</option>
-                        <option value="물건리뷰">물건리뷰</option>
+                        <option value="질문">질문</option>
+                        <option value="건의사항">건의사항</option>
                      </c:if>
                      
                      <c:if test="${bnum != null}">
-                        <option value="Reply">Reply</option>
+                        <option value="답변">답변</option>
                      </c:if>
                   </select>
                </td>
@@ -52,7 +52,7 @@
          
          <input type="hidden" name="bnum" value="${bnum}">
          <input type="submit" value="글쓰기">
-         <input type="button" value="List" onclick="location.href='freeboard_list'">
+         <input type="button" value="List" onclick="location.href='QnA_list'">
       </form>
    </div>
 </body>

@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kosta.finalproject.vo.RPboardVO;
 import com.kosta.finalproject.vo.RRboardVO;
 
 @Repository
@@ -26,8 +27,6 @@ public List<RRboardVO> SelectALL(RRboardVO vo) {
 @Override
 public void RRboardinsert(RRboardVO vo) {
 
-	System.out.println(sqlSession.toString());
-	
 	sqlSession.insert("com.kosta.finalproject.dao.RRBoardMapper.RRboardinsert",vo);
 	
 }
@@ -38,6 +37,14 @@ public RRboardVO getcontents(int codeNum) {
 	
 	
 	return vo;
+}
+
+public void RPboardinsert(RPboardVO vo) {
+
+	System.out.println(vo.toString());
+	
+	sqlSession.insert("com.kosta.finalproject.dao.RRBoardMapper.RPboardinsert",vo);
+	
 }
 
 }

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Q & A_update</title>
+<title>Q & A_Insert</title>
 <!-- CSS 연결-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/w3.css" type="text/css" media="screen">
@@ -14,15 +14,15 @@
 <body>
 	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
 		<div style="margin-bottom: 20px; margin-top: 70px;">
-			<h4>- Q & A_update -</h4>
-			
-			수정 OK
-					
-			<c:if test="${bNum== bgnum }">			
-				<meta  http-equiv="Refresh" content="1; url=QandA_list">
-			</c:if>
+			<h4>- Q & A_Insert -</h4>
 	
-			<c:if test="${bNum != bgnum }">			
+			등록 OK
+
+			<c:if test="${groupnum==0 }">			
+				<meta  http-equiv="Refresh" content="1; url=free_list">
+			</c:if>
+
+			<c:if test="${groupnum!=0 }">			
 				<meta  http-equiv="Refresh" content="1; url=content?bNum=${bNum}&bgnum=${bgnum}">
 			</c:if>
 		</div>

@@ -12,10 +12,13 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/login.css" type="text/css" media="screen">
 </head>
 <body>
+	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right;line-height: 130px;">
+		<img src="/team4/resources/images/free_content.png" style="margin-right:10px;">
+		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">상 세 보 기</font>
+	</div>
+
 	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
-		<div style="margin-bottom: 20px; margin-top: 70px;">
-			<h4>- Q & A_Content -</h4>
-			
+		<div style="margin-bottom: 20px; margin-top: 70px;">			
 			<table border=1 width="500">
 				<c:forEach items="${result}" var="result">
 					<c:if test="${result.bNum==result.bgnum }">
@@ -41,7 +44,7 @@
 
 						<tr>
 							<td width="50px" align="center">Img</td>
-							<td><img src="/team4/resources/QandAImg/${result.img }"
+							<td><img src="/team4/resources/FreeBoardImg/${result.img}"
 								style="width: 100%; height: 300px;"></td>
 						</tr>
 
