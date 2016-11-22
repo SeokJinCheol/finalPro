@@ -27,8 +27,6 @@ public List<RRboardVO> SelectALL(RRboardVO vo) {
 @Override
 public void RRboardinsert(RRboardVO vo) {
 
-	System.out.println(sqlSession.toString());
-	
 	sqlSession.insert("com.kosta.finalproject.dao.RRBoardMapper.RRboardinsert",vo);
 	
 }

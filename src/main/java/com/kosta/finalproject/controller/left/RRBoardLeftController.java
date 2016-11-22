@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -185,13 +186,21 @@ public class RRBoardLeftController {
 	
 	@RequestMapping("/menu3_2")
 	public String menu3_2(Model model) {
-		model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_2.jsp");
-		model.addAttribute("LEFT", "menu/menu3/left.jsp");
-		return "main";
+		//리스트 지도로 리다이렉트
+		return "redirect:menu3";
 	}
 
 	@RequestMapping("/menu3_3")
 	public String menu3_3(Model model) {
+		
+		RRboardVO vo = new RRboardVO();
+		
+		List<RRboardVO> result=dao.SelectALL(vo);
+		
+		System.out.println("size="+result.size());
+		
+		model.addAttribute("total", result.size());
+		model.addAttribute("list", result);
 		model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_3.jsp");
 		model.addAttribute("LEFT", "menu/menu3/left.jsp");
 		return "main";
