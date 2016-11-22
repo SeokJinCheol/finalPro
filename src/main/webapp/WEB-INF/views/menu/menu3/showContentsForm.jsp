@@ -21,10 +21,10 @@
 	</div>
 	
 	<div>
-	<form id="insertSubmit" action="insertSubmit">	
+	<form name="insertSubmit" action="insertSubmit" method="post">	
 	<table border="1">
 	<tr>	<th>정보 띄우기</th>	</tr>
-	<tr><th>제공자 id</th><td>${vo.reaquestId }</td></tr>
+	<tr><th>제공자 id</th><td>${vo.registerId }</td></tr>
 	<tr><th>주소</th><td>${vo.adress }</td></tr>
 	<tr><th>건물 사진</th><td><img href="${vo.img }"></td></tr>
 	<tr><th>일당 대여비</th><td>${vo.bill }</td></tr>
@@ -33,20 +33,40 @@
 	<tr><th>제목</th><td>${vo.title }</td></tr>
 	<tr><th>내용</th><td>${vo.contents }</td></tr>
 	<tr><th>신청자</th><td>${id }</td></tr>
-	<tr><th>신청일</th><td><input type="date" id="startDate">~<input type="date" id="endDate"></td></tr>
-	<tr><th>행사명 및 세부 사항</th><td><input type ="text" id="contents"></td></tr>
-	<tr><td><input type="submit" value="신청 하기"></td>
-	</tr>
-	<input type="hidden" value="${vo.codeNum }" id="codeNum">
-	<input type="hidden" value="${id }" id="id">
+	<tr><th>신청일</th><td><input type="date" name="startDate" min="${vo.startDate }" required/>~<input type="date" name="endDate" min="${vo.startDate }" max="${vo.endDate  }" required/></td></tr>
+	<tr><th>행사명 및 세부 사항</th><td><input type ="text" name="contents"></td></tr>
+	<tr><th onclick="test();return false;">총요금(선택 일수) 계산</th><td><p id="days"></p></td></tr>
+	<tr><td><input onclick="test()" type="submit" value="신청하기"></td></tr>
+	<input type="hidden" value="${vo.codeNum }" name="codeNum">
+	<input type="hidden" value="${id }" name="id">
+	<input type="hidden" value="${vo }" name="vo">
+	<input type="hidden" name="bill">
+	</form>
 	</table>
-		</form>
+		
 		
 	</div>
-		
-	
+
 	<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=d8a783ab647cf241b46707bc4e31d1ac&libraries=clusterer"></script>
 <script>
+	function test() {
+	var startDay = new Date(document.forms["insertSubmit"].elements["startDate"].value);
+	
+	var endDay = new Date(document.forms["insertSubmit"].elements["endDate"].value);
+	
+	if(startDay==null && endDay==null){
+	alert("날짜를 채워 주세요!")
+	
+	/* 안돼네 */
+	}else{
+	var totalDay = Math.round(((endDay-startDay)/(1000 * 60 * 60 * 24)) + 1);
+
+	var bill = ${vo.bill}*(totalDay);
+	document.forms["insertSubmit"].elements["bill"].value = bill;
+	document.getElementById("days").innerHTML=bill+"("+totalDay+")";
+	return false;}
+	}
+
     var map = new daum.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
         center : new daum.maps.LatLng${vo.spotNum}, // 지도의 중심좌표 
         level : 2 // 지도의 확대 레벨 
