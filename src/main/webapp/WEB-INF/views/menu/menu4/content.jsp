@@ -41,7 +41,7 @@
 
 						<tr>
 							<td width="50px" align="center">Img</td>
-							<td><img src="/team4/resources/QandAImg/${result.img }"
+							<td><img src="/team4/resources/FreeBoardImg/${result.img}"
 								style="width: 100%; height: 300px;"></td>
 						</tr>
 

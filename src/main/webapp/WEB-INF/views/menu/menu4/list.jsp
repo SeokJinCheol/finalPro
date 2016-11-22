@@ -16,7 +16,7 @@
 		<div style="margin-bottom: 20px; margin-top: 70px;">
 			<h4>- Q & A_List -</h4>
 			
-			<form action="QandA_list" method="post">
+			<form action="free_list" method="post">
 			   <select name="keyword">
 			      <option value="title">Title</option>
 			      <option value="id">ID</option>
@@ -46,7 +46,7 @@
 			            	<td>${member.category }</td>
 			             	<td><a href="content?bNum=${member.bNum}&pageNum=${currentPage}&bgnum=${member.bgnum}">${member.title }</a></td>
 			             	<td>${member.contents }</td>
-			             	<td style="width: 10%"><img src="/team4/resources/QandAImg/${member.img }" style="width: 100%; height: 50px;"></td>
+			             	<td style="width: 10%"><img src="/team4/resources/FreeBoardImg/${member.img }" style="width: 100%; height: 50px;"></td>
 			             	<td>${member.bDate }</td>
 			             	<td>${member.readcount }</td>
 			         	</tr>

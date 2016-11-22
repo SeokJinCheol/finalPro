@@ -40,7 +40,7 @@
 				<tr>
 		         	<td>이&nbsp;미&nbsp;지</td>
       				<td>
-       					<img src="/team4/resources/BoardImg/${vo.img }" style="width: 100%; height: 300px;">
+       					<img src="/team4/resources/QandAImg/${vo.img }" style="width: 100%; height: 300px;">
        				</td>
 				</tr>
 				

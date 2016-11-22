@@ -19,7 +19,7 @@
 			수정 OK
 					
 			<c:if test="${bNum== bgnum }">			
-				<meta  http-equiv="Refresh" content="1; url=QandA_list">
+				<meta  http-equiv="Refresh" content="1; url=free_list">
 			</c:if>
 	
 			<c:if test="${bNum != bgnum }">			

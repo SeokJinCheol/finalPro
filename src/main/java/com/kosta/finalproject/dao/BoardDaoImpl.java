@@ -74,10 +74,10 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	// 수정하기 (이전 정보 받아오기)
-	public BoardVO boardUpdate(String id) {
+	public BoardVO boardUpdate(int bnum) {
 		BoardVO result = new BoardVO();
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
-		result = BoardMapper.boardUpdate(id);
+		result = BoardMapper.boardUpdate(bnum);
 
 		return result;
 	}

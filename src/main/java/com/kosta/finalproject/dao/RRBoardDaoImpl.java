@@ -35,7 +35,7 @@ public void RRboardinsert(RRboardVO vo) {
 
 public RRboardVO getcontents(int codeNum) {
 	System.out.println("codeNum ="+ codeNum);
-	RRboardVO vo =sqlSession.selectOne("com.kosta.finalproject.dao.RRfBoardMapper.getcontents", codeNum);
+	RRboardVO vo =sqlSession.selectOne("com.kosta.finalproject.dao.RRBoardMapper.getcontents", codeNum);
 	
 	
 	return vo;

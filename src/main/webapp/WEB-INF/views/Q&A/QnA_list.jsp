@@ -17,7 +17,7 @@
 			<h4> - 질 문 게 시 판 - </h4>
 			
 			<div class="w3-row">	
-			<form action="freeboard_list" method=post>
+			<form action="QnA_list" method=post>
 				<select name="keyword" style="width:20%; height:27px;">
 					<option value="title">제목</option>
 					<option value="id">작성자</option>
@@ -53,7 +53,7 @@
 			<c:forEach items="${list}" var="list">
 				<tr>
 					<td>${list.rnum}</td>
-					<td style="width: 10%"><img src="/team4/resources/BoardImg/${list.img }" style="width: 100%; height: 50px;"></td>
+					<td style="width: 10%"><img src="/team4/resources/QandAImg/${list.img }" style="width: 100%; height: 50px;"></td>
 					<td>${list.category}</td>
 					<td><a href="QnA_content?bnum=${list.bnum}">${list.title}<c:if test="${list.replyCount != null}">(${list.replyCount})</c:if></a></td>
 					<td>${list.id}</td>

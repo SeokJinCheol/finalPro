@@ -115,8 +115,8 @@ public class QandAController {
 			model.addAttribute("img", vo.getImg());
 
 			model.addAttribute("session_id", session_id);
-			model.addAttribute("CONTENT", "QnA/freeboard_update.jsp");
-			model.addAttribute("LEFT", "QnA/left.jsp");
+			model.addAttribute("CONTENT", "Q&A/QnA_update.jsp");
+			model.addAttribute("LEFT", "Q&A/left.jsp");
 
 			return "main";
 		}
@@ -136,7 +136,7 @@ public class QandAController {
 				fileName = uploadfile.getOriginalFilename();
 				dto.setOname(fileName);
 				try {
-					File file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + fileName);
+					File file = new File("C:/finalproject/team4/src/main/webapp/resources/QandAImg/" + fileName);
 
 					int indexes = fileName.lastIndexOf(".");
 					if (indexes != -1) {
@@ -148,7 +148,7 @@ public class QandAController {
 							String newFileName = fileName.substring(0, indexes) + "_" + extension;
 							System.out.println("새 파일 이름 = " + newFileName);
 							fileName = newFileName;
-							file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + newFileName);
+							file = new File("C:/finalproject/team4/src/main/webapp/resources/QandAImg/" + newFileName);
 						}
 					}
 					uploadfile.transferTo(file);
@@ -175,7 +175,7 @@ public class QandAController {
 
 			qandADaoImpl.updateDetail(vo);
 
-			return "redirect:freeboard_list";
+			return "redirect:QnA_list";
 		}
 
 		// 글쓰기 Form
@@ -299,19 +299,20 @@ public class QandAController {
 			String bnum = request.getParameter("bnum");
 			qandADaoImpl.delete(Integer.parseInt(bnum));
 
-			return "redirect:freeboard_list";
+			return "redirect:QnA_list";
 		}
 
 		// 리플삭제
 		@RequestMapping("/QnA_re_delete")
 		public String QnA_re_delete(Model model, HttpServletRequest request) {
 			String reply_bnum = request.getParameter("reply_bnum");
-
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			String session_id = auth.getName();
 			qandADaoImpl.delete(Integer.parseInt(reply_bnum));
 
 			QandAVO vo = qandADaoImpl.showthis(Integer.parseInt(request.getParameter("bnum")));
 			ArrayList<QandAVO> list = qandADaoImpl.selectReply(Integer.parseInt(request.getParameter("bnum")));
-
+			model.addAttribute("session_id",session_id);
 			model.addAttribute("list", list);
 			model.addAttribute("vo", vo);
 			model.addAttribute("LEFT", "Q&A/left.jsp");

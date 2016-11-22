@@ -139,7 +139,7 @@ public class BoardController {
 			fileName = uploadfile.getOriginalFilename();
 			dto.setOname(fileName);
 			try {
-				File file = new File("C:/finalproject/team4/src/main/webapp/resources/ndAImg/" + fileName);
+				File file = new File("C:/finalproject/team4/src/main/webapp/resources/FreeBoardImg/" + fileName);
 				int indexes = fileName.lastIndexOf(".");
 				if (indexes != -1) {
 					while (file.exists()) {
@@ -150,7 +150,7 @@ public class BoardController {
 						String newFileName = fileName.substring(0, indexes) + "_" + extension;
 						System.out.println("새 파일 이름 = " + newFileName);
 						fileName = newFileName;
-						file = new File("C:/finalproject/team4/src/main/webapp/resources/ndAImg/" + newFileName);
+						file = new File("C:/finalproject/team4/src/main/webapp/resources/FreeBoardImg/" + newFileName);
 					}
 				}
 				uploadfile.transferTo(file);
@@ -262,7 +262,7 @@ public class BoardController {
 		int bgnum = Integer.parseInt(request.getParameter("bgnum"));
 		String id = request.getParameter("id");
 
-		BoardVO userlist = boardDaoImpl.boardUpdate(id);
+		BoardVO userlist = boardDaoImpl.boardUpdate(bNum);
 
 		model.addAttribute("bNum", bNum);
 		model.addAttribute("bgnum", bgnum);
@@ -283,7 +283,7 @@ public class BoardController {
 
 			request.setCharacterEncoding("utf-8");
 			BoardVO vo = new BoardVO();
-			vo.setId(request.getParameter("id"));
+			vo.setbNum(bNum);
 			vo.setCategory(request.getParameter("category"));
 			vo.setContents(request.getParameter("contents"));
 			vo.setImg(request.getParameter("img"));
@@ -293,10 +293,10 @@ public class BoardController {
 
 		}
 		if (bNum != bgnum) {
-
+			
 			request.setCharacterEncoding("utf-8");
 			BoardVO vo = new BoardVO();
-			vo.setId(request.getParameter("id"));
+			vo.setbNum(bNum);
 			vo.setContents(request.getParameter("contents"));
 
 			boardDaoImpl.reboardUpdatePro(vo);

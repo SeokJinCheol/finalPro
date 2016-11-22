@@ -23,7 +23,7 @@ public interface BoardDao {
 
 	public int getMaxNum(); // Max bNum 구하기
 
-	public BoardVO boardUpdate(String id); // 게시판 수정하기 (이전글 부르기)
+	public BoardVO boardUpdate(int bnum); // 게시판 수정하기 (이전글 부르기)
 
 	public void boardUpdatePro(BoardVO vo); // 게시판 수정하기 (수정 삽입)
 

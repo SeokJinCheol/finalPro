@@ -22,7 +22,7 @@ public interface BoardMapper {
 
 	int getMaxNum(); // Max bNum 구하기
 
-	BoardVO boardUpdate(String id); // 게시판 수정하기 (이전글 부르기)
+	BoardVO boardUpdate(int bnum); // 게시판 수정하기 (이전글 부르기)
 
 	void boardUpdatePro(BoardVO vo); // 게시판 수정하기 (수정 삽입)
 

@@ -73,7 +73,7 @@
 	<!-- 게시판 수정하기 (이전글 부르기) -->
 	<select id="boardUpdate" resultMap="boardResultMap">
 		SELECT * FROM FreeBoard WHERE
-		(id=#{id})
+		(bNum=#{bNum})
 	</select>
 
 	<!-- 게시판 수정하기 (수정 삽입) -->
@@ -81,13 +81,13 @@
 		UPDATE FreeBoard SET
 		category=#{category}, title=#{title},
 		contents=#{contents}, img=#{img}
-		WHERE id=#{id}
+		WHERE bNum=#{bNum}
 	</update>
 
 	<!-- 게시판 답글 수정하기 (수정 삽입) -->
 	<update id="reboardUpdatePro" parameterType="com.kosta.finalproject.vo.BoardVO">
 		UPDATE FreeBoard SET
-		contents=#{contents} WHERE id=#{id}
+		contents=#{contents} WHERE bNum=#{bNum}
 	</update>
 
 	<!-- 게시판 삭제하기 -->
