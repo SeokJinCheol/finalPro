@@ -2,8 +2,6 @@ package com.kosta.finalproject.controller.top;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kosta.finalproject.dao.QandADaoImpl;
-import com.kosta.finalproject.vo.BoardVO;
 import com.kosta.finalproject.vo.QandAVO;
 import com.kosta.finalproject.vo.UploadVO;
 
@@ -336,7 +333,7 @@ public class QandAController {
 			model.addAttribute("LEFT", "menu/menu4/left.jsp");
 
 			return "main";
-		}
+	}
 
 		@RequestMapping("/menu4_4")
 		public String menu4_4(Model model) {
