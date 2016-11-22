@@ -17,10 +17,10 @@ public interface RRBoardDao {
 	
 	
 	
+	//rp 보드 관련
 	
-	//rp보드 입력
 	public List<RPboardVO> showALL();
-	
+
 	public void RPboardinsert(RPboardVO vo);
 
 	public RPboardVO selectModyRPB(int seqNum);
