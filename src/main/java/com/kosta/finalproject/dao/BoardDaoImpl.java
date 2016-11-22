@@ -6,11 +6,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
 import com.kosta.finalproject.vo.BoardVO;
 
 @Repository
 public class BoardDaoImpl implements BoardDao {
+	
 	@Autowired
 	private SqlSession sqlSession;
 	
@@ -146,6 +146,8 @@ public class BoardDaoImpl implements BoardDao {
 		list = BoardMapper.selectId(vo);
 		return list;
 	}
+	
+	
 	///////////////
    
 }

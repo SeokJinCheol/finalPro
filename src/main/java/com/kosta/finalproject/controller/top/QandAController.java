@@ -23,6 +23,7 @@ import com.kosta.finalproject.vo.UploadVO;
 
 @Controller
 public class QandAController {
+	
 	@Autowired
 	private QandADaoImpl qandADaoImpl;
 
