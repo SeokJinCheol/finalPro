@@ -145,7 +145,7 @@
 			
 			<li style="width:5%"><p></p></li>
 			
-			<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="freeboard_list">게 시 판&nbsp;<i class="fa fa-caret-down"></i></a>
+			<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="free_list">게 시 판&nbsp;<i class="fa fa-caret-down"></i></a>
 				<div class="w3-dropdown-content w3-white w3-card-4">
 			        <a href="free_list">자 유 게 시 판</a>
 			    	<a href="menu4_2">menu4_2</a>

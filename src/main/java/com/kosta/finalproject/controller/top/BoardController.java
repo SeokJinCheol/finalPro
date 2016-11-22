@@ -90,7 +90,7 @@ public class BoardController {
 		model.addAttribute("count", new Integer(count));
 		model.addAttribute("pageCount", pageCount);
 		model.addAttribute("pageSize", new Integer(pageSize));
-		model.addAttribute("CONTENT", "menu/menu4/list.jsp");
+		model.addAttribute("CONTENT", "menu/menu4/free_list.jsp");
 		model.addAttribute("LEFT", "menu/menu4/left.jsp");
 		return "main";
 	}

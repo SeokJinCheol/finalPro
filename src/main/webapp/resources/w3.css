@@ -1,4 +1,7 @@
 /* 직접 만든 CSS */
+/* ///////////////////////////////////////////////////////////// */
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+
 .rollover img {
 	display: inline;
 }
@@ -26,11 +29,10 @@
 }
 
 .select {
-	float: left;
 	background-image: url('/team4/resources/images/select.png');
 	background-size: 30px 25px;
 	background-repeat: no-repeat;
-	width: 30px;
+	width: 27px;
 	height: 25px;
 	border: 0;
 	font-size: 0;
@@ -669,6 +671,8 @@ audio
 
 
 
+
+
 :not
 
 
@@ -723,7 +727,9 @@ audio
 
 
 
+
  
+
 
 
 
@@ -834,7 +840,9 @@ controls
 
 
 
+
  
+
 
 
 
@@ -996,7 +1004,10 @@ display
 
 
 
+
+
 :
+
 
 
 
@@ -1104,7 +1115,10 @@ display
 
 
 
+
 none
+
+
 
 
 
@@ -1319,6 +1333,8 @@ height
 
 
 
+
+
 :
 
 
@@ -1373,7 +1389,9 @@ height
 
 
 
+
  
+
 
 
 
@@ -1587,6 +1605,8 @@ svg
 
 
 
+
+
 :not
 
 
@@ -1641,7 +1661,9 @@ svg
 
 
 
+
  
+
 
 
 
@@ -1750,7 +1772,9 @@ svg
 
 
 
+
  
+
 
 
 
@@ -1912,7 +1936,10 @@ overflow
 
 
 
+
+
 :
+
 
 
 
@@ -2020,7 +2047,10 @@ overflow
 
 
 
+
 hidden
+
+
 
 
 
@@ -3158,7 +3188,9 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
 	 
+	
 	
 	
 	
@@ -3319,6 +3351,8 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
 	:not
 	
 	
@@ -3373,7 +3407,9 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
 	 
+	
 	
 	
 	
@@ -3482,7 +3518,9 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
 	 
+	
 	
 	
 	
@@ -3644,7 +3682,10 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
 	:
+	
 	
 	
 	
@@ -3752,7 +3793,10 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
 	none
+	
+	
 	
 	
 	
@@ -3967,6 +4011,8 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
 	:
 	
 	
@@ -4021,7 +4067,9 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
 	 
+	
 	
 	
 	
@@ -4133,6 +4181,8 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+
 
 
 
@@ -4693,7 +4743,11 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -4912,7 +4966,11 @@ transform
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -5139,7 +5197,11 @@ keyframes w3-spin { 0%{
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -5358,7 +5420,11 @@ transform
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -5677,7 +5743,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -5898,7 +5968,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -6125,7 +6199,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -6346,7 +6424,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 

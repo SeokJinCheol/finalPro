@@ -1,6 +1,5 @@
 package com.kosta.finalproject.vo;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 public class QandAVO {
