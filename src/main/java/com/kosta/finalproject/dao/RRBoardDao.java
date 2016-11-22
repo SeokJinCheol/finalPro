@@ -2,6 +2,7 @@ package com.kosta.finalproject.dao;
 
 import java.util.List;
 
+import com.kosta.finalproject.vo.RPboardVO;
 import com.kosta.finalproject.vo.RRboardVO;
 
 public interface RRBoardDao {
@@ -12,4 +13,5 @@ public interface RRBoardDao {
 	
 	public RRboardVO getcontents(int codeNum);
 
+	public void RPboardinsert(RPboardVO vo);
 }
