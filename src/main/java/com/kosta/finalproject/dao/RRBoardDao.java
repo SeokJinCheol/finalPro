@@ -13,5 +13,19 @@ public interface RRBoardDao {
 	
 	public RRboardVO getcontents(int codeNum);
 
+	
+	
+	
+	
+	
+	//rp보드 입력
+	public List<RPboardVO> showALL();
+	
 	public void RPboardinsert(RPboardVO vo);
+
+	public RPboardVO selectModyRPB(int seqNum);
+
+	public void updateRPB(RPboardVO vo);
+	
+	public void setRPBstatus(RPboardVO vo);
 }
