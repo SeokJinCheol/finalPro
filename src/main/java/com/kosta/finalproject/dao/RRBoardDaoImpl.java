@@ -1,6 +1,5 @@
 package com.kosta.finalproject.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,8 +18,6 @@ public class RRBoardDaoImpl implements RRBoardDao {
 @Override
 public List<RRboardVO> SelectALL(RRboardVO vo) {
 
-	List result = new ArrayList<RRboardVO>();
-	
 	return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.SelectALL");
 }
 
@@ -33,10 +30,7 @@ public void RRboardinsert(RRboardVO vo) {
 
 public RRboardVO getcontents(int codeNum) {
 	System.out.println("codeNum ="+ codeNum);
-	RRboardVO vo =sqlSession.selectOne("com.kosta.finalproject.dao.RRBoardMapper.getcontents", codeNum);
-	
-	
-	return vo;
+	return  sqlSession.selectOne("com.kosta.finalproject.dao.RRBoardMapper.getcontents", codeNum);
 }
 
 public void RPboardinsert(RPboardVO vo) {
@@ -44,6 +38,28 @@ public void RPboardinsert(RPboardVO vo) {
 	System.out.println(vo.toString());
 	
 	sqlSession.insert("com.kosta.finalproject.dao.RRBoardMapper.RPboardinsert",vo);
+	
+}
+
+public List<RPboardVO> showALL() {
+	
+	return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.showALL");
+}
+
+public RPboardVO selectModyRPB(int seqNum) {
+	
+	return sqlSession.selectOne("com.kosta.finalproject.dao.RRBoardMapper.selectModyRPB", seqNum);
+}
+
+@Override
+public void updateRPB(RPboardVO vo) {
+
+	sqlSession.update("com.kosta.finalproject.dao.RRBoardMapper.updateRPB",vo);
+}
+
+public void setRPBstatus(RPboardVO vo) {
+
+	sqlSession.update("com.kosta.finalproject.dao.RRBoardMapper.setRPBstatus",vo);
 	
 }
 

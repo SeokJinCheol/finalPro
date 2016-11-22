@@ -2,9 +2,6 @@ package com.kosta.finalproject.controller.left;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.kosta.finalproject.dao.RRBoardDao;
 import com.kosta.finalproject.dao.RRBoardDaoImpl;
 import com.kosta.finalproject.vo.RPboardVO;
 import com.kosta.finalproject.vo.RRboardVO;
@@ -190,6 +186,8 @@ public class RRBoardLeftController {
 		return "redirect:menu3";
 	}
 
+	
+	//리스트형 대관 확인
 	@RequestMapping("/menu3_3")
 	public String menu3_3(Model model) {
 		
@@ -208,15 +206,98 @@ public class RRBoardLeftController {
 
 	@RequestMapping("/menu3_4")
 	public String menu3_4(Model model) {
+		
+		
+		
+		
+		
 		model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_4.jsp");
 		model.addAttribute("LEFT", "menu/menu3/left.jsp");
 		return "main";
+		
 	}
 
+	
+	//관리자용 페이지 rp보드 보기
 	@RequestMapping("/menu3_5")
-	public String menu3_5(Model model) {
+		public String menu3_5(Model model) {
+		
+		List<RPboardVO> result=dao.showALL();
+		
+		System.out.println(result.get(0).toString());
+		
+		model.addAttribute("list", result);
 		model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_5.jsp");
 		model.addAttribute("LEFT", "menu/menu3/left.jsp");
 		return "main";
 	}
+	
+	
+	@RequestMapping("/modifyRPB")
+	public String modifyRPB(Model model, 
+			 @RequestParam("seqNum")int seqNum
+			) {
+		
+		RPboardVO vo=dao.selectModyRPB(seqNum);
+	System.out.println(vo.toString());
+	model.addAttribute("vo", vo);
+	model.addAttribute("CONTENT", "menu/menu3/admin/modyRPB.jsp");
+	model.addAttribute("LEFT", "menu/menu3/left.jsp");
+	return "main";
+}
+	@RequestMapping("/updateRPB")
+	public String updateRPB(Model model, 	
+			@RequestParam("codeNum")int codeNum,
+			@RequestParam("contents")String contents,
+			@RequestParam("bill")int bill,
+			@RequestParam("startDate")String startDate,
+			@RequestParam("endDate")String endDate,
+			@RequestParam("userstartDate")String userstartDate,
+			@RequestParam("userendDate")String userendDate,
+			@RequestParam("adress")String adress,
+			@RequestParam("registerId")String registerId,
+			@RequestParam("reaquestId")String reaquestId,
+			@RequestParam("seqNum")int seqNum
+			
+			) {
+		//vo 생성
+		RPboardVO vo = new RPboardVO();
+		//세팅
+		vo.setCodeNum(codeNum);
+		vo.setReaquestId(reaquestId);
+		vo.setContents(contents);
+		vo.setUserendDate(userendDate);
+		vo.setUserstartDate(userstartDate);
+		vo.setBill(bill);
+		vo.setRegisterId(registerId);
+		vo.setAdress(adress);
+		vo.setStartDate(startDate);
+		vo.setEndDate(endDate);
+	
+		dao.updateRPB(vo);
+		
+		
+	return "redirect:menu3_5";
+}
+
+	@RequestMapping("/setRPBstatus")
+	public String setRPBstatus(Model model, 	
+			@RequestParam("seqNum")int seqNum,
+			@RequestParam("status")String status
+			) {
+		//vo 생성
+		RPboardVO vo = new RPboardVO();
+		//세팅
+		vo.setSeqNum(seqNum);
+		vo.setPackageStatus(status);
+	
+		System.out.println("sta"+status);
+		
+		dao.setRPBstatus(vo);
+		
+		
+	return "redirect:menu3_5";
+}
+	
+	
 }

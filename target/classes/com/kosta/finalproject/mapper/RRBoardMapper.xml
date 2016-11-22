@@ -16,8 +16,36 @@
 		select * from rrboard where codeNum = #{codeNum}
 	</select>
 
+	
+	
+	
+	
+	
+	
+	
+	<!--Rp board  -->
+	
 	<insert id="RPboardinsert" parameterType="com.kosta.finalproject.vo.RPboardVO">
 		insert into RPBoard(seqNum,codeNum, company, startDate, endDate,userstartDate,userendDate, bill, contents, reaquestId,registerId, adress, spotNum) 
 		values(rpb_seq.nextval,#{codeNum}, #{company}, #{startDate}, #{endDate},#{userstartDate},#{userendDate}, #{bill}, #{contents}, #{reaquestId},#{registerId}, #{adress}, #{spotNum})
 	</insert>
-   </mapper>
+	
+	<select id="showALL" resultType="com.kosta.finalproject.vo.RPboardVO">
+	select * from RPBoard
+   	</select>
+   	
+   <select id="selectModyRPB" resultType="com.kosta.finalproject.vo.RPboardVO">
+	select * from RPBoard where seqNum=#{seqNum}
+   	</select>
+   	
+   	<update id="updateRPB" parameterType="com.kosta.finalproject.vo.RPboardVO">
+	update RpBoard set startDate=#{startDate}, endDate= #{endDate}, bill=#{bill}, userendDate=#{userendDate}, userstartDate=#{userstartDate},
+	contents= #{contents}, registerId=#{registerId}, adress=#{adress}, reaquestId=#{reaquestId}
+	where seqNum=#{seqNum}
+	</update>
+	<update id="setRPBstatus" parameterType="com.kosta.finalproject.vo.RPboardVO">
+	update RpBoard set PackageStatus=#{packageStatus} where seqNum=#{seqNum}
+	</update>   
+	
+	
+	</mapper>
