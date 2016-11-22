@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kosta.finalproject.dao.DefaultQAMapper">
+	<resultMap type="DefaultQAVO" id="QAResultMap">
+	<result property="bnum" column="bnum" />
+	<result property="Question" column="Question" />
+	<result property="Answer" column="Answer" />
+	<result property="writer" column="writer" />
+	
+	</resultMap>
+	<insert id="insert" parameterType="com.kosta.finalproject.vo.DefaultQAVO">
+		insert into DefaultQA values(Default_seq.nextVal,#{Qusetion},#{Answer},#{writer})
+	</insert>
+	<select id="showAll" resultMap="QAResultMap" parameterType="com.kosta.finalproject.vo.DefaultQAVO">
+		select * from (select * from (select rownum rnum,bnum,question,answer,writer from DefaultQA)
+		 where rnum <![CDATA[<=]]> #{endrow}) where rnum <![CDATA[>=]]> #{startrow}
+	</select>
+	<select id="listAllCount" resultType="int">
+		select count(*) from DefaultQA
+	</select>
+</mapper>
