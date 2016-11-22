@@ -48,6 +48,10 @@
 					<td>내&nbsp;&nbsp;용</td>
 					<td>${vo.contents}</td>
 				</tr>
+				<tr>
+				<td>작&nbsp;성&nbsp;일</td>
+				<td>${vo.date}</td>
+				</tr>
 			</table>
 			<br>
 		</div>
@@ -56,13 +60,14 @@
 		<div align=center>
 			<table border="1" style="text-align: center; cellpadding:0; cellspacing:0;">
 				<tr>
-					<td colspan="3">Reply</td>
+					<td colspan="4">Reply</td>
 				</tr>
-	
+				<tr><td>작&nbsp;성&nbsp;자</td><td>내&nbsp;용</td><td>작&nbsp;성&nbsp;일</td><td>삭&nbsp;제&nbsp;버&nbsp;튼</td></tr>
 				<c:forEach items="${list}" var="reply">
 					<tr>
 						<td>${reply.id}</td>
 						<td>${reply.contents}</td>
+						<td>${reply.date}</td>
 						<td>
 							<!-- 자신의 리플인 경우 -->
 							<c:if test="${reply.id == session_id}">
