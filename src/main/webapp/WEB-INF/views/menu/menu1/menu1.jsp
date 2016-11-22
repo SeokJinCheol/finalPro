@@ -18,6 +18,7 @@
 	type="text/css" media="screen">
 </head>
 <body>
+	<a href="window().open"></a>
 	<div align=center class="w3-container"
 		style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
 		<div style="margin-bottom: 20px; margin-top: 70px;">
@@ -39,9 +40,8 @@
 							</tr>
 						</table>
 						<table border="1">
-
 							<tr>
-								<td style="width: 50%">${requestlist.reaquestId}</td>
+								<td style="width: 50%"><a onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=300, status=1')">${requestlist.reaquestId}</a></td>
 								<td style="width: 50%">${requestlist.title}</td>
 								<td style="width: 50%">${requestlist.packageStatus}</td>
 								<c:if test="${session_id == 'admin'}">
