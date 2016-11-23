@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>freeboard</title>
+<title>QnAboard</title>
 <!-- CSS 연결-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet"
@@ -19,19 +19,27 @@
 	type="text/css" media="screen">
 </head>
 <body>
+	<div class="row"
+		style="background: #6699DC; color: white; height: 100px; text-align: right; line-height: 130px;">
+		<img src="/team4/resources/images/free_list.png"
+			style="margin-right: 10px;"> <font
+			style="margin-right: 30px; font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px;">질
+			문 게 시 판</font>
+	</div>
 	<div align=center class="w3-container"
 		style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
+
 		<div style="margin-bottom: 20px; margin-top: 70px;">
-			<h4>- 질 문 게 시 판 -</h4>
+			<!-- 	<h4>- 질 문 게 시 판 -</h4> -->
 
-			<div class="w3-row">
+			<div class="w3-row" style="margin-top:50px;">
 				<form action="QnA_list" method=post>
-					<select name="keyword" style="width: 20%; height: 27px;">
-						<option value="title">제목</option>
-						<option value="id">작성자</option>
-					</select> <input type="text" name="word" value="${word}" style="width: 60%;" />
+					<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
+						<option value="title" style="text-align:center;">제목</option>
+						<option value="id" style="text-align:center;">작성자</option>
+					</select> <input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" required="required"/>
 
-					<input type="submit" value="검색" class="select " style="width: 8%">
+					<input type="submit" value="Search" class="list-search" style="width: 8%">
 				</form>
 			</div>
 		</div>
@@ -72,8 +80,8 @@
 							</c:when>
 							<c:otherwise>
 								<td><a href="QnA_content?bnum=${list.bnum}"><c:out
-											value="${list.title}"/><c:if
-											test="${list.replyCount != 0}">(${list.replyCount})</c:if></a></td>
+											value="${list.title}" />
+										<c:if test="${list.replyCount != 0}">(${list.replyCount})</c:if></a></td>
 							</c:otherwise>
 						</c:choose>
 						<td>${list.id}</td>

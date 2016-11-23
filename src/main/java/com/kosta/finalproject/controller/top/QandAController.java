@@ -124,7 +124,7 @@ public class QandAController {
 		public String QnA_update2(Model model, HttpServletRequest request, UploadVO dto) {
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			String session_id = auth.getName();
-
+			String oldimg = request.getParameter("img");
 			String fileName = null;
 			MultipartFile uploadfile = dto.getFile();
 			
@@ -134,11 +134,12 @@ public class QandAController {
 				fileName = uploadfile.getOriginalFilename();
 				dto.setOname(fileName);
 				try {
-					File file = new File("C:/finalproject/team4/src/main/webapp/resources/QandAImg/" + fileName);
-
+					File updatefile = new File("C:/finalproject/team4/src/main/webapp/resources/QandAImg/" + fileName);
+					File oldfile = new File("C:/finalproject/team4/src/main/webapp/resources/QandAImg/" + oldimg);
+					oldfile.delete();
 					int indexes = fileName.lastIndexOf(".");
 					if (indexes != -1) {
-						while (file.exists()) {
+						while (updatefile.exists()) {
 							indexes = fileName.lastIndexOf(".");
 							System.out.println("순서 = " + indexes);
 							String extension = fileName.substring(indexes);
@@ -146,10 +147,11 @@ public class QandAController {
 							String newFileName = fileName.substring(0, indexes) + "_" + extension;
 							System.out.println("새 파일 이름 = " + newFileName);
 							fileName = newFileName;
-							file = new File("C:/finalproject/team4/src/main/webapp/resources/QandAImg/" + newFileName);
+							updatefile = new File("C:/finalproject/team4/src/main/webapp/resources/QandAImg/" + newFileName);
 						}
 					}
-					uploadfile.transferTo(file);
+					uploadfile.transferTo(updatefile);
+					
 				} catch (IOException e) {
 					e.printStackTrace();
 				} // try - catch
@@ -216,7 +218,7 @@ public class QandAController {
 				fileName = uploadfile.getOriginalFilename();
 				dto.setOname(fileName);
 				try {
-					File file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + fileName);
+					File file = new File("C:/finalproject/team4/src/main/webapp/resources/QandAImg/" + fileName);
 
 					int indexes = fileName.lastIndexOf(".");
 					if (indexes != -1) {
@@ -228,7 +230,7 @@ public class QandAController {
 							String newFileName = fileName.substring(0, indexes) + "_" + extension;
 							System.out.println("새 파일 이름 = " + newFileName);
 							fileName = newFileName;
-							file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + newFileName);
+							file = new File("C:/finalproject/team4/src/main/webapp/resources/QandAImg/" + newFileName);
 						}
 					}
 					uploadfile.transferTo(file);
