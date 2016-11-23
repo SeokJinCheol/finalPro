@@ -8,7 +8,10 @@ groupnum number(10),
 ranknum number(10), 
 id varchar2(25), 
 img varchar2(1000)
+count int(100)
 );
+
+
 
 CREATE SEQUENCE fb4_seq
 start with 1
