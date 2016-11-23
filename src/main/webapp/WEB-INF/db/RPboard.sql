@@ -16,6 +16,8 @@ registerId varchar2(25) not null,
 company varchar2(20)
 );
 
+ alter table RPBoard add(registerDate date);
+
 CREATE SEQUENCE rpb_seq
 start with 1
 increment BY 1

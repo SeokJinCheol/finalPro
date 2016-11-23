@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kosta.finalproject.vo.RPboardVO;
 import com.kosta.finalproject.vo.RRboardVO;
+import com.kosta.finalproject.vo.SearchVO;
 
 @Repository
 public class RRBoardDaoImpl implements RRBoardDao {
@@ -61,6 +62,12 @@ public void setRPBstatus(RPboardVO vo) {
 
 	sqlSession.update("com.kosta.finalproject.dao.RRBoardMapper.setRPBstatus",vo);
 	
+}
+
+public List<RPboardVO> SelectCalc(SearchVO  vo) {
+
+
+	return 	sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.SelectCalc", vo);
 }
 
 }

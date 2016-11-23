@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.kosta.finalproject.vo.RPboardVO;
 import com.kosta.finalproject.vo.RRboardVO;
+import com.kosta.finalproject.vo.SearchVO;
 
 public interface RRBoardDao {
 	
@@ -28,4 +29,6 @@ public interface RRBoardDao {
 	public void updateRPB(RPboardVO vo);
 	
 	public void setRPBstatus(RPboardVO vo);
+	
+	public List<RPboardVO> SelectCalc(SearchVO vo );
 }

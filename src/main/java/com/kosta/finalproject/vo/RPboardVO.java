@@ -6,7 +6,7 @@ public class RPboardVO {
 
 	int seqNum, codeNum, bill;
 	String category, title, contents, adress, spotNum, packageStatus, img, reaquestId, registerId, company;
-	String startDate, endDate, userstartDate, userendDate;
+	String startDate, endDate, userstartDate, userendDate,registerDate;
 
 	public int getSeqNum() {
 		return seqNum;
@@ -142,6 +142,15 @@ public class RPboardVO {
 
 	public void setUserendDate(String userendDate) {
 		this.userendDate = userendDate;
+	}
+
+	
+	public String getRegisterDate() {
+		return registerDate;
+	}
+
+	public void setRegisterDate(String registerDate) {
+		this.registerDate = registerDate;
 	}
 
 	@Override

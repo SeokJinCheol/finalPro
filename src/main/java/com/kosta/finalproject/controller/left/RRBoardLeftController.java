@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kosta.finalproject.dao.RRBoardDaoImpl;
 import com.kosta.finalproject.vo.RPboardVO;
 import com.kosta.finalproject.vo.RRboardVO;
+import com.kosta.finalproject.vo.SearchVO;
 import com.kosta.finalproject.vo.UploadVO;
 
 @Controller
@@ -204,14 +205,27 @@ public class RRBoardLeftController {
 		return "main";
 	}
 
+	//정산부
 	@RequestMapping("/menu3_4")
-	public String menu3_4(Model model) {
+	public String menu3_4(Model model,HttpServletRequest resquest
+			) {
 		
 		
+		SearchVO vo = new SearchVO();
+
+		//검색부 실패 ㅠㅡㅠ
+		vo.setStatus("정산완료");
+		if(resquest.getParameter("keyField") != null){
+			System.out.println("오지마");
 		
+		String key= resquest.getParameter("keyField")+" = '%"+resquest.getParameter("keyWord").trim()+"%'";
+		vo.setKeyWord(key);
+		}
+		List<RPboardVO> result=dao.SelectCalc(vo);
 		
-		
-		model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_4.jsp");
+		model.addAttribute("keyword","");
+		model.addAttribute("list",result);
+		model.addAttribute("CONTENT", "menu/menu3/admin/calclist.jsp");
 		model.addAttribute("LEFT", "menu/menu3/left.jsp");
 		return "main";
 		

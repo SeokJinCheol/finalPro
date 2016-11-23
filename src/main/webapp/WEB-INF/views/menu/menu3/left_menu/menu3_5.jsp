@@ -9,10 +9,11 @@
 
 function setpakageStatus(name){
 	
+	var myselect= "mySelect"+name;
 	
 	if(confirm("수정하시겠습니까?")==true){
 	
-		document.getElementById(name).status.value=document.getElementById('mySelect').value;
+		document.getElementById(name).status.value=document.getElementById(myselect).value;
 
 		
 		 document.forms(name).submit();
@@ -44,7 +45,7 @@ function setpakageStatus(name){
 			<td>${list.bill }</td><td>${list.contents }</td>
 		<td>${list.reaquestId }</td><td>${list.registerId }</td><td>${list.adress }</td>
 		<td>
-		<select id="mySelect" size="1">
+		<select id="mySelect${list.seqNum }" size="1">
 			  <option>${list.packageStatus }</option>
 			  <c:if test="${list.packageStatus=='허가대기' }">
 			  <option>허가완료</option>

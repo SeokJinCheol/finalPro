@@ -25,9 +25,9 @@
 	
 	<!--Rp board  -->
 	
-	<insert id="RPboardinsert" parameterType="com.kosta.finalproject.vo.RPboardVO">
-		insert into RPBoard(seqNum,codeNum, company, startDate, endDate,userstartDate,userendDate, bill, contents, reaquestId,registerId, adress, spotNum) 
-		values(rpb_seq.nextval,#{codeNum}, #{company}, #{startDate}, #{endDate},#{userstartDate},#{userendDate}, #{bill}, #{contents}, #{reaquestId},#{registerId}, #{adress}, #{spotNum})
+	<insert id="RPboardinsert" parameterType="com.kosta.finalproject.vo.RPboardVO"> 
+		insert into RPBoard(seqNum,codeNum, company, startDate, endDate,userstartDate,userendDate, bill, contents, reaquestId,registerId, adress, spotNum,registerDate) 
+		values(rpb_seq.nextval,#{codeNum}, #{company}, #{startDate}, #{endDate},#{userstartDate},#{userendDate}, #{bill}, #{contents}, #{reaquestId},#{registerId}, #{adress}, #{spotNum},SYSDATE)
 	</insert>
 	
 	<select id="showALL" resultType="com.kosta.finalproject.vo.RPboardVO">
@@ -43,9 +43,24 @@
 	contents= #{contents}, registerId=#{registerId}, adress=#{adress}, reaquestId=#{reaquestId}
 	where seqNum=#{seqNum}
 	</update>
+	
 	<update id="setRPBstatus" parameterType="com.kosta.finalproject.vo.RPboardVO">
 	update RpBoard set PackageStatus=#{packageStatus} where seqNum=#{seqNum}
 	</update>   
 	
+	<select id="SelectCalc" parameterType="com.kosta.finalproject.vo.SearchVO" resultType="com.kosta.finalproject.vo.RPboardVO">
+	select * from RPBoard 
+	<where>
+	
+	packageStatus=#{Status}
+		
+	<if test="keyWord != null">
+	
+	and ${keyWord}
+	
+	</if>
+		
+	</where>
+   	</select>
 	
 	</mapper>
