@@ -102,21 +102,6 @@
 						<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='free_list'"/>
 					</p>
 				 </c:if>
-		              
-	         	 <table>
-		         	<!-- 댓글 달기 전에 나오는 로그인한 사람 이름하고 내용쓰는곳 -->
-		            <c:if test="${bNum != 0}">
-		                   <tr>
-		                  <td>ID</td>
-		                  <td><input type="text" name="id" value="${session_id}" readonly></td>
-		               </tr>   
-		                        
-		               <tr>
-		                  <td>Contents</td>
-		                  <td><input  type="text" name="contents" required><input type="submit" value="입력"></td>
-		               </tr>
-		            </c:if>
-				</table>  
 			</form>
 		</table>
 		</div>
