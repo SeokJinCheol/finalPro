@@ -20,10 +20,11 @@
 	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
 		<div style="margin-bottom: 20px; margin-top: 70px;">			
 			<table border=1>
-				<form action="updateForm" method="post">
+				<form action="updateForm" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="bNum" value="${ bNum }"> <input
 						type="hidden" name="bgnum" value="${ bgnum }">
-	
+					<input
+						type="hidden" name="img" value="${result.img}">
 					<c:if test="${bNum == bgnum  }">
 						<tr>
 							<td>ID</td>
@@ -55,7 +56,7 @@
 	
 						<tr>
 							<td>Img</td>
-							<td><input type="text" name="img" value="${result.img }" readonly></td>
+							<td><input type="file" name="file" required/></td>
 						</tr>
 	
 						<tr>
