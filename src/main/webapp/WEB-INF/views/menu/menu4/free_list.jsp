@@ -53,7 +53,7 @@
 			</security:authorize>
 		
 			<table style="padding: 70px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
-				<tr style=" height:30px; margin-bottom: 20px; background-color: #80b5ea; color:white; text-align: center;">
+				<tr class="bottom-border2" style=" height:30px; margin-bottom: 20px; background-color: #80b5ea; color:white; text-align: center;">
 			         <td width=80 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">I　　D</td>
 			         <td width=60 style="border-top: 2px solid #000; border-right: 1px solid #fff;">Category</td>
 			         <td width=120 style="border-top: 2px solid #000; border-right: 1px solid #fff;">Title</td>
@@ -71,7 +71,7 @@
 			             	<td style="border-bottom: 3px solid #fff;"><a href="content?bNum=${member.bNum}&pageNum=${currentPage}&bgnum=${member.bgnum}">${member.title }</a></td>
 			             	<td style="border-bottom: 3px solid #fff;">${member.contents }</td>
 			             	<td style="border-bottom: 3px solid #fff; width: 10% "><img src="/team4/resources/FreeBoardImg/${member.img }" style="width: 100%; height: 50px;"></td>
-			             	<td style="border-bottom: 3px solid #fff;">${member.bDate }</td>
+			             	<td style="border-bottom: 3px solid #fff;"><fmt:formatDate value="${member.bDate }" pattern="yyyy-MM-dd" /></td>
 			             	<td style="border-bottom: 3px solid #fff;">${member.readcount }</td>
 			         	</tr>
 					</c:forEach>
