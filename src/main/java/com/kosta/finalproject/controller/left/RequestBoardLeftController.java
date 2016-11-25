@@ -89,9 +89,16 @@ public class RequestBoardLeftController {
 		int codeNum = Integer.parseInt(request.getParameter("codeNum"));
 		// 글번호 해당 데이터
 		List<RequestBoardVO> updatelist = requestBoardDaoImpl.RequestBoardUpdateForm(codeNum);
+		
+		//left 보기
+		String leftcontroll = request.getParameter("leftcontroll");
+		if(leftcontroll.equals("mypage")){
+			model.addAttribute("LEFT", "join/mypage_left.jsp");
+		} else {
+			model.addAttribute("LEFT", "menu/menu1/left.jsp");
+		}
 
 		model.addAttribute("CONTENT", "menu/menu1/write/requestboardupdateForm.jsp");
-		model.addAttribute("LEFT", "menu/menu1/left.jsp");
 		model.addAttribute("updatelist", updatelist);
 
 		return "main";
@@ -174,9 +181,16 @@ public class RequestBoardLeftController {
 		// 내 목록보기
 		List<RequestBoardVO> requestlist = requestBoardDaoImpl.RequestBoardUserSelectAll(session_id);
 		model.addAttribute("requestlist", requestlist);
+		
+		String leftcontroll = request.getParameter("leftcontroll");
+		if(leftcontroll.equals("mypage")){
+			model.addAttribute("LEFT", "join/mypage_left.jsp");
+		} else {
+			model.addAttribute("LEFT", "menu/menu1/left.jsp");
+		}
 
 		model.addAttribute("CONTENT", "menu/menu1/left_menu/menu1_3.jsp");
-		model.addAttribute("LEFT", "menu/menu1/left.jsp");
+		
 
 		return "main";
 	}
@@ -223,6 +237,8 @@ public class RequestBoardLeftController {
 
 	@RequestMapping("/requestcontent")
 	public String content(HttpServletRequest request, Model model) throws Exception {
+		
+		//아이디 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 
@@ -230,6 +246,7 @@ public class RequestBoardLeftController {
 
 		List<RequestBoardVO> content = requestBoardDaoImpl.requestcontent(codeNum);
 
+		model.addAttribute("session_id", session_id);
 		model.addAttribute("result", content);
 		model.addAttribute("LEFT", "menu/menu1/left.jsp");
 		model.addAttribute("CONTENT", "menu/menu1/write/content.jsp");

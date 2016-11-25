@@ -80,6 +80,11 @@ public class RegisterBoardLeftController {
 	@RequestMapping("/reviewendrent")
 	public String reviewendrent(Model model, HttpServletRequest request){
 		
+		// id 받아오기
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+		model.addAttribute("session_id", session_id);
+		
 		int codeNum = Integer.parseInt(request.getParameter("codeNum"));
 		model.addAttribute("codeNum", codeNum);
 		model.addAttribute("LEFT", "menu/menu2/left.jsp");
@@ -164,7 +169,6 @@ public class RegisterBoardLeftController {
 		checkBoardDaoImpl.Checkrentterup(checkvo);
 
 		if (pagecheck == "admin") {
-
 			String possibility = "대여신청";
 			List<RegisterBoardVO> rentreadylist = registerBoardDaoImpl.Registerpossibility(possibility);
 			model.addAttribute("rentreadylist", rentreadylist);
@@ -182,8 +186,9 @@ public class RegisterBoardLeftController {
 		return "main";
 	}
 
+	//대여 신청자 보기 admin만 가능
 	@RequestMapping("/rentreadylist")
-	public String rentreadylist(Model model) {
+	public String rentreadylist(Model model, HttpServletRequest request) {
 
 		// 로그인 정보 확인
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

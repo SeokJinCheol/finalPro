@@ -25,7 +25,7 @@
 	</select>
 
 	<insert id="requestinsert" parameterType="com.kosta.finalproject.vo.RequestBoardVO">
-		insert into requestBoard(codeNum, title, category, company, startDate, endDate, bill, deposit, contents, reaquestId, img) values(auto_increment.nextval, #{title}, #{category}, #{company}, #{startDate}, #{endDate}, #{bill}, #{deposit}, #{contents}, #{reaquestId}, #{img})
+		INSERT into requestBoard(codeNum, title, category, company, startDate, endDate, bill, deposit, contents, reaquestId, img) values(auto_increment.nextval, #{title}, #{category}, #{company}, #{startDate}, #{endDate}, #{bill}, #{deposit}, #{contents}, #{reaquestId}, #{img})
 	</insert>
 
 	<select id="RequestBoardUserSelectAll" resultMap="RequestBoard">
