@@ -14,7 +14,7 @@
 <body>	
 	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height:500px; vertical-align:middle; display:table-cell;">
 		<div style="margin-bottom:20px; margin-top:70px;">
-			<h4> - menu2_2 - </h4>
+			<h4> - menu1_2 - </h4>
 		
 			<table border="1">
 				<tr>

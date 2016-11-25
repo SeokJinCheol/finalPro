@@ -56,8 +56,8 @@ public class RegisterBoardController {
 	}
 
 	// 대여가능 폼 admin만 가능
-	@RequestMapping("/RegisterBoardwriteform")
-	public String RegisterBoardwriteform(Model model, HttpServletRequest request) {
+	@RequestMapping("/RegisterBoardwrite")
+	public String RegisterBoardwrite(Model model, HttpServletRequest request) {
 
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -83,9 +83,8 @@ public class RegisterBoardController {
 		Date parsedDate2 = simpledate.parse(request.getParameter("endDate"));
 		Timestamp startDate = new Timestamp(parsedDate1.getTime());
 		Timestamp endDate = new Timestamp(parsedDate2.getTime());
-		
+
 		// 대여가능 게시판 추가
-		String img = request.getParameter("img");
 		RegisterBoardVO vo = new RegisterBoardVO();
 		vo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
 		vo.setTitle(request.getParameter("title"));
@@ -97,7 +96,7 @@ public class RegisterBoardController {
 		vo.setDeposit(Integer.parseInt(request.getParameter("deposit")));
 		vo.setContents(request.getParameter("contents"));
 		vo.setReaquestId(request.getParameter("reaquestId"));
-		vo.setImg(img);
+		vo.setImg(request.getParameter("img"));
 		registerBoardDaoImpl.Registerinsert(vo);
 
 		// 등록게시판 상태바꾸기
