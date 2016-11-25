@@ -13,4 +13,6 @@ public interface RegisterBoardDao {
 	public ArrayList<RegisterBoardVO> MyRegisterselect(String session_id);
 	public ArrayList<RegisterBoardVO> Registerpossibility(String possibility);
 	public void registerdelete(RegisterBoardVO vo);
+	public ArrayList<RegisterBoardVO> selectTitle(String word);
+	public ArrayList<RegisterBoardVO> selectCategory(String word);
 }

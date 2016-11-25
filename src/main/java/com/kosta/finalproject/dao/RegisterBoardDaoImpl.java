@@ -76,4 +76,20 @@ public class RegisterBoardDaoImpl implements RegisterBoardDao{
 		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
 		mapper.registerdelete(vo);
 	}
+
+	@Override
+	public ArrayList<RegisterBoardVO> selectTitle(String word) {
+		ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
+		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
+		result = mapper.selectTitle(word);
+		return result;
+	}
+
+	@Override
+	public ArrayList<RegisterBoardVO> selectCategory(String word) {
+		ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
+		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
+		result = mapper.selectCategory(word);
+		return result;
+	}
 }

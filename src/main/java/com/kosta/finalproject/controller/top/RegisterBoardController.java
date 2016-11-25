@@ -2,6 +2,7 @@ package com.kosta.finalproject.controller.top;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -39,17 +40,39 @@ public class RegisterBoardController {
 	private StorageBoardDaoImpl storageBoardDaoImpl;
 
 	@RequestMapping("/menu2")
-	public String menu2(Model model) {
+	public String menu2(Model model, HttpServletRequest request) {
 
 		// 로그인 정보 확인
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 		model.addAttribute("session_id", session_id);
 
+		//검색 확인
+		String keyword = request.getParameter("keyword");
+		String word = request.getParameter("word");
+		String id = request.getParameter("id");
+		
 		// 대여목록
-		List<RegisterBoardVO> Registerselect = registerBoardDaoImpl.Registerselect();
-		model.addAttribute("Registerselect", Registerselect);
+		List<RegisterBoardVO> Registerselect = null;
+		
+		if (keyword == null) {
+		Registerselect = registerBoardDaoImpl.Registerselect();
+		
+		}else if(keyword.equalsIgnoreCase("title") && word != null){
+			Registerselect = registerBoardDaoImpl.selectTitle(word);
+			model.addAttribute("word", word);
+			model.addAttribute("keyword", keyword);
+			
+		}else if(keyword.equalsIgnoreCase("category") && word != null){
+			Registerselect = registerBoardDaoImpl.selectCategory(word);
+			model.addAttribute("word", word);
+			model.addAttribute("keyword", keyword);
+			
+		} else {
+			Registerselect = Collections.EMPTY_LIST;
+		}
 
+		model.addAttribute("Registerselect", Registerselect);
 		model.addAttribute("CONTENT", "menu/menu2/menu2.jsp");
 		model.addAttribute("LEFT", "menu/menu2/left.jsp");
 		return "main";

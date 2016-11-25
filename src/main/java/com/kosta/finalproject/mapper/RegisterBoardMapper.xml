@@ -55,4 +55,12 @@
 		DELETE FROM registerBoard WHERE codeNum = #{codeNum}
 	</delete>
 	
+ 	<select id="selectTitle" resultMap="RegisterBoard">
+		SELECT * FROM registerBoard WHERE title like  '%' || #{word} || '%'
+	</select>
+	
+	<select id="selectCategory" resultMap="RegisterBoard">
+		SELECT * FROM registerBoard WHERE category like  '%' || #{word} || '%'
+	</select> 
+	
 </mapper>
