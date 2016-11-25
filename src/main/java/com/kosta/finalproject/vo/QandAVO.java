@@ -3,7 +3,7 @@ package com.kosta.finalproject.vo;
 import java.util.Date;
 
 public class QandAVO {
-	private int bnum, bgnum, count, rnum, startRow, endRow, replyCount;
+	private int bnum, bgnum, groupnum, ranknum, count, rnum, startRow, endRow, replyCount;
 	private String title, contents, id, img, category;
 	private Date date;
 
@@ -77,6 +77,22 @@ public class QandAVO {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public int getGroupnum() {
+		return groupnum;
+	}
+
+	public void setGroupnum(int groupnum) {
+		this.groupnum = groupnum;
+	}
+
+	public int getRanknum() {
+		return ranknum;
+	}
+
+	public void setRanknum(int ranknum) {
+		this.ranknum = ranknum;
 	}
 
 	public String getTitle() {

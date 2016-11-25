@@ -58,8 +58,34 @@
 		
 		<!-- 댓글이 없을 경우 / 있을 경우 -->
 		<div align=center>
-		
-			
+			<table border="1" style="text-align: center; cellpadding:0; cellspacing:0;">
+				<tr>
+					<td colspan="4">Reply</td>
+				</tr>
+				<tr><td>작&nbsp;성&nbsp;자</td><td>내&nbsp;용</td><td>작&nbsp;성&nbsp;일</td><td>삭&nbsp;제&nbsp;버&nbsp;튼</td></tr>
+				<c:forEach items="${list}" var="reply">
+					<tr>
+						<td>${reply.id}</td>
+						<td>${reply.contents}</td>
+						<td>${reply.date}</td>
+						<td>
+							<!-- 자신의 리플인 경우 -->
+							<c:if test="${reply.id == session_id}">
+								<form action="QnA_re_delete" method=post>
+									<input type="submit" value="리플삭제">
+									<input type="hidden" name="reply_bnum" value="${reply.bnum}">
+									<input type="hidden" name="bnum" value="${vo.bnum}">
+								</form>
+							</c:if>
+							
+							<!-- 자신의 리플이 아닌 경우 -->
+							<c:if test="${reply.id != session_id}">
+								<input type="button" value="리플삭제" readonly>
+							</c:if>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
 			<br>
 			
 			<!-- 로그인 됬을 경우에 Reply 가능 -->
@@ -80,52 +106,7 @@
 					</form>
 				</c:if>
 			</security:authorize>
-			<div>
-				<h5>Reply</h5>
-			</div>
-			<form action="QnA_reply" method="post">
-                  <table style="border-collapse: collapse; border-spacing: 0; margin-bottom:15px;">
-                     <tr>
-                        <td>
-                           <textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="3" cols="60" required></textarea>
-                        </td>
-                        
-                        <td>
-                           <input class="reply-btn" type="submit" value="답글">
-                        </td>
-                     </tr>
-                     
-                     <input type="hidden" name="bnum" value="${vo.bnum}">
-                     <input type="hidden" name="title" value="${vo.title}">
-                     <input type="hidden" name="img" value="${vo.img}">
-                  </table>
-      
-                  <input type="hidden" name="bNum" value="${vo.bnum }"> 
-			<table  style="text-align: center; cellpadding:0; cellspacing:0;">
-				<tr><td width="15%">작&nbsp;성&nbsp;자</td><td width="40%">내&nbsp;용</td><td width="17%">작&nbsp;성&nbsp;일</td><td>삭&nbsp;제&nbsp;버&nbsp;튼</td></tr>
-				<c:forEach items="${list}" var="reply">
-					<tr>
-						<td width="15%">${reply.id}</td>
-						<td width="40%">${reply.contents}</td>
-						<td width="17%">${reply.date}</td>
-						<td>
-							<!-- 자신의 리플인 경우 -->
-							<c:if test="${reply.id == session_id}">
-								<form action="QnA_re_delete" method=post>
-									<input type="submit" value="리플삭제">
-									<input type="hidden" name="reply_bnum" value="${reply.bnum}">
-									<input type="hidden" name="bnum" value="${vo.bnum}">
-								</form>
-							</c:if>
-							
-							<!-- 자신의 리플이 아닌 경우 -->
-							<c:if test="${reply.id != session_id}">
-								<input type="button" value="리플삭제" readonly>
-							</c:if>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
+			
 			<input type="button" value="List" onclick="location.href='QnA_list'">
 		</div>
 	</div>

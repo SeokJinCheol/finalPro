@@ -272,40 +272,10 @@ public class BoardController {
 
 	// 게시글, 답글 수정
 	@RequestMapping(value = "/updateForm", method = RequestMethod.POST)
-	public String update2(HttpServletRequest request, Model model,UploadVO dto) throws UnsupportedEncodingException {
+	public String update2(HttpServletRequest request, Model model) throws UnsupportedEncodingException {
 
 		int bNum = Integer.parseInt(request.getParameter("bNum"));
 		int bgnum = Integer.parseInt(request.getParameter("bgnum"));
-		String fileName = null;
-		String oldfileName=request.getParameter("img");
-		// 이미지 처리
-		System.out.println("이미지 처리 시작");
-		MultipartFile uploadfile = dto.getFile();
-		if (uploadfile != null) {
-			fileName = uploadfile.getOriginalFilename();
-			dto.setOname(fileName);
-			try {
-				File file = new File("C:/finalproject/team4/src/main/webapp/resources/FreeBoardImg/" + fileName);
-				File oldfile = new File("C:/finalproject/team4/src/main/webapp/resources/FreeBoardImg/" + oldfileName);
-				oldfile.delete();
-				int indexes = fileName.lastIndexOf(".");
-				if (indexes != -1) {
-					while (file.exists()) {
-						
-						System.out.println("순서 = " + indexes);
-						String extension = fileName.substring(indexes);
-						System.out.println("확장자 = " + extension);
-						String newFileName = fileName.substring(0, indexes) + "_" + extension;
-						System.out.println("새 파일 이름 = " + newFileName);
-						fileName = newFileName;
-						file = new File("C:/finalproject/team4/src/main/webapp/resources/FreeBoardImg/" + newFileName);
-					}
-				}
-				uploadfile.transferTo(file);
-			} catch (IOException e) {
-				e.printStackTrace();
-			} // try - catch
-		} // if
 
 		if (bNum == bgnum) {
 
@@ -314,7 +284,7 @@ public class BoardController {
 			vo.setbNum(bNum);
 			vo.setCategory(request.getParameter("category"));
 			vo.setContents(request.getParameter("contents"));
-			vo.setImg(fileName);
+			vo.setImg(request.getParameter("img"));
 			vo.setTitle(request.getParameter("title"));
 
 			boardDaoImpl.boardUpdatePro(vo);

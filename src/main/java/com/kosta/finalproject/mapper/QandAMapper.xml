@@ -8,6 +8,8 @@
      <result property="bnum" column="bnum"/>
       <result property="bgnum" column="bgnum"/>
       <result property="date" column="bDate"/>
+      <result property="groupnum" column="groupnum"/>
+      <result property="ranknum" column="ranknum"/>
       <result property="count" column="count"/>
       <result property="title" column="title"/>
       <result property="contents" column="contents"/>
@@ -22,7 +24,7 @@
    </select>
    
    <insert id="writeMain" parameterType="com.kosta.finalproject.vo.QandAVO">
-      INSERT INTO QABoard VALUES(QABOARD_BNUM.NEXTVAL, #{bgnum}, #{title}, sysdate, #{contents}, #{id}, #{img}, 0, #{category})
+      INSERT INTO QABoard VALUES(QABOARD_BNUM.NEXTVAL, #{bgnum}, #{title}, sysdate, #{contents}, 1, 0, #{id}, #{img}, 0, #{category})
    </insert>
    
    <select id="showAll" resultMap="QAboardResultMap"  parameterType="com.kosta.finalproject.vo.QandAVO">

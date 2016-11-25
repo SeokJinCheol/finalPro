@@ -22,5 +22,4 @@ public interface BoardDao {
 	public ArrayList<BoardVO> selectTitle(String title, int startRow, int endRow); // =
 	public int getListIDCount(String id); // ID 검색 관련
 	public ArrayList<BoardVO> selectId(String id, int startRow, int endRow);
-	
 }

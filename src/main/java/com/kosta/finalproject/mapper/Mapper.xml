@@ -12,7 +12,9 @@
 		<result property="phoneNum1" column="phoneNum1" />
 		<result property="phoneNum2" column="phoneNum2" />
 		<result property="email" column="email" />
-		<result property="adress" column="adress" />
+		<result property="postcode" column="postcode" />
+		<result property="address" column="address" />
+		<result property="address2" column="address2" />
 		<result property="memberRank" column="memberRank" />
 		<result property="company" column="company" />
 	</resultMap>
@@ -34,7 +36,7 @@
 	</select>
 	
 	<insert id="insertMember" parameterType="com.kosta.finalproject.vo.UsersVO">
-		INSERT INTO users(id,pwd,name,birthday,phoneNum1,phoneNum2,email,adress,memberRank,company) values (#{id},#{pwd},#{name},#{birthday},#{phoneNum1},#{phoneNum2},#{email},#{adress},#{memberRank},#{company})
+		INSERT INTO users(id,pwd,name,birthday,phoneNum1,phoneNum2,email,postcode,address,address2,memberRank,company) values (#{id},#{pwd},#{name},#{birthday},#{phoneNum1},#{phoneNum2},#{email},#{postcode},#{address},#{address2},#{memberRank},#{company})
 	</insert>
 	
 	<delete id="deleteMember" parameterType="com.kosta.finalproject.vo.UsersVO">
@@ -58,7 +60,7 @@
 	</select>
 	
 	<update id="updateMemberPro" parameterType="com.kosta.finalproject.vo.UsersVO">
-	    UPDATE users SET name=#{name}, pwd=#{pwd}, birthday=#{birthday}, phoneNum1=#{phoneNum1}, phoneNum2=#{phoneNum2}, email=#{email}, adress=#{adress}, memberRank=#{memberRank}, company=#{company} WHERE id=#{id}
+	    UPDATE users SET name=#{name}, pwd=#{pwd}, birthday=#{birthday}, phoneNum1=#{phoneNum1}, phoneNum2=#{phoneNum2}, email=#{email}, postcode=#{postcode}, address=#{address}, address2=#{address2} WHERE id=#{id}
 	</update>
 	
 	<select id="confirmIdMember" resultMap="UsersResultMap">
