@@ -126,4 +126,5 @@ public class QandADaoImpl implements QandADao {
 	      QandAMapper QandAMapper = sqlSession.getMapper(QandAMapper.class);
 	      QandAMapper.updateDetail(vo);
 	   }
+	 
 }
