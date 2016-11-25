@@ -2,7 +2,11 @@ package com.kosta.finalproject.controller.top;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
+import java.util.Collections;
+>>>>>>> ac411f90d3b6e2606abb4053ffe00cf962848b9e
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +24,13 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kosta.finalproject.dao.BoardDaoImpl;
 import com.kosta.finalproject.dao.FinalDaoImpl;
+<<<<<<< HEAD
 import com.kosta.finalproject.vo.BoardVO;
+=======
+import com.kosta.finalproject.dao.QandADaoImpl;
+import com.kosta.finalproject.vo.BoardVO;
+import com.kosta.finalproject.vo.QandAVO;
+>>>>>>> ac411f90d3b6e2606abb4053ffe00cf962848b9e
 import com.kosta.finalproject.vo.UsersVO;
 
 @Controller
@@ -28,6 +38,12 @@ import com.kosta.finalproject.vo.UsersVO;
 public class MainController {
 	@Autowired
 	private FinalDaoImpl finalDaoImpl;
+	
+	@Autowired
+	private BoardDaoImpl boardDaoImpl;
+	
+	@Autowired
+	private QandADaoImpl qandADaoImpl;
 
 	// Main
 	@RequestMapping("/main")
@@ -43,6 +59,117 @@ public class MainController {
 		model.addAttribute("CONTENT", "about_us.jsp");
 		return "main";
 	}
+	
+	// mainSearch
+	@RequestMapping("/mainSearch")
+	public String getAllList(Model model, HttpServletRequest request) {
+		String keyword = request.getParameter("keyword");
+		int pageSize = 3;
+		String word = request.getParameter("word");
+		String id = request.getParameter("id");
+		String pageNum = request.getParameter("pageNum");
+
+		if (pageNum == null)
+			pageNum = "1";
+
+		int currentPage = Integer.parseInt(pageNum);
+
+		int startRow = (currentPage * pageSize) - (pageSize - 1);
+		int endRow = currentPage * pageSize;
+		int count = 0, number = 0;
+		
+		//자유게시판 검색 리스트
+		List<BoardVO> list = null;
+		if (keyword == null) {
+			count = boardDaoImpl.getListAllCount();
+		} else if (keyword.equalsIgnoreCase("title") && word != null) {
+			count = boardDaoImpl.getListTitleCount(word);
+		} else if (keyword.equalsIgnoreCase("id") && word != null) {
+			count = boardDaoImpl.getListIDCount(word);
+		}
+
+		int pageCount = Math.round(count / pageSize + (count % pageSize == 0 ? 0 : 1));
+		if (count > 0) {
+			if (keyword == null) {
+				BoardVO board = new BoardVO();
+				board.setStartRow(startRow);
+				board.setEndRow(endRow);
+				list = boardDaoImpl.getSelectAll(board);
+
+			} else if (keyword.equalsIgnoreCase("title") && word != null) {
+				word = request.getParameter("word");
+
+				list = boardDaoImpl.selectTitle(word, startRow, endRow);
+
+				model.addAttribute("word", word);
+				model.addAttribute("keyword", keyword);
+
+			} else if (keyword.equalsIgnoreCase("id") && word != null) {
+				word = request.getParameter("word");
+				list = boardDaoImpl.selectId(word, startRow, endRow);
+
+				model.addAttribute("word", word);
+				model.addAttribute("keyword", keyword);
+
+			}
+		} else {
+			list = Collections.EMPTY_LIST;
+		}
+		
+		model.addAttribute("result", list);
+		model.addAttribute("currentPage", new Integer(currentPage));
+		model.addAttribute("count", new Integer(count));
+		model.addAttribute("pageCount", pageCount);
+		model.addAttribute("pageSize", new Integer(pageSize));
+		
+		
+		int Qcount = 0;
+		
+		List<QandAVO> Qlist = null;
+	      if (keyword == null) {
+	         Qcount = qandADaoImpl.ListAllCount();  ///
+	      } else if (keyword.equalsIgnoreCase("title") && word != null) {
+	         Qcount = qandADaoImpl.getListTitleCount(word);
+	      } else if (keyword.equalsIgnoreCase("id") && word != null) {
+	    	 Qcount = qandADaoImpl.getListIDCount(word);
+	      }
+
+	      int pageCount1 = Math.round(Qcount / pageSize + (Qcount % pageSize == 0 ? 0 : 1));
+	      if (Qcount > 0) {
+	         if (keyword == null) {
+	        	 Qlist = qandADaoImpl.showAll(startRow, endRow);
+	            model.addAttribute("list", Qlist);
+	         }
+
+	         else if (keyword.equalsIgnoreCase("title") && word != null) {
+
+	            Qlist = qandADaoImpl.selectTitle(word, startRow, endRow);
+	            model.addAttribute("list", Qlist);
+	            model.addAttribute("word", word);
+	            model.addAttribute("keyword", keyword);
+
+	         }
+
+	         else if (keyword.equalsIgnoreCase("id") && word != null) {
+	            Qlist = qandADaoImpl.selectId(word, startRow, endRow);
+	            model.addAttribute("list", Qlist);
+	            model.addAttribute("word", word);
+	            model.addAttribute("keyword", keyword);
+	         }
+	      } else {
+	         list = Collections.EMPTY_LIST;
+	         System.out.println("여기는 리스트가 비어있으면 와");
+	      }
+		
+		
+
+		model.addAttribute("Qcount", new Integer(Qcount));
+		model.addAttribute("pageCount1", pageCount1);
+		model.addAttribute("CONTENT", "mainSearch.jsp");
+		model.addAttribute("LEFT", "menu/menu4/left.jsp");
+		return "main";
+	}
+	
 
 	// 로그인
 	@RequestMapping("/Login")
@@ -121,7 +248,9 @@ public class MainController {
 		vo.setPhoneNum1(request.getParameter("phoneNum1"));
 		vo.setPhoneNum2(request.getParameter("phoneNum2"));
 		vo.setEmail(request.getParameter("email"));
-		vo.setAdress(request.getParameter("adress"));
+		vo.setPostcode(request.getParameter("postcode"));
+		vo.setAddress(request.getParameter("address"));
+		vo.setAddress2(request.getParameter("address2"));
 		vo.setMemberRank(request.getParameter("memberRank"));
 		vo.setCompany(request.getParameter("company"));
 
@@ -165,7 +294,9 @@ public class MainController {
 		vo.setPhoneNum1(request.getParameter("phoneNum1"));
 		vo.setPhoneNum2(request.getParameter("phoneNum2"));
 		vo.setEmail(request.getParameter("email"));
-		vo.setAdress(request.getParameter("adress"));
+		vo.setPostcode(request.getParameter("postcode"));
+		vo.setAddress(request.getParameter("address"));
+		vo.setAddress2(request.getParameter("address2"));
 		vo.setMemberRank(request.getParameter("memberRank"));
 		vo.setCompany(request.getParameter("company"));
 
@@ -191,11 +322,15 @@ public class MainController {
 
 		UsersVO result = finalDaoImpl.confirmIdMember(id);
 		int check = 0;
-
-		if (result == null) {
+     
+		System.out.println(id);
+		
+		if (result == null && id != "") {
 			check = 0;
-		} else {
+		} else if(result == null && id == "") {
 			check = 1;
+		} else { 
+			check = 2;
 		}
 
 		model.addAttribute("check", check);
@@ -203,6 +338,7 @@ public class MainController {
 
 		return "join/confirmId";
 	}
+	
 
 	// MyPage
 	@RequestMapping("/mypage")
@@ -298,7 +434,9 @@ public class MainController {
 		vo.setPhoneNum1(request.getParameter("phoneNum1"));
 		vo.setPhoneNum2(request.getParameter("phoneNum2"));
 		vo.setEmail(request.getParameter("email"));
-		vo.setAdress(request.getParameter("adress"));
+		vo.setPostcode(request.getParameter("postcode"));
+		vo.setAddress(request.getParameter("address"));
+		vo.setAddress2(request.getParameter("address2"));
 		vo.setMemberRank(request.getParameter("memberRank"));
 		vo.setCompany(request.getParameter("company"));
 
@@ -337,7 +475,9 @@ public class MainController {
 		vo.setPhoneNum1(request.getParameter("phoneNum1"));
 		vo.setPhoneNum2(request.getParameter("phoneNum2"));
 		vo.setEmail(request.getParameter("email"));
-		vo.setAdress(request.getParameter("adress"));
+		vo.setPostcode(request.getParameter("postcode"));
+		vo.setAddress(request.getParameter("address"));
+		vo.setAddress2(request.getParameter("address2"));
 		vo.setMemberRank(request.getParameter("memberRank"));
 		vo.setCompany(request.getParameter("company"));
 

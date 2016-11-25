@@ -6,19 +6,21 @@ birthday varchar(50) null,
 phoneNum1 varchar(15), 
 phoneNum2 varchar(15), 
 email varchar(50),
-adress varchar(100), 
+postcode varchar(20),
+address varchar(100),
+address2 varchar(100),
 memberRank varchar(15),
 company varchar(15)
 );
 
-insert into users(id,name,pwd,birthday,phoneNum1,phoneNum2,email,adress,memberRank,company)
-values('admin','이상선','as123789456','1989-07-13',01066270713,null,'skydrower@gmail.com','우리별 지구','조장','빌리버리');
-insert into users values('user1','형윤','user1','2005-02-12',0106123456,null,'user1@gmail.com','서울','유저',null);
-insert into users values('user2','차지','user2','1982-01-13',0106224552,null,'user2r@gmail.com','경기','열심유저',null);
 
-insert into users values('tt1','tt1','tt1','1982-01-13',0106224552,null,'user2r@gmail.com','경기','열심유저',null);
-insert into users values('tt2','tt2','tt2','1982-01-13',0106224552,null,'user2r@gmail.com','경기','열심유저',null);
-insert into users values('tt3','tt3','tt3','1982-01-13',0106224552,null,'user2r@gmail.com','경기','열심유저',null);
+insert into users values('admin','이상선','as123789456','1989-07-13',01066270713,null,'skydrower@gmail.com','0000','판교','코스타','조장','빌리버리');
+insert into users values('user1','형윤','user1','2005-02-12',0106123456,null,'user1@gmail.com','0000','판교','코스타','유저',null);
+insert into users values('user2','차지','user2','1982-01-13',0106224552,null,'user2r@gmail.com','0000','판교','코스타','열심유저',null);
+
+insert into users values('tt1','tt1','tt1','1982-01-13',0106224552,null,'user2r@gmail.com','0000','판교','코스타','열심유저',null);
+insert into users values('tt2','tt2','tt2','1982-01-13',0106224552,null,'user2r@gmail.com','0000','판교','코스타','열심유저',null);
+insert into users values('tt3','tt3','tt3','1982-01-13',0106224552,null,'user2r@gmail.com','0000','판교','코스타','열심유저',null);
 
 select * from users;
 
@@ -40,3 +42,5 @@ insert into userRank values('tt3','role_com');
 DELETE from userRank WHERE ID = 'admin' and rightrank = 'role_user';
 
 select * from USERRANK;
+
+drop table userRank;
