@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -210,17 +212,30 @@ public class RRBoardLeftController {
 	public String menu3_4(Model model,HttpServletRequest resquest
 			) {
 		
-		
+		String keyField=resquest.getParameter("keyField");
 		SearchVO vo = new SearchVO();
 
-		//검색부 실패 ㅠㅡㅠ
 		vo.setStatus("정산완료");
-		if(resquest.getParameter("keyField") != null){
-			System.out.println("오지마");
-		
-		String key= resquest.getParameter("keyField")+" = '%"+resquest.getParameter("keyWord").trim()+"%'";
+
+		if(keyField != null & resquest.getParameter("keyWord") != null){
+			//codeNum 검색
+		if(keyField.equals("codeNum")){
+		String key= resquest.getParameter("keyField")+" = "+resquest.getParameter("keyWord").trim();
 		vo.setKeyWord(key);
+		}else{//다른 정보로 검색
+			String key= resquest.getParameter("keyField")+" like '%"+resquest.getParameter("keyWord").trim()+"%'";
+			vo.setKeyWord(key);
+			System.out.println(key);
+			}
+		
+		
+		
+		
+		
 		}
+		
+		
+		
 		List<RPboardVO> result=dao.SelectCalc(vo);
 		
 		model.addAttribute("keyword","");
@@ -234,11 +249,15 @@ public class RRBoardLeftController {
 	
 	//관리자용 페이지 rp보드 보기
 	@RequestMapping("/menu3_5")
-		public String menu3_5(Model model) {
+		public String menu3_5(Model model, HttpServletRequest request) {
 		
-		List<RPboardVO> result=dao.showALL();
+		SearchVO vo = new SearchVO();
 		
-		System.out.println(result.get(0).toString());
+		if(request.getParameter("Status")!=null){
+			vo.setStatus(request.getParameter("Status"));
+		};
+		
+		List<RPboardVO> result=dao.showALL(vo);
 		
 		model.addAttribute("list", result);
 		model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_5.jsp");

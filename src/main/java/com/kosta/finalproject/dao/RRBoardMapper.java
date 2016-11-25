@@ -21,7 +21,7 @@ public interface RRBoardMapper {
 	
 	//rp 보드 관련
 	
-	public List<RPboardVO> showALL();
+	public List<RPboardVO> showALL(SearchVO vo);
 
 	public void RPboardinsert(RPboardVO vo);
 

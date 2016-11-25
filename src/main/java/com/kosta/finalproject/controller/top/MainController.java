@@ -2,11 +2,7 @@ package com.kosta.finalproject.controller.top;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-<<<<<<< HEAD
-import java.util.ArrayList;
-=======
 import java.util.Collections;
->>>>>>> ac411f90d3b6e2606abb4053ffe00cf962848b9e
 import java.util.Date;
 import java.util.List;
 
@@ -24,13 +20,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kosta.finalproject.dao.BoardDaoImpl;
 import com.kosta.finalproject.dao.FinalDaoImpl;
-<<<<<<< HEAD
-import com.kosta.finalproject.vo.BoardVO;
-=======
 import com.kosta.finalproject.dao.QandADaoImpl;
 import com.kosta.finalproject.vo.BoardVO;
 import com.kosta.finalproject.vo.QandAVO;
->>>>>>> ac411f90d3b6e2606abb4053ffe00cf962848b9e
 import com.kosta.finalproject.vo.UsersVO;
 
 @Controller

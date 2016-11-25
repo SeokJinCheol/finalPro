@@ -42,9 +42,9 @@ public void RPboardinsert(RPboardVO vo) {
 	
 }
 
-public List<RPboardVO> showALL() {
+public List<RPboardVO> showALL(SearchVO vo) {
 	
-	return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.showALL");
+	return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.showALL",vo);
 }
 
 public RPboardVO selectModyRPB(int seqNum) {
