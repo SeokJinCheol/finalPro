@@ -53,40 +53,40 @@
 			</div>
 		</security:authorize>
 
-		<div class="w3-row" style="margin-top: 0px;">
-			<table border="1">
-				<tr>
-					<td>글번호</td>
-					<td>이미지</td>
-					<td>카테고리</td>
-					<td>글제목</td>
-					<td>작성자</td>
-					<td>조회수</td>
-					<td>작성일자</td>
+		<div style="margin-bottom: 20px; width: 73%;">
+			<table style="padding: 70px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
+				<tr style=" height:30px; margin-bottom: 20px; background-color: #80b5ea; color:white; text-align: center;">
+					<td width=80 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">글번호</td>
+					<td width=60 style="border-top: 2px solid #000; border-right: 1px solid #fff;">이미지</td>
+					<td width=60 style="border-top: 2px solid #000; border-right: 1px solid #fff;">카테고리</td>
+					<td width=120 style="border-top: 2px solid #000; border-right: 1px solid #fff;">글제목</td>
+					<td width=120 style="border-top: 2px solid #000; border-right: 1px solid #fff;">작성자</td>
+					<td width=80 style="border-top: 2px solid #000; border-right: 1px solid #fff;">조회수</td>
+					<td width=80 style="border-top: 2px solid #000; border-right: 1px solid #fff;">작성일자</td>
 				</tr>
 
 				<c:forEach items="${list}" var="list">
 					<tr>
-						<td>${list.rnum}</td>
-						<td style="width: 10%"><img
+						<td style="font-family: 'Nanum Gothic Coding', monospace; border-bottom: 3px solid #fff;">${list.rnum}</td>
+						<td style="border-bottom: 3px solid #fff;"><img
 							src="/team4/resources/QandAImg/${list.img }"
 							style="width: 100%; height: 50px;"></td>
-						<td>${list.category}</td>
+						<td style="border-bottom: 3px solid #fff;">${list.category}</td>
 						<c:choose>
 							<c:when test="${fn:length(list.title)>15 }">
-								<td><a href="QnA_content?bnum=${list.bnum}"><c:out
+								<td style="border-bottom: 3px solid #fff;"><a href="QnA_content?bnum=${list.bnum}"><c:out
 											value="${fn:substring(list.title,0,14)}" />...<c:if
 											test="${list.replyCount != 0}">(${list.replyCount})</c:if></a></td>
 							</c:when>
 							<c:otherwise>
-								<td><a href="QnA_content?bnum=${list.bnum}"><c:out
-											value="${list.title}" />
-										<c:if test="${list.replyCount != 0}">(${list.replyCount})</c:if></a></td>
+								<td style="border-bottom: 3px solid #fff; width: 10% "><a href="QnA_content?bnum=${list.bnum}"><c:out
+											value="${list.title}"/><c:if
+											test="${list.replyCount != 0}">(${list.replyCount})</c:if></a></td>
 							</c:otherwise>
 						</c:choose>
-						<td>${list.id}</td>
-						<td>${list.count}</td>
-						<td><fmt:formatDate value="${list.date}" pattern="yyyy-MM-dd" /></td>
+						<td style="border-bottom: 3px solid #fff;">${list.id}</td>
+						<td style="border-bottom: 3px solid #fff;">${list.count}</td>
+						<td style="border-bottom: 3px solid #fff;"><fmt:formatDate value="${list.date}" pattern="yyyy-MM-dd" /></td>
 					</tr>
 
 					<input type="hidden" name="bnum" value="${list.bnum}">
