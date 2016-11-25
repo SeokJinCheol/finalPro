@@ -83,10 +83,9 @@ public class RequestBoardController {
 		Date parsedDate2 = simpledate.parse(request.getParameter("endDate"));
 		Timestamp startDate = new Timestamp(parsedDate1.getTime());
 		Timestamp endDate = new Timestamp(parsedDate2.getTime());
-
+		
+		//이미지 처리
 		String fileName = null;
-	       
-	      //이미지 처리
 	       System.out.println("이미지 처리 시작");
 	        MultipartFile uploadfile = dto.getFile();
 	        if (uploadfile != null) {

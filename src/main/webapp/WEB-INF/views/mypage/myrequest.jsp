@@ -26,7 +26,7 @@
 					<td>수정</td>
 					<td>대여종료신청</td>
 				</tr>
-				<c:forEach items="${requestlist}" var="requestlist">
+				<c:forEach items="${myrequest}" var="requestlist">
 					<tr>
 						<td>${requestlist.codeNum}</td>
 						<td style="width: 20%"><img src="/team4/resources/RequestImg/${requestlist.img }" style="width: 100%; height: 100px;"></td>
@@ -36,7 +36,7 @@
 						<td>
 							<form action="RequestBoardUpdateForm">
 								<input type="hidden" name="codeNum" value="${requestlist.codeNum}">
-								<input type="hidden" name="leftcontroll" value="menu1">
+								<input type="hidden" name="leftcontroll" value="mypage">
 								<input type="submit" value="수정하기">
 							</form>
 						</td>
@@ -45,7 +45,7 @@
 							<c:if test="${requestlist.packageStatus != '심사중'}">
 								<form action="RequestEnd" method="post">
 									<input type="hidden" name="codeNum" value="${requestlist.codeNum}">
-									<input type="hidden" name="leftcontroll" value="menu1">
+									<input type="hidden" name="leftcontroll" value="mypage">
 									<input type="submit" value="대여종료신청">
 								</form>
 							</c:if>
