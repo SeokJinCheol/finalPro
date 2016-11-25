@@ -13,26 +13,26 @@
 	<div align=center>
 		<div  style="background:#6699DC; color:white; width:20%; height:100px; vertical-align:middle; display:table-cell;"><img src="/team4/resources/images/left-location.png"><font size="5">&nbsp;&nbsp;장 소 대 여</font></div><br>
 		
-		<div class="left-menu"><a href="#" class="rollover">
+		<div class="left-menu"><a href="menu3_1" class="rollover">
 			<img src="/team4/resources/images/#" style="margin-right:5px;">
 			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">
-			&nbsp;menu3_1</a></div><br>	
-		<div class="left-menu"><a href="#" class="rollover">
+			&nbsp;대관/대실 등록</a></div><br>	
+		<div class="left-menu"><a href="menu3" class="rollover">
 			<img src="/team4/resources/images/#" style="margin-right:5px;">
 			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">
-			&nbsp;menu3_2</a></div><br>	
-		<div class="left-menu"><a href="#" class="rollover">
+			&nbsp;지도로 찾기</a></div><br>	
+		<div class="left-menu"><a href="menu3_3" class="rollover">
 			<img src="/team4/resources/images/#" style="margin-right:5px;">
 			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">
-			&nbsp;menu3_3</a></div><br>	
-		<div class="left-menu"><a href="#" class="rollover">
+			&nbsp;목록으로 찾기</a></div><br>	
+		<div class="left-menu"><a href="menu3_4" class="rollover">
 			<img src="/team4/resources/images/#" style="margin-right:5px;">
 			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">
-			&nbsp;menu3_4</a></div><br>	
-		<div class="left-menu"><a href="#" class="rollover">
+			&nbsp;정산탭</a></div><br>	
+		<div class="left-menu"><a href="menu3_5" class="rollover">
 			<img src="/team4/resources/images/#" style="margin-right:5px;">
 			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">
-			&nbsp;menu3_5</a></div><br>
+			&nbsp;관리자수정</a></div><br>
 	</div>
 </body>
 </html>

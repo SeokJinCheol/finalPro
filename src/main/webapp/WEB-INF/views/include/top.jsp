@@ -157,13 +157,13 @@
 			
 			<li style="width:5%"><p></p></li>
 			
-			<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="use">서 비 스 소 개&nbsp;<i class="fa fa-caret-down"></i></a>
+			<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="siteintro">서 비 스 소 개&nbsp;<i class="fa fa-caret-down"></i></a>
 				<div class="w3-dropdown-content w3-white w3-card-4">
+			        <a href="siteintro">서 비 스 소 개</a>
 			        <a href="use">이 용 방 법</a>
 			    	<a href="rule">이 용 규 칙</a>
 			    	<a href="menu5_3">menu5_3</a>
 			    	<a href="menu5_4">menu5_4</a>
-			    	<a href="menu5_5">menu5_5</a>
 			    </div>	
 			</li>
 		</ul>

@@ -14,6 +14,7 @@ public class BoardDaoImpl implements BoardDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	@Override
 	public void insertMember(BoardVO vo) {
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
 		BoardMapper.insertMember(vo);
@@ -21,12 +22,14 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	// 댓글 등록
+	@Override
 	public void reinsertMember(BoardVO vo) {
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
 		BoardMapper.reinsertMember(vo);
 	}
 
 	// 상세페이지
+	@Override
 	public ArrayList<BoardVO> contentgetMembers(int bgnum) {
 		ArrayList<BoardVO> result = new ArrayList<BoardVO>();
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
@@ -36,18 +39,21 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	// 조회수 관련
+	@Override
 	public void readcountUpdate(int bNum) {
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
 		BoardMapper.readcountUpdate(bNum);
 	}
 
 	// 댓글 관련
+	@Override
 	public void update(BoardVO vo) {
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
 		BoardMapper.update(vo);
 	}
 
 	// 게시글 수 확인
+	@Override
 	public int getListAllCount() {
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
 		int num = BoardMapper.getListAllCount();
@@ -55,6 +61,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	// 전체 게시글 가져오기
+	@Override
 	public ArrayList<BoardVO> getSelectAll(BoardVO board) {
 		ArrayList<BoardVO> result = new ArrayList<BoardVO>();
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
@@ -64,6 +71,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	// MaxNum 구하기
+	@Override
 	public int getMaxNum() {
 		Integer num = sqlSession.selectOne("com.kosta.finalproject.dao.BoardMapper.getMaxNum");
 		if (num == null) {
@@ -74,6 +82,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	// 수정하기 (이전 정보 받아오기)
+	@Override
 	public BoardVO boardUpdate(int bnum) {
 		BoardVO result = new BoardVO();
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
@@ -83,18 +92,21 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	// 게시글 수정하기
+	@Override
 	public void boardUpdatePro(BoardVO vo) {
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
 		BoardMapper.boardUpdatePro(vo);
 	}
 
 	// 댓글 수정하기
+	@Override
 	public void reboardUpdatePro(BoardVO vo) {
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
 		BoardMapper.reboardUpdatePro(vo);
 	}
 
 	// 삭제하기
+	@Override
 	public void delete(String id, int bNum) {
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
 		BoardVO vo = new BoardVO();
@@ -104,6 +116,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	// Title 검색
+	@Override
 	public int getListTitleCount(String title) {
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
 		BoardVO vo = new BoardVO();
@@ -113,6 +126,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	// Title 검색
+	@Override
 	public ArrayList<BoardVO> selectTitle(String title, int startRow, int endRow) {
 
 		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
@@ -126,6 +140,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	// ID 검색
+	@Override
 	public int getListIDCount(String id) {
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
 		BoardVO vo = new BoardVO();
@@ -135,6 +150,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	// ID 검색
+	@Override
 	public ArrayList<BoardVO> selectId(String id, int startRow, int endRow) {
 
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
@@ -146,6 +162,8 @@ public class BoardDaoImpl implements BoardDao {
 		list = BoardMapper.selectId(vo);
 		return list;
 	}
+	//mypage용 자기가 쓴 글 개수
+	
 	
 	
 	///////////////

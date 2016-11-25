@@ -14,4 +14,4 @@ packageStatus varchar2(20)  default '대여가능'
 
 drop table checkBoard
 
-select * from checkboard
+select * from checkboard;

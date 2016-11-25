@@ -13,29 +13,14 @@
 </head>
 <body>	
 	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height:500px; vertical-align:middle; display:table-cell;">
-		<form action="QnA_update" method=post enctype="multipart/form-data">
+		<form action="free_update" method=post enctype="multipart/form-data">
 			<input type="hidden" name="bnum" value="${bnum}">
-			<input type="hidden" name="img" value="${img}">
 			<table border="1">
-				<tr>
-					<td>category:</td>
-					<td>
-						<select name="category" required>
-							<c:if test="${category == '질문'}">
-								<option value="건의사항">건의사항</option>
-							</c:if>
-							
-							<c:if test="${category == '건의사항'}">
-								<option value="질문">질문</option>
-							</c:if>
-						</select>
-					</td>
-				</tr>
+				
 				
 				<tr>
               	 	<td>이미지파일:</td>
                		<td><input type="file" name="file" required></td>
-               		
             	</tr>
 
 				
@@ -59,7 +44,7 @@
 			
 			<input type="hidden" name="bnum" value="${bnum}">
 			<input type="submit" value="글수정">
-			<input type="button" value="List" onclick="location.href='QnA_list'">
+			<input type="button" value="List" onclick="location.href='free_list'">
 		</form>
 	</div>
 </body>
