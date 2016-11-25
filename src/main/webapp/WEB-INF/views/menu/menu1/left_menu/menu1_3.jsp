@@ -36,7 +36,6 @@
 						<td>
 							<form action="RequestBoardUpdateForm">
 								<input type="hidden" name="codeNum" value="${requestlist.codeNum}">
-								<input type="hidden" name="leftcontroll" value="menu1">
 								<input type="submit" value="수정하기">
 							</form>
 						</td>
@@ -45,7 +44,6 @@
 							<c:if test="${requestlist.packageStatus != '심사중'}">
 								<form action="RequestEnd" method="post">
 									<input type="hidden" name="codeNum" value="${requestlist.codeNum}">
-									<input type="hidden" name="leftcontroll" value="menu1">
 									<input type="submit" value="대여종료신청">
 								</form>
 							</c:if>
@@ -57,6 +55,7 @@
 					</tr>
 				</c:forEach>
 			</table>
+	
 			<a href="requestwriteform">글쓰기</a>
 		</div>
 	</div>

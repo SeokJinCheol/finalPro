@@ -18,7 +18,7 @@
 		
 			<c:forEach items="${RegisterBoardform}" var="RegisterBoardform">
 				<form action="RegisterBoardWrite" method="post">
-					<input type="hidden" name="img" value="${RegisterBoardform.img}">
+					<input type="hidden" name="img" value="${RegisterBoardform.img }">
 					<table border="1">
 						<tr>
 							<td>글번호</td>
@@ -75,7 +75,7 @@
 						</tr>
 						<tr>
 							<td>이미지</td>
-							<td><img src="/team4/resources/RequestImg/${RegisterBoardform.img}" style="width: 100%; height: 300px;"></td>
+							<td><img src="/team4/resources/RequestImg/${RegisterBoardform.img }" style="width: 100%; height: 300px;"></td>
 						</tr>
 						<tr>
 							<td>내용</td>

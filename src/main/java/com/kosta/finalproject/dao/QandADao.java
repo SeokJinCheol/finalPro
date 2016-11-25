@@ -29,6 +29,6 @@ public interface QandADao {
 	public void delete(int bnum);
 
 	public void updateDetail(QandAVO vo);
-	//////////////////////////
-	 // =
+
+	
 }

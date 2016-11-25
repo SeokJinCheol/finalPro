@@ -47,7 +47,7 @@
 								<c:if test="${session_id == 'admin'}">
 									<c:if test="${requestlist.packageStatus =='심사중'}">
 										<td>
-											<form action="RegisterBoardwriteform" method="post">
+											<form action="RegisterBoardwrite" method="post">
 												<input type="hidden" name="codeNum"
 													value="${requestlist.codeNum}"> <input
 													type="submit" value="심사하기">

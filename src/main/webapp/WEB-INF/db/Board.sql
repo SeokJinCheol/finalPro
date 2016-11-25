@@ -11,6 +11,7 @@ contents varchar2(2000) Not null, READCOUNT NUMBER(3) DEFAULT 0, groupnum number
 CREATE SEQUENCE fb_seq
 start with 1
 increment BY 1;
+select max(bNum) from FreeBoard;
 
 
 select * from freeBoard

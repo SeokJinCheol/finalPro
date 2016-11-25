@@ -27,7 +27,7 @@
 				<c:forEach items="${Registerpossibility}" var="Registerpossibility">
 					<tr>
 						<td>${Registerpossibility.codeNum}</td>
-						<td style="width: 20%"><img src="/team4/resources/RequestImg/${Registerpossibility.img}" style="width: 100%; height: 100px;"></td>
+						<td style="width: 20%"><img src="/team4/resources/RequestImg/${Registerpossibility.img }" style="width: 100%; height: 100px;"></td>
 						<td>${Registerpossibility.title}</td>
 						<td>${Registerpossibility.packageStatus}</td>
 						<td>

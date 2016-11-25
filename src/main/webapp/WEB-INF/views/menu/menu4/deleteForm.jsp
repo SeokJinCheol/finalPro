@@ -14,12 +14,12 @@
 <body>
 	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
 		<div style="margin-bottom: 20px; margin-top: 70px;">
-			<h4>- Q & A_Delete -</h4>
+			<h4>- free_Delete -</h4>
 			
 			삭제 OK
 					
 			<c:if test="${bNum== bgnum }">			
-				<meta  http-equiv="Refresh" content="1; url=QandA_list">
+				<meta  http-equiv="Refresh" content="1; url=free_list">
 			</c:if>
 	
 			<c:if test="${bNum != bgnum }">			
