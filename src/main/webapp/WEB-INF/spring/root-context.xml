@@ -32,8 +32,8 @@
       class="org.springframework.jdbc.datasource.DriverManagerDataSource">
       <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
       <!-- 아래의 부분은 오라클 버전이나 계정에따라 다르게적는다. -->
-      <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl" />
-      <property name="username" value="seok" />
+      <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+      <property name="username" value="cha" />
       <property name="password" value="oracle" />
    </bean>
 
