@@ -18,6 +18,76 @@
 	</div>
 
 	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
+<<<<<<< HEAD
+		<div style="margin-bottom: 20px; margin-top: 70px;">			
+			<table border=1>
+				<form action="updateForm" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="bNum" value="${ bNum }"> <input
+						type="hidden" name="bgnum" value="${ bgnum }">
+					<input
+						type="hidden" name="img" value="${result.img}">
+					<c:if test="${bNum == bgnum  }">
+						<tr>
+							<td>ID</td>
+							<td><input type="text" name="id" value="${result.id }"
+								readonly></td>
+						</tr>
+	
+						<tr>
+							<td>CateGory</td>
+							<td><select name="category">
+									<option value="관리자">관리자</option>
+									<option value="판매자">판매자</option>
+									<option value="대여자">대여자</option>
+							</select></td>
+						</tr>
+	
+						<tr>
+							<td>Title</td>
+							<td><input type="text" name="title" value="${result.title }"
+								required></td>
+						</tr>
+	
+						<tr>
+							<td>Contents</td>
+							<td><input type="text" name="contents"
+								value="${result.contents }" style="width: 100%; height: 200px;"
+								required></td>
+						</tr>
+	
+						<tr>
+							<td>Img</td>
+							<td><input type="file" name="file" required/></td>
+						</tr>
+	
+						<tr>
+							<td><input type="submit" value="입력">
+							<td>
+						</tr>
+					</c:if>
+	
+					<c:if test="${bNum != bgnum  }">
+						<tr>
+							<td>ID</td>
+							<td><input type="text" name="id" value="${result.id }"
+								readonly></td>
+						</tr>
+	
+						<tr>
+							<td>Contents</td>
+							<td><input type="text" name="contents"
+								value="${result.contents }" style="width: 100%; height: 200px;"
+								required></td>
+						</tr>
+	
+						<tr>
+							<td><input type="submit" value="입력">
+							<td>
+						</tr>
+					</c:if>
+				</form>
+			</table>
+=======
 		<div style="margin-bottom: 20px; width: 73%; margin-top:40px;">
 			<table>
 		  		<form action="updateForm" method="post" enctype="multipart/form-data">
@@ -104,6 +174,7 @@
 				 </c:if>
 			</form>
 		</table>
+>>>>>>> b5e84c626afc371b6a3e04fd7531f14409caacf8
 		</div>
 	</div>
 </body>

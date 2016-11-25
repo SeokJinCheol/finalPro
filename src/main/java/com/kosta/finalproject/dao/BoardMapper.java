@@ -21,5 +21,6 @@ public interface BoardMapper {
 	int getListTitleCount(BoardVO vo); // Title 검색관련
 	ArrayList<BoardVO> selectTitle(BoardVO vo); // =
 	int getListIDCount(BoardVO vo); // ID 검색 관련
-	ArrayList<BoardVO> selectId(BoardVO vo); // =
+	ArrayList<BoardVO> selectId(BoardVO vo);
+	// =
 }

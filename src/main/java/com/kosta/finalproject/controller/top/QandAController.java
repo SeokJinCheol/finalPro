@@ -27,7 +27,7 @@ public class QandAController {
 	@Autowired
 	private QandADaoImpl qandADaoImpl;
 
-	 // 자유게시판
+	 // 질문게시판
 	   @RequestMapping("/QnA_list")
 	   public String QnA_List(Model model, HttpServletRequest request) {
 	      String keyword = request.getParameter("keyword");
@@ -188,13 +188,13 @@ public class QandAController {
 
 			System.out.println("타요~~");
 
-			if (bnum != null) {
+			/*if (bnum != null) {
 				model.addAttribute("title", "[답변] ");
 				model.addAttribute("bnum", bnum);
 
 				model.addAttribute("session_id", session_id);
 			}
-
+*/
 			model.addAttribute("session_id", session_id);
 			model.addAttribute("CONTENT", "Q&A/QnA_write.jsp");
 			model.addAttribute("LEFT", "Q&A/left.jsp");
@@ -251,13 +251,13 @@ public class QandAController {
 
 			System.out.println(bgnum);
 
-			if (bgnum.equals("")) {
+			/*if (bgnum.equals("")) {
 				
 			}
 
 			else {
 				vo.setBgnum(Integer.parseInt(bgnum));
-			}
+			}*/
 
 			vo.setImg(img);
 			vo.setTitle(title);
@@ -267,11 +267,31 @@ public class QandAController {
 
 			qandADaoImpl.writeMain(vo);
 
-			model.addAttribute("LEFT", "menu/menu4/left.jsp");
-
+			
+			
 			return "redirect:QnA_list";
 		}
-
+		@RequestMapping("/QnA_reply")
+		public String QnA_replywrite(Model model, HttpServletRequest request){
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			String session_id = auth.getName();
+			QandAVO vo = new QandAVO();
+			int bnum= Integer.parseInt(request.getParameter("bnum"));
+			int bgnum=bnum;
+			String contents = request.getParameter("contents");
+			String title = "[답변]"+request.getParameter("title");
+			String img = request.getParameter("img");
+			String category = "답변";
+			vo.setBgnum(bgnum);
+			vo.setCategory(category);
+			vo.setContents(contents);
+			vo.setTitle(title);
+			vo.setId(session_id);
+			vo.setImg(img);
+			qandADaoImpl.writeMain(vo);
+			model.addAttribute("bnum",bnum);
+			return "redirect:QnA_content";
+		}
 		// 상세보기
 		@RequestMapping("/QnA_content")
 		public String QnA_content(Model model, HttpServletRequest request) {
