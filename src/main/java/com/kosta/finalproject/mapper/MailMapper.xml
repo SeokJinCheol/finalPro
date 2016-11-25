@@ -14,5 +14,10 @@
 	<insert id="sendmail" parameterType="com.kosta.finalproject.vo.MailVO">
 		INSERT INTO mail(mailNum, rid, sid, text) VALUES(mailcequence.nextval, #{rid}, #{sid}, #{text})
 	</insert>
-
+	
+	<select id="mymaillist" resultMap="MailBoard">
+        SELECT * FROM mail WHERE rid = #{session_id}
+    </select>
+	
+	
 </mapper>

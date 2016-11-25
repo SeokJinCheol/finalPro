@@ -28,7 +28,7 @@
 			    <c:forEach items="${rentreadylist}" var="rentterlist">
 					<tr>
 			        	<td>${rentterlist.codeNum}</td>
-			        	<td style="width: 20%"><img src="/team4/resources/RequestImg/${rentreadylist.img}" style="width: 100%; height: 100px;"></td>
+			        	<td style="width: 20%"><img src="/team4/resources/RequestImg/${rentterlist.img}" style="width: 100%; height: 100px;"></td>
 			            <td>${rentterlist.title}</td>
 			            <td>${rentterlist.packageStatus}</td>
 			            <td>
