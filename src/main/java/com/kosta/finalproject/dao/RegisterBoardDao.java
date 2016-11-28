@@ -15,4 +15,6 @@ public interface RegisterBoardDao {
 	public void registerdelete(RegisterBoardVO vo);
 	public ArrayList<RegisterBoardVO> selectTitle(String word);
 	public ArrayList<RegisterBoardVO> selectCategory(String word);
+	public ArrayList<RegisterBoardVO> pselectTitle(String possibility, String word);
+	public ArrayList<RegisterBoardVO> pselectCategory(String possibility, String word);
 }

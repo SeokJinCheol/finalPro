@@ -1,11 +1,13 @@
 package com.kosta.finalproject.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kosta.finalproject.vo.RegisterBoardVO;
 import com.kosta.finalproject.vo.RequestBoardVO;
 
 @Repository
@@ -103,11 +105,28 @@ public class RequestBoardDaoImpl implements RequestBoardDao {
 		mapper.requestBoardDelete(vo);
 	}
 
+	@Override
 	public ArrayList<RequestBoardVO> requestcontent(int codeNum) {
 		ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();
-		RequestBoardMapper requestMapper = sqlSession.getMapper(RequestBoardMapper.class);
-		result = requestMapper.requestcontent(codeNum);
+		RequestBoardMapper mapper = sqlSession.getMapper(RequestBoardMapper.class);
+		result = mapper.requestcontent(codeNum);
 
+		return result;
+	}
+
+	@Override
+	public ArrayList<RequestBoardVO> selectTitle(String word) {
+		ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();
+		RequestBoardMapper mapper = sqlSession.getMapper(RequestBoardMapper.class);
+		result = mapper.selectTitle(word);
+		return result;
+	}
+	
+	@Override
+	public ArrayList<RequestBoardVO> selectCategory(String word) {
+		ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();
+		RequestBoardMapper mapper = sqlSession.getMapper(RequestBoardMapper.class);
+		result = mapper.selectCategory(word);
 		return result;
 	}
 }

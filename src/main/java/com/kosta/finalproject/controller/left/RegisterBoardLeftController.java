@@ -2,6 +2,7 @@ package com.kosta.finalproject.controller.left;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class RegisterBoardLeftController {
 	private StorageBoardDaoImpl storageBoardDaoImpl;
 
 	@RequestMapping("/menu2_1")
-	public String menu2_1(Model model) {
+	public String menu2_1(Model model, HttpServletRequest request) {
 
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -48,10 +49,32 @@ public class RegisterBoardLeftController {
 
 		String possibility = "대여가능";
 
+	    //검색 확인
+	    String keyword = request.getParameter("keyword");
+	    String word = request.getParameter("word");
+	    String id = request.getParameter("id");
+	
 		// 대여목록
-		List<RegisterBoardVO> Registerpossibility = registerBoardDaoImpl.Registerpossibility(possibility);
-		model.addAttribute("Registerpossibility", Registerpossibility);
+        List<RegisterBoardVO> Registerpossibility = null;
+   		
+   		if (keyword == null) {
+   			Registerpossibility = registerBoardDaoImpl.Registerpossibility(possibility);
 
+   		}else if(keyword.equalsIgnoreCase("title") && word != null){
+   			Registerpossibility = registerBoardDaoImpl.pselectTitle(possibility, word);
+   			model.addAttribute("word", word);
+   			model.addAttribute("keyword", keyword);
+   			
+   		}else if(keyword.equalsIgnoreCase("category") && word != null){
+   			Registerpossibility = registerBoardDaoImpl.pselectCategory(possibility, word);
+   			model.addAttribute("word", word);
+   			model.addAttribute("keyword", keyword);
+   			
+   		} else {
+   			Registerpossibility = Collections.EMPTY_LIST;
+   		}
+		
+		model.addAttribute("Registerpossibility", Registerpossibility);
 		model.addAttribute("CONTENT", "menu/menu2/left_menu/menu2_1.jsp");
 		model.addAttribute("LEFT", "menu/menu2/left.jsp");
 		return "main";
