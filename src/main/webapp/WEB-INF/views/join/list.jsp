@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,12 +26,12 @@
 							<%--<td align="center">PWD</td>--%>
 							<td align="center">NAME</td>
 							<td align="center">Birthday</td>
-							<%-- <td align="center">Phone&nbsp;Number</td>
-							<td align="center">Home&nbsp;Number</td> --%>
+							<td align="center">Phone&nbsp;Number</td>
+                      <!-- <td align="center">Home&nbsp;Number</td> -->
 							<td align="center">E-mail</td>
-							<td align="center">Adress</td>
+							<td align="center">address</td>
 							<td align="center">Member&nbsp;Rank</td>
-							<%--<td align="center">Company</td>--%>
+							<td align="center">Company</td>
 							<td align="center">Update</td>
 							<td align="center">Delete</td>
 					     </tr>
@@ -40,20 +42,27 @@
 					             <%--<td>${member.pwd}</td>--%>
 					             <td>${member.name }</td>
 					             <td>${member.birthday }</td>
-					             <%-- <td>${member.phoneNum1 }</td>
-					             <td>${member.phoneNum2 }</td> --%>
+					             <td>${member.phoneNum1 }</td>
+					             <%-- <td>${member.phoneNum2 }</td> --%>
 					             <td>${member.email }</td>
-					             <td>${member.address }</td>
+					             
+					             <!-- 내용이 8자 이상일 경우 줄여쓰기 기능 -->
+		             		<c:choose>
+			             		<c:when test="${fn:length(member.address) > 13 }">
+									<td style="border-bottom: 3px solid #fff;">
+										<c:out value="${member.postcode } ${fn:substring(member.address,0,13)}" />...
+									</td>
+								</c:when>
+								
+								<c:otherwise>
+									<td style="border-bottom: 3px solid #fff;">
+										<c:out value="${member.address}"/>
+									</td>
+								</c:otherwise>
+							</c:choose>
+					             
 					             <td>${member.memberRank }</td>
-					             <%--<td>${member.company }</td>--%>
-					             <%-- <td><input type=button value="" class="update-btn2 w3-card-4" onclick="location.href='admin_update?id=${member.id}'"></td>
-					             <td>
-					             	<input type=button value="" class="cancel-btn3 w3-card-4" onclick="checkDel('${member.id}')">
-					             	
-					             	<form action="admin_delete" method=post name="${member.id}">
-					             		<input type="hidden" name="m_id" value="${member.id}"/>
-					             	</form>
-					             </td> --%>
+					             <td>${member.company }</td>
 					             <td>
 					                <form action="admin_update" method="post" name="adminupdate" >
 					                    <input type="submit" value="" class="update-btn2 w3-card-4" >

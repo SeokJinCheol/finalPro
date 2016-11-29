@@ -445,6 +445,7 @@ public class MainController {
 		UsersVO userlist = finalDaoImpl.updateMember(id);
 
 		model.addAttribute("result", userlist);
+		model.addAttribute("LEFT", "join/admin_left.jsp");
 		model.addAttribute("CONTENT", "join/admin_update.jsp");
 
 		return "main";
@@ -473,6 +474,7 @@ public class MainController {
 		List<UsersVO> userlist = finalDaoImpl.getMembers();
 
 		model.addAttribute("result", userlist);
+		model.addAttribute("LEFT", "join/admin_left.jsp");
 		model.addAttribute("CONTENT", "join/list.jsp");
 
 		return "main";
