@@ -17,7 +17,6 @@ public class FreeDaoImpl implements FreeBoardDao {
 	@Override
 	public void writeBoard(FreeBoardVO vo) {
 		FreeMapper freeMapper = sqlSession.getMapper(FreeMapper.class);
-		System.out.println(vo.toString());
 		freeMapper.writeBoard(vo);
 	}
 

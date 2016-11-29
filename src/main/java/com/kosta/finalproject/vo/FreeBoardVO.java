@@ -93,12 +93,4 @@ public class FreeBoardVO {
 		this.date = date;
 	}
 	
-	@Override
-	public String toString() {
-		return "FreeBoardVO [bnum=" + bnum + ", bgnum=" + bgnum + ", groupnum=" + groupnum + ", ranknum=" + ranknum
-				+ ", count=" + count + ", rnum=" + rnum + ", startRow=" + startRow + ", endRow=" + endRow
-				+ ", replyCount=" + replyCount + ", title=" + title + ", contents=" + contents + ", id=" + id + ", img="
-				+ img + ", date=" + date + "]";
-	}
-	
 }

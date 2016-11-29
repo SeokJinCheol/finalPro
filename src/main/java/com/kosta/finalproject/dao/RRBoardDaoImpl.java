@@ -12,62 +12,66 @@ import com.kosta.finalproject.vo.SearchVO;
 
 @Repository
 public class RRBoardDaoImpl implements RRBoardDao {
-	
- @Autowired   
- private SqlSession sqlSession;
 
-@Override
-public List<RRboardVO> SelectALL(RRboardVO vo) {
+	@Autowired
+	private SqlSession sqlSession;
 
-	return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.SelectALL");
-}
+	@Override
+	public List<RRboardVO> SelectALL(RRboardVO vo) {
 
-@Override
-public void RRboardinsert(RRboardVO vo) {
+		return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.SelectALL", vo);
+	}
 
-	sqlSession.insert("com.kosta.finalproject.dao.RRBoardMapper.RRboardinsert",vo);
-	
-}
+	@Override
+	public void RRboardinsert(RRboardVO vo) {
 
-public RRboardVO getcontents(int codeNum) {
-	System.out.println("codeNum ="+ codeNum);
-	return  sqlSession.selectOne("com.kosta.finalproject.dao.RRBoardMapper.getcontents", codeNum);
-}
+		sqlSession.insert("com.kosta.finalproject.dao.RRBoardMapper.RRboardinsert", vo);
 
-public void RPboardinsert(RPboardVO vo) {
+	}
 
-	System.out.println(vo.toString());
-	
-	sqlSession.insert("com.kosta.finalproject.dao.RRBoardMapper.RPboardinsert",vo);
-	
-}
+	public RRboardVO getcontents(int codeNum) {
+		System.out.println("codeNum =" + codeNum);
+		return sqlSession.selectOne("com.kosta.finalproject.dao.RRBoardMapper.getcontents", codeNum);
+	}
 
-public List<RPboardVO> showALL() {
-	
-	return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.showALL");
-}
+	public void RPboardinsert(RPboardVO vo) {
 
-public RPboardVO selectModyRPB(int seqNum) {
-	
-	return sqlSession.selectOne("com.kosta.finalproject.dao.RRBoardMapper.selectModyRPB", seqNum);
-}
+		System.out.println(vo.toString());
 
-@Override
-public void updateRPB(RPboardVO vo) {
+		sqlSession.insert("com.kosta.finalproject.dao.RRBoardMapper.RPboardinsert", vo);
 
-	sqlSession.update("com.kosta.finalproject.dao.RRBoardMapper.updateRPB",vo);
-}
+	}
 
-public void setRPBstatus(RPboardVO vo) {
+	public List<RPboardVO> showALL(SearchVO vo) {
 
-	sqlSession.update("com.kosta.finalproject.dao.RRBoardMapper.setRPBstatus",vo);
-	
-}
+		return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.showALL", vo);
+	}
 
-public List<RPboardVO> SelectCalc(SearchVO  vo) {
+	public RPboardVO selectModyRPB(int seqNum) {
 
+		return sqlSession.selectOne("com.kosta.finalproject.dao.RRBoardMapper.selectModyRPB", seqNum);
+	}
 
-	return 	sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.SelectCalc", vo);
-}
+	@Override
+	public void updateRPB(RPboardVO vo) {
+
+		sqlSession.update("com.kosta.finalproject.dao.RRBoardMapper.updateRPB", vo);
+	}
+
+	public void setRPBstatus(RPboardVO vo) {
+
+		sqlSession.update("com.kosta.finalproject.dao.RRBoardMapper.setRPBstatus", vo);
+
+	}
+
+	public List<RPboardVO> SelectCalc(SearchVO vo) {
+
+		return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.SelectCalc", vo);
+	}
+
+	public void setRRStatus(RRboardVO vo) {
+
+		sqlSession.update("com.kosta.finalproject.dao.RRBoardMapper.setRRStatus", vo);
+	}
 
 }

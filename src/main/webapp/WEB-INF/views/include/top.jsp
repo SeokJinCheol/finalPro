@@ -94,6 +94,16 @@
 		<ul class="w3-navbar w3-center" style="height:50px; border-top:0.5px solid black; ">
 			<li style="width:2%"><p></p></li>
 			
+			<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="siteintro">사 이 트 소 개&nbsp;<i class="fa fa-caret-down"></i></a>
+				<div class="w3-dropdown-content w3-white w3-card-4">
+			        <a href="siteintro">서 비 스 소 개</a>
+			        <a href="use">이 용 방 법</a>
+			    	<a href="rule">이 용 규 칙</a>
+			    </div>	
+			</li>
+			
+			<li style="width:5%"><p></p></li>
+			
 			<!-- Menu1_관리자가 아닌 경우 -->
 			<security:authorize ifNotGranted="role_master">
 				<!-- 비회원인 경우 -->
@@ -158,45 +168,58 @@
 	        <security:authorize ifAnyGranted="role_master">
 	       		<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="menu2">물 품 대 여&nbsp;<i class="fa fa-caret-down"></i></a>
 					<div class="w3-dropdown-content w3-white w3-card-4" >
-	       				<a href="rentreadylist">대 여 신 청</a>
-	       				<a href="rentoutlist">반 납 신 청</a>
+	       				<a href="rentreadylist">물 품 대 여 관 리</a>
+	       				<a href="rentoutlist">물 품 반 납 관 리</a>
 	       			</div>
 	       		</li>
 	    	</security:authorize>
 			
 			<li style="width:5%"><p></p></li>
 			
-			<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="menu3">장 소 대 여&nbsp;<i class="fa fa-caret-down"></i></a>
-				<div class="w3-dropdown-content w3-white w3-card-4">
-			        <a href="menu3_1">menu3_1</a>
-			        <a href="menu3_2">menu3_2</a>
-			    	<a href="menu3_3">menu3_3</a>
-			    	<a href="menu3_4">menu3_4</a>
-			    	<a href="menu3_5">menu3_5</a>
-			    </div>
-			</li>
+			<!-- Menu3_관리자가 아닌 경우 -->
+			<security:authorize ifNotGranted="role_master">
+				<!-- 비회원인 경우 -->
+				<security:authorize ifNotGranted="role_user, role_com, role_master">
+					<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="Login">장 소 대 여&nbsp;<i class="fa fa-caret-down"></i></a>
+						<div class="w3-dropdown-content w3-white w3-card-4" >
+				        	<a href="Login">등 록 하 기</a>
+					        <a href="Login">지 도 찾 기</a>
+					    	<a href="Login">목 록 찾 기</a>
+				    	</div>
+				    </li>
+		    	</security:authorize>
+		    	
+		    	<!-- 회원인 경우 -->
+				<security:authorize ifAnyGranted="role_user, role_com">
+					<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="menu3">장 소 대 여&nbsp;<i class="fa fa-caret-down"></i></a>
+						<div class="w3-dropdown-content w3-white w3-card-4" >
+				        	<a href="menu3_1">등 록 하 기</a>
+					        <a href="menu3_2">지 도 찾 기</a>
+					    	<a href="menu3_3">목 록 찾 기</a>
+				    	</div>
+			    	</li>
+		    	</security:authorize>
+	        </security:authorize>
 			
+			<!-- Menu3_관리자인 경우 -->
+	        <security:authorize ifAnyGranted="role_master">
+	       		<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="menu3">장 소 대 여&nbsp;<i class="fa fa-caret-down"></i></a>
+					<div class="w3-dropdown-content w3-white w3-card-4" >
+	       				<a href="RRlist">장 소 등 록 관 리</a>
+			    		<a href="menu3_5">장 소 대 여 관 리</a>
+			    		<a href="menu3_1">등 록 하 기</a>
+				        <a href="menu3_2">지 도 찾 기</a>
+				    	<a href="menu3_3">목 록 찾 기</a>
+	       			</div>
+	       		</li>
+	    	</security:authorize>
+
 			<li style="width:5%"><p></p></li>
 			
 			<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="free_list">게 시 판&nbsp;<i class="fa fa-caret-down"></i></a>
 				<div class="w3-dropdown-content w3-white w3-card-4">
 			        <a href="free_list">요 청 게 시 판</a>
 			    	<a href="free4_list">자 유 게 시 판</a>
-			    	<!-- <a href="menu4_3">menu4_3</a>
-			    	<a href="menu4_4">menu4_4</a>
-			    	<a href="menu4_5">menu4_5</a> -->
-			    </div>	
-			</li>
-			
-			<li style="width:5%"><p></p></li>
-			
-			<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="siteintro">사 이 트 소 개&nbsp;<i class="fa fa-caret-down"></i></a>
-				<div class="w3-dropdown-content w3-white w3-card-4">
-			        <a href="siteintro">서 비 스 소 개</a>
-			        <a href="use">이 용 방 법</a>
-			    	<a href="rule">이 용 규 칙</a>
-			    	<!-- <a href="menu5_3">menu5_3</a>
-			    	<a href="menu5_4">menu5_4</a> -->
 			    </div>	
 			</li>
 		</ul>

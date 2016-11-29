@@ -22,6 +22,7 @@ CREATE SEQUENCE rpb_seq
 start with 1
 increment BY 1
 nocache;
+
 select * from rrb_seq.nextval
 
 select * from rpBoard;
@@ -30,4 +31,4 @@ delete from rpboard;
 
 drop table RpBoard
 
-drop sequence rrb_seq;
+drop sequence rpb_seq;

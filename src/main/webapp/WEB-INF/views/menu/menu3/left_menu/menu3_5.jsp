@@ -33,6 +33,11 @@ function setpakageStatus(name){
 		<div style="margin-bottom: 20px; margin-top: 70px;">
 			<h4>- MENU3_5 -</h4>
 			
+			<form action="menu3_5" method="post"><input type="hidden" name="Status" value="허가대기"><input type="submit" value="허가대기"></form>
+			<form action="menu3_5" method="post"><input type="hidden" name="Status" value="허가완료"><input type="submit" value="허가완료"></form>
+			<form action="menu3_5" method="post"><input type="hidden" name="Status" value="정산완료"><input type="submit" value="정산완료"></form>
+			<form action="menu3_5" method="post"><input type="hidden" name="Status" value="취소완료"><input type="submit" value="취소완료"></form>
+			
 		<table border="1">
 		<tr><th>codeNum</th><th>company</th> <th>startDate</th> <th>endDate</th>
 		<th>UserstartDateate</th><th>UserendDate</th> <th>bill</th> <th>contents</th><th>reaquestId</th> 

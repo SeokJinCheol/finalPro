@@ -63,7 +63,8 @@
 	</select>
 
 	<update id="updateMemberPro" parameterType="com.kosta.finalproject.vo.UsersVO">
-		UPDATE users SET name=#{name}, pwd=#{pwd}, birthday=#{birthday}, phoneNum1=#{phoneNum1}, phoneNum2=#{phoneNum2}, email=#{email},
+		UPDATE users SET name=#{name}, pwd=#{pwd}, birthday=#{birthday},
+		phoneNum1=#{phoneNum1}, phoneNum2=#{phoneNum2}, email=#{email},
 		postcode=#{postcode}, address=#{address}, address2=#{address2} WHERE
 		id=#{id}
 	</update>

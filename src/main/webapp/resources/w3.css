@@ -7,6 +7,28 @@
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+.left-admin ul {
+	list-style-type: none;
+}
+
+.left-admin ul ul {
+	display: none;
+}
+
+.left-admin ul li:hover ul {
+	display: block; /* 마우스 커서 올리면 서브메뉴 보이게 하기 */
+}
+
+.left-admin ul li a:hover {
+	border: 0px solid #000;
+	background-image: linear-gradient(-20deg, #b5d8f4, #b5d8f4 50%, #f5f6f7 50%, #f5f6f7);
+	background-size: 100% 500%;
+	background-position: bottom;
+	transition: all 0.3s ease;
+	font: bolder;
+	color: white;
+}
+
 .join-btn {
 	-moz-box-shadow: inset 0px 1px 0px 0px #bbdaf7;
 	-webkit-box-shadow: inset 0px 1px 0px 0px #bbdaf7;
@@ -531,7 +553,6 @@
 	padding-top: 3px;
 }
 
-
 .join-btn1 {
 	width: 93px;
 	border: none;
@@ -720,11 +741,10 @@
 	background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed',
 		endColorstr='#dfdfdf', GradientType=0);
-	background-color: #ededed;
+	background-color: #add1fe;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
 	border-radius: 6px;
-	border: 1px solid #dcdcdc;
 	display: inline-block;
 	cursor: pointer;
 	font-family: Arial;
@@ -733,11 +753,10 @@
 	padding: 6px 24px;
 	text-decoration: none;
 	text-shadow: 0px 1px 0px #ffffff;
-	background-image: url("/team4/resources/images/update322.png");
+	background-image: url("/team4/resources/images/free_update.png");
 	background-repeat: no-repeat;
 	background-position: 9px;
 	background-size: 15px 15px;
-	background-color: #dfdfdf;
 	width: 15px;
 }
 
@@ -751,8 +770,8 @@
 	background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf',
 		endColorstr='#ededed', GradientType=0);
-	background-color: #dfdfdf;
-	background-image: url("/team4/resources/images/update322.png");
+	background-color: #65A9FC;
+	background-image: url("/team4/resources/images/free_update.png");
 	background-repeat: no-repeat;
 	background-position: 9px;
 	background-size: 15px 15px;
@@ -1018,7 +1037,6 @@
 	background-repeat: no-repeat;
 	background-position: 18px;
 	background-size: 20px 20px;
-
 	width: 15px;
 }
 
@@ -1115,11 +1133,10 @@
 	background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed',
 		endColorstr='#dfdfdf', GradientType=0);
-	background-color: #ededed;
+	background-color: #add1fe;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
 	border-radius: 6px;
-	border: 1px solid #dcdcdc;
 	display: inline-block;
 	cursor: pointer;
 	font-family: Arial;
@@ -1128,11 +1145,10 @@
 	padding: 6px 24px;
 	text-decoration: none;
 	text-shadow: 0px 1px 0px #ffffff;
-	background-image: url("/team4/resources/images/delete.png");
+	background-image: url("/team4/resources/images/delete32.png");
 	background-repeat: no-repeat;
 	background-position: 9px;
 	background-size: 13px 13px;
-	background-color: #dfdfdf;
 	width: 15px;
 }
 
@@ -1146,8 +1162,8 @@
 	background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf',
 		endColorstr='#ededed', GradientType=0);
-	background-color: #dfdfdf;
-	background-image: url("/team4/resources/images/delete.png");
+	background-color: #65A9FC;
+	background-image: url("/team4/resources/images/delete32.png");
 	background-repeat: no-repeat;
 	background-position: 9px;
 	background-size: 13px 13px;
@@ -1252,7 +1268,7 @@
 	overflow: hidden;
 	text-decoration: none !important;
 	color: #000000;
-	background-color: #A0A0A0;
+	background-color: #add1fe;
 	text-align: center;
 	cursor: pointer;
 	white-space: nowrap;
@@ -1291,7 +1307,7 @@
 	border-radius: 10px;
 }
 
-.mycancel-btn{
+.mycancel-btn {
 	border: none;
 	display: inline-block;
 	outline: 0;
@@ -1307,14 +1323,14 @@
 	border-radius: 10px;
 }
 
-.mycancel2-btn{
+.mycancel2-btn {
 	border: none;
 	display: inline-block;
 	outline: 0;
 	padding: 8px 20px;
 	vertical-align: middle;
 	overflow: hidden;
-	text-decoration: none !important;	
+	text-decoration: none !important;
 	color: #000000;
 	background-color: #65A9FC;
 	text-align: center;
@@ -1323,14 +1339,14 @@
 	border-radius: 10px;
 }
 
-.mail-btn{
+.mail-btn {
 	border: none;
 	display: inline-block;
 	outline: 0;
 	padding: 8px 55px;
 	vertical-align: middle;
 	overflow: hidden;
-	text-decoration: none !important;	
+	text-decoration: none !important;
 	color: #000000;
 	background-color: #bfd6ff;
 	text-align: center;
@@ -1348,7 +1364,7 @@
 	overflow: hidden;
 	text-decoration: none !important;
 	color: #000000;
-	background-color: #A0A0A0;
+	background-color: #add1fe;
 	text-align: center;
 	cursor: pointer;
 	white-space: nowrap;
@@ -1622,6 +1638,26 @@ audio
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :not
 
 
@@ -1697,7 +1733,27 @@ audio
 
 
 
+
+
+
+
+
+
+
+
+
+
  
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1850,7 +1906,27 @@ controls
 
 
 
+
+
+
+
+
+
+
+
+
+
  
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2075,7 +2151,37 @@ display
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2225,7 +2331,37 @@ display
 
 
 
+
+
+
+
+
+
+
+
+
+
 none
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2524,6 +2660,26 @@ height
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
 
 
@@ -2599,7 +2755,27 @@ height
 
 
 
+
+
+
+
+
+
+
+
+
+
  
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2876,6 +3052,26 @@ svg
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :not
 
 
@@ -2951,7 +3147,27 @@ svg
 
 
 
+
+
+
+
+
+
+
+
+
+
  
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3102,7 +3318,27 @@ svg
 
 
 
+
+
+
+
+
+
+
+
+
+
  
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3327,7 +3563,37 @@ overflow
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3477,7 +3743,37 @@ overflow
 
 
 
+
+
+
+
+
+
+
+
+
+
 hidden
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4022,10 +4318,12 @@ ul.w3-ul li:last-child {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
+	z-index: 100;
 }
 
 .w3-navbar li {
-	float: left
+	float: left;
+	z-index: 100;
 }
 
 .w3-dropdown-content {
@@ -4045,6 +4343,7 @@ ul.w3-ul li:last-child {
 .w3-navbar li a, .w3-navitem {
 	display: block;
 	padding: 8px 16px;
+	z-index: 100;
 }
 
 /* 마우스 올릴 때, 최후 색변화 */
@@ -4056,6 +4355,7 @@ ul.w3-ul li:last-child {
 	transition: all 0.8s ease;
 	color: white;
 	font: bolder;
+	z-index: 100;
 }
 
 .left-menu a {
@@ -4105,6 +4405,7 @@ ul.w3-ul li:last-child {
 	background-position: bottom;
 	transition: all 0.8s ease;
 	font: bolder;
+	
 }
 
 .w3-navbar .w3-dropdown-hover:hover, .w3-navbar .w3-dropdown-hover:first-child,
@@ -4331,7 +4632,7 @@ ul.w3-ul li:last-child {
 
 .w3-dropdown-hover:hover .w3-dropdown-content {
 	display: block;
-	z-index: 1;
+	z-index: 100;
 	width: 15%;
 }
 
@@ -4679,7 +4980,27 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -4903,6 +5224,26 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	:not
 	
 	
@@ -4978,7 +5319,27 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -5129,7 +5490,27 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -5354,7 +5735,37 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	:
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -5504,7 +5915,37 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	none
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -5803,6 +6244,26 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	:
 	
 	
@@ -5878,7 +6339,27 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -6032,6 +6513,26 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6655,7 +7156,47 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6958,7 +7499,47 @@ transform
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7269,7 +7850,47 @@ keyframes w3-spin { 0%{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7572,7 +8193,47 @@ transform
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7975,7 +8636,47 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8280,7 +8981,47 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8591,7 +9332,47 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8896,7 +9677,47 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
