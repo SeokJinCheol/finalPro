@@ -19,30 +19,41 @@
 	</div>
 
 	<div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
-	    <table style="padding: 70px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
-			<c:forEach items="${maillist}" var="maillist">
-				<tr class="top-bottom-border" style="margin-bottom: 20px; text-align: center;">
-			    	<td style="border-bottom: 3px solid #fff; width: 10%; ">
-			    		<img src="/team4/resources/images/mail4444.png" style="width: 40%; height: 30px;">
-			    	</td>
-			    	
-			    	<td style="border-bottom: 3px solid #fff; width:20%;" class="top-bottom-border">
-			    		${maillist.sid}
-			    	</td>
-			    	
-			    	<td style="border-bottom: 3px solid #fff; width:45%;" class="top-bottom-border">
-			    		${maillist.text}
-			    	</td>
-			    	
-			    	<td style="border-bottom: 3px solid #fff; width:15%;" class="top-bottom-border">
-			    		${maillist.senddate}
-			    	</td>
-			    	
-			    	<td style="border-bottom: 3px solid #fff; width:10%;" >
-			    		<img src="/team4/resources/images/remail2.png" onmouseover="this.src='/team4/resources/images/remail.png'" onmouseout="this.src='/team4/resources/images/remail2.png'" style="width: 40%; height: 20px;" onclick="window.open('mail?rid=${maillist.sid}', '','left=100, top=150, width=400, height=350, status=1')">
-			    	</td>
-			    </tr>
-		    </c:forEach>
+	    <table style="height:400px; width:660px; padding: 70px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
+				<thead style="table-layout:fixed; height:30px;">
+					<tr class="bottom-border2" style=" height:30px; margin-bottom: 20px; background-color: #80b5ea; color:white; text-align: center;">
+				        <td width=195 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">보 낸 이</td>
+				        <td width=300 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">내 　 용</td>
+				        <td width=100 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">보낸날짜</td>
+				        <td width=65 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">답 장</td>
+				    </tr>
+				</thead>
+
+				<tbody style="height:370px; overflow-y: auto; position: absolute;">
+					<c:forEach items="${maillist}" var="maillist">
+						<tr onMouseOver="this.style.backgroundColor='#eff7fc'" onMouseOut="this.style.backgroundColor='#fafafa'" style=" height:30px;">
+					    	<td width=65  style="border-bottom: 3px solid #fff; ">
+					    		<img src="/team4/resources/images/mail4444.png" style="width: 40%; height: 30px;">
+					    	</td>
+					    	
+					    	<td width=130  style="border-bottom: 3px solid #fff;">
+					    		${maillist.sid}
+					    	</td>
+					    	
+					    	<td width=300 style="border-bottom: 3px solid #fff;">
+					    		${maillist.text}
+					    	</td>
+					    	
+					    	<td width=100  style="border-bottom: 3px solid #fff;">
+					    		${maillist.senddate}
+					    	</td>
+					    	
+					    	<td width=65 style="border-bottom: 3px solid #fff;" >
+					    		<img src="/team4/resources/images/remail2.png" onmouseover="this.src='/team4/resources/images/remail.png'" onmouseout="this.src='/team4/resources/images/remail2.png'" style="width: 40%; height: 20px;" onclick="window.open('mail?rid=${maillist.sid}', '','left=100, top=150, width=400, height=350, status=1')">
+					    	</td>
+					    </tr>
+				    </c:forEach>
+				</tbody>
 		</table>
     </div>
 </body>
