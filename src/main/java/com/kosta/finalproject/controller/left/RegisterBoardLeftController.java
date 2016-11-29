@@ -16,10 +16,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kosta.finalproject.dao.CheckBoardDaoImpl;
+import com.kosta.finalproject.dao.MailImpl;
 import com.kosta.finalproject.dao.RegisterBoardDaoImpl;
 import com.kosta.finalproject.dao.ReviewImpl;
 import com.kosta.finalproject.dao.StorageBoardDaoImpl;
 import com.kosta.finalproject.vo.CheckBoardVO;
+import com.kosta.finalproject.vo.MailVO;
 import com.kosta.finalproject.vo.RegisterBoardVO;
 import com.kosta.finalproject.vo.ReviewVO;
 import com.kosta.finalproject.vo.StorageBoardVO;
@@ -38,6 +40,9 @@ public class RegisterBoardLeftController {
 
 	@Autowired
 	private StorageBoardDaoImpl storageBoardDaoImpl;
+	
+	@Autowired
+	private MailImpl mailImpl;
 
 	@RequestMapping("/menu2_1")
 	public String menu2_1(Model model, HttpServletRequest request) {
@@ -160,7 +165,24 @@ public class RegisterBoardLeftController {
 	@RequestMapping("/rentcancel")
 	public String rentcancel(Model model, HttpServletRequest request) {
 
-		String pagecheck = request.getParameter("pagecheck");
+		//현재시간 가져오기
+	      long time = System.currentTimeMillis();
+	      SimpleDateFormat ctime = new SimpleDateFormat("yyyy-MM-dd");
+	      String CurrentTime = ctime.format(new Date(time));
+
+	      //메일 발송
+	      String pagecheck = request.getParameter("pagecheck");
+	      String rentter = request.getParameter("rentter");
+	      String codeNum = request.getParameter("codeNum");
+	      String text = codeNum + "번의 대여 신청이 취소되었습니다.";
+	      
+	      MailVO mailvo = new MailVO();
+	      mailvo.setRid(rentter);
+	      mailvo.setSid("admin");
+	      mailvo.setText(text);
+	      mailvo.setSenddate(CurrentTime);
+	      
+	      mailImpl.sendmail(mailvo);
 
 		// 로그인 정보 확인
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
