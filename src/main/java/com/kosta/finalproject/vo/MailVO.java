@@ -1,12 +1,20 @@
 package com.kosta.finalproject.vo;
 
 public class MailVO {
-	
-	private String sid, rid, text;
+
+	private String sid, rid, text, senddate;
 	private int mailNum;
 
 	public int getMailNum() {
 		return mailNum;
+	}
+
+	public String getSenddate() {
+		return senddate;
+	}
+
+	public void setSenddate(String senddate) {
+		this.senddate = senddate;
 	}
 
 	public void setMailNum(int mailNum) {

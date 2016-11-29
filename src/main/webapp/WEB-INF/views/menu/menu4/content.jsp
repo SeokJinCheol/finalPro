@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>자유게시판_상세보기</title>
+<title>요청게시판_상세보기</title>
 <!-- CSS 연결-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/w3.css" type="text/css" media="screen">
@@ -22,17 +22,17 @@
 			<table  style="border-collapse: collapse; border-spacing: 0;">
 				<c:forEach items="${result}" var="result">
 					<c:if test="${result.bNum==result.bgnum }">
-						<tr height="35">
+						<tr  height="35">
 							<td class="top-border" style="font-family: 'Jeju Gothic', sans-serif;">&nbsp;&nbsp;물　품　사　진</td>
 							
 							<td width=30 class="top-bottom-border">
-		                    	<select name="category" readonly style="border-radius:4px; text-align:center; height:27px;">
+		                    	<select name="category" readonly style="border-radius:4px; text-align:center; height:27px; width:82px;">
 		                        	<option style="text-align:center;">${result.category}</option>
 		                     	</select>
 		                  	</td>
 			            
 			                <td class="top-bottom-border">
-			                	<input type="text" class="free-insert-title" name="title" style="margin-left: 13px;" readonly value="${result.title }">
+			                	<input type="text" class="free-insert-title" name="title" style="margin-left: 12px;" readonly value="${result.title }">
 			                </td>
 						</tr>
 						
@@ -40,50 +40,90 @@
 							<td style="margin-right:50px;" rowspan="4" class="bottom-border2" ><img src="/team4/resources/FreeBoardImg/${result.img}" style="width: 300px; height: 300px;"></td>
 						</tr>
 					
-					   <tr align="center" height="35">
+					   	<tr align="center" height="35">
 		               		<td style="text-align: center; font-family: 'Jeju Gothic', sans-serif; border-right:1px solid white;" class="bottom-border">작　성　자</td>
 		               		<td class="bottom-border"><input type="text" name="id" class="free-insert-title" value = "${result.id }" style="text-align:center;" readonly></td>
-		               </tr>
+		               	</tr>
 		               
 						<tr height="35">
 							<td colspan="2" style="font-family: 'Jeju Gothic', sans-serif;">　내　　용　</td>
 						</tr>
-
+	
 						<tr align="center" > 
 		                  <td colspan="2" class="bottom-border2">
 		                  	<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="10" cols="35" readonly>${result.contents }</textarea>
 		                  </td>
-		               </tr>
+		               	</tr>
 					</table>
 
-					<p>
-						<input type="button" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수　정" onclick="window.location='updateForm?bNum=${result.bNum}&bgnum=${result.bgnum }&id=${result.id } '"/>
-						&nbsp;&nbsp;&nbsp;
-						<input type="button" class="free_delete-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;삭　제" onclick="window.location='deleteForm?bNum=${result.bNum}&bgnum=${result.bgnum }&id=${result.id } '"/>
-						&nbsp;&nbsp;&nbsp;
-						<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="window.location='free_list'"/>
-					</p>
+					<div align=center>
+						<!-- 관리자는 모든 글을 수정/삭제 가능 -->
+						<security:authorize ifAnyGranted="role_master">
+							<form action="updateForm" method="post" style="float: left; width: 18%; margin-left: 32%;">
+					            <input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수　정" /> 
+					            
+					            <input type="hidden" name="bNum" value="${result.bNum}"> 
+					            <input type="hidden" name="bgnum" value="${result.bgnum}"> 
+					            <input type="hidden" name="id" value="${result.id}">
+	         				</form>
+						
+							<form action="deleteForm" style="float: left; width: 18%;">
+					            <input type="submit" class="free_delete-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;삭　제" /> 
+					            
+					            <input type="hidden" name="bNum" value="${result.bNum}"> 
+					            <input type="hidden" name="bgnum" value="${result.bgnum}"> 
+					            <input type="hidden" name="id" value="${result.id}">
+					        </form>
+						</security:authorize>
+						
+						<!-- 비회원인 경우, 일반회원인데 자신의 글인 경우 -->
+						<security:authorize ifNotGranted="role_master">
+							<c:if test="${result.id == session_id}">
+								<form action="updateForm" method="post" style="float: left; width: 18%; margin-left: 32%;">
+						            <input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수　정" /> 
+						            
+						            <input type="hidden" name="bNum" value="${result.bNum}"> 
+						            <input type="hidden" name="bgnum" value="${result.bgnum}"> 
+						            <input type="hidden" name="id" value="${result.id}">
+		         				</form>
+							
+								<form action="deleteForm" style="float: left; width: 18%;">
+						            <input type="submit" class="free_delete-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;삭　제" /> 
+						            
+						            <input type="hidden" name="bNum" value="${result.bNum}"> 
+						            <input type="hidden" name="bgnum" value="${result.bgnum}"> 
+						            <input type="hidden" name="id" value="${result.id}">
+						        </form>
+							</c:if>
+							
+							<c:if test="${result.id != session_id}">
+								<p style="margin-top: 30px;"></p>
+							</c:if>
+						</security:authorize>
+					</div>
 
-					<!-- 리플 달기!! -->
-					<form action="insertForm" method="post">
-						<table style="border-collapse: collapse; border-spacing: 0; margin-bottom:15px;">
-							<tr>
-								<td>
-									<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="3" cols="60" required></textarea>
-								</td>
-								
-								<td>
-									<input class="reply-btn" type="submit" value="답글">
-								</td>
-							</tr>
-						</table>
-		
-						<input type="hidden" name="bNum" value="${result.bNum }"> 
-						<input type="hidden" name="bgnum" value="${result.bgnum }"> 
-						<input type="hidden" name="groupnum" value="${result.groupnum }">
-						<input type="hidden" name="ranknum" value="${result.ranknum }">
-						<input type="hidden" name="id" value="${session_id}" />
-					</form>
+					<security:authorize ifAnyGranted="role_user, role_com, role_master">
+						<!-- 리플 달기!! -->
+						<form action="insertForm2" method="post">
+							<table style="border-collapse: collapse; border-spacing: 0; margin-bottom:15px;">
+								<tr>
+									<td>
+										<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="3" cols="60" required></textarea>
+									</td>
+									
+									<td>
+										<input class="reply-btn" type="submit" value="답글">
+									</td>
+								</tr>
+							</table>
+			
+							<input type="hidden" name="bNum" value="${result.bNum }"> 
+							<input type="hidden" name="bgnum" value="${result.bgnum }"> 
+							<input type="hidden" name="groupnum" value="${result.groupnum }">
+							<input type="hidden" name="ranknum" value="${result.ranknum }">
+							<input type="hidden" name="id" value="${session_id}" />
+						</form>
+					</security:authorize>
 				</c:if>
 			</c:forEach>
 
@@ -100,19 +140,67 @@
 								${result.id }
 							</td>
 								
-							<td width="40%">
-								${result.contents }
+							<td width="50%">
+								${result.contents} 
+								<input type="hidden" value="${result.contents}" name="contents">
 							</td>
 							
 							<!-- 날짜 -->							
-							<td width="17%">
+							<td width="25%">
 								<fmt:formatDate value="${result.bDate}" pattern="yyyy-MM-dd"/>
 							</td>
 						
+							<%-- <td>
+								<!-- 댓글에 댓글버튼 -->
+								<form action="insert_reply" method=post style="width:20px;">
+			                        <input class="reply-btn2" type="submit" style="background-image: url('/team4/resources/images/arrow.png'); width:30px; background-repeat: no-repeat; background-position: center;" value="">
+			                        <input type="hidden" name="bNum" value="${result.bNum}">
+			                        <input type="hidden" name="bgnum" value="${result.bgnum}">
+			                        <input type="hidden" name="groupnum" value="${result.groupnum}">
+			                        <input type="hidden" name="ranknum" value="${result.ranknum}">
+		                   		</form>
+							</td> --%>
+							
 							<td>
-								<input type="button" style="background-image: url('/team4/resources/images/arrow.png'); width:30px; background-repeat: no-repeat; background-position: center;" class="reply-btn2" onclick="window.location='insertForm?bNum=${result.bNum}&bgnum=${result.bgnum }&groupnum=${result.groupnum}&ranknum=${result.ranknum} '">
-								<input type="button" style="background-image: url('/team4/resources/images/reupdate.png'); width:30px; background-repeat: no-repeat; background-position: center;" onclick="window.location='updateForm?bNum=${result.bNum}&bgnum=${result.bgnum }&id=${result.id } '" class="reply-btn2">
-								<input type="button" style="background-image: url('/team4/resources/images/redelete.png'); width:30px; background-repeat: no-repeat; background-position: center;" onclick="window.location='deleteForm?bNum=${result.bNum}&bgnum=${result.bgnum }&id=${result.id } '" class="reply-btn2">
+								<!-- 내가 쓴 리플 수정/삭제 -->
+								<security:authorize ifNotGranted="role_master">
+									<c:if test="${result.id == session_id}">
+ 										<%-- <!-- 수정버튼 -->
+										<form action="update_reply" method=post>
+					                        <input class="reply-btn2" type="submit" style="background-image: url('/team4/resources/images/reupdate.png'); width:30px; background-repeat: no-repeat; background-position: center;" value="">
+					                        <input type="hidden" name="bNum" value="${result.bNum}">
+					                        <input type="hidden" name="bgnum" value="${result.bgnum}">
+					                        <input type="hidden" name="id" value="${result.id}">
+				                   		</form> --%>
+										
+										<!-- 삭제버튼 -->
+										<form action="deleteForm" method=post style="width:20px;">
+					                        <input class="reply-btn2" type="submit" style="background-image: url('/team4/resources/images/redelete.png'); width:30px; background-repeat: no-repeat; background-position: center;" value="">
+					                        <input type="hidden" name="bNum" value="${result.bNum}">
+					                        <input type="hidden" name="bgnum" value="${result.bgnum}">
+					                        <input type="hidden" name="id" value="${result.id}">
+				                   		</form>
+				                   	</c:if>
+			                   	</security:authorize>
+	
+								<!-- 관리자일 경우 모든 댓글 삭제 가능 -->
+								<security:authorize ifAnyGranted="role_master">
+									<%-- <!-- 수정버튼 -->
+									<form action="update_reply" method=post>
+				                        <input class="reply-btn2" type="submit" style="background-image: url('/team4/resources/images/reupdate.png'); width:30px; background-repeat: no-repeat; background-position: center;" value="">
+				                        <input type="hidden" name="bNum" value="${result.bNum}">
+				                        <input type="hidden" name="bgnum" value="${result.bgnum}">
+				                        <input type="hidden" name="id" value="${result.id}">
+			                   		</form> --%>
+									
+									<!-- 삭제버튼 -->
+									<form action="deleteForm" method=post style="width:20px;">
+				                        <input class="reply-btn2" type="submit" style="background-image: url('/team4/resources/images/redelete.png'); width:30px; background-repeat: no-repeat; background-position: center;" value="">
+				                        <input type="hidden" name="bNum" value="${result.bNum}">
+					                    <input type="hidden" name="bgnum" value="${result.bgnum}">
+					                    <input type="hidden" name="id" value="${result.id}">
+			                   		</form>
+			                   	</security:authorize>
 							</td>
 						</tr>
 					</c:if>

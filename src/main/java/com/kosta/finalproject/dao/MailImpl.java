@@ -21,9 +21,9 @@ public class MailImpl implements MailDao {
 
 	@Override
 	public ArrayList<MailVO> mymaillist(String session_id) {
-        ArrayList<MailVO> result = new ArrayList<MailVO>();
-        MailMapper mailmapper = sqlSession.getMapper(MailMapper.class);
-        result = mailmapper.mymaillist(session_id);
-        return result;
+		ArrayList<MailVO> result = new ArrayList<MailVO>();
+		MailMapper mailmapper = sqlSession.getMapper(MailMapper.class);
+		result = mailmapper.mymaillist(session_id);
+		return result;
 	}
 }

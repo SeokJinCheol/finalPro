@@ -20,7 +20,7 @@ public interface RRBoardDao {
 	
 	//rp 보드 관련
 	
-	public List<RPboardVO> showALL(SearchVO vo);
+	public List<RPboardVO> showALL();
 
 	public void RPboardinsert(RPboardVO vo);
 

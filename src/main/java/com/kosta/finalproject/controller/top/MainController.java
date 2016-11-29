@@ -30,10 +30,10 @@ import com.kosta.finalproject.vo.UsersVO;
 public class MainController {
 	@Autowired
 	private FinalDaoImpl finalDaoImpl;
-	
+
 	@Autowired
 	private BoardDaoImpl boardDaoImpl;
-	
+
 	@Autowired
 	private QandADaoImpl qandADaoImpl;
 
@@ -51,7 +51,7 @@ public class MainController {
 		model.addAttribute("CONTENT", "about_us.jsp");
 		return "main";
 	}
-	
+
 	// mainSearch
 	@RequestMapping("/mainSearch")
 	public String getAllList(Model model, HttpServletRequest request) {
@@ -69,8 +69,8 @@ public class MainController {
 		int startRow = (currentPage * pageSize) - (pageSize - 1);
 		int endRow = currentPage * pageSize;
 		int count = 0, number = 0;
-		
-		//자유게시판 검색 리스트
+
+		// 자유게시판 검색 리스트
 		List<BoardVO> list = null;
 		if (keyword == null) {
 			count = boardDaoImpl.getListAllCount();
@@ -107,53 +107,50 @@ public class MainController {
 		} else {
 			list = Collections.EMPTY_LIST;
 		}
-		
+
 		model.addAttribute("result", list);
 		model.addAttribute("currentPage", new Integer(currentPage));
 		model.addAttribute("count", new Integer(count));
 		model.addAttribute("pageCount", pageCount);
 		model.addAttribute("pageSize", new Integer(pageSize));
-		
-		
+
 		int Qcount = 0;
-		
+
 		List<QandAVO> Qlist = null;
-	      if (keyword == null) {
-	         Qcount = qandADaoImpl.ListAllCount();  ///
-	      } else if (keyword.equalsIgnoreCase("title") && word != null) {
-	         Qcount = qandADaoImpl.getListTitleCount(word);
-	      } else if (keyword.equalsIgnoreCase("id") && word != null) {
-	    	 Qcount = qandADaoImpl.getListIDCount(word);
-	      }
+		if (keyword == null) {
+			Qcount = qandADaoImpl.ListAllCount(); ///
+		} else if (keyword.equalsIgnoreCase("title") && word != null) {
+			Qcount = qandADaoImpl.getListTitleCount(word);
+		} else if (keyword.equalsIgnoreCase("id") && word != null) {
+			Qcount = qandADaoImpl.getListIDCount(word);
+		}
 
-	      int pageCount1 = Math.round(Qcount / pageSize + (Qcount % pageSize == 0 ? 0 : 1));
-	      if (Qcount > 0) {
-	         if (keyword == null) {
-	        	 Qlist = qandADaoImpl.showAll(startRow, endRow);
-	            model.addAttribute("list", Qlist);
-	         }
+		int pageCount1 = Math.round(Qcount / pageSize + (Qcount % pageSize == 0 ? 0 : 1));
+		if (Qcount > 0) {
+			if (keyword == null) {
+				Qlist = qandADaoImpl.showAll(startRow, endRow);
+				model.addAttribute("list", Qlist);
+			}
 
-	         else if (keyword.equalsIgnoreCase("title") && word != null) {
+			else if (keyword.equalsIgnoreCase("title") && word != null) {
 
-	            Qlist = qandADaoImpl.selectTitle(word, startRow, endRow);
-	            model.addAttribute("list", Qlist);
-	            model.addAttribute("word", word);
-	            model.addAttribute("keyword", keyword);
+				Qlist = qandADaoImpl.selectTitle(word, startRow, endRow);
+				model.addAttribute("list", Qlist);
+				model.addAttribute("word", word);
+				model.addAttribute("keyword", keyword);
 
-	         }
+			}
 
-	         else if (keyword.equalsIgnoreCase("id") && word != null) {
-	            Qlist = qandADaoImpl.selectId(word, startRow, endRow);
-	            model.addAttribute("list", Qlist);
-	            model.addAttribute("word", word);
-	            model.addAttribute("keyword", keyword);
-	         }
-	      } else {
-	         list = Collections.EMPTY_LIST;
-	         System.out.println("여기는 리스트가 비어있으면 와");
-	      }
-		
-		
+			else if (keyword.equalsIgnoreCase("id") && word != null) {
+				Qlist = qandADaoImpl.selectId(word, startRow, endRow);
+				model.addAttribute("list", Qlist);
+				model.addAttribute("word", word);
+				model.addAttribute("keyword", keyword);
+			}
+		} else {
+			list = Collections.EMPTY_LIST;
+			System.out.println("여기는 리스트가 비어있으면 와");
+		}
 
 		model.addAttribute("Qcount", new Integer(Qcount));
 		model.addAttribute("pageCount1", pageCount1);
@@ -161,7 +158,6 @@ public class MainController {
 		model.addAttribute("LEFT", "menu/menu4/left.jsp");
 		return "main";
 	}
-	
 
 	// 로그인
 	@RequestMapping("/Login")
@@ -314,14 +310,14 @@ public class MainController {
 
 		UsersVO result = finalDaoImpl.confirmIdMember(id);
 		int check = 0;
-     
+
 		System.out.println(id);
-		
+
 		if (result == null && id != "") {
 			check = 0;
-		} else if(result == null && id == "") {
+		} else if (result == null && id == "") {
 			check = 1;
-		} else { 
+		} else {
 			check = 2;
 		}
 
@@ -330,7 +326,6 @@ public class MainController {
 
 		return "join/confirmId";
 	}
-	
 
 	// MyPage
 	@RequestMapping("/mypage")
@@ -448,7 +443,7 @@ public class MainController {
 		String id = request.getParameter("id");
 
 		UsersVO userlist = finalDaoImpl.updateMember(id);
-		
+
 		model.addAttribute("result", userlist);
 		model.addAttribute("CONTENT", "join/admin_update.jsp");
 

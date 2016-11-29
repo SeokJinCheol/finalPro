@@ -22,13 +22,14 @@ import com.kosta.finalproject.vo.RequestBoardVO;
 public class MypageController {
 	@Autowired
 	private MailImpl mailImpl;
-	
-    @Autowired
-    private RequestBoardDaoImpl requestBoardDaoImpl;
 
 	@Autowired
 	private RegisterBoardDaoImpl registerBoardDaoImpl;
 	
+    @Autowired
+    private RequestBoardDaoImpl requestBoardDaoImpl;
+
+
 	// 나의 대여 목록
 	@RequestMapping("/myrentlist")
 	public String myrentlist(Model model) {
@@ -47,35 +48,34 @@ public class MypageController {
 		model.addAttribute("LEFT", "join/mypage_left.jsp");
 		return "main";
 	}
-	
-    @RequestMapping("/mymaillist")
-    public String mymaillist(Model model, HttpServletRequest request){
-        
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String session_id = auth.getName();
-        model.addAttribute("session_id", session_id);
-        
-        List<MailVO> maillist = mailImpl.mymaillist(session_id);
-        
-        model.addAttribute("maillist", maillist);
-        model.addAttribute("CONTENT", "mypage/mymaillist.jsp");
-        model.addAttribute("LEFT", "join/mypage_left.jsp");
-        return "main";
-    }
-    
-    @RequestMapping("/myrequest")
-    public String myrequest(Model model, HttpServletRequest request){
-        
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String session_id = auth.getName();
-        model.addAttribute("session_id", session_id);
-        
-        List<RequestBoardVO> myrequest = requestBoardDaoImpl.RequestBoardUserSelectAll(session_id);
-        
-        model.addAttribute("myrequest", myrequest);
-        model.addAttribute("CONTENT", "mypage/myrequest.jsp");
-        model.addAttribute("LEFT", "join/mypage_left.jsp");
-        return "main";
-    }
 
+	@RequestMapping("/mymaillist")
+	public String mymaillist(Model model, HttpServletRequest request) {
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+		model.addAttribute("session_id", session_id);
+
+		List<MailVO> maillist = mailImpl.mymaillist(session_id);
+
+		model.addAttribute("maillist", maillist);
+		model.addAttribute("CONTENT", "mypage/mymaillist.jsp");
+		model.addAttribute("LEFT", "join/mypage_left.jsp");
+		return "main";
+	}
+
+	@RequestMapping("/myrequest")
+	public String myrequest(Model model, HttpServletRequest request) {
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+		model.addAttribute("session_id", session_id);
+
+		List<RequestBoardVO> myrequest = requestBoardDaoImpl.RequestBoardUserSelectAll(session_id);
+
+		model.addAttribute("myrequest", myrequest);
+		model.addAttribute("CONTENT", "mypage/myrequest.jsp");
+		model.addAttribute("LEFT", "join/mypage_left.jsp");
+		return "main";
+	}
 }

@@ -22,21 +22,21 @@ public class UseController {
 	}
 
 	@RequestMapping("/siteintro")
-	public String menu5_3(Model model) {
+	public String siteintro(Model model) {
 		model.addAttribute("CONTENT", "menu/menu5/left_menu/siteintro.jsp");
 		model.addAttribute("LEFT", "menu/menu5/left.jsp");
 		return "main";
 	}
 
 	@RequestMapping("/provider")
-	public String menu5_4(Model model) {
+	public String provider(Model model) {
 		model.addAttribute("CONTENT", "menu/menu5/left_menu/provider.jsp");
 		model.addAttribute("LEFT", "menu/menu5/left.jsp");
 		return "main";
 	}
 
 	@RequestMapping("/lender")
-	public String menu5_5(Model model) {
+	public String lender(Model model) {
 		model.addAttribute("CONTENT", "menu/menu5/left_menu/lender.jsp");
 		model.addAttribute("LEFT", "menu/menu5/left.jsp");
 		return "main";

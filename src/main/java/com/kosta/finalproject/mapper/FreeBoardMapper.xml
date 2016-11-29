@@ -26,7 +26,8 @@
    </insert>
    
    <select id="showBoard" resultMap="FreeResultMap"  parameterType="com.kosta.finalproject.vo.FreeBoardVO">
-      select * from (select * from (select rownum rnum ,bnum,title,id,img,count,(SELECT COUNT(*) FROM freeboard4 B WHERE B.bgnum=a.bnum) replyCount from freeBoard4 a where bgnum = 0 )
+      select * from (select * from (select rownum rnum ,bDate,bnum,title,id,img,count,(SELECT COUNT(*) FROM freeboard4 B WHERE B.bgnum=a.bnum) replyCount from freeBoard4 a where bgnum = 0 ORDER BY BNUM DESC)
+       
        where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow}
    </select>
    
@@ -39,11 +40,11 @@
    </update>
    
    <select id="selectBoardReply" parameterType="com.kosta.finalproject.vo.FreeBoardVO" resultMap="FreeResultMap">
-      SELECT ID, CONTENTS, BNUM, BGNUM FROM FREEBOARD4 WHERE BGNUM = #{bnum}
+      SELECT title,bDate,ID, CONTENTS, BNUM, BGNUM FROM FREEBOARD4 WHERE BGNUM = #{bnum} ORDER BY BNUM DESC
    </select>
    
    <select id="selectBoardTitle" parameterType="com.kosta.finalproject.vo.FreeBoardVO" resultMap="FreeResultMap">
-      select * from (select * from (select rownum rnum,bnum,title,id,img,count from freeBoard4 where bgnum= 0 and title like  '%' || #{title} || '%' )
+      select * from (select * from (select rownum rnum,bDate,bnum,category,title,id,img,count from FREEBOARD4 where bgnum= 0 and title like  '%' || #{title} || '%' )
        where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow}
    </select>
    
@@ -60,7 +61,7 @@
    </select>
    
    <select id="selectBoardId" parameterType="com.kosta.finalproject.vo.FreeBoardVO" resultMap="FreeResultMap">
-      select * from (select * from (select rownum as rnum ,bnum,title,id,img,count from freeBoard4 where bgnum= 0 and id like  '%' || #{id}  || '%')
+      select * from (select * from (select rownum as rnum ,bDate,bnum,title,id,img,count from freeBoard4 where bgnum= 0 and id like  '%' || #{id}  || '%')
       where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow}
    </select>
    

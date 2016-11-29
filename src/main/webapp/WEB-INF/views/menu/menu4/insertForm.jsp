@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>자유게시판_글쓰기</title>
+<title>요청게시판_글쓰기</title>
 <!-- CSS 연결-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/w3.css" type="text/css" media="screen">
@@ -19,7 +19,7 @@
 
 	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
 		<div style="margin-bottom: 20px; width: 73%; margin-top:40px;">	
-	  		<form action="insertForm" method="post" enctype="multipart/form-data">
+	  		<form action="insertForm2" method="post" enctype="multipart/form-data">
 		        <input type="hidden" name="bNum" value="${ bNum }"> 
 		        <input type="hidden" name="bgnum" value="${ bgnum }"> 
 		        <input type="hidden" name="groupnum" value="${ groupnum }"> 
@@ -67,23 +67,6 @@
 						<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='free_list'"/>
 					</p>
 				</c:if>
-		            
-		            
-		            
-		         	<table>
-		         	<!-- 댓글 달기 전에 나오는 로그인한 사람 이름하고 내용쓰는곳 -->
-		            <c:if test="${bNum != 0}">
-		                   <tr>
-		                  <td>ID</td>
-		                  <td><input type="text" name="id" value="${session_id}" readonly></td>
-		               </tr>   
-		                        
-		               <tr>
-		                  <td>Contents</td>
-		                  <td><input  type="text" name="contents" required><input type="submit" value="입력"></td>
-		               </tr>
-		            </c:if>
-				</table>  
 			</form>
 		</div>
    </div>

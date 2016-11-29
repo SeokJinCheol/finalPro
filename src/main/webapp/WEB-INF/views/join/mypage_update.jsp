@@ -12,95 +12,94 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/login.css" type="text/css" media="screen">
 </head>
 <body>
-   <div class="row" style="background:#6699DC; color:white; height:100px; text-align: right;line-height: 130px;">
-      <img src="/team4/resources/images/left-mypage12.png" style="margin-right:10px;">
-      <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">회 원 정 보 수 정</font>
-   </div>
+	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right;line-height: 130px;">
+		<img src="/team4/resources/images/left-mypage12.png" style="margin-right:10px;">
+		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">회 원 정 보 수 정</font>
+	</div>
 
-
-   <div align=center class="main-table" style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align:middle; display:table-cell;">
-      <div style="width: 40%;" align=center>
-         <form action="mypage_update" method="post" style="margin-top:40px; margin-bottom:20px;">
+	<div align=center class="main-table" style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align:middle; display:table-cell;">
+		<div style="width: 40%;" align=center>
+			<form action="mypage_update" method="post" style="margin-top:40px; margin-bottom:20px;">
                <table style="border-collapse: collapse; border-spacing: 0;">
-               <tr height="40">
-                     <td width=80 class="top-bottom-border">&nbsp;&nbsp;&nbsp;ID</td>
-                  <td class="top-bottom-border">
-                     <input type="text" name="id" class="free-insert-title w3-left" value="${result.id}" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" readonly> 
-                  </td>
-               </tr>
+					<tr height="40">
+		            	<td width=80 class="top-bottom-border">&nbsp;&nbsp;&nbsp;ID</td>
+						<td class="top-bottom-border">
+							<input type="text" name="id" class="free-insert-title w3-left" value="${result.id}" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" readonly> 
+						</td>
+					</tr>
                
-                     <tr height="40">
-                     <td width=80 class="bottom-border">&nbsp;&nbsp;&nbsp;PWD</td>
-                  <td class="bottom-border" align=center>
-                     <input type="password" name="pwd" class="free-insert-title w3-left" value="${result.pwd}" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" readonly> 
-                  </td>
-               </tr>
+               		<tr height="40">
+		            	<td width=80 class="bottom-border">&nbsp;&nbsp;&nbsp;PWD</td>
+						<td class="bottom-border" align=center>
+							<input type="password" name="pwd" class="free-insert-title w3-left" value="${result.pwd}" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" readonly> 
+						</td>
+					</tr>
 
-               <tr height="40">
-                     <td width=80 class="bottom-border">&nbsp;&nbsp;이　름</td>
-                  <td class="bottom-border">
-                     <input type="text" name="name" class="free-insert-title w3-left" value="${result.name}" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" required> 
-                  </td>
-               </tr>
-               
-               <tr height="40">
-                     <td width=80 class="bottom-border">&nbsp;&nbsp;생년월일</td>
-                  <td class="bottom-border">
-                     <input type="date" name="birthday" value="1990-01-01" value="${result.birthday}" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" required> 
-                  </td>
-               </tr>
+					<tr height="40">
+		            	<td width=80 class="bottom-border">&nbsp;&nbsp;이　름</td>
+						<td class="bottom-border">
+							<input type="text" name="name" class="free-insert-title w3-left" value="${result.name}" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" required> 
+						</td>
+					</tr>
+					
+					<tr height="40">
+		            	<td width=80 class="bottom-border">&nbsp;&nbsp;생년월일</td>
+						<td class="bottom-border">
+							<input type="date" name="birthday" value="1990-01-01" value="${result.birthday}" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" required> 
+						</td>
+					</tr>
 
-               <tr height="40">
-                     <td width=80 class="bottom-border">&nbsp;&nbsp;휴대전화</td>
-                  <td class="bottom-border">
-                     <input type="text" value="${result.phoneNum1}" name="phoneNum1" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" required> 
-                  </td>
-               </tr>
-               
-               <tr height="40">
-                     <td width=80 class="bottom-border">&nbsp;&nbsp;일반전화</td>
-                  <td class="bottom-border">
-                     <input type="text" value="${result.phoneNum2}" name="phoneNum2" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;"> 
-                  </td>
-               </tr>
-   
-               <tr height="40">
-                     <td width=80 class="bottom-border">&nbsp;&nbsp;&nbsp;E-mail</td>
-                  <td class="bottom-border">
-                     <input type="text" value="${result.email }" name="email" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" required> 
-                  </td>
-               </tr>
+					<tr height="40">
+		            	<td width=80 class="bottom-border">&nbsp;&nbsp;휴대전화</td>
+						<td class="bottom-border">
+							<input type="text" value="${result.phoneNum1}" name="phoneNum1" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" required> 
+						</td>
+					</tr>
+					
+					<tr height="40">
+		            	<td width=80 class="bottom-border">&nbsp;&nbsp;일반전화</td>
+						<td class="bottom-border">
+							<input type="text" value="${result.phoneNum2}" name="phoneNum2" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;"> 
+						</td>
+					</tr>
+	
+					<tr height="40">
+		            	<td width=80 class="bottom-border">&nbsp;&nbsp;&nbsp;E-mail</td>
+						<td class="bottom-border">
+							<input type="text" value="${result.email }" name="email" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" required> 
+						</td>
+					</tr>
 
-               <tr height="40">
-                     <td width=80 class="bottom-border">　주　소</td>
-                  <td class="bottom-border">
-                     <form id="FrmSave" name="FrmSave">
-                        <input type="text" id="postcode" name="postcode" value="${result.postcode}" class="free-insert-title w3-left" style="width:35%; height:35px; border-radius: 6px; margin-left:5px;" required placeholder="　우편번호">
-                                    <input type="button" class="join-btna w3-card-4 w3-right" value="검　색" style="margin-right:50px; margin-bottom:5px;" onclick="execDaumPostcode()">
-                                    <input type="text" id="address" name="address" value="${result.address}" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-bottom:5px; margin-left:5px;" required placeholder="　주　소">
-                                  <input type="text" id="address2" name="address2" value="${result.address2}" class="free-insert-title w3-left" style="width:80%; height:35px; border-radius: 6px; margin-bottom:5px; margin-left:5px;" required placeholder="　상　세　주　소">
+					<tr height="40">
+		            	<td width=80 class="bottom-border">　주　소</td>
+						<td class="bottom-border">
+							<form id="FrmSave" name="FrmSave">
+								<input type="text" id="postcode" name="postcode" value="${result.postcode}" class="free-insert-title w3-left" style="width:35%; height:35px; border-radius: 6px; margin-left:5px;" required placeholder="　우편번호">
+                              		<input type="button" class="join-btna w3-card-4 w3-right" value="검　색" style="margin-right:50px; margin-bottom:5px;" onclick="execDaumPostcode()">
+                              		<input type="text" id="address" name="address" value="${result.address}" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-bottom:5px; margin-left:5px;" required placeholder="　주　소">
+                               	<input type="text" id="address2" name="address2" value="${result.address2}" class="free-insert-title w3-left" style="width:80%; height:35px; border-radius: 6px; margin-bottom:5px; margin-left:5px;" required placeholder="　상　세　주　소">
                             </form>
                         </td>
-               </tr>
+					</tr>
 
-               <security:authorize ifAnyGranted="role_com, role_master">
-                  <tr>
-                         <td width=80 class="bottom-border2">　회　사</td>
-                         <td class="bottom-border2">
-                        <input type="text" name="company" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" value="${result.company}"> 
-                     </td>
-                      </tr>
-                     </security:authorize>
-            </table>
-            
+					<security:authorize ifAnyGranted="role_com, role_master">
+						<tr>
+		                   <td width=80 class="bottom-border2">　회　사</td>
+		                   <td class="bottom-border2">
+								<input type="text" name="company" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" value="${result.company}"> 
+						   </td>
+		                </tr>
+                  	</security:authorize>
+				</table>
+				
                 <p>
-               <input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수　정" />
-               &nbsp;&nbsp;&nbsp;
-               <input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='mypage'"/>
-            </p>
-         </form>
-      </div>
-   </div>
+					<input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수　정" />
+					&nbsp;&nbsp;&nbsp;
+					<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='mypage'"/>
+				</p>
+			</form>
+		</div>
+	</div>
 </body>
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>

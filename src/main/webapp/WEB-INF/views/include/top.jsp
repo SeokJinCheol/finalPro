@@ -19,19 +19,20 @@
 				<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="main"><img src="/team4/resources/images/home18.png">&nbsp;H o m e</a></li>
 				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><a href="about_us"><img src="/team4/resources/images/korea18.png">&nbsp;About us</a></li>
 				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QnA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
-				<!-- <li style="width:7%"><p></p></li> -->
+				<li style="width:7%"><p></p></li>
 				<li style="width:25%; padding: 0 0 3px 0;"><img class="w3-animate-opacity" src="/team4/resources/images/test-top.png" onclick="location.href='main'"></li>
-				<li style="width:12%"><p></p></li>
+				<li style="width:30%"><p></p></li>
 				
-				<li style="width:25%; padding: 45px 0 3px 0; font-size: 1px;">
-				<form action="mainSearch" method="post">   
-				<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
-					<option value="title" style="text-align:center;">Title</option>
-					<option value="id" style="text-align:center;">I D</option>
-				</select>
-			   <input type="text" name="word" value="${word}"/><input type="submit" value ="검색">
-			   </form>
-               </li>
+				<%-- <li style="width:25%; padding: 45px 0 3px 0; font-size: 1px;">
+					<form action="mainSearch" method="post">   
+						<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
+							<option value="title" style="text-align:center;">Title</option>
+							<option value="id" style="text-align:center;">I D</option>
+						</select>
+						
+			   			<input type="text" name="word" value="${word}"/><input type="submit" value ="검색">
+			  		</form>
+               </li> --%>
                
 		   		<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="Login"><img src="/team4/resources/images/login18.png">&nbsp;L o g i n</a></li>
 		   		<li style="width:1%"><p></p></li>
@@ -43,19 +44,20 @@
 				<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="main"><img src="/team4/resources/images/home18.png">&nbsp;H o m e</a></li>
 				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><a href="about_us"><img src="/team4/resources/images/korea18.png">&nbsp;About us</a></li>
 				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QnA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
-				<!-- <li style="width:7%"><p></p></li> -->
+				<li style="width:7%"><p></p></li>
 				<li style="width:25%; padding: 0 0 3px 0;"><img class="w3-animate-opacity" src="/team4/resources/images/test-top.png" onclick="location.href='main'"></li>
-				<li style="width:12%"><p></p></li>
+				<li style="width:30%"><p></p></li>
 				
-				<li style="width:25%; padding: 45px 0 3px 0; font-size: 1px;">
-				<form action="mainSearch" method="post">   
-				<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
-					<option value="title" style="text-align:center;">Title</option>
-					<option value="id" style="text-align:center;">I D</option>
-				</select>
-			   <input type="text" name="word" value="${word}"/><input type="submit" value ="검색">
-			   </form>
-               </li>
+				<%-- <li style="width:25%; padding: 45px 0 3px 0; font-size: 1px;">
+					<form action="mainSearch" method="post">   
+						<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
+							<option value="title" style="text-align:center;">Title</option>
+							<option value="id" style="text-align:center;">I D</option>
+						</select>
+						
+			   			<input type="text" name="word" value="${word}"/><input type="submit" value ="검색">
+			  		</form>
+               </li> --%>
 				
 		   		<li style="width:9%; padding: 45px 0 3px 0; font-size: 1px;"><a href="<c:url value="j_spring_security_logout"/>"><img src="/team4/resources/images/logout18.png">&nbsp;L o g o u t</a></li>
 		    	<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="mypage"><img src="/team4/resources/images/mypage18.png">&nbsp;My Page</a></li>
@@ -66,18 +68,20 @@
 				<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="main"><img src="/team4/resources/images/home18.png">&nbsp;H o m e</a></li>
 				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><a href="about_us"><img src="/team4/resources/images/korea18.png">&nbsp;About us</a></li>
 				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QnA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
-				<!-- <li style="width:7%"><p></p></li> -->
+				<li style="width:7%"><p></p></li>
 				<li style="width:25%; padding: 0 0 3px 0;"><img class="w3-animate-opacity" src="/team4/resources/images/test-top.png" onclick="location.href='main'"></li>
-				<li style="width:12%"><p></p></li>
+				<li style="width:22%"><p></p></li>
 				
-				<li style="width:25%; padding: 45px 0 3px 0; font-size: 1px;">
-				<form action="mainSearch" method="post">   
-				<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
-					<option value="title" style="text-align:center;">Title</option>
-					<option value="id" style="text-align:center;">I D</option>
-				</select>
-			   <input type="text" name="word" value="${word}"/><input type="submit" value ="검색">
-			   </form>
+				<%-- <li style="width:25%; padding: 45px 0 3px 0; font-size: 1px;">
+					<form action="mainSearch" method="post">   
+						<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
+							<option value="title" style="text-align:center;">Title</option>
+							<option value="id" style="text-align:center;">I D</option>
+						</select>
+						
+			   			<input type="text" name="word" value="${word}"/><input type="submit" value ="검색">
+			  		</form>
+               </li> --%>
 
 		   		<li style="width:9%; padding: 45px 0 3px 0; font-size: 1px;"><a href="<c:url value="j_spring_security_logout"/>"><img src="/team4/resources/images/logout18.png">&nbsp;L o g o u t</a></li>	
 		    	<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="mypage"><img src="/team4/resources/images/mypage18.png">&nbsp;My Page</a></li>
@@ -176,23 +180,23 @@
 			
 			<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="free_list">게 시 판&nbsp;<i class="fa fa-caret-down"></i></a>
 				<div class="w3-dropdown-content w3-white w3-card-4">
-			        <a href="free_list">자 유 게 시 판</a>
-			    	<a href="menu4_2">menu4_2</a>
-			    	<a href="menu4_3">menu4_3</a>
+			        <a href="free_list">요 청 게 시 판</a>
+			    	<a href="free4_list">자 유 게 시 판</a>
+			    	<!-- <a href="menu4_3">menu4_3</a>
 			    	<a href="menu4_4">menu4_4</a>
-			    	<a href="menu4_5">menu4_5</a>
+			    	<a href="menu4_5">menu4_5</a> -->
 			    </div>	
 			</li>
 			
 			<li style="width:5%"><p></p></li>
 			
-			<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="siteintro">서 비 스 소 개&nbsp;<i class="fa fa-caret-down"></i></a>
+			<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="siteintro">사 이 트 소 개&nbsp;<i class="fa fa-caret-down"></i></a>
 				<div class="w3-dropdown-content w3-white w3-card-4">
 			        <a href="siteintro">서 비 스 소 개</a>
 			        <a href="use">이 용 방 법</a>
 			    	<a href="rule">이 용 규 칙</a>
-			    	<a href="menu5_3">menu5_3</a>
-			    	<a href="menu5_4">menu5_4</a>
+			    	<!-- <a href="menu5_3">menu5_3</a>
+			    	<a href="menu5_4">menu5_4</a> -->
 			    </div>	
 			</li>
 		</ul>

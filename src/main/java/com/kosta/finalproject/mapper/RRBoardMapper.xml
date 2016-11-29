@@ -30,21 +30,8 @@
 		values(rpb_seq.nextval,#{codeNum}, #{company}, #{startDate}, #{endDate},#{userstartDate},#{userendDate}, #{bill}, #{contents}, #{reaquestId},#{registerId}, #{adress}, #{spotNum},SYSDATE)
 	</insert>
 	
-	<select id="showALL" parameterType="com.kosta.finalproject.vo.SearchVO" resultType="com.kosta.finalproject.vo.RPboardVO">
+	<select id="showALL" resultType="com.kosta.finalproject.vo.RPboardVO">
 	select * from RPBoard
-	
-	<where>
-		
-	<if test="Status != null">
-	
-	packageStatus=#{Status}
-	
-	</if>
-		
-	</where>
-	
-	ORDER BY registerDate DESC
-	
    	</select>
    	
    <select id="selectModyRPB" resultType="com.kosta.finalproject.vo.RPboardVO">
@@ -63,7 +50,6 @@
 	
 	<select id="SelectCalc" parameterType="com.kosta.finalproject.vo.SearchVO" resultType="com.kosta.finalproject.vo.RPboardVO">
 	select * from RPBoard 
-	
 	<where>
 	
 	packageStatus=#{Status}
@@ -75,8 +61,6 @@
 	</if>
 		
 	</where>
-	
-	ORDER BY registerDate DESC
    	</select>
 	
 	</mapper>

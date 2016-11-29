@@ -71,13 +71,4 @@
 	<select id="requestcontent" resultMap="RequestBoard"> 
        SELECT * FROM requestBoard WHERE codeNum=#{codeNum} 
     </select>
-    
-    <select id="selectTitle" resultMap="RequestBoard">
-		SELECT * FROM requestBoard WHERE title like  '%' || #{word} || '%'
-	</select>
-	
-	<select id="selectCategory" resultMap="RequestBoard">
-		SELECT * FROM requestBoard WHERE category like  '%' || #{word} || '%'
-	</select> 
-    
 </mapper>

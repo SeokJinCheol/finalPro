@@ -10,99 +10,99 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/login.css" type="text/css" media="screen">
 </head>
 <body>
-   <div class="row" style="background:#6699DC; color:white; height:100px; text-align: right;line-height: 130px;">
-      <img src="/team4/resources/images/joinForm.png" style="margin-right:10px;">
-      <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">회 원 가 입</font>
-   </div>
-   
+	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right;line-height: 130px;">
+		<img src="/team4/resources/images/joinForm.png" style="margin-right:10px;">
+		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">회 원 가 입</font>
+	</div>
+	
    <div align=center class="main-table" style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align:middle; display:table-cell;">
       <div style="width: 40%;" align=center>
          <div class="w3-rest w3-container w3-round-large w3-card-4" style="background-color: #F0F0f0;margin-bottom:20px; margin-top:20px;">
-         <form action="joinForm1" method="post" style="margin-top:20px;">
+			<form action="joinForm1" method="post" style="margin-top:20px;">
                 <!-- 이용약관 동의 -->
-            <div class="w3-row w3-wide" align=center style="margin-bottom:20px;">
-               <input type="checkbox" name="check" required> 
-               귀하는 해당사이트의    
-               <a href="join/agreement.jsp" target="_blank" onclick="window.open('agreement', 'agreement', 'left=100, top=0, width=900, height=600'); return false">이용약관</a>
-               에 동의합니다.
-            </div>
+				<div class="w3-row w3-wide" align=center style="margin-bottom:20px;">
+					<input type="checkbox" name="check" required> 
+					귀하는 해당사이트의 	
+					<a href="join/agreement.jsp" target="_blank" onclick="window.open('agreement', 'agreement', 'left=100, top=0, width=900, height=600'); return false">이용약관</a>
+					에 동의합니다.
+				</div>
                      
-                 <table style="border-collapse: collapse; border-spacing: 0;">
-               <tr height="40">
-                     <td width=80 class="top-bottom-border">&nbsp;&nbsp;&nbsp;ID</td>
-                  <td class="top-bottom-border">
-                     <input type="text" name="id" placeholder="　ID" class="free-insert-title w3-left" style="width:55%; height:35px; border-radius: 6px; margin-left:5px;" required> 
-                     <input type="button" class="join-btna w3-card-4 w3-right" name="confirm_id" value="ID 중복확인" style="margin-right:5px;" onclick="openConfirmid(this.form)">
-                  </td>
-               </tr>
-               
-               <tr height="40">
-                     <td width=80 class="bottom-border">&nbsp;&nbsp;&nbsp;PWD</td>
-                  <td class="bottom-border">
-                     <input type="password" name="pwd" placeholder="　비밀번호" class="free-insert-title w3-left" style="width:55%; height:35px; border-radius: 6px; margin-left:5px;" required> 
-                  </td>
-               </tr>
-               
-               <tr height="40">
-                     <td width=80 class="bottom-border">&nbsp;&nbsp;이　름</td>
-                  <td class="bottom-border">
-                     <input type="text" name="name" placeholder="　이름" class="free-insert-title w3-left" style="width:55%; height:35px; border-radius: 6px; margin-left:5px;" required> 
-                  </td>
-               </tr>
-               
-               <tr height="40">
-                     <td width=80 class="bottom-border">&nbsp;&nbsp;생년월일</td>
-                  <td class="bottom-border">
-                     <input type="date" name="birthday" value="1990-01-01" class="free-insert-title w3-left" style="width:65%; height:35px; border-radius: 6px; margin-left:5px;" required> 
-                  </td>
-               </tr>
-   
-               <tr height="40">
-                     <td width=80 class="bottom-border">&nbsp;&nbsp;휴대전화</td>
-                  <td class="bottom-border">
-                     <input type="text" name="phoneNum1" class="free-insert-title w3-left" style="width:65%; height:35px; border-radius: 6px; margin-left:5px;" required> 
-                  </td>
-               </tr>
-               
-               <tr height="40">
-                     <td width=80 class="bottom-border">&nbsp;&nbsp;일반전화</td>
-                  <td class="bottom-border">
-                     <input type="text" name="phoneNum2" class="free-insert-title w3-left" style="width:65%; height:35px; border-radius: 6px; margin-left:5px;" required> 
-                  </td>
-               </tr>
-               
-               <tr height="40">
-                     <td width=80 class="bottom-border">&nbsp;&nbsp;&nbsp;E-mail</td>
-                  <td class="bottom-border">
-                     <input type="text" name="email" class="free-insert-title w3-left" style="width:65%; height:35px; border-radius: 6px; margin-left:5px;" required> 
-                  </td>
-               </tr>
+              	<table style="border-collapse: collapse; border-spacing: 0;">
+					<tr height="40">
+		            	<td width=80 class="top-bottom-border">&nbsp;&nbsp;&nbsp;ID</td>
+						<td class="top-bottom-border">
+							<input type="text" name="id" placeholder="　ID" class="free-insert-title w3-left" style="width:55%; height:35px; border-radius: 6px; margin-left:5px;" required> 
+							<input type="button" class="join-btna w3-card-4 w3-right" name="confirm_id" value="ID 중복확인" style="margin-right:5px;" onclick="openConfirmid(this.form)">
+						</td>
+					</tr>
+					
+					<tr height="40">
+		            	<td width=80 class="bottom-border">&nbsp;&nbsp;&nbsp;PWD</td>
+						<td class="bottom-border">
+							<input type="password" name="pwd" placeholder="　비밀번호" class="free-insert-title w3-left" style="width:55%; height:35px; border-radius: 6px; margin-left:5px;" required> 
+						</td>
+					</tr>
+					
+					<tr height="40">
+		            	<td width=80 class="bottom-border">&nbsp;&nbsp;이　름</td>
+						<td class="bottom-border">
+							<input type="text" name="name" placeholder="　이름" class="free-insert-title w3-left" style="width:55%; height:35px; border-radius: 6px; margin-left:5px;" required> 
+						</td>
+					</tr>
+					
+					<tr height="40">
+		            	<td width=80 class="bottom-border">&nbsp;&nbsp;생년월일</td>
+						<td class="bottom-border">
+							<input type="date" name="birthday" value="1990-01-01" class="free-insert-title w3-left" style="width:65%; height:35px; border-radius: 6px; margin-left:5px;" required> 
+						</td>
+					</tr>
+	
+					<tr height="40">
+		            	<td width=80 class="bottom-border">&nbsp;&nbsp;휴대전화</td>
+						<td class="bottom-border">
+							<input type="text" name="phoneNum1" class="free-insert-title w3-left" style="width:65%; height:35px; border-radius: 6px; margin-left:5px;" required> 
+						</td>
+					</tr>
+					
+					<tr height="40">
+		            	<td width=80 class="bottom-border">&nbsp;&nbsp;일반전화</td>
+						<td class="bottom-border">
+							<input type="text" name="phoneNum2" class="free-insert-title w3-left" style="width:65%; height:35px; border-radius: 6px; margin-left:5px;" required> 
+						</td>
+					</tr>
+					
+					<tr height="40">
+		            	<td width=80 class="bottom-border">&nbsp;&nbsp;&nbsp;E-mail</td>
+						<td class="bottom-border">
+							<input type="text" name="email" class="free-insert-title w3-left" style="width:65%; height:35px; border-radius: 6px; margin-left:5px;" required> 
+						</td>
+					</tr>
       
-                  <tr height="40">
-                     <td width=80 class="bottom-border">　주　소</td>
-                  <td class="bottom-border">
-                     <form id="FrmSave" name="FrmSave">
-                        <input type="text" id="postcode" name="postcode" class="free-insert-title w3-left" style="width:35%; height:35px; border-radius: 6px; margin-left:5px;" required placeholder="　우편번호">
-                                 <input type="button" class="join-btna w3-card-4 w3-right" value="검　색" style="margin-right:100px; margin-bottom:5px;" onclick="execDaumPostcode()">
-                                 <input type="text" id="address" name="address" class="free-insert-title w3-left" style="width:80%; height:35px; border-radius: 6px; margin-bottom:5px; margin-left:5px;" required placeholder="　주　소">
-                                  <input type="text" id="address2" name="address2" class="free-insert-title w3-left" style="width:80%; height:35px; border-radius: 6px; margin-bottom:5px; margin-left:5px;" required placeholder="　상　세　주　소">
+      				<tr height="40">
+		            	<td width=80 class="bottom-border">　주　소</td>
+						<td class="bottom-border">
+							<form id="FrmSave" name="FrmSave">
+								<input type="text" id="postcode" name="postcode" class="free-insert-title w3-left" style="width:35%; height:35px; border-radius: 6px; margin-left:5px;" required placeholder="　우편번호">
+                              	<input type="button" class="join-btna w3-card-4 w3-right" value="검　색" style="margin-right:100px; margin-bottom:5px;" onclick="execDaumPostcode()">
+                              	<input type="text" id="address" name="address" class="free-insert-title w3-left" style="width:80%; height:35px; border-radius: 6px; margin-bottom:5px; margin-left:5px;" required placeholder="　주　소">
+                               	<input type="text" id="address2" name="address2" class="free-insert-title w3-left" style="width:80%; height:35px; border-radius: 6px; margin-bottom:5px; margin-left:5px;" required placeholder="　상　세　주　소">
                             </form>
                          </td>
-               </tr>
+					</tr>
 
-                   <tr>
-                      <td width=80 class="bottom-border2">　회　사</td>
-                      <td class="bottom-border2">
-                     <input type="text" name="company" class="free-insert-title w3-left" style="width:65%; height:35px; border-radius: 6px; margin-left:5px;" required> 
-                  </td>
-                   </tr>
-               </table>
+	                <tr>
+	                   <td width=80 class="bottom-border2">　회　사</td>
+	                   <td class="bottom-border2">
+							<input type="text" name="company" class="free-insert-title w3-left" style="width:65%; height:35px; border-radius: 6px; margin-left:5px;" required> 
+					   </td>
+	                </tr>
+	            </table>
       
                 <p>
-               <input type="submit" class="free_insert w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;가　입" />
-               &nbsp;&nbsp;&nbsp;
-               <input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='joinForm'"/>
-            </p>
+					<input type="submit" class="free_insert w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;가　입" />
+					&nbsp;&nbsp;&nbsp;
+					<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='joinForm'"/>
+				</p>
                
                <input type="hidden" name="memberRank" value="기업회원">
             </form>

@@ -3,7 +3,6 @@ package com.kosta.finalproject.vo;
 public class UsersVO {
 	String id, name, pwd, birthday, phoneNum1, phoneNum2, email, address, address2, memberRank, company, postcode;
 
-	
 	public String getAddress() {
 		return address;
 	}
@@ -51,7 +50,7 @@ public class UsersVO {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	
+
 	public String getBirthday() {
 		return birthday;
 	}
@@ -99,8 +98,5 @@ public class UsersVO {
 	public void setCompany(String company) {
 		this.company = company;
 	}
-	
-	
-
 
 }

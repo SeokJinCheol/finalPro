@@ -17,16 +17,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kosta.finalproject.dao.FreeDaoImpl;
 import com.kosta.finalproject.vo.FreeBoardVO;
+import com.kosta.finalproject.vo.QandAVO;
 import com.kosta.finalproject.vo.UploadVO;
 
 @Controller
 public class LeftController3 {
-	
+
 	@Autowired
 	private FreeDaoImpl freeDaoImpl;
 
 	// 글 수정 Form_GET
-	@RequestMapping(value = "/free_update_get", method = RequestMethod.GET)
+	@RequestMapping(value = "/free_update_get")
 	public String free_update(Model model, HttpServletRequest request) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
@@ -34,7 +35,7 @@ public class LeftController3 {
 		String bnum = request.getParameter("bnum");
 
 		FreeBoardVO vo = freeDaoImpl.showBoardthis(Integer.parseInt(bnum));
-		
+
 		model.addAttribute("bnum", vo.getBnum());
 		model.addAttribute("title", vo.getTitle());
 		model.addAttribute("id", session_id);
@@ -49,21 +50,23 @@ public class LeftController3 {
 	}
 
 	// 글 수정 Form_POST
-	@RequestMapping(value = "/free_update", method = RequestMethod.POST)
+	@RequestMapping(value = "/free_update")
 	public String free_update2(Model model, HttpServletRequest request, UploadVO dto) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 
 		String fileName = null;
 		MultipartFile uploadfile = dto.getFile();
-		
+
 		// 이미지 처리
 		if (uploadfile == null) {
 		} else {
 			fileName = uploadfile.getOriginalFilename();
 			dto.setOname(fileName);
 			try {
-				File file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + fileName);
+				File file = new File(
+						"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/"
+								+ fileName);
 
 				int indexes = fileName.lastIndexOf(".");
 				if (indexes != -1) {
@@ -75,7 +78,9 @@ public class LeftController3 {
 						String newFileName = fileName.substring(0, indexes) + "_" + extension;
 						System.out.println("새 파일 이름 = " + newFileName);
 						fileName = newFileName;
-						file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + newFileName);
+						file = new File(
+								"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/"
+										+ newFileName);
 					}
 				}
 				uploadfile.transferTo(file);
@@ -85,13 +90,12 @@ public class LeftController3 {
 		} // if
 
 		FreeBoardVO vo = new FreeBoardVO();
-		
+
 		String bnum = request.getParameter("bnum");
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
 		String img = fileName;
 
-		
 		vo.setBnum(Integer.parseInt(bnum));
 		vo.setContents(contents);
 		vo.setId(session_id);
@@ -102,7 +106,7 @@ public class LeftController3 {
 
 		freeDaoImpl.updateBoardDetail(vo);
 
-		return "redirect:free_list";
+		return "redirect:free4_list";
 	}
 
 	// 글쓰기 Form
@@ -118,7 +122,6 @@ public class LeftController3 {
 		if (bnum != null) {
 			model.addAttribute("title", "[답변] ");
 			model.addAttribute("bnum", bnum);
-
 			model.addAttribute("session_id", session_id);
 		}
 
@@ -136,16 +139,17 @@ public class LeftController3 {
 
 		// 이미지 처리
 		System.out.println("이미지 처리 시작");
-		
+
 		MultipartFile uploadfile = dto.getFile();
-		
-		
+
 		if (uploadfile == null) {
 		} else {
 			fileName = uploadfile.getOriginalFilename();
 			dto.setOname(fileName);
 			try {
-				File file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + fileName);
+				File file = new File(
+						"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/"
+								+ fileName);
 
 				int indexes = fileName.lastIndexOf(".");
 				if (indexes != -1) {
@@ -157,7 +161,9 @@ public class LeftController3 {
 						String newFileName = fileName.substring(0, indexes) + "_" + extension;
 						System.out.println("새 파일 이름 = " + newFileName);
 						fileName = newFileName;
-						file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + newFileName);
+						file = new File(
+								"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/"
+										+ newFileName);
 					}
 				}
 				uploadfile.transferTo(file);
@@ -173,13 +179,13 @@ public class LeftController3 {
 		String title = request.getParameter("title");
 		String id = request.getParameter("id");
 		String contents = request.getParameter("contents");
-		
+
 		String img = fileName;
 
 		System.out.println(bgnum);
 
 		if (bgnum.equals("")) {
-			
+
 		}
 
 		else {
@@ -190,13 +196,12 @@ public class LeftController3 {
 		vo.setTitle(title);
 		vo.setId(id);
 		vo.setContents(contents);
-		
 
 		freeDaoImpl.writeBoard(vo);
 
 		model.addAttribute("LEFT", "menu/menu4/left.jsp");
 
-		return "redirect:free_list";
+		return "redirect:free4_list";
 	}
 
 	// 상세보기
@@ -226,7 +231,7 @@ public class LeftController3 {
 		String bnum = request.getParameter("bnum");
 		freeDaoImpl.deleteBoard(Integer.parseInt(bnum));
 
-		return "redirect:free_list";
+		return "redirect:free4_list";
 	}
 
 	// 리플삭제
@@ -234,47 +239,61 @@ public class LeftController3 {
 	public String free_re_delete(Model model, HttpServletRequest request) {
 		String reply_bnum = request.getParameter("reply_bnum");
 
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+
 		freeDaoImpl.deleteBoard(Integer.parseInt(reply_bnum));
 
 		FreeBoardVO vo = freeDaoImpl.showBoardthis(Integer.parseInt(request.getParameter("bnum")));
 		ArrayList<FreeBoardVO> list = freeDaoImpl.selectBoardReply(Integer.parseInt(request.getParameter("bnum")));
 
+		model.addAttribute("session_id", session_id);
 		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
-		model.addAttribute("LEFT", "menu/menu4/left.jsp");
 		model.addAttribute("CONTENT", "menu/menu4/free4/free_content.jsp");
+		model.addAttribute("LEFT", "menu/menu4/left.jsp");
 
-		return "main";
-	
-	}
-	
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	/*@RequestMapping("/menu3_2")
-	public String menu3_2(Model model) {
-		model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_2.jsp");
-		model.addAttribute("LEFT", "menu/menu3/left.jsp");
 		return "main";
 	}
 
-	@RequestMapping("/menu3_3")
-	public String menu3_3(Model model) {
-		model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_3.jsp");
-		model.addAttribute("LEFT", "menu/menu3/left.jsp");
-		return "main";
+	// 리플등록
+	@RequestMapping("/free4_reply")
+	public String free4_reply(Model model, HttpServletRequest request) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+		FreeBoardVO vo = new FreeBoardVO();
+		int bnum = Integer.parseInt(request.getParameter("bnum"));
+		int bgnum = bnum;
+		String contents = request.getParameter("contents");
+		String title = "[답변]" + request.getParameter("title");
+		String img = request.getParameter("img");
+		vo.setBgnum(bgnum);
+		vo.setContents(contents);
+		vo.setTitle(title);
+		vo.setId(session_id);
+		vo.setImg(img);
+		freeDaoImpl.writeBoard(vo);
+		model.addAttribute("bnum", bnum);
+		return "redirect:free_content";
 	}
 
-	@RequestMapping("/menu3_4")
-	public String menu3_4(Model model) {
-		model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_4.jsp");
-		model.addAttribute("LEFT", "menu/menu3/left.jsp");
-		return "main";
-	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	@RequestMapping("/menu3_5")
-	public String menu3_5(Model model) {
-		model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_5.jsp");
-		model.addAttribute("LEFT", "menu/menu3/left.jsp");
-		return "main";
-	}*/
+	/*
+	 * @RequestMapping("/menu3_2") public String menu3_2(Model model) {
+	 * model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_2.jsp");
+	 * model.addAttribute("LEFT", "menu/menu3/left.jsp"); return "main"; }
+	 * 
+	 * @RequestMapping("/menu3_3") public String menu3_3(Model model) {
+	 * model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_3.jsp");
+	 * model.addAttribute("LEFT", "menu/menu3/left.jsp"); return "main"; }
+	 * 
+	 * @RequestMapping("/menu3_4") public String menu3_4(Model model) {
+	 * model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_4.jsp");
+	 * model.addAttribute("LEFT", "menu/menu3/left.jsp"); return "main"; }
+	 * 
+	 * @RequestMapping("/menu3_5") public String menu3_5(Model model) {
+	 * model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_5.jsp");
+	 * model.addAttribute("LEFT", "menu/menu3/left.jsp"); return "main"; }
+	 */
 }

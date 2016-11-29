@@ -8,16 +8,15 @@
 		<result property="mailNum" column="mailNum" />
 		<result property="rid" column="rid" />
 		<result property="sid" column="sid" />
-		<result property="text" column="text"/>
+		<result property="text" column="text" />
+		<result property="senddate" column="senddate" />
 	</resultMap>
-	
+
 	<insert id="sendmail" parameterType="com.kosta.finalproject.vo.MailVO">
-		INSERT INTO mail(mailNum, rid, sid, text) VALUES(mailcequence.nextval, #{rid}, #{sid}, #{text})
+		INSERT INTO mail(mailNum, rid, sid, text, senddate) VALUES(mailcequence.nextval, #{rid}, #{sid}, #{text}, #{senddate})
 	</insert>
-	
+
 	<select id="mymaillist" resultMap="MailBoard">
-        SELECT * FROM mail WHERE rid = #{session_id}
-    </select>
-	
-	
+		SELECT * FROM mail WHERE rid = #{session_id}
+	</select>
 </mapper>

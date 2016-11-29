@@ -7,8 +7,8 @@ contents varchar2(2000) Not null,
 groupnum number(10),
 ranknum number(10), 
 id varchar2(25), 
-img varchar2(1000)
-count int(100)
+img varchar2(1000),
+count number(38)
 );
 
 
@@ -18,3 +18,7 @@ start with 1
 increment BY 1;
 
 select * from FREEBOARD4;
+
+drop sequence fb4_seq;
+drop table freeboard4
+

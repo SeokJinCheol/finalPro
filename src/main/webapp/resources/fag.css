@@ -28,16 +28,16 @@
 
 .faq .q {
 	margin: 0;
-	border-top: 1px solid #ddd;
+	border-top: 2px solid #ddd;
 }
 
 .faq .q a.trigger {
 	display: block;
-	padding: 10px 15px;
+	padding: 14px 15px;
 	text-align: left;
 	font-weight: bold;
-	color: #333;
-	background: #fafafa;
+	color: #000;
+	background: #def2fe;
 	text-decoration: none !important;
 }
 
@@ -49,11 +49,13 @@
 .faq .q a.trigger:hover, .faq .q a.trigger:active, .faq .q a.trigger:focus
 	{
 	color: #000;
-	background: #f8f8f8;
+	font-weight: bold;
+	background: #def2fe;
 }
 
 .faq .a {
 	margin: 0;
 	padding: 10px 15px;
+	text-align: left;
 	line-height: 1.5;
 }

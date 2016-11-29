@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,7 @@
 <body>
 	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
 		<img src="/team4/resources/images/free_list.png" style="margin-right:10px;">
-		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">자 유 게 시 판</font>
+		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">요 청 게 시 판</font>
 	</div>	
 
 	<div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
@@ -55,91 +56,140 @@
 			<table style="padding: 70px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
 				<tr class="bottom-border2" style=" height:30px; margin-bottom: 20px; background-color: #80b5ea; color:white; text-align: center;">
 			         <td width=80 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">I　　D</td>
-			         <td width=60 style="border-top: 2px solid #000; border-right: 1px solid #fff;">Category</td>
-			         <td width=120 style="border-top: 2px solid #000; border-right: 1px solid #fff;">Title</td>
-			         <td width=120 style="border-top: 2px solid #000; border-right: 1px solid #fff;">Contents</td>
-			         <td width=80 style="border-top: 2px solid #000; border-right: 1px solid #fff;">Img</td>
-			         <td width=80 style="border-top: 2px solid #000; border-right: 1px solid #fff;">Date</td>
-			         <td width=50 style="border-top: 2px solid #000;">Hit</td>
+			         <td width=60 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">Category</td>
+			         <td width=120 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">Title</td>
+			         <td width=120 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">Contents</td>
+			         <td width=80 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">Img</td>
+			         <td width=80 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">Date</td>
+			         <td width=50 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">Hit</td>
 			    </tr>
 			     
-			     <!-- result는 contoller의 addObject로 부터 가져온다. -->
+			    <!-- result는 contoller의 addObject로 부터 가져온다. -->
+			    <form name="goLink">
+               		<input type="hidden" name="bNum" /> 
+               		<input type="hidden"name="pageNum" /> 
+                  	<input type="hidden" name="bgnum" />
+                  	
 					<c:forEach items="${result}" var="member">
-			        	<tr>
+			        	<tr height="40" onMouseOver="this.style.backgroundColor='#eff7fc'" onMouseOut="this.style.backgroundColor='#fafafa'" style="background-color: #fafafa;">
 			            	<td style="font-family: 'Nanum Gothic Coding', monospace; border-bottom: 3px solid #fff;">${member.id}</td>
 			            	<td style="border-bottom: 3px solid #fff;">${member.category }</td>
-			             	<td style="border-bottom: 3px solid #fff;"><a href="content?bNum=${member.bNum}&pageNum=${currentPage}&bgnum=${member.bgnum}">${member.title }</a></td>
-			             	<td style="border-bottom: 3px solid #fff;">${member.contents }</td>
+			             	
+			             	<!-- 제목이 6자 이상일 경우 줄여쓰기 기능 -->
+		             		<c:choose>
+			             		<c:when test="${fn:length(member.title) > 6 }">
+									<td style="border-bottom: 3px solid #fff;">
+										<a href="javascript:void(0);" onclick="move(${member.bNum},${currentPage },${member.bgnum });">
+											<c:out value="${fn:substring(member.title,0,6)}" />...
+										</a>
+									</td>
+								</c:when>
+								
+								<c:otherwise>
+									<td style="border-bottom: 3px solid #fff;">
+										<a href="javascript:void(0);" onclick="move(${member.bNum},${currentPage },${member.bgnum });">
+											<c:out value="${member.title}"/>
+										</a>
+									</td>
+								</c:otherwise>
+							</c:choose>
+			             	
+			             	<!-- 내용이 8자 이상일 경우 줄여쓰기 기능 -->
+		             		<c:choose>
+			             		<c:when test="${fn:length(member.contents) > 8 }">
+									<td style="border-bottom: 3px solid #fff;">
+										<c:out value="${fn:substring(member.contents,0,7)}" />...
+									</td>
+								</c:when>
+								
+								<c:otherwise>
+									<td style="border-bottom: 3px solid #fff;">
+										<c:out value="${member.contents}"/>
+									</td>
+								</c:otherwise>
+							</c:choose>
+	
 			             	<td style="border-bottom: 3px solid #fff; width: 10% "><img src="/team4/resources/FreeBoardImg/${member.img }" style="width: 100%; height: 50px;"></td>
 			             	<td style="border-bottom: 3px solid #fff;"><fmt:formatDate value="${member.bDate }" pattern="yyyy-MM-dd" /></td>
 			             	<td style="border-bottom: 3px solid #fff;">${member.readcount }</td>
 			         	</tr>
 					</c:forEach>
-				</table>
-			 
-			   	<!-- 전체 페이지의 수를 연산 -->
-			    	<div align="center">
-	                	<c:if test="${count>0}" >
-			            	<c:set var="pageCount" value="${pageCount}"/>
-			            	<c:set var="startPage" value="${1}" />
-			            	<c:set var="pageBlock" value="${5}" />
-			         
-			                <fmt:parseNumber var="result" value="${currentPage/pageBlock}" integerOnly="true" /><!-- result=2 -->
-			                     
-			                <c:if test="${(currentPage%pageBlock)!=0}">
-			                	<c:set var="startPage" value="${result*pageBlock+1}" />
-			                </c:if>
-			         
-		                    <c:if test="${(currentPage%pageBlock)==0}">
-		                  		<c:set var="startPage" value="${(result-1)*pageBlock+1}" />
-		                    </c:if>
-			                  
-			                <c:set var="endPage" value="${startPage+pageBlock-1}" />
-			                <c:if test="${endPage>=pageCount}">
-			                    <c:set var="endPage" value="${pageCount}" />
-			                </c:if>            
-			                  
-			                <ul>
-			                	<!-- 화살표 -->
-			                	<c:if test="${startPage>5}">
-				                    <c:if test="${word == null}">
-				                    	<a href="free_list?pageNum=${startPage-5}" >&laquo;</a>
-				                    </c:if>
-			                        
-			                        <c:if test="${word != null && keyword != null}">
-			                        	<a href="free_list?pageNum=${startPage-5}&word=${word}&keyword=${keyword}" >&laquo;</a>
-			                        </c:if>
-			                    </c:if>
-			      
-				     			<table>
-				     				<!-- 페이지 번호 생성 -->
-				                    <c:forEach var="i" begin="${startPage}" end="${endPage}">
-				                    	<c:if test="${word == null}">
-				                        	<td style="background: #6699DC; color:white; width:20px; text-align: center;border-radius: 5px;"><a style="text-decoration:none;" href="free_list?pageNum=${i}" >${i}</a></td>
-				                        </c:if>
-				                        
-				                        <c:if test="${word != null }">
-				                        	<td><a href="free_list?pageNum=${i}&word=${word}&keyword=${keyword}" >${i}</a></td>
-				                        </c:if>
-				                    </c:forEach>
-				                </table>
-				                    
-				                <c:if test="${endPage<pageCount}">
-				                	<c:if test="${word == null}">
-				                    	<a href="free_list?pageNum=${startPage+5}" >&raquo;</a>
-				                    </c:if>
-				                    
-				                    <c:if test="${word != null }">
-				                        <a href="free_list?pageNum=${startPage+5}&word=${word}&keyword=${keyword}" >&raquo;</a>
-				                    </c:if>
-				                </c:if>                  
-			                </ul>
-			                <br>
-			                
-						</c:if>
-					</div>   
 				</form>
+			</table>
+			 
+		   	<!-- 전체 페이지의 수를 연산 -->
+		    <div align="center">
+               	<c:if test="${count>0}" >
+	            	<c:set var="pageCount" value="${pageCount}"/>
+	            	<c:set var="startPage" value="${1}" />
+	            	<c:set var="pageBlock" value="${5}" />
+	         
+	                <fmt:parseNumber var="result" value="${currentPage/pageBlock}" integerOnly="true" /><!-- result=2 -->
+	                     
+	                <c:if test="${(currentPage%pageBlock)!=0}">
+	                	<c:set var="startPage" value="${result*pageBlock+1}" />
+	                </c:if>
+	         
+                    <c:if test="${(currentPage%pageBlock)==0}">
+                  		<c:set var="startPage" value="${(result-1)*pageBlock+1}" />
+                    </c:if>
+	                  
+	                <c:set var="endPage" value="${startPage+pageBlock-1}" />
+	                
+	                <c:if test="${endPage>=pageCount}">
+	                    <c:set var="endPage" value="${pageCount}" />
+	                </c:if>            
+	                  
+	                <ul>
+	                	<!-- 화살표 -->
+	                	<c:if test="${startPage>5}">
+		                    <c:if test="${word == null}">
+		                    	<a href="free_list?pageNum=${startPage-5}" >&laquo;</a>
+		                    </c:if>
+	                        
+	                        <c:if test="${word != null && keyword != null}">
+	                        	<a href="free_list?pageNum=${startPage-5}&word=${word}&keyword=${keyword}" >&laquo;</a>
+	                        </c:if>
+	                    </c:if>
+	      
+		     			<table>
+		     				<!-- 페이지 번호 생성 -->
+		                    <c:forEach var="i" begin="${startPage}" end="${endPage}">
+		                    	<c:if test="${word == null}">
+		                        	<td style="background: #6699DC; color:white; width:20px; text-align: center;border-radius: 5px;"><a style="text-decoration:none;" href="free_list?pageNum=${i}" >${i}</a></td>
+		                        </c:if>
+		                        
+		                        <c:if test="${word != null }">
+		                        	<td style="background: #6699DC; color:white; width:20px; text-align: center;border-radius: 5px;"><a href="free_list?pageNum=${i}&word=${word}&keyword=${keyword}" >${i}</a></td>
+		                        </c:if>
+		                    </c:forEach>
+		                </table>
+		                    
+		                <c:if test="${endPage<pageCount}">
+		                	<c:if test="${word == null}">
+		                    	<a href="free_list?pageNum=${startPage+5}" >&raquo;</a>
+		                    </c:if>
+		                    
+		                    <c:if test="${word != null }">
+		                        <a href="free_list?pageNum=${startPage+5}&word=${word}&keyword=${keyword}" >&raquo;</a>
+		                    </c:if>
+		                </c:if>                  
+	                </ul>
+	                <br>
+				</c:if>
 			</div>
 		</div>
+	</div>
 </body>
+<script type="text/javascript">
+	function move(bNum,pageNum,bgnum){
+	      var f=document.goLink;  //폼 name
+	     f.bNum.value =bNum;  //POST방식으로 넘기고 싶은 값
+	     f.pageNum.value =pageNum;  //POST방식으로 넘기고 싶은 값
+	     f.bgnum.value =bgnum;
+	      f.action="content";   //이동할 페이지
+	     f.method="post";  //POST방식
+	     f.submit();
+	};
+</script>
 </html>

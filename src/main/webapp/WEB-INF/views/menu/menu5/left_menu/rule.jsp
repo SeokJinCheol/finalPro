@@ -12,10 +12,13 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/login.css" type="text/css" media="screen">
 </head>
 <body>	
-	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height:500px; vertical-align:middle; display:table-cell;">
-		<div style="margin-bottom:20px; margin-top:70px;">
-			<h4> - 이 용 규 칙 - </h4>
-			
+	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right;line-height: 130px;">
+		<img src="/team4/resources/images/left-use22.png" style="margin-right:10px;">
+		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">이 용 규 칙</font>
+	</div>
+
+	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
+		<div style="margin-bottom: 20px; width: 73%; margin-top:10px;">	
 			<table style="padding: 70px; padding-top: 30px; padding-bottom: 10px;">
 				<tr style="margin-bottom: 20px;">
 					<td><img src="/team4/resources/images/num1.png" style="margin-right:40px;"></td>

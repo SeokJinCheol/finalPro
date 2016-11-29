@@ -2,7 +2,8 @@ create table mail(
 	mailNum number(25),
 	sid varchar2(25),
 	rid varchar2(25),
-	text varchar2(1000)
+	text varchar2(1000),
+	senddate varchar2(30)
 );
 
 CREATE SEQUENCE mailcequence

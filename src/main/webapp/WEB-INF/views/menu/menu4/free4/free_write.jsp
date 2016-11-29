@@ -1,50 +1,65 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>boardWrite</title>
+<title>자유게시판_글쓰기</title>
+<!-- CSS 연결-->
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/w3.css" type="text/css" media="screen">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/login.css" type="text/css" media="screen">
 </head>
-<body class="w3-container" style="background: #f5f6f7;">
-	<div class="w3-container">
-		<form action="free_write2" method=post enctype="multipart/form-data">
-			<table border="1">
-				<%-- <tr>
+<body>
+	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right;line-height: 130px;">
+		<img src="/team4/resources/images/free_write.png" style="margin-right:10px;">
+		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">글 쓰 기</font>
+	</div>
 
-					<td><c:if test="${bnum != null}">
-							<option value="Reply">Reply</option>
-						</c:if></td>
-				</tr> --%>
-
-				<tr>
-					<td>이미지파일:</td>
-					<td><input type="file" name="file"></td>
-				</tr>
-
-				<tr>
-					<td>제목:</td>
-					<td><input type="text" name="title" value="${title}" required></td>
-				</tr>
-
-				<tr>
-					<td>id :</td>
-					<td><input type="text" name="id" value="${session_id}"
-						readonly /></td>
-				</tr>
-
-				<tr>
-					<td>contents:</td>
-					<td><textarea cols="10" rows="5" name="contents" required></textarea>
-					</td>
-				</tr>
-			</table>
-
-			<input type="hidden" name="bnum" value="${bnum}"> <input
-				type="submit" value="글쓰기"> <input type="button" value="List"
-				onclick="location.href='free_list'">
-		</form>
+	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
+		<div style="margin-bottom: 20px; width: 80%; margin-top:40px;">	
+	  		<form action="free_write2" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="bnum" value="${bnum}">
+				
+				<table style="border-collapse: collapse; border-spacing: 0;">
+					<tr align="center" height="35">
+		               	<td style="text-align: center; width:80px; font-family: 'Jeju Gothic', sans-serif; border-right:1px solid white;" class="top-bottom-border">제　목</td>
+		               	<td class="top-bottom-border">
+		               		<input type="text" name="title" class="free-insert-title" value="${title}" style="text-align:center;" required>
+		               	</td>
+		            </tr>
+		            
+					<tr align="center" height="35">
+		               	<td style="text-align: center; font-family: 'Jeju Gothic', sans-serif; border-right:1px solid white;" class="bottom-border">작　성　자</td>
+		               	<td class="bottom-border"><input type="text" name="id" class="free-insert-title" value = "${session_id}" style="text-align:center;" readonly></td>
+		             </tr>
+		            
+		            <tr align="center" height="35">
+		                <td style="text-align: center; width: 80;border-right:1px solid white; font-family: 'Jeju Gothic', sans-serif;" class="bottom-border">사　진</td>
+		            	<td class="bottom-border">
+		            		<input type="file" name="file" style="margin-left: 10px;" required>
+		            	</td>
+		            </tr>
+		            
+		            <tr height="35">
+		            	<td colspan="2" style="font-family: 'Jeju Gothic', sans-serif;">&nbsp;&nbsp;게　시　글</td>
+		            </tr>
+				
+					<tr align="center" height="35">
+	                	<td colspan="2" class="bottom-border2">
+	                  		<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="10" cols="43" required></textarea>
+	                	</td>
+	               	</tr>	
+				</table>
+				
+				<p>
+					<input type="submit" class="free_insert w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;게　시" />
+					&nbsp;&nbsp;&nbsp;
+					<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='free4_list'"/>
+				</p>
+			</form>
+		</div>
 	</div>
 </body>
 </html>
