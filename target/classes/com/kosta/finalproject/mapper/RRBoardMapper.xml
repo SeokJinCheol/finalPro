@@ -3,80 +3,113 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kosta.finalproject.dao.RRBoardMapper">
 
-   <select id="SelectALL" resultType="com.kosta.finalproject.vo.RRboardVO">
-	select * from RRBoard
-   </select>
-   
-	<insert id="RRboardinsert" parameterType="com.kosta.finalproject.vo.RRboardVO">
-		insert into RRBoard(codeNum, title, category, company, startDate, endDate, bill, contents, registerId, img, adress, spotNum) 
-		values(rrb_seq.nextval, #{title}, #{category}, #{company}, #{startDate}, #{endDate}, #{bill}, #{contents}, #{registerId}, #{img}, #{adress}, #{spotNum})
-	</insert>
-	
-	<select id="getcontents" resultType="com.kosta.finalproject.vo.RRboardVO">
-		select * from rrboard where codeNum = #{codeNum}
+	<select id="SelectALL" parameterType="com.kosta.finalproject.vo.RRboardVO"
+		resultType="com.kosta.finalproject.vo.RRboardVO">
+		SELECT * FROM RRBOARD
+
+
+		<where>
+			<if test="packageStatus != null">
+				packageStatus like #{packageStatus} AND
+			</if> 
+		 
+	 <![CDATA[ ENDDATE > SYSDATE ORDER BY CODENUM]]>
+		</where>
+
+
+
 	</select>
 
-	
-	
-	
-	
-	
-	
-	
-	<!--Rp board  -->
-	
-	<insert id="RPboardinsert" parameterType="com.kosta.finalproject.vo.RPboardVO"> 
-		insert into RPBoard(seqNum,codeNum, company, startDate, endDate,userstartDate,userendDate, bill, contents, reaquestId,registerId, adress, spotNum,registerDate) 
-		values(rpb_seq.nextval,#{codeNum}, #{company}, #{startDate}, #{endDate},#{userstartDate},#{userendDate}, #{bill}, #{contents}, #{reaquestId},#{registerId}, #{adress}, #{spotNum},SYSDATE)
+	<insert id="RRboardinsert" parameterType="com.kosta.finalproject.vo.RRboardVO">
+		insert into
+		RRBoard(codeNum, title, category, company, startDate, endDate, bill,
+		contents, registerId, img, adress, spotNum)
+		values(rrb_seq.nextval,
+		#{title}, #{category}, #{company}, #{startDate}, #{endDate}, #{bill},
+		#{contents}, #{registerId}, #{img}, #{adress}, #{spotNum})
 	</insert>
-	
-	<select id="showALL" parameterType="com.kosta.finalproject.vo.SearchVO" resultType="com.kosta.finalproject.vo.RPboardVO">
-	select * from RPBoard
-	
-	<where>
-		
-	<if test="Status != null">
-	
-	packageStatus=#{Status}
-	
-	</if>
-		
-	</where>
-	
-	ORDER BY registerDate DESC
-	
-   	</select>
-   	
-   <select id="selectModyRPB" resultType="com.kosta.finalproject.vo.RPboardVO">
-	select * from RPBoard where seqNum=#{seqNum}
-   	</select>
-   	
-   	<update id="updateRPB" parameterType="com.kosta.finalproject.vo.RPboardVO">
-	update RpBoard set startDate=#{startDate}, endDate= #{endDate}, bill=#{bill}, userendDate=#{userendDate}, userstartDate=#{userstartDate},
-	contents= #{contents}, registerId=#{registerId}, adress=#{adress}, reaquestId=#{reaquestId}
-	where seqNum=#{seqNum}
+
+	<select id="getcontents" resultType="com.kosta.finalproject.vo.RRboardVO">
+		select * from rrboard where
+		codeNum = #{codeNum}
+	</select>
+
+	<update id="setRRStatus" parameterType="com.kosta.finalproject.vo.RRboardVO">
+		update RRBoard set
+		PackageStatus=#{packageStatus} where codeNum=#{codeNum}
 	</update>
-	
+
+
+
+
+
+	<!--Rp board -->
+
+	<insert id="RPboardinsert" parameterType="com.kosta.finalproject.vo.RPboardVO">
+		insert into
+		RPBoard(seqNum,codeNum, company, startDate,
+		endDate,userstartDate,userendDate, bill, contents,
+		reaquestId,registerId, adress, spotNum,registerDate)
+		values(rpb_seq.nextval,#{codeNum}, #{company}, #{startDate},
+		#{endDate},#{userstartDate},#{userendDate}, #{bill}, #{contents},
+		#{reaquestId},#{registerId}, #{adress}, #{spotNum},SYSDATE)
+	</insert>
+
+	<select id="showALL" parameterType="com.kosta.finalproject.vo.SearchVO"
+		resultType="com.kosta.finalproject.vo.RPboardVO">
+		select * from RPBoard
+
+		<where>
+
+			<if test="Status != null">
+
+				packageStatus=#{Status}
+
+			</if>
+
+		</where>
+
+		ORDER BY registerDate DESC
+
+	</select>
+
+	<select id="selectModyRPB" resultType="com.kosta.finalproject.vo.RPboardVO">
+		select * from RPBoard
+		where seqNum=#{seqNum}
+	</select>
+
+	<update id="updateRPB" parameterType="com.kosta.finalproject.vo.RPboardVO">
+		update RpBoard set
+		startDate=#{startDate}, endDate= #{endDate},
+		bill=#{bill},
+		userendDate=#{userendDate},
+		userstartDate=#{userstartDate},
+		contents=
+		#{contents}, registerId=#{registerId}, adress=#{adress},
+		reaquestId=#{reaquestId}
+		where seqNum=#{seqNum}
+	</update>
+
 	<update id="setRPBstatus" parameterType="com.kosta.finalproject.vo.RPboardVO">
-	update RpBoard set PackageStatus=#{packageStatus} where seqNum=#{seqNum}
-	</update>   
-	
-	<select id="SelectCalc" parameterType="com.kosta.finalproject.vo.SearchVO" resultType="com.kosta.finalproject.vo.RPboardVO">
-	select * from RPBoard 
-	
-	<where>
-	
-	packageStatus=#{Status}
-		
-	<if test="keyWord != null">
-	
-	and ${keyWord}
-	
-	</if>
-		
-	</where>
-	
-	ORDER BY registerDate DESC
-   	</select>
-	
-	</mapper>
+		update RpBoard set
+		PackageStatus=#{packageStatus} where seqNum=#{seqNum}
+	</update>
+
+	<select id="SelectCalc" parameterType="com.kosta.finalproject.vo.SearchVO"
+		resultType="com.kosta.finalproject.vo.RPboardVO">
+		select * from RPBoard
+
+		<where>
+
+			packageStatus=#{Status}
+
+			<if test="keyWord != null">
+	<![CDATA[${keyWord}]]>
+			</if>
+
+		</where>
+
+		ORDER BY registerDate DESC
+	</select>
+
+</mapper>

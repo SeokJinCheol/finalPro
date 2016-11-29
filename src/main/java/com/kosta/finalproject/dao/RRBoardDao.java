@@ -29,9 +29,4 @@ public interface RRBoardDao {
 	public void setRPBstatus(RPboardVO vo);
 
 	public List<RPboardVO> SelectCalc(SearchVO vo);
-	
-
-	//task work
-	public void setRPBtask();
-	public void setRRtask();
 }

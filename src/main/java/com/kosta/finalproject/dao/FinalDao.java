@@ -24,12 +24,4 @@ public interface FinalDao {
 	void admin_deleteMemberRank(String id);
 	
 	void deleteRank(String id);
-	
-	public int getAdAllCount();
-	
-	public int getAdminNameCount(String word);
-	
-	public int getAdminIDCount(String word);
-	
-	public int getAdminRankCount(String word);
 }

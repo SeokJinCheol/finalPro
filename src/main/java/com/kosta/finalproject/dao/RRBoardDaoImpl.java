@@ -74,16 +74,4 @@ public class RRBoardDaoImpl implements RRBoardDao {
 		sqlSession.update("com.kosta.finalproject.dao.RRBoardMapper.setRRStatus", vo);
 	}
 
-	@Override
-	public void setRPBtask() {
-
-		sqlSession.update("com.kosta.finalproject.dao.RRBoardMapper.setRPBtask");
-	}
-
-	@Override
-	public void setRRtask() {
-		
-		sqlSession.update("com.kosta.finalproject.dao.RRBoardMapper.setRRtask");
-	}
-
 }
