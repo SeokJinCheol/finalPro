@@ -37,6 +37,7 @@ public class MainController {
 	@Autowired
 	private QandADaoImpl qandADaoImpl;
 
+
 	// Main
 	@RequestMapping("/main")
 	public String main(Model model) {
@@ -190,11 +191,75 @@ public class MainController {
 	@RequestMapping("/list")
 	public String selectAll(HttpServletRequest request, Model model) throws Exception {
 		request.setCharacterEncoding("utf-8");
+		String keyword = request.getParameter("keyword");
+		int pageSize = 10;
+		String word = request.getParameter("word");
+		String id = request.getParameter("id");
+		String pageNum = request.getParameter("pageNum");
 
-		List<UsersVO> userlist = finalDaoImpl.getMembers();
+		if (pageNum == null)
+			pageNum = "1";
+
+		int currentPage = Integer.parseInt(pageNum);
+
+		int startRow = (currentPage * pageSize) - (pageSize - 1);
+		int endRow = currentPage * pageSize;
+		int count = 0, number = 0;
+
+		
+		List<UsersVO> userlist = null;
+		
+		if (keyword == null) {
+			count = finalDaoImpl.getAdAllCount();
+		} else if (keyword.equalsIgnoreCase("name") && word != null) {
+			count = finalDaoImpl.getAdminNameCount(word);
+		} else if (keyword.equalsIgnoreCase("id") && word != null) {
+			count = finalDaoImpl.getAdminIDCount(word);
+		} else if (keyword.equalsIgnoreCase("memberRank") && word != null) {
+			count = finalDaoImpl.getAdminRankCount(word);
+		}
+		
+		int pageCount = Math.round(count / pageSize + (count % pageSize == 0 ? 0 : 1));
+		if (count > 0) {
+			if (keyword == null) {
+				UsersVO users = new UsersVO();
+				users.setStartRow(startRow);
+				users.setEndRow(endRow);
+				userlist = finalDaoImpl.getMembers(users);
+
+			} else if (keyword.equalsIgnoreCase("name") && word != null) {
+				word = request.getParameter("word");
+
+				userlist = finalDaoImpl.adSelectName(word, startRow, endRow);
+
+				model.addAttribute("word", word);
+				model.addAttribute("keyword", keyword);
+
+			} else if (keyword.equalsIgnoreCase("id") && word != null) {
+				word = request.getParameter("word");
+				userlist = finalDaoImpl.adSelectId(word, startRow, endRow);
+
+				model.addAttribute("word", word);
+				model.addAttribute("keyword", keyword);
+
+			} else if (keyword.equalsIgnoreCase("memberRank") && word != null) {
+				word = request.getParameter("word");
+				userlist = finalDaoImpl.adSelectRank(word, startRow, endRow);
+
+				model.addAttribute("word", word);
+				model.addAttribute("keyword", keyword);
+
+			}
+			
+		} else {
+			userlist = Collections.EMPTY_LIST;
+		}
 
 		model.addAttribute("result", userlist);
-
+		model.addAttribute("currentPage", new Integer(currentPage));
+		model.addAttribute("count", new Integer(count));
+		model.addAttribute("pageCount", pageCount);
+		model.addAttribute("pageSize", new Integer(pageSize));
 		model.addAttribute("LEFT", "join/admin_left.jsp");
 		model.addAttribute("CONTENT", "join/list.jsp");
 
@@ -378,6 +443,7 @@ public class MainController {
 
 		// ªË¡¶ X
 		else if (result == 0) {
+			model.addAttribute("LEFT", "join/mypage_left.jsp");
 			model.addAttribute("CONTENT", "join/mypage_delete.jsp");
 		}
 

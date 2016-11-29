@@ -2,6 +2,23 @@ package com.kosta.finalproject.vo;
 
 public class UsersVO {
 	String id, name, pwd, birthday, phoneNum1, phoneNum2, email, address, address2, memberRank, company, postcode;
+	int startRow, endRow;
+	
+	public int getStartRow() {
+		return startRow;
+	}
+
+	public void setStartRow(int startRow) {
+		this.startRow = startRow;
+	}
+
+	public int getEndRow() {
+		return endRow;
+	}
+
+	public void setEndRow(int endRow) {
+		this.endRow = endRow;
+	}
 
 	public String getAddress() {
 		return address;
