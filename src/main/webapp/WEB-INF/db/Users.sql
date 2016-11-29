@@ -1,5 +1,5 @@
 create table users(
-id varchar(15) PRIMARY KEY, 
+id varchar(25) PRIMARY KEY, 
 name varchar(25) Not null,
 pwd varchar(50) not null, 
 birthday varchar(50) null,

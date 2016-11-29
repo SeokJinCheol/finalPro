@@ -31,14 +31,14 @@
 						<tr>
 							<td>&nbsp;PWD</td>
 							<td>
-								<input type="password" name="pwd" class="w3-left w3-input" style="width:85%; border-radius: 6px;" value="${result.pwd}" required>
+								<input type="password" name="pwd" class="w3-left w3-input" style="width:85%; border-radius: 6px;" value="${result.pwd}" required maxlength="20">
 							</td>
 						</tr>
 		
 						<tr>
 							<td>&nbsp;NAME</td>
 							<td>
-								<input type="text" value="${result.name}" name="name" class="w3-left w3-input" style="width:85%; border-radius: 6px;" required>
+								<input type="text" value="${result.name}" name="name" class="w3-left w3-input" style="width:85%; border-radius: 6px;" required maxlength="8" >
 							</td>
 						</tr>
 		
@@ -52,42 +52,42 @@
 						<tr>
 							<td>&nbsp;Phone&nbsp;Number</td>
 							<td>
-								<input type="text" value="${result.phoneNum1 }" name="phoneNum1" class="w3-left w3-input" style="width:85%; border-radius: 6px;" required>
+								<input type="text" value="${result.phoneNum1 }" name="phoneNum1" class="w3-left w3-input" style="width:85%; border-radius: 6px;" required maxlength="11">
 							</td>
 						</tr>
 		
 						<tr>
 							<td>&nbsp;Home&nbsp;Number</td>
 							<td>
-								<input type="text" value="${result.phoneNum2 }" class="w3-left w3-input" style="width:85%; border-radius: 6px;" name="phoneNum2">
+								<input type="text" value="${result.phoneNum2 }" class="w3-left w3-input" style="width:85%; border-radius: 6px;" name="phoneNum2" maxlength="11">
 							</td>
 						</tr>
 		
 						<tr>
 							<td>&nbsp;E-mail</td>
 							<td>
-								<input type="text" value="${result.email }"  name="email" class="w3-left w3-input" style="width:85%; border-radius: 6px;" required>
+								<input type="text" value="${result.email }"  name="email" class="w3-left w3-input" style="width:85%; border-radius: 6px;" required maxlength="23">
 							</td>
 						</tr>
 		
 						<tr>
 							<td>&nbsp;Address</td>
 							<td>
-								<input type="text" name="adress" value="${result.address }" class="w3-left w3-input" style="width:85%; border-radius: 6px;" required>
+								<input type="text" name="adress" value="${result.address }" class="w3-left w3-input" style="width:85%; border-radius: 6px;" required maxlength="30">
 							</td>
 						</tr>
 
 						<tr>
 							<td>&nbsp;Member&nbsp;Rank</td>
 							<td>
-								<input type="text" name="memberRank" value="${result.memberRank }" class="w3-left w3-input" style="width:85%; border-radius: 6px;" readonly>
+								<input type="text" name="memberRank" value="${result.memberRank }" class="w3-left w3-input" style="width:85%; border-radius: 6px;" readonly maxlength="30">
 							</td>
 						</tr>
 
 						<security:authorize ifAnyGranted="role_com, role_master">
 							<tr>
 								<td>&nbsp;Company</td>
-								<td><input type="text" class="w3-left w3-input" style="width:85%; border-radius: 6px;" name="company" value="${result.company}"></td>
+								<td><input type="text" class="w3-left w3-input" style="width:85%; border-radius: 6px;" name="company" value="${result.company}" maxlength="8"></td>
 							</tr>
 						</security:authorize>
 					</table>

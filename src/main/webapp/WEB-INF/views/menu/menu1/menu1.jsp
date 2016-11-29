@@ -46,7 +46,7 @@
 					<option value="category" style="text-align:center;">카테고리</option>
 				</select>
 				
-				<input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" required="required"/>
+				<input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" required="required" maxlength="30"/>
 				
 				<input type="submit" class="list-search" value ="Search" style="width:8%;">
 			</form>
