@@ -10,6 +10,8 @@ public interface RRBoardDao {
 
 	List<RRboardVO> SelectALL(RRboardVO vo);
 
+	List<RRboardVO> SelectALLAD(RRboardVO vo);
+	
 	public void RRboardinsert(RRboardVO vo);
 
 	public RRboardVO getcontents(int codeNum);
