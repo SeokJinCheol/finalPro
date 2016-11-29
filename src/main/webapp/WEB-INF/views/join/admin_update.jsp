@@ -71,9 +71,9 @@
 						</tr>
 		
 						<tr>
-							<td>&nbsp;Adress</td>
+							<td>&nbsp;Address</td>
 							<td>
-								<input type="text" name="adress" value="${result.adress }" class="w3-left w3-input" style="width:85%; border-radius: 6px;" required>
+								<input type="text" name="adress" value="${result.address }" class="w3-left w3-input" style="width:85%; border-radius: 6px;" required>
 							</td>
 						</tr>
 

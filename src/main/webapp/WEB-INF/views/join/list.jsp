@@ -43,7 +43,7 @@
 					             <%-- <td>${member.phoneNum1 }</td>
 					             <td>${member.phoneNum2 }</td> --%>
 					             <td>${member.email }</td>
-					             <td>${member.adress }</td>
+					             <td>${member.address }</td>
 					             <td>${member.memberRank }</td>
 					             <%--<td>${member.company }</td>--%>
 					             <%-- <td><input type=button value="" class="update-btn2 w3-card-4" onclick="location.href='admin_update?id=${member.id}'"></td>
