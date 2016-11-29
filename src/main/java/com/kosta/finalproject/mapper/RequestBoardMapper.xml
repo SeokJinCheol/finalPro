@@ -21,7 +21,7 @@
 	</resultMap>
 
 	<select id="RequestBoardSelectAll" resultMap="RequestBoard">
-		SELECT * FROM requestBoard
+		SELECT * FROM requestBoard ORDER BY codeNum DESC
 	</select>
 
 	<insert id="requestinsert" parameterType="com.kosta.finalproject.vo.RequestBoardVO">
@@ -29,11 +29,11 @@
 	</insert>
 
 	<select id="RequestBoardUserSelectAll" resultMap="RequestBoard">
-		SELECT * FROM requestBoard WHERE reaquestId = #{session_id}
+		SELECT * FROM requestBoard WHERE reaquestId = #{session_id} ORDER BY codeNum DESC
 	</select>
 	
 	<select id="RequestBoardUpdateForm" resultMap="RequestBoard">
-		SELECT * FROM requestBoard WHERE codeNum = #{codeNum}
+		SELECT * FROM requestBoard WHERE codeNum = #{codeNum} ORDER BY codeNum DESC
 	</select>
 	
 	<update id="requestBoardUpdate" parameterType="com.kosta.finalproject.vo.RequestBoardVO">
@@ -41,7 +41,7 @@
 	</update>
 	
 	<select id="selectdate" resultMap="RequestBoard">
-		SELECT startDate, endDate FROM requestBoard WHERE codeNum = #{codeNum}
+		SELECT startDate, endDate FROM requestBoard WHERE codeNum = #{codeNum} ORDER BY codeNum DESC
 	</select>
 	
 	<delete id="requestBoardDelete" parameterType="com.kosta.finalproject.vo.RequestBoardVO">
@@ -49,7 +49,7 @@
 	</delete>
 	
 	<select id="RegisterBoardWriteForm" resultMap="RequestBoard">
-		SELECT * FROM requestBoard WHERE codeNum = #{codeNum}
+		SELECT * FROM requestBoard WHERE codeNum = #{codeNum} ORDER BY codeNum DESC
 	</select>
 	
 	<update id="packageStatusupdate" parameterType="com.kosta.finalproject.vo.RequestBoardVO">
@@ -57,11 +57,11 @@
 	</update>
 	
 	<select id="requeststatus" resultMap="RequestBoard">
-		SELECT * FROM requestBoard WHERE packageStatus = #{status}
+		SELECT * FROM requestBoard WHERE packageStatus = #{status} ORDER BY codeNum DESC
 	</select>
 	
 	<select id="companyselect" resultMap="RequestBoard">
-		SELECT * FROM requestBoard WHERE company = #{company}
+		SELECT * FROM requestBoard WHERE company = #{company} ORDER BY codeNum DESC
 	</select>
 	
 	<delete id="requestdelete" parameterType="com.kosta.finalproject.vo.RequestBoardVO">
@@ -69,14 +69,6 @@
 	</delete>
 
 	<select id="requestcontent" resultMap="RequestBoard"> 
-       SELECT * FROM requestBoard WHERE codeNum=#{codeNum} 
+       SELECT * FROM requestBoard WHERE codeNum=#{codeNum}  ORDER BY codeNum DESC
     </select>
-    
-    <select id="selectTitle" resultMap="RequestBoard">
-		SELECT * FROM requestBoard WHERE title like  '%' || #{word} || '%'
-	</select>
-	
-	<select id="selectCategory" resultMap="RequestBoard">
-		SELECT * FROM requestBoard WHERE category like  '%' || #{word} || '%'
-	</select> 
 </mapper>

@@ -27,7 +27,4 @@ public class SearchVO {
 		this.keyField = keyField;
 	}
 
-	
-	
-
 }

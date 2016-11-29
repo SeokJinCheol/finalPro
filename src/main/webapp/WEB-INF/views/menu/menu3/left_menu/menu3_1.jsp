@@ -47,7 +47,29 @@
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 </style>
+<script type="text/javascript">
+//날짜처리
+window.onload = function()
+{
+    var now = new Date();
+    
+    var date= (now.getYear()+1900)+'-'+fncLPAD((now.getMonth()+1)+'-'+now.getDate());
+	document.RR.startDate.min=date;
+}
 
+function getMin(){
+	document.RR.endDate.min=document.RR.startDate.value;
+
+}
+
+function fncLPAD(num)
+{
+    if(num<10){ return '0'+num;}
+    else {return num;}
+}
+
+
+</script>
 </head>
 <body>
 <div class="map_wrap">
@@ -107,23 +129,20 @@
 					</tr>
 					<tr>
 						<td>대여시작일</td>
-						<td><input type="date" name="startDate" min="${CurrentTime}" required></td>
+						<td><input type="date" name="startDate" required></td>
 					</tr>
 					<tr>
 						<td>대여종료일</td>
-						<td><input type="date" name="endDate" min="${CurrentTime}" required></td>
+						<td><input type="date" name="endDate" onclick="getMin()" required></td>
 					</tr>
 					<tr>
 						<td>대여비</td>
 						<td><input type="text" name="bill" required>원</td>
 					</tr>
-				<tr><td>
-					
-				</td></tr>
 					<tr>
 						<td>주소</td>
-						<td><input type="text" name="adress" id="adress" required>
-							<input type="text" name="spotNum" id="spotNum" required>
+						<td><input type="hidden" name="adress" id="adress" required>
+							<input type="hidden" name="spotNum" id="spotNum" required>
 							<textarea rows="1" cols="30" id="inpo"></textarea>
 						</td>
 					</tr>
@@ -142,6 +161,8 @@
 
 // 마커를 담을 배열입니다
 var markers = [];
+
+var addresses = [];
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
@@ -219,8 +240,7 @@ function displayPlaces(places) {
         // 마커를 생성하고 지도에 표시합니다
         var placePosition = new daum.maps.LatLng(places[i].latitude, places[i].longitude),
             marker = addMarker(placePosition, i), 
-            itemEl = getListItem(i, places[i], marker); // 검색 결과 항목 Element를 생성합니다
-
+            itemEl = getListItem(i, places[i], marker);
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
         bounds.extend(placePosition);
@@ -236,7 +256,24 @@ function displayPlaces(places) {
             daum.maps.event.addListener(marker, 'mouseout', function() {
                 infowindow.close();
             });
-
+            
+            daum.maps.event.addListener(marker,'click', function(){
+            	
+            	 var infoDiv = document.getElementById('inpo');
+            	 
+            	 searchDetailAddrFromCoords(marker.getPosition(), function(status, result) {
+            	        if (status === daum.maps.services.Status.OK) {
+            	          
+            	        }   
+            	        
+            	        infoDiv.innerHTML = result[0].jibunAddress.name;
+            	        
+            	        document.forms["RR"].elements["adress"].value=result[0].jibunAddress.name;
+            	        document.forms["RR"].elements["spotNum"].value=marker.getPosition();
+            	        
+            	        
+            	    });
+            })             
             itemEl.onmouseover =  function () {
                 displayInfowindow(marker, title);
             };
@@ -268,6 +305,7 @@ function getListItem(index, places) {
     if (places.newAddress) {
         itemStr += '    <span>' + places.newAddress + '</span>' +
                     '   <span class="jibun gray">' +  places.address  + '</span>';
+                    
     } else {
         itemStr += '    <span>' +  places.address  + '</span>'; 
     }
@@ -277,9 +315,11 @@ function getListItem(index, places) {
 
     el.innerHTML = itemStr;
     el.className = 'item';
-
+    
     return el;
 }
+
+
 
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 function addMarker(position, idx, title) {
@@ -295,6 +335,7 @@ function addMarker(position, idx, title) {
             position: position, // 마커의 위치
             image: markerImage 
         });
+    
 
     marker.setMap(map); // 지도 위에 마커를 표출합니다
     markers.push(marker);  // 배열에 생성된 마커를 추가합니다

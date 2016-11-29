@@ -27,7 +27,7 @@
 			
 			<tr align="center" height="35"> 
              	<td colspan="2" class="bottom-border2">
-               		<textarea class="free-insert-content-title" style="resize: none;" rows="10" cols="25" required></textarea>
+               		<textarea class="free-insert-content-title" style="resize: none;" name=text rows="10" cols="25" required></textarea>
              	</td>
             </tr>
 		</table>

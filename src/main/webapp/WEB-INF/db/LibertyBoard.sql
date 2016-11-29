@@ -11,19 +11,6 @@ img varchar2(1000),
 count number(38)
 );
 
-INSERT INTO FREEBOARD4 VALUES(fb4_seq.NEXTVAL, 0, 't', sysdate, 'c', 1, 0, 'admin', 'write_______.jpg', 0);
-INSERT INTO FREEBOARD4 VALUES(fb4_seq.NEXTVAL, 0, 't', sysdate, 'c', 1, 0, 'admin', 'write_______.jpg', 0);
-INSERT INTO FREEBOARD4 VALUES(fb4_seq.NEXTVAL, 0, 't', sysdate, 'c', 1, 0, 'admin', 'write_______.jpg', 0);
-INSERT INTO FREEBOARD4 VALUES(fb4_seq.NEXTVAL, 0, 't', sysdate, 'c', 1, 0, 'admin', 'write_______.jpg', 0);
-INSERT INTO FREEBOARD4 VALUES(fb4_seq.NEXTVAL, 0, 't', sysdate, 'c', 1, 0, 'admin', 'write_______.jpg', 0);
-INSERT INTO FREEBOARD4 VALUES(fb4_seq.NEXTVAL, 0, 't', sysdate, 'c', 1, 0, 'admin', 'write_______.jpg', 0);
-INSERT INTO FREEBOARD4 VALUES(fb4_seq.NEXTVAL, 0, 't', sysdate, 'c', 1, 0, 'admin', 'write_______.jpg', 0);
-INSERT INTO FREEBOARD4 VALUES(fb4_seq.NEXTVAL, 0, 't', sysdate, 'c', 1, 0, 'admin', 'write_______.jpg', 0);
-INSERT INTO FREEBOARD4 VALUES(fb4_seq.NEXTVAL, 0, 't', sysdate, 'c', 1, 0, 'admin', 'write_______.jpg', 0);
-INSERT INTO FREEBOARD4 VALUES(fb4_seq.NEXTVAL, 0, 't', sysdate, 'c', 1, 0, 'admin', 'write_______.jpg', 0);
-INSERT INTO FREEBOARD4 VALUES(fb4_seq.NEXTVAL, 0, 't', sysdate, 'c', 1, 0, 'admin', 'write_______.jpg', 0);
-INSERT INTO FREEBOARD4 VALUES(fb4_seq.NEXTVAL, 0, 't', sysdate, 'c', 1, 0, 'admin', 'write_______.jpg', 0);
-
 
 
 CREATE SEQUENCE fb4_seq

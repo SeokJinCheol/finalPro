@@ -1,12 +1,10 @@
 package com.kosta.finalproject.vo;
 
-import java.util.Date;
-
 public class RPboardVO {
 
 	int seqNum, codeNum, bill;
 	String category, title, contents, adress, spotNum, packageStatus, img, reaquestId, registerId, company;
-	String startDate, endDate, userstartDate, userendDate,registerDate;
+	String startDate, endDate, userstartDate, userendDate, registerDate;
 
 	public int getSeqNum() {
 		return seqNum;
@@ -144,7 +142,6 @@ public class RPboardVO {
 		this.userendDate = userendDate;
 	}
 
-	
 	public String getRegisterDate() {
 		return registerDate;
 	}

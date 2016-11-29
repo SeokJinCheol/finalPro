@@ -16,31 +16,35 @@ import com.kosta.finalproject.vo.RRboardVO;
 public class RRBoardController {
 	@Autowired
 	private RRBoardDao dao;
+
 	// Menu_3
 	@RequestMapping("/menu3")
 	public String menu3(Model model) {
-		
+
 		RRboardVO vo = new RRboardVO();
-		String inpo="";
-		
-		List<RRboardVO> result=dao.SelectALL(vo);
-		
-		System.out.println("size="+result.size());
-		
-		for(int i = 0; i < result.size(); i++){
-			if(i!=0){
-				inpo+=",";
+		String inpo = "";
+
+		vo.setPackageStatus("대여가능");
+
+		List<RRboardVO> result = dao.SelectALL(vo);
+
+		System.out.println("size=" + result.size());
+
+		for (int i = 0; i < result.size(); i++) {
+			if (i != 0) {
+				inpo += ",";
 			}
-			
-			inpo +="{ codeNum : '"+ result.get(i).getCodeNum()+"', spotNum : new daum.maps.LatLng" + result.get(i).getSpotNum()+
-					", adress : '"+ result.get(i).getAdress() + "', startDate : '"+result.get(i).getStartDate()+
-					"', endDate : '"+ result.get(i).getEndDate()+"', title : '" + result.get(i).getTitle()+
-					"', contents : '"+ result.get(i).getContents()	+"'}";
-			
+
+			inpo += "{ codeNum : '" + result.get(i).getCodeNum() + "', spotNum : new daum.maps.LatLng"
+					+ result.get(i).getSpotNum() + ", adress : '" + result.get(i).getAdress() + "', startDate : '"
+					+ result.get(i).getStartDate() + "', endDate : '" + result.get(i).getEndDate() + "', title : '"
+					+ result.get(i).getTitle() + "', contents : '" + result.get(i).getContents() + "'}";
+
 		}
-		
+
+		System.out.println(inpo);
 		model.addAttribute("total", result.size());
-		model.addAttribute("inpo",inpo);
+		model.addAttribute("inpo", inpo);
 		model.addAttribute("list", result);
 		model.addAttribute("CONTENT", "menu/menu3/menu3.jsp");
 		model.addAttribute("LEFT", "menu/menu3/left.jsp");

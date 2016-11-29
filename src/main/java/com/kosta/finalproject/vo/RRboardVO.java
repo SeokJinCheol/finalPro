@@ -1,7 +1,5 @@
 package com.kosta.finalproject.vo;
 
-import java.util.Date;
-
 public class RRboardVO {
 
 	int codeNum, bill;

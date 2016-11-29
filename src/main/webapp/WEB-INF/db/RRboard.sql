@@ -11,8 +11,8 @@ contents varchar2(2000) not null,
 bill number(15),
 adress varchar2(200),
 spotNum varchar2(150),
-packageStatus varchar2(20) default '대여가능',
-img varchar2(2000) default '이미지없음',
+packageStatus varchar2(20) default '대여대기',
+img varchar2(2000) DEFAULT 'noimg',
 reaquestId varchar2(25) ,
 registerId varchar2(25) not null,
 company varchar2(20)
@@ -20,7 +20,9 @@ company varchar2(20)
 
 drop table RRBoard
 
-select * from rrboard where codenum = 10
+select * from rpboard
+
+ select * from RPBoard WHERE packageStatus='정산완료' and codeNum = 14 and registerDate between TO_DATE('2016-11-01 00:00:01','YYYY-MM-DD HH24:MI:SS') and TO_DATE('2016-11-31 23:59:59','YYYY-MM-DD HH24:MI:SS') ORDER BY registerDate DESC;00
 
 
 select * from rrBoard
@@ -39,6 +41,7 @@ increment BY 1
 nocache;
 select * from rrb_seq.nextval
 
+drop table RRBoard;
 drop sequence rrb_seq;
 
 delete from requestBoard where codenum=22;

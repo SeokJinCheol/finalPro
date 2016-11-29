@@ -10,25 +10,23 @@ import com.kosta.finalproject.vo.SearchVO;
 public interface RRBoardMapper {
 
 	ArrayList<RRboardVO> SelectALL(RRboardVO vo);
-	
+
 	public void RRboardinsert(RRboardVO vo);
-	
+
 	public RRboardVO getcontents(int codeNum);
 
-	
-	
-	
-	
-	//rp 보드 관련
-	
-	public List<RPboardVO> showALL();
+	public void setRRStatus(RRboardVO vo);
+
+	// rp 보드 관련
+
+	public List<RPboardVO> showALL(SearchVO vo);
 
 	public void RPboardinsert(RPboardVO vo);
 
 	public RPboardVO selectModyRPB(int seqNum);
 
 	public void updateRPB(RPboardVO vo);
-	
+
 	public void setRPBstatus(RPboardVO vo);
 
 	public List<RPboardVO> SelectCalc(SearchVO vo);

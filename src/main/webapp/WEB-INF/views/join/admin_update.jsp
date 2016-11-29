@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>mypage_update</title>
+<title>admin_회원정보수정</title>
 <!-- CSS 연결-->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/w3.css" type="text/css" media="screen">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/login.css" type="text/css" media="screen">
@@ -27,8 +27,8 @@
 							<input type="text" name="id" class="free-insert-title w3-left" value="${result.id}" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" readonly> 
 						</td>
 					</tr>
-               
-               		<tr height="40">
+
+					<tr height="40">
 		            	<td width=80 class="bottom-border">&nbsp;&nbsp;&nbsp;PWD</td>
 						<td class="bottom-border" align=center>
 							<input type="password" name="pwd" class="free-insert-title w3-left" value="${result.pwd}" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" readonly> 
@@ -38,10 +38,10 @@
 					<tr height="40">
 		            	<td width=80 class="bottom-border">&nbsp;&nbsp;이　름</td>
 						<td class="bottom-border">
-							<input type="text" name="name" class="free-insert-title w3-left" value="${result.name}" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" required maxlength="8"> 
+							<input type="text" name="name" class="free-insert-title w3-left" value="${result.name}" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" required> 
 						</td>
 					</tr>
-					
+
 					<tr height="40">
 		            	<td width=80 class="bottom-border">&nbsp;&nbsp;생년월일</td>
 						<td class="bottom-border">
@@ -52,21 +52,21 @@
 					<tr height="40">
 		            	<td width=80 class="bottom-border">&nbsp;&nbsp;휴대전화</td>
 						<td class="bottom-border">
-							<input type="text" value="${result.phoneNum1}" name="phoneNum1" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" required maxlength="11"> 
+							<input type="text" value="${result.phoneNum1}" name="phoneNum1" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" required> 
 						</td>
 					</tr>
 					
 					<tr height="40">
 		            	<td width=80 class="bottom-border">&nbsp;&nbsp;일반전화</td>
 						<td class="bottom-border">
-							<input type="text" value="${result.phoneNum2}" name="phoneNum2" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" maxlength="11"> 
+							<input type="text" value="${result.phoneNum2}" name="phoneNum2" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;"> 
 						</td>
 					</tr>
-	
+
 					<tr height="40">
 		            	<td width=80 class="bottom-border">&nbsp;&nbsp;&nbsp;E-mail</td>
 						<td class="bottom-border">
-							<input type="text" value="${result.email }" name="email" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" required maxlength="23"> 
+							<input type="text" value="${result.email }" name="email" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" required> 
 						</td>
 					</tr>
 
@@ -74,12 +74,19 @@
 		            	<td width=80 class="bottom-border">　주　소</td>
 						<td class="bottom-border">
 							<form id="FrmSave" name="FrmSave">
-								<input type="text" id="postcode" name="postcode" value="${result.postcode}" class="free-insert-title w3-left" style="width:35%; height:35px; border-radius: 6px; margin-left:5px;" required placeholder="　우편번호" maxlength="6">
+								<input type="text" id="postcode" name="postcode" value="${result.postcode}" class="free-insert-title w3-left" style="width:35%; height:35px; border-radius: 6px; margin-left:5px;" required placeholder="　우편번호">
                               		<input type="button" class="join-btna w3-card-4 w3-right" value="검　색" style="margin-right:50px; margin-bottom:5px;" onclick="execDaumPostcode()">
-                              		<input type="text" id="address" name="address" value="${result.address}" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-bottom:5px; margin-left:5px;" required placeholder="　주　소" maxlength="23">
-                               	<input type="text" id="address2" name="address2" value="${result.address2}" class="free-insert-title w3-left" style="width:80%; height:35px; border-radius: 6px; margin-bottom:5px; margin-left:5px;" required placeholder="　상　세　주　소" maxlength="23">
+                              		<input type="text" id="address" name="address" value="${result.address}" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-bottom:5px; margin-left:5px;" required placeholder="　주　소">
+                               	<input type="text" id="address2" name="address2" value="${result.address2}" class="free-insert-title w3-left" style="width:80%; height:35px; border-radius: 6px; margin-bottom:5px; margin-left:5px;" required placeholder="　상　세　주　소">
                             </form>
                         </td>
+					</tr>
+
+					<tr height="40">
+		            	<td width=80 class="bottom-border">&nbsp;&nbsp;회원등급</td>
+						<td class="bottom-border">
+							<input type="text" value="${result.memberRank }" name="memberRank" class="free-insert-title w3-left" style="width:85%; height:35px; border-radius: 6px; margin-left:5px;" readonly> 
+						</td>
 					</tr>
 
 					<security:authorize ifAnyGranted="role_com, role_master">
@@ -92,10 +99,10 @@
                   	</security:authorize>
 				</table>
 				
-                <p>
+				<p>
 					<input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수　정" />
 					&nbsp;&nbsp;&nbsp;
-					<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='mypage'"/>
+					<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='list'"/>
 				</p>
 			</form>
 		</div>
