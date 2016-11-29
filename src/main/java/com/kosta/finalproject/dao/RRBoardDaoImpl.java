@@ -22,6 +22,12 @@ public class RRBoardDaoImpl implements RRBoardDao {
 		return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.SelectALL", vo);
 	}
 
+	public List<RRboardVO> SelectALLAD(RRboardVO vo){
+
+		return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.SelectALLAD", vo);
+	}
+
+	
 	@Override
 	public void RRboardinsert(RRboardVO vo) {
 

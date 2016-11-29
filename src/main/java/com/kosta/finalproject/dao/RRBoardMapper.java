@@ -1,6 +1,5 @@
 package com.kosta.finalproject.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.kosta.finalproject.vo.RPboardVO;
@@ -9,13 +8,16 @@ import com.kosta.finalproject.vo.SearchVO;
 
 public interface RRBoardMapper {
 
-	ArrayList<RRboardVO> SelectALL(RRboardVO vo);
-
+	List<RRboardVO> SelectALL(RRboardVO vo);
+	
+	List<RRboardVO> SelectALLAD(RRboardVO vo);
+	
 	public void RRboardinsert(RRboardVO vo);
 
 	public RRboardVO getcontents(int codeNum);
 
 	public void setRRStatus(RRboardVO vo);
+	
 
 	// rp 보드 관련
 

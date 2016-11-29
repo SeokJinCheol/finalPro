@@ -112,9 +112,8 @@ public class RRBoardLeftController {
 		dao.RRboardinsert(vo);
 		// 모델 전송
 		model.addAttribute("id", session_id);
-		model.addAttribute("CONTENT", "menu/menu3/menu3.jsp");
-		model.addAttribute("LEFT", "menu/menu3/left.jsp");
-		return "main";
+	
+		return "redirect:menu3";
 	}
 
 	@RequestMapping("/showContentsForm")
@@ -135,6 +134,7 @@ public class RRBoardLeftController {
 		return "main";
 	}
 
+	
 	@RequestMapping("/insertSubmit")
 	public String insertSubmit(Model model, @RequestParam("codeNum") int codeNum, @RequestParam("id") String id,
 			@RequestParam("contents") String contents, @RequestParam("bill") int bill,
@@ -168,10 +168,7 @@ public class RRBoardLeftController {
 
 		dao.RPboardinsert(vo);
 
-		model.addAttribute("vo", dao.getcontents(codeNum));
-		model.addAttribute("CONTENT", "menu/menu3/showContentsForm.jsp");
-		model.addAttribute("LEFT", "menu/menu3/left.jsp");
-		return "main";
+		return "redirect:menu3";
 	}
 
 	@RequestMapping("/menu3_2")
@@ -199,11 +196,12 @@ public class RRBoardLeftController {
 		return "main";
 	}
 
+	// 관리자 대관 확인 수정
 	@RequestMapping(value = "/RRlist", method = RequestMethod.GET)
 	public String RRlistGet(Model model) {
 		RRboardVO vo = new RRboardVO();
 
-		List<RRboardVO> result = dao.SelectALL(vo);
+		List<RRboardVO> result = dao.SelectALLAD(vo);
 
 		System.out.println("size=" + result.size());
 
@@ -214,7 +212,7 @@ public class RRBoardLeftController {
 		return "main";
 	}
 
-	// 관리자 대관 확인 수정
+	// 관리자 대관 확인 수정 + 검색
 	@RequestMapping(value = "/RRlist", method = RequestMethod.POST)
 	public String RRlistPost(Model model, @RequestParam("status") String status) {
 
@@ -222,7 +220,7 @@ public class RRBoardLeftController {
 
 		vo.setPackageStatus(status);
 
-		List<RRboardVO> result = dao.SelectALL(vo);
+		List<RRboardVO> result = dao.SelectALLAD(vo);
 
 		System.out.println("size=" + result.size());
 
