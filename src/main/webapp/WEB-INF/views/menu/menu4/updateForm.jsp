@@ -50,7 +50,7 @@
 			               
 			               <tr align="center" height="35"> 
 			                  <td colspan="2" class="bottom-border">
-			                  	<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="10" cols="43" required>${result.contents }</textarea>
+			                  	<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="10" cols="43" required maxlength="350">${result.contents }</textarea>
 			                  </td>
 			               </tr>
 	
