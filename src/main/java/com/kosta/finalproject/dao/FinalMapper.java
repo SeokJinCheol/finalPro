@@ -2,6 +2,7 @@ package com.kosta.finalproject.dao;
 
 import java.util.ArrayList;
 
+import com.kosta.finalproject.vo.BoardVO;
 import com.kosta.finalproject.vo.RankVO;
 import com.kosta.finalproject.vo.UsersVO;
 
@@ -27,4 +28,13 @@ public interface FinalMapper {
 	void admin_deleteMemberRank(String id);
 
 	void deleteRank(String id);
+	
+	int getAdAllCount();
+	
+	int getAdminNameCount(UsersVO vo);
+	
+	int getAdminIDCount(UsersVO vo);
+	
+	int getAdminRankCount(UsersVO vo);
+	
 }

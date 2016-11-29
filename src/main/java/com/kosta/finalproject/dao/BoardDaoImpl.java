@@ -162,10 +162,7 @@ public class BoardDaoImpl implements BoardDao {
 		list = BoardMapper.selectId(vo);
 		return list;
 	}
-	//mypage용 자기가 쓴 글 개수
-	
-	
-	
+
 	///////////////
    
 }
