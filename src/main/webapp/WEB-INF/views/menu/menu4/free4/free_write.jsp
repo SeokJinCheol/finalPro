@@ -26,7 +26,7 @@
 					<tr align="center" height="35">
 		               	<td style="text-align: center; width:80px; font-family: 'Jeju Gothic', sans-serif; border-right:1px solid white;" class="top-bottom-border">제　목</td>
 		               	<td class="top-bottom-border">
-		               		<input type="text" name="title" class="free-insert-title" value="${title}" style="text-align:center;" required>
+		               		<input type="text" name="title" class="free-insert-title" value="${title}" style="text-align:center;" maxlength="5"  required>
 		               	</td>
 		            </tr>
 		            
@@ -38,7 +38,7 @@
 		            <tr align="center" height="35">
 		                <td style="text-align: center; width: 80;border-right:1px solid white; font-family: 'Jeju Gothic', sans-serif;" class="bottom-border">사　진</td>
 		            	<td class="bottom-border">
-		            		<input type="file" name="file" style="margin-left: 10px;" required>
+		            		<input type="file" name="file" style="margin-left: 10px;">
 		            	</td>
 		            </tr>
 		            
@@ -62,4 +62,5 @@
 		</div>
 	</div>
 </body>
+
 </html>

@@ -15,6 +15,7 @@
 
    <security:authentication-manager>
       <security:authentication-provider>
+
          <!-- JDBC 연동코드 -->
          <security:jdbc-user-service
             data-source-ref="dataSource"

@@ -24,7 +24,7 @@
          <table align=center>
             <tr>
             	<td>
-					<input type="text" name="id" placeholder="　Enter Your I D" class="free-insert-title w3-left" style="width:55%; height:35px; border-radius: 6px; margin-left:5px;" maxlength="12"> 
+					<input type="text" name="id" placeholder="　Enter Your I D" class="free-insert-title w3-left" style="width:55%; height:35px; border-radius: 6px; margin-left:5px;"> 
                   	<input type="submit" class="join-btna w3-card-4 w3-right" name="confirm_id" style="height:35px;" value="다른 ID 사용">
                </td>
             </tr>
