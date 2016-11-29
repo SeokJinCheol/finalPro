@@ -2,6 +2,7 @@ package com.kosta.finalproject.controller.left;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +26,7 @@ import com.kosta.finalproject.vo.StorageBoardVO;
 
 @Controller
 public class RegisterBoardLeftController {
-
+	
 	@Autowired
 	private ReviewImpl reviewImpl;
 
@@ -39,19 +40,41 @@ public class RegisterBoardLeftController {
 	private StorageBoardDaoImpl storageBoardDaoImpl;
 
 	@RequestMapping("/menu2_1")
-	public String menu2_1(Model model) {
+	public String menu2_1(Model model, HttpServletRequest request) {
 
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 		model.addAttribute("session_id", session_id);
 
-		String possibility = "대여가능";
+		String packageStatus = "대여가능";
 
+	    //검색 확인
+	    String keyword = request.getParameter("keyword");
+	    String word = request.getParameter("word");
+	    String id = request.getParameter("id");
+	
 		// 대여목록
-		List<RegisterBoardVO> Registerpossibility = registerBoardDaoImpl.Registerpossibility(possibility);
-		model.addAttribute("Registerpossibility", Registerpossibility);
+        List<RegisterBoardVO> Registerpossibility = null;
+   		
+   		if (keyword == null) {
+   			Registerpossibility = registerBoardDaoImpl.Registerpossibility(packageStatus);
 
+   		}else if(keyword.equalsIgnoreCase("title") && word != null){
+   			Registerpossibility = registerBoardDaoImpl.pselectTitle(packageStatus, word);
+   			model.addAttribute("word", word);
+   			model.addAttribute("keyword", keyword);
+   			
+   		}else if(keyword.equalsIgnoreCase("category") && word != null){
+   			Registerpossibility = registerBoardDaoImpl.pselectCategory(packageStatus, word);
+   			model.addAttribute("word", word);
+   			model.addAttribute("keyword", keyword);
+   			
+   		} else {
+   			Registerpossibility = Collections.EMPTY_LIST;
+   		}
+		
+		model.addAttribute("Registerpossibility", Registerpossibility);
 		model.addAttribute("CONTENT", "menu/menu2/left_menu/menu2_1.jsp");
 		model.addAttribute("LEFT", "menu/menu2/left.jsp");
 		return "main";
@@ -75,11 +98,11 @@ public class RegisterBoardLeftController {
 		model.addAttribute("LEFT", "menu/menu2/left.jsp");
 		return "main";
 	}
-
-	// 리뷰작성 대여종료
+	
+	//리뷰작성 대여종료
 	@RequestMapping("/reviewendrent")
-	public String reviewendrent(Model model, HttpServletRequest request) {
-
+	public String reviewendrent(Model model, HttpServletRequest request){
+		
 		int codeNum = Integer.parseInt(request.getParameter("codeNum"));
 		model.addAttribute("codeNum", codeNum);
 		model.addAttribute("LEFT", "menu/menu2/left.jsp");
@@ -90,15 +113,17 @@ public class RegisterBoardLeftController {
 	// 반납 신청
 	@RequestMapping("/endrent")
 	public String endrent(Model model, HttpServletRequest request) {
+		
+
 
 		// 로그인 정보 확인
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 		model.addAttribute("session_id", session_id);
-
-		// 리뷰작성
+		
+		//리뷰작성
 		String reviewtext = request.getParameter("reviewtext");
-		if (reviewtext != "") {
+		if(reviewtext != ""){
 			ReviewVO reviewvo = new ReviewVO();
 			reviewvo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
 			reviewvo.setReviewpoint(Integer.parseInt(request.getParameter("reviewpoint")));
@@ -106,7 +131,7 @@ public class RegisterBoardLeftController {
 			reviewvo.setReviewid(session_id);
 			reviewImpl.reviewinsert(reviewvo);
 		}
-
+		
 		// 대여가능 게시판 반납신청
 		RegisterBoardVO registervo = new RegisterBoardVO();
 		String packageStatus = "반납신청";
@@ -336,6 +361,22 @@ public class RegisterBoardLeftController {
 		model.addAttribute("LEFT", "join/admin_left.jsp");
 		model.addAttribute("CONTENT", "admin/account.jsp");
 
+		return "main";
+	}
+	
+	@RequestMapping("/registercontent")
+	public String registercontent(HttpServletRequest request, Model model) throws Exception {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+
+		int codeNum = Integer.parseInt(request.getParameter("codeNum"));
+
+		List<RegisterBoardVO> registercontent = registerBoardDaoImpl.registercontent(codeNum);
+
+		model.addAttribute("session_id", session_id);
+		model.addAttribute("result", registercontent);
+		model.addAttribute("LEFT", "menu/menu2/left.jsp");
+		model.addAttribute("CONTENT", "menu/menu2/write/registercontent.jsp");
 		return "main";
 	}
 }

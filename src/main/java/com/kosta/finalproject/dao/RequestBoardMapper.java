@@ -17,4 +17,6 @@ public interface RequestBoardMapper {
 	public ArrayList<RequestBoardVO> companyselect(String company);
 	public void requestdelete(RequestBoardVO vo);
 	public ArrayList<RequestBoardVO> requestcontent(int codeNum);
+	public ArrayList<RequestBoardVO> selectTitle(String word);
+	public ArrayList<RequestBoardVO> selectCategory(String word);
 }

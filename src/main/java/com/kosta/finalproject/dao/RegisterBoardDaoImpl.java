@@ -76,4 +76,51 @@ public class RegisterBoardDaoImpl implements RegisterBoardDao{
 		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
 		mapper.registerdelete(vo);
 	}
+	
+	@Override
+	public ArrayList<RegisterBoardVO> selectTitle(String word) {
+		ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
+		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
+		result = mapper.selectTitle(word);
+		return result;
+	}
+
+	@Override
+	public ArrayList<RegisterBoardVO> selectCategory(String word) {
+		ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
+		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
+		result = mapper.selectCategory(word);
+		return result;
+	}
+
+	@Override
+	public ArrayList<RegisterBoardVO> pselectTitle(String packageStatus, String word) {
+		ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
+		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
+		RegisterBoardVO vo = new  RegisterBoardVO();
+		vo.setWord(word);
+		vo.setPackageStatus(packageStatus);
+		result = mapper.pselectTitle(vo);
+		return result;
+	}
+	
+	@Override
+	public ArrayList<RegisterBoardVO> pselectCategory(String packageStatus, String word) {
+		ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
+		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
+		RegisterBoardVO vo = new RegisterBoardVO();
+		vo.setWord(word);
+		vo.setPackageStatus(packageStatus);
+		result = mapper.pselectCategory(vo);
+		return result;
+	}
+
+	@Override
+	public ArrayList<RegisterBoardVO> registercontent(int codeNum) {
+		ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
+		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
+		RegisterBoardVO vo = new RegisterBoardVO();
+		result = mapper.registercontent(codeNum);
+		return result;
+	}
 }
