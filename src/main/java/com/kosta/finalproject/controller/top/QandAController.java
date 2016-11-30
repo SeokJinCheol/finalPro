@@ -7,15 +7,20 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.View;
 
 import com.kosta.finalproject.dao.QandADaoImpl;
 import com.kosta.finalproject.vo.QandAVO;
@@ -23,9 +28,10 @@ import com.kosta.finalproject.vo.UploadVO;
 
 @Controller
 public class QandAController {
-
 	@Autowired
 	private QandADaoImpl qandADaoImpl;
+
+	private View jsonview;
 
 	// 자유게시판
 	@RequestMapping("/QnA_list")
@@ -286,16 +292,18 @@ public class QandAController {
 	}
 
 	// 리플달기
-	@RequestMapping("/QnA_reply")
-	public String QnA_replywrite(Model model, HttpServletRequest request) {
+	@RequestMapping(value = "/QnA_reply", method = RequestMethod.GET)
+	public View QnA_replywrite(Model model, HttpServletRequest request, HttpServletResponse response) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 		QandAVO vo = new QandAVO();
-		int bnum = Integer.parseInt(request.getParameter("bnum"));
-		int bgnum = bnum;
+
 		String contents = request.getParameter("contents");
 		String title = "[답변]" + request.getParameter("title");
-		String img = request.getParameter("img");
+		int bnum = Integer.parseInt(request.getParameter("bnum"));
+		int bgnum = bnum;
+
+		String img = "reply";
 		String category = "답변";
 		vo.setBgnum(bgnum);
 		vo.setCategory(category);
@@ -304,8 +312,10 @@ public class QandAController {
 		vo.setId(session_id);
 		vo.setImg(img);
 		qandADaoImpl.writeMain(vo);
-		model.addAttribute("bnum", bnum);
-		return "redirect:QnA_content";
+		model.addAttribute("vo", vo);
+		System.out.println("bnum1=" + bnum);
+		return jsonview;
+
 	}
 
 	// 상세보기
@@ -318,15 +328,48 @@ public class QandAController {
 
 		qandADaoImpl.updateCount(bnum);
 		QandAVO vo = qandADaoImpl.showthis(bnum);
-		ArrayList<QandAVO> list = qandADaoImpl.selectReply(bnum);
+		// ArrayList<QandAVO> list = qandADaoImpl.selectReply(bnum);
 
 		model.addAttribute("session_id", session_id);
-		model.addAttribute("list", list);
+		// model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
 		model.addAttribute("CONTENT", "Q&A/QnA_content.jsp");
 		model.addAttribute("LEFT", "Q&A/left.jsp");
 
 		return "main";
+	}
+
+	// 리플 리스트(AJax)
+	@RequestMapping(value = "/QnA_replylist/{bnum}", method = RequestMethod.GET)
+	public ResponseEntity<ArrayList<QandAVO>> QnA_replylist(@PathVariable("bnum") Integer bnum) {
+		/*
+		 * int pageSize = 10;
+		 * 
+		 * if (pageNum == null) pageNum = "1";
+		 * 
+		 * int currentPage = Integer.parseInt(pageNum);
+		 * 
+		 * int startrow = (currentPage * pageSize) - (pageSize - 1); int endrow
+		 * = currentPage * pageSize; int count = 0, number = 0; count =
+		 * qandADaoImpl.replyCount(bnum); int pageCount = Math.round(count /
+		 * pageSize + (count % pageSize == 0 ? 0 : 1));
+		 */
+		ResponseEntity<ArrayList<QandAVO>> entity = null;
+		// if (count > 0) {
+		try {
+			// entity = new
+			// ResponseEntity<>(qandADaoImpl.selectReply(bnum,startrow,endrow),HttpStatus.OK);
+			entity = new ResponseEntity<>(qandADaoImpl.selectReply(bnum), HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+		}
+		// 나짜변환 - > 스트링
+		//
+		// }
+		return entity;
+
 	}
 
 	// 글삭제
@@ -340,20 +383,13 @@ public class QandAController {
 
 	// 리플삭제
 	@RequestMapping("/QnA_re_delete")
-	public String QnA_re_delete(Model model, HttpServletRequest request) {
+	public View QnA_re_delete(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String reply_bnum = request.getParameter("reply_bnum");
+		int bnum = Integer.parseInt(request.getParameter("bnum"));
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 		qandADaoImpl.delete(Integer.parseInt(reply_bnum));
 
-		QandAVO vo = qandADaoImpl.showthis(Integer.parseInt(request.getParameter("bnum")));
-		ArrayList<QandAVO> list = qandADaoImpl.selectReply(Integer.parseInt(request.getParameter("bnum")));
-		model.addAttribute("session_id", session_id);
-		model.addAttribute("list", list);
-		model.addAttribute("vo", vo);
-		model.addAttribute("LEFT", "Q&A/left.jsp");
-		model.addAttribute("CONTENT", "Q&A/QnA_content.jsp");
-
-		return "main";
+		return jsonview;
 	}
 }

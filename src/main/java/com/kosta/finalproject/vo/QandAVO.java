@@ -2,9 +2,12 @@ package com.kosta.finalproject.vo;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class QandAVO {
 	private int bnum, bgnum, count, rnum, startRow, endRow, replyCount;
 	private String title, contents, id, img, category;
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date date;
 
 	public int getReplyCount() {
