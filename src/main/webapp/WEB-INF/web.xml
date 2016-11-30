@@ -66,7 +66,7 @@
    </filter-mapping>
 
  <!-- error 설정 -->
-   <error-page>
+   <!-- <error-page>
       <error-code>400</error-code>
       <location>/WEB-INF/views/Error/Error.jsp</location>
    </error-page>
@@ -84,7 +84,7 @@
    <error-page>
       <error-code>500</error-code>
       <location>/WEB-INF/views/Error/Error.jsp</location>
-   </error-page>
+   </error-page> -->
 
    <!-- 시작 설정 -->
    <welcome-file-list>

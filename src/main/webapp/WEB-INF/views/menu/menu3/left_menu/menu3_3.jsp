@@ -44,9 +44,6 @@
 									${vo.title}
 								</td>
 								
-								
-								
-								
 								<td width=245 style="border-bottom: 3px solid #fff;">
 									${vo.adress}
 								</td>
@@ -60,7 +57,7 @@
 								</td>
 								
 								<td width=53 style="border-bottom: 3px solid #fff;">
-									<input type="submit" value="신청">
+									<input type="submit" class="update-menu3 w3-card-8" value="">
 								</td>
 							</tr>
 							
