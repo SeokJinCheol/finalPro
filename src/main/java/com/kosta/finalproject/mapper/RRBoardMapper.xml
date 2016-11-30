@@ -20,6 +20,13 @@
     <select id="SelectALLAD" parameterType="com.kosta.finalproject.vo.RRboardVO"
       resultType="com.kosta.finalproject.vo.RRboardVO">
       SELECT * FROM RRBOARD
+         <where>
+        
+         <if test="packageStatus != null">
+            packageStatus like #{packageStatus}
+         </if> 
+       
+      </where>
    </select>
 
    <insert id="RRboardinsert" parameterType="com.kosta.finalproject.vo.RRboardVO">

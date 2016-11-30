@@ -219,6 +219,8 @@ public class RRBoardLeftController {
 
 		RRboardVO vo = new RRboardVO();
 
+		System.out.println(status);
+		
 		vo.setPackageStatus(status);
 
 		List<RRboardVO> result = dao.SelectALLAD(vo);

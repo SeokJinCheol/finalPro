@@ -30,7 +30,7 @@ function setpakageStatus(name){
 		<div style="margin-bottom: 20px; margin-top: 70px;">
 			<h4>- RRlist -</h4>
 			
-			<form action="RRlist" method="post"><input type="hidden" name="status" value="대여대기"><input type="submit" value="허가대기"></form>
+			<form action="RRlist" method="post"><input type="hidden" name="status" value="대여대기"><input type="submit" value="대여대기"></form>
 			<form action="RRlist" method="post"><input type="hidden" name="status" value="대여가능"><input type="submit" value="대여가능"></form>
 			<form action="RRlist" method="post"><input type="hidden" name="status" value="대여완료"><input type="submit" value="대여완료"></form>
 			<form action="RRlist" method="post"><input type="hidden" name="status" value="대여불가"><input type="submit" value="대여불가"></form>
@@ -59,7 +59,7 @@ function setpakageStatus(name){
 <select id="mySelect${vo.codeNum }" size="1">
 			  <option>${vo.packageStatus }</option>
 			  <c:if test="${vo.packageStatus=='대여가능' }">
-			  <option>허가대기</option>
+			  <option>대여대기</option>
 			  <option>대여완료</option>
 			  <option>대여불가</option>
 			  </c:if>
