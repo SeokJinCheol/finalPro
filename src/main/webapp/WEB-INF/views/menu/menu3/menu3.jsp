@@ -102,7 +102,7 @@ function check() {
 		    document.forms["sendCode"].elements["codeNum"].value=inpo[${i}].codeNum;
 			});
 		    // 클러스터러에 마커들을 추가합니다
-		    clusterer.addMarkers(marker[${i}]);
+		    clusterer.addMarkers(marker);
 		</script>
 	</c:forEach>
 	
