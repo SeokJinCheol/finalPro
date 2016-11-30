@@ -106,18 +106,19 @@
 	
 	var endDay = new Date(document.forms["insertSubmit"].elements["userendDate"].value);
 	
-	if(startDay==null && endDay==null){
-	alert("날짜를 채워 주세요!")
+	if(document.forms["insertSubmit"].elements["userstartDate"].value.length < 1 || document.forms["insertSubmit"].elements["userendDate"].value.length < 1){
+	
+		alert("날짜를 채워 주세요!")
 	
 	/* 안돼네 */
 	}else{
 	var totalDay = Math.round(((endDay-startDay)/(1000 * 60 * 60 * 24)) + 1);
 
 	var bill = ${vo.bill} * (totalDay);
+
 	document.forms["insertSubmit"].elements["bill"].value = bill;
 	
 	document.getElementById("days").innerHTML = "￦ " + bill + " 원" +" ("+totalDay+"일)";
-	
 	return false;}
 	}
 

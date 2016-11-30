@@ -9,17 +9,16 @@
 <script>
 /*클릭시 자료가 있는 지 체크 합니다.  */
 function check() {
-	alert("선택할께요!");
 	
-	if(document.forms["sendCode"].elements["codeNum"].value ==null ){
+	if(document.forms["sendCode"].elements["codeNum"].value.length > 1 ){
+		
+		document.forms["sendCode"].submit();
+	}else{
 		
 		alert("보고싶은 장소를 선택해주세요!");
 		
 		return false;
-		
-	}else if(document.forms["sendCode"].elements["codeNum"].value != null){
-		document.forms["sendCode"].submit;
-	}
+ 	}
 }
 </script>
 <title>free_list</title>
