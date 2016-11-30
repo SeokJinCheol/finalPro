@@ -21,6 +21,7 @@
 		<result property="reaquestId" column="reaquestId" />
 		<result property="registerId" column="registerId" />
 		<result property="company" column="company" />
+		<result property="word" column="word" />
 	</resultMap>
 	
 	<insert id="Registerinsert" parameterType="com.kosta.finalproject.vo.RegisterBoardVO" >
@@ -54,5 +55,25 @@
 	<delete id="registerdelete" parameterType="com.kosta.finalproject.vo.RegisterBoardVO">
 		DELETE FROM registerBoard WHERE codeNum = #{codeNum}
 	</delete>
+	
+	<select id="selectTitle" resultMap="RegisterBoard">
+		SELECT * FROM registerBoard WHERE title like  '%' || #{word} || '%' ORDER BY codeNum DESC
+	</select>
+	
+	<select id="selectCategory" resultMap="RegisterBoard">
+		SELECT * FROM registerBoard WHERE category like  '%' || #{word} || '%' ORDER BY codeNum DESC
+	</select> 
+	
+	<select id="pselectTitle" resultMap="RegisterBoard" parameterType="com.kosta.finalproject.vo.RegisterBoardVO">
+		SELECT * FROM registerBoard WHERE packageStatus = #{packageStatus} and title like  '%' || #{word} || '%' ORDER BY codeNum DESC
+	</select>
+	
+	<select id="pselectCategory" resultMap="RegisterBoard" parameterType="com.kosta.finalproject.vo.RegisterBoardVO">
+		SELECT * FROM registerBoard WHERE packageStatus = #{packageStatus} and category like  '%' || #{word} || '%' ORDER BY codeNum DESC
+	</select> 
+	
+	<select id="registercontent" resultMap="RegisterBoard"> 
+       SELECT * FROM registerBoard WHERE codeNum=#{codeNum}  ORDER BY codeNum DESC
+    </select>
 	
 </mapper>
