@@ -57,7 +57,7 @@
 					
 						<p>
 							<input type="hidden" name="bnum" value="${bnum}">
-							<input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수　정" />
+							<input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수　정" onclick="updatesubmit(); return false;"/>
 							&nbsp;&nbsp;&nbsp;
 							<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='free4_list'"/>
 						</p>
@@ -67,4 +67,11 @@
       </div>
    </div>
 </body>
+<script type="text/javascript">
+	function updatesubmit() {
+		if (confirm("수정하시겠습니까??") == true) {
+			document.form.submit();
+		} else { return false; }
+	}
+	</script>
 </html>
