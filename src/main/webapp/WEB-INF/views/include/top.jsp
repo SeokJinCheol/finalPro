@@ -182,9 +182,9 @@
 				<security:authorize ifNotGranted="role_user, role_com, role_master">
 					<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="Login">장 소 대 여&nbsp;<i class="fa fa-caret-down"></i></a>
 						<div class="w3-dropdown-content w3-white w3-card-4" >
-				        	<a href="Login">등 록 하 기</a>
-					        <a href="Login">지 도 찾 기</a>
-					    	<a href="Login">목 록 찾 기</a>
+				        	<a href="Login">장 소 등 록 하 기</a>
+					        <a href="Login">지 도 찾 기 & 대 여</a>
+					    	<a href="Login">목 록 찾 기 & 대 여</a>
 				    	</div>
 				    </li>
 		    	</security:authorize>
@@ -193,9 +193,9 @@
 				<security:authorize ifAnyGranted="role_user, role_com">
 					<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="menu3">장 소 대 여&nbsp;<i class="fa fa-caret-down"></i></a>
 						<div class="w3-dropdown-content w3-white w3-card-4" >
-				        	<a href="menu3_1">등 록 하 기</a>
-					        <a href="menu3_2">지 도 찾 기</a>
-					    	<a href="menu3_3">목 록 찾 기</a>
+				        	<a href="menu3_1">장 소 등 록 하 기</a>
+					        <a href="menu3_2">지 도 찾 기 & 대 여</a>
+					    	<a href="menu3_3">목 록 찾 기 & 대 여</a>
 				    	</div>
 			    	</li>
 		    	</security:authorize>
@@ -207,9 +207,9 @@
 					<div class="w3-dropdown-content w3-white w3-card-4" >
 	       				<a href="RRlist">장 소 등 록 관 리</a>
 			    		<a href="menu3_5">장 소 대 여 관 리</a>
-			    		<a href="menu3_1">등 록 하 기</a>
-				        <a href="menu3_2">지 도 찾 기</a>
-				    	<a href="menu3_3">목 록 찾 기</a>
+			    		<a href="menu3_1">장 소 등 록 하 기</a>
+				        <a href="menu3_2">지 도 찾 기 & 대 여</a>
+				    	<a href="menu3_3">목 록 찾 기 & 대 여</a>
 	       			</div>
 	       		</li>
 	    	</security:authorize>

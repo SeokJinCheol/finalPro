@@ -32,6 +32,7 @@
 	<tr><th>대여 가능한 날짜 종료일</th><td>${vo.endDate }</td></tr>
 	<tr><th>제목</th><td>${vo.title }</td></tr>
 	<tr><th>내용</th><td>${vo.contents }</td></tr>
+	<!-- 로그인 된 사람의 ID값(세션 사용) -->
 	<tr><th>신청자</th><td>${id }</td></tr>
 	<tr><th>신청일</th><td><input type="date" name="startDate" min="${vo.startDate }" required/>~<input type="date" name="endDate" min="${vo.startDate }" max="${vo.endDate  }" required/></td></tr>
 	<tr><th>행사명 및 세부 사항</th><td><input type ="text" name="contents"></td></tr>
