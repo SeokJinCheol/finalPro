@@ -30,7 +30,7 @@
 				            	<td style="text-align: center; width:80px; font-family: 'Jeju Gothic', sans-serif; border-right:1px solid white;" class="top-bottom-border">제　목</td>
 				            
 				                <td class="top-bottom-border">
-				                	<input type="text" value="${title}" class="free-insert-title" name="title" readonly>
+				                	<input type="text" value="${title}" class="free-insert-title" name="title" readonly >
 				            	</td>
 			                </tr>
 							
@@ -45,7 +45,7 @@
 			               
 			                <tr align="center" height="35"> 
 			                    <td colspan="2" class="bottom-border">
-			                		<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="10" cols="43" required>${contents}</textarea>
+			                		<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="10" cols="43" required maxlength="350">${contents}</textarea>
 			                    </td>
 			                </tr>
 	
