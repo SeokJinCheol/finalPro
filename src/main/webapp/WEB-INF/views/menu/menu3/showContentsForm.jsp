@@ -57,10 +57,10 @@
 					
 					<tr align=center height="35">
 	                	<td class="bottom-border">
-	                  		&nbsp;<input type="date" class="free-insert-title" style="width:38%; text-align: center" required name="userstartDate" value="${vo.userstartDate}"/>
+	                  		&nbsp;<input type="date" class="free-insert-title" style="width:38%; text-align: center" required name="userstartDate" min="${vo.startDate }" value="${vo.userstartDate}"/>
 	                  		<!-- ~ 앞뒤로 ㄱ한자 1 숨겨져 있음 -->
 	                  		　~　
-	                  		<input type="date" class="free-insert-title" style="width:38%; text-align: center" required name="userendDate" value="${vo.userendDate}"/>
+	                  		<input type="date" class="free-insert-title" style="width:38%; text-align: center" required name="userendDate" min="${vo.startDate }" max="${vo.endDate}" value="${vo.userendDate}"/>
 	                	</td>
 	               	</tr>
 					

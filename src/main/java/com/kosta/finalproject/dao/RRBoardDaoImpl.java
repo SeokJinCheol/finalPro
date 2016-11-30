@@ -104,4 +104,9 @@ public class RRBoardDaoImpl implements RRBoardDao {
 
 	}
 
+	public void RRBupdate(RRboardVO vo) {
+		// TODO Auto-generated method stub
+		sqlSession.update("com.kosta.finalproject.dao.RRBoardMapper.RRBupdate",vo);
+	}
+
 }

@@ -457,6 +457,75 @@ public class RRBoardLeftController {
 	}
 	
 	//RRBupdate
+	@RequestMapping("/RRBupdate")
+	public String RRBupdate(Model model, UploadVO dto,
+			@RequestParam("contents") String contents, @RequestParam("bill") int bill,
+			@RequestParam("title") String title,@RequestParam("adress") String adress,
+			@RequestParam("company") String company,@RequestParam("spotNum") String spotNum,
+			@RequestParam("startDate") String startDate, @RequestParam("endDate") String endDate,
+			@RequestParam("category") String category, @RequestParam("codeNum") int codeNum
+	) {
+		//파일처리
+		String fileName = null;
+		MultipartFile uploadfile = dto.getFile();
+		
+		if (uploadfile == null) {
+		} else {
+			fileName = uploadfile.getOriginalFilename();
+			dto.setOname(fileName);
+			try {
+				File file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + fileName);
+
+				int indexes = fileName.lastIndexOf(".");
+				if (indexes != -1) {
+					while (file.exists()) {
+						indexes = fileName.lastIndexOf(".");
+						System.out.println("순서 = " + indexes);
+						String extension = fileName.substring(indexes);
+						System.out.println("확장자 = " + extension);
+						String newFileName = fileName.substring(0, indexes) + "_" + extension;
+						System.out.println("새 파일 이름 = " + newFileName);
+						fileName = newFileName;
+						file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + newFileName);
+					}
+
+					uploadfile.transferTo(file);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} // try - catch
+		} // if
+
+		
+		// vo 생성
+		RRboardVO vo = new RRboardVO();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+		// 세팅
+		vo.setCategory(category);
+		vo.setContents(contents);
+		vo.setTitle(title);
+		vo.setAdress(adress);
+		vo.setCompany(company);
+		vo.setContents(contents);
+		vo.setStartDate(startDate);
+		vo.setEndDate(endDate);
+		vo.setRegisterId(session_id);
+		vo.setCodeNum(codeNum);
+		
+		if (fileName.equals(null)) {
+			vo.setImg("이미지없음");
+		} else {
+			vo.setImg(fileName);
+		}
+		
+		System.out.println(vo.toString());
+		
+		dao.RRBupdate(vo);
+
+		
+		return "redirect:myRRBlist";
+	}
 	//RPBupdate
 	// 수정하기
 		@RequestMapping("/RPBupdate")

@@ -19,7 +19,7 @@
 				<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="main"><img src="/team4/resources/images/home18.png">&nbsp;H o m e</a></li>
 				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><a href="about_us"><img src="/team4/resources/images/korea18.png">&nbsp;About us</a></li>
 				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QnA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
-				<li style="width:7%"><p></p></li>
+				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><input type="button"  name="cost" value="대여비용" style="margin-right:5px;" onclick="openCost(this.form)"></li>
 				<li style="width:25%; padding: 0 0 3px 0;"><img class="w3-animate-opacity" src="/team4/resources/images/test-top.png" onclick="location.href='main'"></li>
 				<li style="width:30%"><p></p></li>
 				
@@ -44,7 +44,7 @@
 				<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="main"><img src="/team4/resources/images/home18.png">&nbsp;H o m e</a></li>
 				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><a href="about_us"><img src="/team4/resources/images/korea18.png">&nbsp;About us</a></li>
 				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QnA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
-				<li style="width:7%"><p></p></li>
+				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><input type="button"  name="cost" value="대여비용" style="margin-right:5px;" onclick="openCost(this.form)"></li>
 				<li style="width:25%; padding: 0 0 3px 0;"><img class="w3-animate-opacity" src="/team4/resources/images/test-top.png" onclick="location.href='main'"></li>
 				<li style="width:30%"><p></p></li>
 				
@@ -68,7 +68,7 @@
 				<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="main"><img src="/team4/resources/images/home18.png">&nbsp;H o m e</a></li>
 				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><a href="about_us"><img src="/team4/resources/images/korea18.png">&nbsp;About us</a></li>
 				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QnA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
-				<li style="width:7%"><p></p></li>
+				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><input type="button"  name="cost" value="대여비용" style="margin-right:5px;" onclick="openCost(this.form)"></li>
 				<li style="width:25%; padding: 0 0 3px 0;"><img class="w3-animate-opacity" src="/team4/resources/images/test-top.png" onclick="location.href='main'"></li>
 				<li style="width:22%"><p></p></li>
 				
@@ -225,4 +225,12 @@
 		</ul>
 	</div>
 </body>
+<script type="text/javascript">
+	// 이용요금 안내 팝업창
+	function openCost(Cost) {
+		url = "Cost";
+		winObject = window.open(url, "id", "left=100, top=150, width=500, height=400");
+		winObject.document.all.id.value = document.all.id.value;
+	}
+</script>
 </html>

@@ -142,7 +142,7 @@ function fncLPAD(num)
 						<td>주소</td>
 						<td><input type="hidden" name="adress" id="adress" value="${vo.adress }" required>
 							<input type="hidden" name="spotNum" id="spotNum" value="${vo.spotNum }" required>
-							<textarea rows="1" cols="30" id="inpo">${vo.adress }</textarea>
+							<textarea rows="1" cols="30" id="inpo" readonly="readonly">${vo.adress }</textarea>
 						</td>
 					</tr>
 					<tr>
@@ -166,7 +166,7 @@ var addresses = [];
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new daum.maps.LatLng${vo.spotNum }, // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
+        level: 4 // 지도의 확대 레벨
     };  
 
 // 지도를 생성합니다    
