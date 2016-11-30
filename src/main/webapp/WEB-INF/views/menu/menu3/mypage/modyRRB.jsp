@@ -100,6 +100,7 @@ function fncLPAD(num)
 			
 		
 			<form action="RRBupdate" name="RR" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="codeNum" value="${vo.codeNum }">
 				<table border="1">
 					<tr>
 						<td>제목</td>
@@ -147,7 +148,7 @@ function fncLPAD(num)
 					</tr>
 					<tr>
 						<td>내용</td>
-						<td><textarea name="contents" cols="30" rows="15" value="${vo.contents }" required></textarea></td>
+						<td><textarea name="contents" cols="30" rows="15" required>${vo.contents }</textarea></td>
 					</tr>
 				</table>
 				<input type="submit" value="수정하기">
