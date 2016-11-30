@@ -29,11 +29,11 @@
 	</insert>
 	
 	<select id="Registerselect" resultMap="RegisterBoard">
-		SELECT * FROM registerBoard
+		SELECT * FROM registerBoard ORDER BY codeNum DESC
 	</select>
 	
 	<select id="RegisterUpForm" resultMap="RegisterBoard">
-		SELECT * FROM registerBoard WHERE codeNum = #{codeNum}
+		SELECT * FROM registerBoard WHERE codeNum = #{codeNum} ORDER BY codeNum DESC
 	</select>
 	
 	<update id="PackageStatusUP" parameterType="com.kosta.finalproject.vo.RegisterBoardVO">
@@ -45,11 +45,11 @@
 	</update>
 	
 	<select id="MyRegisterselect" resultMap="RegisterBoard">
-		SELECT * FROM registerBoard WHERE registerId = #{session_id}
+		SELECT * FROM registerBoard WHERE registerId = #{session_id} ORDER BY codeNum DESC
 	</select>
 	
 	<select id="Registerpossibility" resultMap="RegisterBoard">
-		SELECT * FROM registerBoard WHERE packageStatus = #{possibility}
+		SELECT * FROM registerBoard WHERE packageStatus = #{possibility} ORDER BY codeNum DESC
 	</select>
 	
 	<delete id="registerdelete" parameterType="com.kosta.finalproject.vo.RegisterBoardVO">
@@ -57,23 +57,23 @@
 	</delete>
 	
 	<select id="selectTitle" resultMap="RegisterBoard">
-		SELECT * FROM registerBoard WHERE title like  '%' || #{word} || '%'
+		SELECT * FROM registerBoard WHERE title like  '%' || #{word} || '%' ORDER BY codeNum DESC
 	</select>
 	
 	<select id="selectCategory" resultMap="RegisterBoard">
-		SELECT * FROM registerBoard WHERE category like  '%' || #{word} || '%'
+		SELECT * FROM registerBoard WHERE category like  '%' || #{word} || '%' ORDER BY codeNum DESC
 	</select> 
 	
 	<select id="pselectTitle" resultMap="RegisterBoard" parameterType="com.kosta.finalproject.vo.RegisterBoardVO">
-		SELECT * FROM registerBoard WHERE packageStatus = #{packageStatus} and title like  '%' || #{word} || '%'
+		SELECT * FROM registerBoard WHERE packageStatus = #{packageStatus} and title like  '%' || #{word} || '%' ORDER BY codeNum DESC
 	</select>
 	
 	<select id="pselectCategory" resultMap="RegisterBoard" parameterType="com.kosta.finalproject.vo.RegisterBoardVO">
-		SELECT * FROM registerBoard WHERE packageStatus = #{packageStatus} and category like  '%' || #{word} || '%'
+		SELECT * FROM registerBoard WHERE packageStatus = #{packageStatus} and category like  '%' || #{word} || '%' ORDER BY codeNum DESC
 	</select> 
 	
 	<select id="registercontent" resultMap="RegisterBoard"> 
-       SELECT * FROM registerBoard WHERE codeNum=#{codeNum} 
+       SELECT * FROM registerBoard WHERE codeNum=#{codeNum}  ORDER BY codeNum DESC
     </select>
 	
 </mapper>

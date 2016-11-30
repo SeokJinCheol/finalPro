@@ -24,53 +24,55 @@
 </script>
 <style>
 .left {
+   height: 270px;
    float: left;
    margin-left: 15px;
    margin-bottom: 15px;
+   border: 1px solid;
 }
 </style>
 <body>
    <a href="window().open"></a>
    <div align=center class="w3-container"
       style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
-	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
-		<img src="/team4/resources/images/free_list.png" style="margin-right:10px;">
-		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">대 여 가 능 현 황</font>
-	</div>	
+   <div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
+      <img src="/team4/resources/images/free_list.png" style="margin-right:10px;">
+      <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">대 여 가 능 현 황</font>
+   </div>   
 
     <div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
-		<!-- 검색 -->
-		<div class="w3-row" style="margin-top:50px;">	
-			<form action="menu2_1" method=post>
-				<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
-					<option value="#" style="text-align:center;">선택하세요.</option>
-					<option value="title" style="text-align:center;">Title</option>
-					<option value="category" style="text-align:center;">카테고리</option>
-				</select>
-				
-				<input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" required="required" maxlength="30"/>
-				
-				<input type="submit" class="list-search" value ="Search" style="width:8%;">
-			</form>
-		</div>
+      <!-- 검색 -->
+      <div class="w3-row" style="margin-top:50px;">   
+         <form action="menu2_1" method=post>
+            <select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
+               <option value="#" style="text-align:center;">선택하세요.</option>
+               <option value="title" style="text-align:center;">Title</option>
+               <option value="category" style="text-align:center;">카테고리</option>
+            </select>
+            
+            <input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" required="required"/>
+            
+            <input type="submit" class="list-search" value ="Search" style="width:8%;">
+         </form>
+      </div>
          <br>
          
          <div>
             <c:forEach items="${Registerpossibility}" var="Registerpossibility"
                begin="0" end="5">
                <div style="width: 30%" class="left">
-                  <table border="1">
+                  <table>
                      <tr>
                         <td colspan="3" align="center">${Registerpossibility.title}</td>
                      </tr>
                      <tr>
                         <td style="width: 20%" colspan="3"><a href="registercontent?codeNum=${Registerpossibility.codeNum}">
-                        <img src="/team4/resources/RequestImg/${Registerpossibility.img }" style="width: 100%; height: 100px;"></td>
+                        <img src="/team4/resources/RequestImg/${Registerpossibility.img }" style="width: 100%; height: 170px;"></td>
                      </tr>
                      <tr>
-                        <td>${Registerpossibility.category}</td>
-                        <td>NO.${Registerpossibility.codeNum}</td>
-                        <td>${Registerpossibility.packageStatus}</td>
+                        <td style="width: 170px;" align="left">No.${Registerpossibility.codeNum}</td>
+                        <td style="width: 170px;" align="center"><a onclick="window.open('mail?rid=${Registerpossibility.reaquestId}', '','width=400, height=350, status=1')">${Registerpossibility.reaquestId}</a></td>
+                        <td style="width: 170px;" align="center">${Registerpossibility.category}</td>
                      </tr>
                      <tr>
                         <td align="center" colspan="3">
@@ -89,19 +91,19 @@
          <div  style="display: none" id="moreview">
             <c:forEach items="${Registerpossibility}" var="Registerpossibility" begin="6">
                <div style="width: 30%" class="left">
-                  <table border="1">
+                  <table>
                      <tr>
                         <td colspan="3" align="center">${Registerpossibility.title}</td>
                      </tr>
                      <tr>
-                        <td style="width: 20%" colspan="3"><img
-                           src="/team4/resources/RequestImg/${Registerpossibility.img }"
-                           style="width: 100%; height: 100px;"></td>
+                        <td style="width: 20%" colspan="3">
+                        <img src="/team4/resources/RequestImg/${Registerpossibility.img }" style="width: 100%; height: 170px;">
+                        </td>
                      </tr>
                      <tr>
-                        <td>${Registerpossibility.category}</td>
-                        <td>NO.${Registerpossibility.codeNum}</td>
-                        <td>${Registerpossibility.packageStatus}</td>
+                        <td style="width: 170px;" align="left">No.${Registerpossibility.codeNum}</td>
+                        <td style="width: 170px;" align="center"><a onclick="window.open('mail?rid=${Registerpossibility.reaquestId}', '','width=400, height=350, status=1')">${Registerpossibility.reaquestId}</a></td>
+                        <td style="width: 170px;" align="center">${Registerpossibility.category}</td>
                      </tr>
                      <tr>
                         <td align="center" colspan="3">
@@ -118,6 +120,6 @@
          <!-- 숨긴내용 보기 종료 -->
       </div>
    </div>
-	<button onclick="visible()">더보기</button>
+   <button onclick="visible()">더보기</button>
 </body>
 </html>

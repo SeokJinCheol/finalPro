@@ -24,52 +24,54 @@
 </script>
 <style>
 .left {
+    height: 270px;
    float: left;
    margin-left: 15px;
    margin-bottom: 15px;
+   border: 1px solid;
 }
 </style>
 <body>
    <a href="window().open"></a>
    <div align=center class="w3-container"
       style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
-	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
-		<img src="/team4/resources/images/free_list.png" style="margin-right:10px;">
-		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">물 품 대 여</font>
-	</div>	
+   <div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
+      <img src="/team4/resources/images/free_list.png" style="margin-right:10px;">
+      <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">물 품 대 여</font>
+   </div>   
 
     <div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
-		<!-- 검색 -->
-		<div class="w3-row" style="margin-top:50px;">	
-			<form action="menu2" method=post>
-				<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
-					<option value="#" style="text-align:center;">선택하세요.</option>
-					<option value="title" style="text-align:center;">Title</option>
-					<option value="category" style="text-align:center;">카테고리</option>
-				</select>
-				
-				<input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" required="required"/>
-				
-				<input type="submit" class="list-search" value ="Search" style="width:8%;">
-			</form>
-		</div>
+      <!-- 검색 -->
+      <div class="w3-row" style="margin-top:50px;">   
+         <form action="menu2" method=post>
+            <select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
+               <option value="#" style="text-align:center;">선택하세요.</option>
+               <option value="title" style="text-align:center;">Title</option>
+               <option value="category" style="text-align:center;">카테고리</option>
+            </select>
+            
+            <input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" required="required"/>
+            
+            <input type="submit" class="list-search" value ="Search" style="width:8%;">
+         </form>
+      </div>
          <br>
  
-         <div class="w3-row" >
+         <div>
             <c:forEach items="${Registerselect}" var="Registerselect" begin="0" end="5">
                <div style="width: 30%" class="left">
-                  <table border="1">
+                  <table>
                      <tr>
                         <td colspan="3" align="center">${Registerselect.title}</td>
                      <tr>
                      <tr>
                         <td style="width: 20%" colspan="3"><a href="registercontent?codeNum=${Registerselect.codeNum}">
-                        <img src="C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/RequestImg/${Registerselect.img }" style="width: 100%; height: 100px;"></td>
+                        <img src="/team4/resources/RequestImg/${Registerselect.img }" style="width: 100%; height: 170px;"></td>
                      </tr>
                      <tr>
-                        <td style="width: 10%">${Registerselect.category}</td>
-                        <td style="width: 15%">NO.${Registerselect.codeNum}</td>
-                        <td style="width: 8%">${Registerselect.packageStatus}</td>
+                        <td style="width: 170px;" align="left">No.${Registerselect.codeNum}</td>
+                        <td style="width: 170px;" align="center"><a onclick="window.open('mail?rid=${Registerselect.reaquestId}', '','width=400, height=350, status=1')">${Registerselect.reaquestId}</a></td>
+                        <td style="width: 170px;" align="center">${Registerselect.category}</td>
                      </tr>
 
                      <!-- 일반유저 -->
@@ -84,7 +86,7 @@
                         </c:if>
 
                         <c:if test="${Registerselect.packageStatus != '대여가능'}">
-                           <td colspan="3" align="center" style="WIDTH: 60px; HEIGHT: 20px">신청불가</td>
+                           <td colspan="3" align="center" style="WIDTH: 60pt; HEIGHT: 20pt">신청불가</td>
                         </c:if>
                      </c:if>
 
@@ -94,17 +96,17 @@
                            <td colspan="3" align="center">
                               <form action="startrentForm" method="post">
                                  <input type="hidden" value="${Registerselect.codeNum}" name="codeNum"> 
-                                 <input type="submit" style="WIDTH: 60px; HEIGHT: 20px" value="대여시작">
+                                 <input type="submit" style="WIDTH: 60pt; HEIGHT: 20pt" value="대여시작">
                               </form>
                            </td>
                         </c:if>
                         
                         <c:if test="${Registerselect.packageStatus == '대여가능'}">
-                            <td colspan="3" align="center" style="WIDTH: 60px; HEIGHT: 22px">미신청</td></tr>
+                            <td colspan="3" align="center" style="WIDTH: 60pt; HEIGHT: 22pt">미신청</td></tr>
                         </c:if>
                         
                         <c:if test="${Registerselect.packageStatus == '대여중'}">
-                            <td colspan="3" align="center" style="WIDTH: 60px; HEIGHT: 22px">대여중</td></tr>
+                            <td colspan="3" align="center" style="WIDTH: 60pt; HEIGHT: 22pt">대여중</td></tr>
                         </c:if>
 
                         <c:if test="${Registerselect.packageStatus == '반납신청'}">
@@ -133,18 +135,18 @@
             <div style="display: none" id="moreview">
             <c:forEach items="${Registerselect}" var="Registerselect" begin="6">
                <div style="width: 30%" class="left">
-                  <table border="1">
+                  <table>
                      <tr>
                         <td colspan="3" align="center">${Registerselect.title}</td>
                      <tr>
                      <tr>
                         <td style="width: 20%" colspan="3"><a href="registercontent?codeNum=${requestlist.codeNum}">
-                        <img src="C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/RequestImg/${Registerselect.img }" style="width: 100%; height: 100px;"></td>
+                        <img src="/team4/resources/RequestImg/${Registerselect.img }" style="width: 100%; height: 170px;"></td>
                      </tr>
                      <tr>
-                        <td style="width: 10%">${Registerselect.category}</td>
-                        <td style="width: 15%">NO.${Registerselect.codeNum}</td>
-                        <td style="width: 8%">${Registerselect.packageStatus}</td>
+                        <td style="width: 170px;" align="left">No.${Registerselect.codeNum}</td>
+                        <td style="width: 170px;" align="center"><a onclick="window.open('mail?rid=${Registerselect.reaquestId}', '','width=400, height=350, status=1')">${Registerselect.reaquestId}</a></td>
+                        <td style="width: 170px;" align="center">${Registerselect.category}</td>
                      </tr>
 
                      <!-- 일반유저 -->
@@ -159,7 +161,7 @@
                         </c:if>
 
                         <c:if test="${Registerselect.packageStatus != '대여가능'}">
-                           <td colspan="3" align="center" style="WIDTH: 60px; HEIGHT: 20px">신청불가</td>
+                           <td colspan="3" align="center" style="WIDTH: 60pt; HEIGHT: 20pt">신청불가</td>
                         </c:if>
                      </c:if>
 
@@ -169,17 +171,17 @@
                            <td colspan="3" align="center">
                               <form action="startrentForm" method="post">
                                  <input type="hidden" value="${Registerselect.codeNum}"
-                                    name="codeNum"> <input type="submit" style="WIDTH: 60px; HEIGHT: 20px" value="대여시작">
+                                    name="codeNum"> <input type="submit" style="WIDTH: 60pt; HEIGHT: 20pt" value="대여시작">
                               </form>
                            </td>
                         </c:if>
                         
                         <c:if test="${Registerselect.packageStatus == '대여가능'}">
-                            <td colspan="3" align="center" style="WIDTH: 60px; HEIGHT: 22px">미신청</td></tr>
+                            <td colspan="3" align="center" style="WIDTH: 60pt; HEIGHT: 22pt">미신청</td></tr>
                         </c:if>
                         
                         <c:if test="${Registerselect.packageStatus == '대여중'}">
-                            <td colspan="3" align="center" style="WIDTH: 60px; HEIGHT: 22px">대여중</td></tr>
+                            <td colspan="3" align="center" style="WIDTH: 60pt; HEIGHT: 22pt">대여중</td></tr>
                         </c:if>
 
                         <c:if test="${Registerselect.packageStatus == '반납신청'}">
@@ -205,8 +207,8 @@
             </c:forEach>
             </div>
             <!-- 숨긴내용 끝 -->
+            <button onclick="visible()">더보기</button>
       </div>
    </div>
-   <button onclick="visible()">더보기</button>
 </body>
 </html>

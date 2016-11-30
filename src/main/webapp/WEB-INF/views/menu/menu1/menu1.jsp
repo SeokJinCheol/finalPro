@@ -20,77 +20,84 @@
 </script>
 <style>
    .left {
+     height: 270px;
       float: left;
       margin-left: 15px;
       margin-bottom: 15px;
+      border: 1px solid;
    }
 </style>
 <body>
    <a href="window().open"></a>
    <div align=center class="w3-container"
       style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
-	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
-		<img src="/team4/resources/images/free_list.png" style="margin-right:10px;">
-		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">물 품 등 록</font>
-	</div>	
+   <div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
+      <img src="/team4/resources/images/free_list.png" style="margin-right:10px;">
+      <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">물 품 등 록</font>
+   </div>   
 
          <a href="requestwriteform">글쓰기</a>
          
          <div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
-		<!-- 검색 -->
-		<div class="w3-row" style="margin-top:50px;">	
-			<form action="menu1" method=post>
-				<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
-					<option value="#" style="text-align:center;">선택하세요.</option>
-					<option value="title" style="text-align:center;">Title</option>
-					<option value="category" style="text-align:center;">카테고리</option>
-				</select>
-				
-				<input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" required="required" maxlength="30"/>
-				
-				<input type="submit" class="list-search" value ="Search" style="width:8%;">
-			</form>
-		</div>
+      <!-- 검색 -->
+      <div class="w3-row" style="margin-top:50px;">   
+         <form action="menu1" method=post>
+            <select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
+               <option value="#" style="text-align:center;">선택하세요.</option>
+               <option value="title" style="text-align:center;">Title</option>
+               <option value="category" style="text-align:center;">카테고리</option>
+            </select>
+            
+            <input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" required="required"/>
+            <input type="submit" class="list-search" value ="Search" style="width:8%;">
+         </form>
+      </div>
          <br>
          <div>
             <c:forEach items="${requestlist}" var="requestlist" begin="0" end="5">
                <div style="width: 30%" class="left">
-                  <table border="1">
+                  <table>
                      <tr>
-                        <td colspan="2">No. ${requestlist.codeNum}</td>
+                        <td colspan="3" align="center">${requestlist.title}</td>
                      </tr>
                      <tr>
-                        <td colspan="2"><a href="requestcontent?codeNum=${requestlist.codeNum}"> 
-                        <img src="/team4/resources/RequestImg/${requestlist.img }" style="width: 100%; height: 130px;"></a>
+                        <td colspan="3"><a href="requestcontent?codeNum=${requestlist.codeNum}"> 
+                        <img src="/team4/resources/RequestImg/${requestlist.img }" style="width: 100%; height: 170px;"></a>
                         </td>
                      </tr>
-                  </table>
-                  <table border="1">
                      <tr>
-                        <td style="width: 50%"><a onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=300, status=1')">${requestlist.reaquestId}</a></td>
-                        <td style="width: 50%">${requestlist.title}</td>
-                        <td style="width: 50%">${requestlist.packageStatus}</td>
+                        <td style="width: 170px;" align="left">No.${requestlist.codeNum}</td>
+                        <td style="width: 170px;" align="center"><a onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">${requestlist.reaquestId}</a></td>
+                        <td style="width: 170px;" align="center">${requestlist.category}</td>
+                        <!-- admin 일때 -->
                         <c:if test="${session_id == 'admin'}">
+                           <tr>
                            <c:if test="${requestlist.packageStatus =='심사중'}">
-                              <td>
+                              <td colspan="3" align="center">
                                  <form action="RegisterBoardwrite" method="post">
-                                    <input type="hidden" name="codeNum"
-                                       value="${requestlist.codeNum}"> <input
-                                       type="submit" value="심사하기">
+                                    <input type="hidden" name="codeNum" value="${requestlist.codeNum}"> 
+                                    <input type="submit" value="심사하기">
                                  </form>
                               </td>
                            </c:if>
 
                            <c:if test="${requestlist.packageStatus =='대여종료신청'}">
-                              <td>
+                              <td colspan="3" align="center">
                                  <form action="Requestboardend" method="post">
-                                    <input type="hidden" name="codeNum"
-                                       value="${requestlist.codeNum}"> <input
-                                       type="submit" value="대여종료">
+                                    <input type="hidden" name="codeNum" value="${requestlist.codeNum}"> 
+                                    <input type="submit" value="대여종료">
                                  </form>
                               </td>
                            </c:if>
+                           
+                          <c:if test="${requestlist.packageStatus =='대여중'}">
+                              <td colspan="3" align="center">
+                                 <input type="submit" value="대여중">
+                              </td>
+                           </c:if>
+                           </tr>
                         </c:if>
+                        <!-- admin 일때 END -->
                      </tr>
                   </table>
                   <br>
@@ -101,41 +108,46 @@
          <div style="display: none" id="moreview">
             <c:forEach items="${requestlist}" var="requestlist" begin="6">
                <div style="width: 30%" class="left">
-                  <table border="1">
+                  <table>
                      <tr>
-                        <td colspan="2">No. ${requestlist.codeNum}</td>
+                        <td colspan="3" align="center">${requestlist.title}</td>
                      </tr>
                      <tr>
-                        <td colspan="2"><a href="requestcontent?codeNum=${requestlist.codeNum}"> 
-                        <img src="/team4/resources/RequestImg/${requestlist.img }" style="width: 100%; height: 130px;"></a>
+                        <td colspan="3"><a href="requestcontent?codeNum=${requestlist.codeNum}"> 
+                        <img src="/team4/resources/RequestImg/${requestlist.img }" style="width: 100%; height: 170px;"></a>
                         </td>
                      </tr>
-                  </table>
-                  <table border="1">
                      <tr>
-                        <td style="width: 50%"><a onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=300, status=1')">${requestlist.reaquestId}</a></td>
-                        <td style="width: 50%">${requestlist.title}</td>
-                        <td style="width: 50%">${requestlist.packageStatus}</td>
+                        <td style="width: 170px;" align="left">No.${requestlist.codeNum}</td>
+                        <td style="width: 170px;" align="center"><a onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">${requestlist.reaquestId}</a></td>
+                        <td style="width: 170px;" align="center">${requestlist.category}</td>
+                        <!-- admin일때 -->
                         <c:if test="${session_id == 'admin'}">
+                           <tr>
                            <c:if test="${requestlist.packageStatus =='심사중'}">
-                              <td>
+                              <td colspan="3" align="center">
                                  <form action="RegisterBoardwrite" method="post">
-                                    <input type="hidden" name="codeNum"
-                                       value="${requestlist.codeNum}"> <input
-                                       type="submit" value="심사하기">
+                                    <input type="hidden" name="codeNum" value="${requestlist.codeNum}"> 
+                                    <input type="submit" value="심사하기">
                                  </form>
                               </td>
                            </c:if>
 
                            <c:if test="${requestlist.packageStatus =='대여종료신청'}">
-                              <td>
+                              <td colspan="3" align="center">
                                  <form action="Requestboardend" method="post">
                                     <input type="hidden" name="codeNum"
-                                       value="${requestlist.codeNum}"> <input
-                                       type="submit" value="대여종료">
+                                       value="${requestlist.codeNum}"> <input type="submit" value="대여종료">
                                  </form>
                               </td>
                            </c:if>
+                           
+                          <c:if test="${requestlist.packageStatus =='대여중'}">
+                              <td colspan="3" align="center">
+                                 <input type="submit" value="대여중">
+                              </td>
+                           </c:if>
+                           </tr>
                         </c:if>
                      </tr>
                   </table>
