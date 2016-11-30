@@ -186,20 +186,84 @@ public class MainController {
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////
-	// 회원리스트
-	@RequestMapping("/list")
-	public String selectAll(HttpServletRequest request, Model model) throws Exception {
-		request.setCharacterEncoding("utf-8");
+	// 회원리스트 + 회원검색
+		@RequestMapping("/list")
+		public String selectAll(HttpServletRequest request, Model model) throws Exception {
+			request.setCharacterEncoding("utf-8");
+			String keyword = request.getParameter("keyword");
+			String word = request.getParameter("word");
+			String id = request.getParameter("id");
+			int pageSize = 10;
+			String pageNum = request.getParameter("pageNum");
 
-		List<UsersVO> userlist = finalDaoImpl.getMembers();
+			if (pageNum == null)
+				pageNum = "1";
 
-		model.addAttribute("result", userlist);
+			int currentPage = Integer.parseInt(pageNum);
 
-		model.addAttribute("LEFT", "join/admin_left.jsp");
-		model.addAttribute("CONTENT", "join/list.jsp");
+			int startRow = (currentPage * pageSize) - (pageSize - 1);
+			int endRow = currentPage * pageSize;
+			int count = 0, number = 0;
 
-		return "main";
-	}
+			
+			List<UsersVO> userlist = null;
+			
+			if (keyword == null) {
+				count = finalDaoImpl.getAdAllCount();
+			} else if (keyword.equalsIgnoreCase("name") && word != null) {
+				count = finalDaoImpl.getAdminNameCount(word);
+			} else if (keyword.equalsIgnoreCase("id") && word != null) {
+				count = finalDaoImpl.getAdminIDCount(word);
+			} else if (keyword.equalsIgnoreCase("memberRank") && word != null) {
+				count = finalDaoImpl.getAdminRankCount(word);
+			}
+			
+			int pageCount = Math.round(count / pageSize + (count % pageSize == 0 ? 0 : 1));
+			if (count > 0) {
+				if (keyword == null) {
+					UsersVO users = new UsersVO();
+					users.setStartRow(startRow);
+					users.setEndRow(endRow);
+					userlist = finalDaoImpl.adGetMembers(users);
+
+				} else if (keyword.equalsIgnoreCase("name") && word != null) {
+					word = request.getParameter("word");
+
+					userlist = finalDaoImpl.adSelectName(word, startRow, endRow);
+
+					model.addAttribute("word", word);
+					model.addAttribute("keyword", keyword);
+
+				} else if (keyword.equalsIgnoreCase("id") && word != null) {
+					word = request.getParameter("word");
+					userlist = finalDaoImpl.adSelectId(word, startRow, endRow);
+
+					model.addAttribute("word", word);
+					model.addAttribute("keyword", keyword);
+
+				} else if (keyword.equalsIgnoreCase("memberRank") && word != null) {
+					word = request.getParameter("word");
+					userlist = finalDaoImpl.adSelectRank(word, startRow, endRow);
+
+					model.addAttribute("word", word);
+					model.addAttribute("keyword", keyword);
+
+				}
+				
+			} else {
+				userlist = Collections.EMPTY_LIST;
+			}
+
+			model.addAttribute("result", userlist);
+			model.addAttribute("currentPage", new Integer(currentPage));
+			model.addAttribute("count", new Integer(count));
+			model.addAttribute("pageCount", pageCount);
+			model.addAttribute("pageSize", new Integer(pageSize));
+			model.addAttribute("LEFT", "join/admin_left.jsp");
+			model.addAttribute("CONTENT", "join/list.jsp");
+
+			return "main";
+		}
 
 	// 회원가입_Form
 	@RequestMapping("/joinForm")
@@ -471,13 +535,7 @@ public class MainController {
 
 		finalDaoImpl.updateMemberPro(vo);
 
-		List<UsersVO> userlist = finalDaoImpl.getMembers();
-
-		model.addAttribute("result", userlist);
-		model.addAttribute("LEFT", "join/admin_left.jsp");
-		model.addAttribute("CONTENT", "join/list.jsp");
-
-		return "main";
+		return "redirect:list";
 	}
 
 	// admin_delete
@@ -501,14 +559,6 @@ public class MainController {
 		// Roll도 삭제되는 구문
 		finalDaoImpl.admin_deleteMemberRank(id);
 
-		List<UsersVO> userlist = finalDaoImpl.getMembers();
-
-		model.addAttribute("id", request.getRequestedSessionId());
-		model.addAttribute("result", userlist);
-
-		model.addAttribute("LEFT", "join/admin_left.jsp");
-		model.addAttribute("CONTENT", "join/list.jsp");
-
-		return "main";
+		return "redirect:list";
 	}
 }

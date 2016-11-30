@@ -24,4 +24,20 @@ public interface FinalDao {
 	void admin_deleteMemberRank(String id);
 	
 	void deleteRank(String id);
+	
+	public int getAdAllCount();
+	
+	public int getAdminNameCount(String word);
+	
+	public int getAdminIDCount(String word);
+	
+	public int getAdminRankCount(String word);
+	
+	public ArrayList<UsersVO> adGetMembers(UsersVO users);
+	
+	public ArrayList<UsersVO> adSelectName(String word, int startRow, int endRow);
+	
+	public ArrayList<UsersVO> adSelectId(String word, int startRow, int endRow);
+	
+	public ArrayList<UsersVO> adSelectRank(String word, int startRow, int endRow);
 }

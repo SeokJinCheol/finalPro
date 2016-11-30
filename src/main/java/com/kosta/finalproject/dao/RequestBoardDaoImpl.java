@@ -110,4 +110,20 @@ public class RequestBoardDaoImpl implements RequestBoardDao {
 
 		return result;
 	}
+
+	@Override
+	public ArrayList<RequestBoardVO> selectTitle(String word) {
+		ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();
+		RequestBoardMapper mapper = sqlSession.getMapper(RequestBoardMapper.class);
+		result = mapper.selectTitle(word);
+		return result;
+	}
+	
+	@Override
+	public ArrayList<RequestBoardVO> selectCategory(String word) {
+		ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();
+		RequestBoardMapper mapper = sqlSession.getMapper(RequestBoardMapper.class);
+		result = mapper.selectCategory(word);
+		return result;
+	}
 }

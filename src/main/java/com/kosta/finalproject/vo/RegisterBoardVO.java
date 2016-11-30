@@ -19,9 +19,15 @@ company varchar
 public class RegisterBoardVO {
 	
 	private int codeNum, bill, deposit;
-	private String category, title, contents, packageStatus, varchar, reaquestId, registerId, company, startDate, endDate, userstartDate, userendDate, img;
+	private String category, title, contents, packageStatus, varchar, reaquestId, registerId, company, startDate, endDate, userstartDate, userendDate, img, word;
 	
-	
+
+	public String getWord() {
+		return word;
+	}
+	public void setWord(String word) {
+		this.word = word;
+	}
 	public String getImg() {
 		return img;
 	}

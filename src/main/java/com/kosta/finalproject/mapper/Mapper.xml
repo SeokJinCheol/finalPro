@@ -17,6 +17,8 @@
 		<result property="address2" column="address2" />
 		<result property="memberRank" column="memberRank" />
 		<result property="company" column="company" />
+		<result property="startRow" column="startRow" />
+		<result property="endRow" column="endRow" />
 	</resultMap>
 
 	<resultMap type="EmailVO" id="EmailResultMap">
@@ -76,4 +78,45 @@
 	<insert id="insertRank" parameterType="com.kosta.finalproject.vo.RankVO">
 		insert into userrank values(#{id}, #{rightrank})
 	</insert>
+	
+    <select id="getAdAllCount" resultType="Integer">
+		SELECT COUNT(*) FROM users
+	</select>
+	
+	<select id="getAdminNameCount" resultType="Integer" parameterType="com.kosta.finalproject.vo.UsersVO">
+		SELECT COUNT(*) FROM users where  name	like '%' || #{name} || '%'
+	</select>
+	
+	<select id="getAdminIDCount" resultType="Integer" parameterType="com.kosta.finalproject.vo.UsersVO">
+		SELECT COUNT(*) FROM users where  id	like '%' || #{id} || '%'
+	</select>
+	
+	<select id="getAdminRankCount" resultType="Integer" parameterType="com.kosta.finalproject.vo.UsersVO">
+		SELECT COUNT(*) FROM users where  memberRank	like '%' || #{memberRank} || '%'
+	</select>
+	
+	<select id="adGetMembers" resultMap="UsersResultMap" parameterType="com.kosta.finalproject.vo.UsersVO">
+      <![CDATA[ SELECT id, name, birthday, phoneNum1, phoneNum2, email, postcode, address, address2, memberRank, company, R FROM 
+         (SELECT id, name, birthday, phoneNum1, phoneNum2, email, postcode, address, address2, memberRank, company, ROWNUM R 
+         FROM (SELECT id, name, birthday, phoneNum1, phoneNum2, email, postcode, address, address2, memberRank, company FROM users ) ) 
+         WHERE R >= #{startRow} AND R <= #{endRow} ]]>
+	</select>
+	
+	<select id="adSelectName" parameterType="com.kosta.finalproject.vo.UsersVO"
+		resultMap="UsersResultMap">
+      <![CDATA[ select * from (select * from (select rownum rnum,id, name, birthday, phoneNum1, phoneNum2, email, postcode, address, address2, memberRank, company from users where name like  '%' || #{name} || '%' )
+       where rnum <= #{endRow}) where rnum >= #{startRow} ]]>
+	</select>
+	
+	<select id="adSelectId" parameterType="com.kosta.finalproject.vo.UsersVO"
+		resultMap="UsersResultMap">
+      <![CDATA[ select * from (select * from (select rownum rnum,id, name, birthday, phoneNum1, phoneNum2, email, postcode, address, address2, memberRank, company from users where id like  '%' || #{id} || '%' )
+       where rnum <= #{endRow}) where rnum >= #{startRow} ]]>
+	</select>
+	
+	<select id="adSelectRank" parameterType="com.kosta.finalproject.vo.UsersVO"
+		resultMap="UsersResultMap">
+      <![CDATA[ select * from (select * from (select rownum rnum,id, name, birthday, phoneNum1, phoneNum2, email, postcode, address, address2, memberRank, company from users where memberRank like  '%' || #{memberRank} || '%' )
+       where rnum <= #{endRow}) where rnum >= #{startRow} ]]>
+	</select>
 </mapper>

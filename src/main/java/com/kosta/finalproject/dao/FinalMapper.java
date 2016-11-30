@@ -27,4 +27,21 @@ public interface FinalMapper {
 	void admin_deleteMemberRank(String id);
 
 	void deleteRank(String id);
+	
+    int getAdAllCount();
+	
+	int getAdminNameCount(UsersVO vo);
+	
+	int getAdminIDCount(UsersVO vo);
+	
+	int getAdminRankCount(UsersVO vo);
+	
+	ArrayList<UsersVO> adGetMembers(UsersVO users);
+	
+	ArrayList<UsersVO> adSelectName(UsersVO vo);
+	
+	ArrayList<UsersVO> adSelectId(UsersVO vo);
+	
+	ArrayList<UsersVO> adSelectRank(UsersVO vo);
+	
 }
