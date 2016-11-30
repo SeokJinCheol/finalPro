@@ -133,7 +133,7 @@ public class RRBoardLeftController {
 	}
 
 	@RequestMapping("/insertSubmit")
-	public String insertSubmit(Model model, @RequestParam("codeNum") int codeNum, @RequestParam("id") String id,
+	public String insertSubmit(Model model, @RequestParam("codeNum") int codeNum,
 			@RequestParam("contents") String contents, @RequestParam("bill") int bill,
 			@RequestParam("startDate") String startDate, @RequestParam("endDate") String endDate) {
 		// 세션 아이디 가져 오기
@@ -144,7 +144,7 @@ public class RRBoardLeftController {
 
 		// 세팅1
 		vo.setCodeNum(codeNum);
-		vo.setReaquestId(id);
+		vo.setReaquestId(session_id);
 		vo.setContents(contents);
 		vo.setUserendDate(endDate);
 		vo.setUserstartDate(startDate);
