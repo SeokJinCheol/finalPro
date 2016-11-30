@@ -52,7 +52,7 @@ function setpakageStatus(name){
 	<td>${vo.contents }</td>
 	<td>${vo.packageStatus }</td>
 		<td>
-		<c:if test="${vo.packageStatus == '허가대기' }">바보
+		<c:if test="${vo.packageStatus == '대여가능' }">
 		<form action="myModifyRRB" method="post">
 		<input type="hidden" name="codeNum" value="${vo.codeNum }">
 		<input type="submit" name="mody" value="수정"></form>

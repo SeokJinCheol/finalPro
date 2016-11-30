@@ -145,5 +145,24 @@
 		 ORDER BY CODENUM
 		
 	</select>
-	
+
+
+	<update id="RRBupdate" parameterType="com.kosta.finalproject.vo.RRboardVO">
+		update RRBoard set RPBoard
+		Category=${category},
+		Contents=${contents},
+		title=${title},
+		adress=${adress},
+		contents=${contents},
+		startDate=${startDate},
+		endDate=${endDate},
+		session_id=${session_id},
+		img=${img},
+
+		<where>
+		codeNum=#{codeNum}
+		</where>
+		
+		#{reaquestId},#{registerId}, #{adress}, #{spotNum},SYSDATE)
+	</update>
 </mapper>

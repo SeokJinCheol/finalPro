@@ -12,7 +12,7 @@ bill number(15),
 adress varchar2(200),
 spotNum varchar2(150),
 packageStatus varchar2(20) default '대여대기',
-img varchar2(2000) DEFAULT 'noimg',
+img varchar2(2000) DEFAULT '이미지없음',
 reaquestId varchar2(25) ,
 registerId varchar2(25) not null,
 company varchar2(20)

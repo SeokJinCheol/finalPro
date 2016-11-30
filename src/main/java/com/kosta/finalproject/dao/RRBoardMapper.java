@@ -43,4 +43,7 @@ public interface RRBoardMapper {
 	public List<RPboardVO> myRentlist(String session_id);
 
 	public List<RRboardVO> myRoomlist(String session_id);
+	
+	public void RRBupdate(RRboardVO vo);
+
 }
