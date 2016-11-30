@@ -24,6 +24,14 @@
 			<img src="/team4/resources/images/lend1.png" style="margin-right:5px;">
 			<img src="/team4/resources/images/lend2.png" class="imgover" style="margin-right:5px;">
 			&nbsp;나 의 대 여 목 록</a></div><br>
+			<div class="left-menu"><a href="myRRBlist" class="rollover">
+			<img src="/team4/resources/images/mywrite1.png" style="margin-right:5px;">
+			<img src="/team4/resourceㄹs/images/mywrite2.png" class="imgover" style="margin-right:5px;">
+			&nbsp;나 의 장 소 목 록</a></div><br>	
+		<div class="left-menu"><a href="myRPBlist" class="rollover">
+			<img src="/team4/resources/images/lend1.png" style="margin-right:5px;">
+			<img src="/team4/resources/images/lend2.png" class="imgover" style="margin-right:5px;">
+			&nbsp;나 의 대 관 목 록</a></div><br>
 		<div class="left-menu"><a href="mypage_update" class="rollover">
 			<img src="/team4/resources/images/left-mypage11.png" style="margin-right:5px;">
 			<img src="/team4/resources/images/left-mypage12.png" class="imgover" style="margin-right:5px;">

@@ -127,4 +127,25 @@
 		<![CDATA[ endDate < sysdate]]>
 		</where>
 	</update>
+
+
+	<!-- mypage -->
+	<select id="myRentlist" resultType="com.kosta.finalproject.vo.RPboardVO">
+		SELECT * FROM RPBOARD
+		<where>
+		reaquestId = #{session_id}
+		</where>
+			ORDER BY seqnum
+		
+	</select>	
+		
+	<select id="myRoomlist"  resultType="com.kosta.finalproject.vo.RRboardVO">
+		SELECT * FROM RRBOARD
+		<where>
+			RegisterId = #{session_id}
+		</where>
+		 ORDER BY CODENUM
+		
+	</select>
+	
 </mapper>

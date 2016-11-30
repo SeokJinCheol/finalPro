@@ -308,7 +308,9 @@ public class RRBoardLeftController {
 	public String modifyRPB2(Model model, @RequestParam("seqNum") int seqNum) {
 
 		RPboardVO vo = dao.selectModyRPB(seqNum);
-		System.out.println(vo.toString());
+		RRboardVO dto = dao.getcontents(vo.getCodeNum());	
+		
+		model.addAttribute("dto", dto);
 		model.addAttribute("vo", vo);
 		model.addAttribute("CONTENT", "menu/menu3/admin/modyRPB.jsp");
 		model.addAttribute("LEFT", "join/admin_left.jsp");
@@ -319,7 +321,6 @@ public class RRBoardLeftController {
 	@RequestMapping("/updateRPB2")
 	public String updateRPB2(Model model, @RequestParam("codeNum") int codeNum,
 			@RequestParam("contents") String contents, @RequestParam("bill") int bill,
-			
 			@RequestParam("userstartDate") String userstartDate, @RequestParam("userendDate") String userendDate,
 			@RequestParam("reaquestId") String reaquestId, @RequestParam("seqNum") int seqNum
 
@@ -333,7 +334,10 @@ public class RRBoardLeftController {
 		vo.setUserendDate(userendDate);
 		vo.setUserstartDate(userstartDate);
 		vo.setBill(bill);
+		vo.setSeqNum(seqNum);
 
+		System.out.println(vo.toString());
+		
 		dao.updateRPB(vo);
 
 		return "redirect:menu3_4";
@@ -379,6 +383,7 @@ public class RRBoardLeftController {
 
 		dao.updateRPB(vo);
 
+		
 		return "redirect:menu3_5";
 	}
 
@@ -396,5 +401,35 @@ public class RRBoardLeftController {
 
 		return "redirect:menu3_5";
 	}
+	
+	//마이 페이지
+	
+	@RequestMapping("/myRRBlist")
+	public String myRRBlist(Model model) {
 
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+
+		List<RRboardVO> vo =dao.myRoomlist(session_id);
+
+		model.addAttribute("list", vo);
+		model.addAttribute("CONTENT", "menu/menu3/mypage/myRoomlist.jsp");
+		model.addAttribute("LEFT", "menu/menu3/left.jsp");
+		return "main";
+	}
+	
+	@RequestMapping("/myRPBlist")
+	public String myRPBlist(Model model) {
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+		
+		List<RPboardVO> vo =dao.myRentlist(session_id);
+		
+		model.addAttribute("list", vo);
+		model.addAttribute("CONTENT", "menu/menu3/mypage/myRoomlist.jsp");
+		model.addAttribute("LEFT", "join/mypage_left.jsp");
+		return "main";
+	}
+	
 }

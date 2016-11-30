@@ -34,9 +34,13 @@ public interface RRBoardMapper {
 	public List<RPboardVO> SelectCalc(SearchVO vo);
 	
 	
-	//task work
+	// task work
 	public void setRPBtask();
+
 	public void setRRtask();
 
+	// mypage
+	public List<RPboardVO> myRentlist(String session_id);
 
+	public List<RRboardVO> myRoomlist(String session_id);
 }
