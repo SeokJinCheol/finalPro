@@ -292,7 +292,7 @@ public class QandAController {
 	}
 
 	// 리플달기
-	@RequestMapping(value = "/QnA_reply", method = RequestMethod.GET)
+	@RequestMapping(value = "/QnA_reply", method = RequestMethod.POST)
 	public View QnA_replywrite(Model model, HttpServletRequest request, HttpServletResponse response) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
