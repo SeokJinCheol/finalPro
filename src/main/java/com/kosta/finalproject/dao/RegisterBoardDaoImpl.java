@@ -123,4 +123,12 @@ public class RegisterBoardDaoImpl implements RegisterBoardDao{
 		result = mapper.registercontent(codeNum);
 		return result;
 	}
+	
+	   @Override
+	   public ArrayList<RegisterBoardVO> registercount() {
+	      ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
+	      RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
+	      result = mapper.registercount();
+	      return result;
+	   }
 }

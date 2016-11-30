@@ -18,4 +18,5 @@ public interface RegisterBoardDao {
 	public ArrayList<RegisterBoardVO> pselectTitle(String packageStatus, String word);
 	public ArrayList<RegisterBoardVO> pselectCategory(String packageStatus, String word);
 	public ArrayList<RegisterBoardVO> registercontent(int codeNum);
+	public ArrayList<RegisterBoardVO> registercount();
 }

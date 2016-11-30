@@ -18,4 +18,5 @@ public interface RegisterBoardMapper {
 	public ArrayList<RegisterBoardVO> pselectTitle(RegisterBoardVO vo);
 	public ArrayList<RegisterBoardVO> pselectCategory(RegisterBoardVO vo);
 	public ArrayList<RegisterBoardVO> registercontent(int codeNum);
+	public ArrayList<RegisterBoardVO> registercount();
 }
