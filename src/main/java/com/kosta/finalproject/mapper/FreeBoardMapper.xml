@@ -18,7 +18,7 @@
    </resultMap>
    
    <select id="getContent" resultMap="FreeResultMap">
-      SELECT TITLE,ID,CONTENT FROM FREEBOARD4 WHERE BGNUM=#{bgnum}
+      SELECT TITLE,ID,CONTENT FROM FREEBOARD4 WHERE BGNUM=#{bgnum} 
    </select>
    
    <insert id="writeBoard" parameterType="com.kosta.finalproject.vo.FreeBoardVO">
@@ -26,13 +26,13 @@
    </insert>
    
    <select id="showBoard" resultMap="FreeResultMap"  parameterType="com.kosta.finalproject.vo.FreeBoardVO">
-      select * from (select * from (select rownum rnum ,bDate,bnum,title,id,img,count,(SELECT COUNT(*) FROM freeboard4 B WHERE B.bgnum=a.bnum) replyCount from freeBoard4 a where bgnum = 0 ORDER BY BNUM DESC)
+      select * from (select * from (select rownum rnum ,bDate,bnum,title,id,img,count,(SELECT COUNT(*) FROM freeboard4 B WHERE B.bgnum=a.bnum) replyCount from freeBoard4 a where bgnum = 0 ORDER BY BNUM DESC, GROUPNUM ASC)
        
        where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow}
    </select>
    
    <select id="showBoardthis" resultMap="FreeResultMap" parameterType="com.kosta.finalproject.vo.FreeBoardVO">
-      select * from freeBoard4 where bnum = #{bnum}
+      select * from freeBoard4 where bnum = #{bnum} 
    </select>
    
    <update id="updateBoardCount" parameterType="com.kosta.finalproject.vo.FreeBoardVO">
@@ -44,7 +44,7 @@
    </select>
    
    <select id="selectBoardTitle" parameterType="com.kosta.finalproject.vo.FreeBoardVO" resultMap="FreeResultMap">
-      select * from (select * from (select rownum rnum,bDate,bnum,category,title,id,img,count from FREEBOARD4 where bgnum= 0 and title like  '%' || #{title} || '%' )
+      select * from (select * from (select rownum rnum,bDate,bnum,title,id,img,count from FREEBOARD4 where bgnum= 0 and title like  '%' || #{title} || '%' )
        where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow}
    </select>
    

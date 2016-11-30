@@ -12,12 +12,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kosta.finalproject.dao.FreeDaoImpl;
 import com.kosta.finalproject.vo.FreeBoardVO;
-import com.kosta.finalproject.vo.QandAVO;
 import com.kosta.finalproject.vo.UploadVO;
 
 @Controller
@@ -276,24 +274,4 @@ public class LeftController3 {
 		model.addAttribute("bnum", bnum);
 		return "redirect:free_content";
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	/*
-	 * @RequestMapping("/menu3_2") public String menu3_2(Model model) {
-	 * model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_2.jsp");
-	 * model.addAttribute("LEFT", "menu/menu3/left.jsp"); return "main"; }
-	 * 
-	 * @RequestMapping("/menu3_3") public String menu3_3(Model model) {
-	 * model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_3.jsp");
-	 * model.addAttribute("LEFT", "menu/menu3/left.jsp"); return "main"; }
-	 * 
-	 * @RequestMapping("/menu3_4") public String menu3_4(Model model) {
-	 * model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_4.jsp");
-	 * model.addAttribute("LEFT", "menu/menu3/left.jsp"); return "main"; }
-	 * 
-	 * @RequestMapping("/menu3_5") public String menu3_5(Model model) {
-	 * model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_5.jsp");
-	 * model.addAttribute("LEFT", "menu/menu3/left.jsp"); return "main"; }
-	 */
 }

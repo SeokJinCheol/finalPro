@@ -26,7 +26,7 @@
 					<tr align="center" height="35">
 		               	<td style="text-align: center; width:80px; font-family: 'Jeju Gothic', sans-serif; border-right:1px solid white;" class="top-bottom-border">제　목</td>
 		               	<td class="top-bottom-border">
-		               		<input type="text" name="title" class="free-insert-title" value="${title}" style="text-align:center;" maxlength="5"  required>
+		               		<input type="text" name="title" class="free-insert-title" value="${title}" style="text-align:center;" required>
 		               	</td>
 		            </tr>
 		            
@@ -62,5 +62,4 @@
 		</div>
 	</div>
 </body>
-
 </html>

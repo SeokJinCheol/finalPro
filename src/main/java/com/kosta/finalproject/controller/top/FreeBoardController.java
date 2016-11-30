@@ -82,6 +82,7 @@ public class FreeBoardController {
 			System.out.println("여기는 리스트가 비어있으면 와");
 		}
 
+		model.addAttribute("result", list);
 		model.addAttribute("currentPage", new Integer(currentPage));
 		model.addAttribute("count", new Integer(count));
 		model.addAttribute("pageCount", pageCount);
