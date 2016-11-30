@@ -414,7 +414,7 @@ public class RRBoardLeftController {
 
 		model.addAttribute("list", vo);
 		model.addAttribute("CONTENT", "menu/menu3/mypage/myRoomlist.jsp");
-		model.addAttribute("LEFT", "menu/menu3/left.jsp");
+		model.addAttribute("LEFT", "join/mypage_left.jsp");
 		return "main";
 	}
 	
@@ -427,9 +427,60 @@ public class RRBoardLeftController {
 		List<RPboardVO> vo =dao.myRentlist(session_id);
 		
 		model.addAttribute("list", vo);
-		model.addAttribute("CONTENT", "menu/menu3/mypage/myRoomlist.jsp");
+		model.addAttribute("CONTENT", "menu/menu3/mypage/myRentlist.jsp");
+		model.addAttribute("LEFT", "join/mypage_left.jsp");
+		return "main";
+	}
+
+	@RequestMapping("/myModifyRPB")
+	public String myModifyRPB(Model model, @RequestParam("seqNum")int seqNum) {
+
+		RPboardVO vo = dao.selectModyRPB(seqNum);
+		RRboardVO dto = dao.getcontents(vo.getCodeNum());
+
+		model.addAttribute("dto", dto);
+		model.addAttribute("vo", vo);
+		model.addAttribute("CONTENT", "menu/menu3/mypage/modyRPB.jsp");
+		model.addAttribute("LEFT", "join/mypage_left.jsp");
+		return "main";
+	}
+
+	@RequestMapping("/myModifyRRB")
+	public String myModifyRRB(Model model, @RequestParam("codeNum")int codeNum) {
+
+		RRboardVO vo = dao.getcontents(codeNum);
+
+		model.addAttribute("vo", vo);
+		model.addAttribute("CONTENT", "menu/menu3/mypage/modyRRB.jsp");
 		model.addAttribute("LEFT", "join/mypage_left.jsp");
 		return "main";
 	}
 	
+	//RRBupdate
+	//RPBupdate
+	// 수정하기
+		@RequestMapping("/RPBupdate")
+		public String RPBupdate(Model model,
+				@RequestParam("contents") String contents, @RequestParam("bill") int bill,
+				@RequestParam("userstartDate") String userstartDate, @RequestParam("userendDate") String userendDate,
+				@RequestParam("reaquestId") String reaquestId, @RequestParam("seqNum") int seqNum
+
+		) {
+			// vo 생성
+			RPboardVO vo = new RPboardVO();
+			// 세팅
+			vo.setReaquestId(reaquestId);
+			vo.setContents(contents);
+			vo.setUserendDate(userendDate);
+			vo.setUserstartDate(userstartDate);
+			vo.setBill(bill);
+			vo.setSeqNum(seqNum);
+
+			System.out.println(vo.toString());
+			
+			dao.updateRPB(vo);
+
+			
+			return "redirect:myRPBlist";
+		}
 }

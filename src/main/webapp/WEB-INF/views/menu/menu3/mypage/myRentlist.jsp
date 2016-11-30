@@ -5,23 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script>
 
-function setpakageStatus(name){
-	
-	var myselect= "mySelect"+name;
-	
-	if(confirm("수정하시겠습니까?")==true){
-	
-		document.getElementById(name).status.value=document.getElementById(myselect).value;
-
-		
-		 document.forms(name).submit();
-	}else{		return false;		}
-	}
-
-
-</script>
 <title>Menu3</title>
 <!-- CSS 연결-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -43,10 +27,11 @@ function setpakageStatus(name){
 		<td>${list.startDate }</td><td>${list.endDate }</td><td>${list.userstartDate }</td><td>${list.userendDate }</td>
 			<td>${list.bill }</td><td>${list.contents }</td>
 		<td>${list.reaquestId }</td><td>${list.registerId }</td><td>${list.adress }</td>
-		<td>		${list.seqNum }</td>
-		<td>
-		<form action="modifyRPB"><input type="hidden" name="seqNum" value="${list.seqNum }">
-		<input type="submit" name="mody" value="수정"></form>
+		<td>${list.packageStatus }</td>
+		<td>	<c:if test="${list.packageStatus == '허가대기' }">
+		<form action="myModifyRPB">
+		<input type="hidden" name="seqNum" value="${list.seqNum }">
+		<input type="submit" name="mody" value="수정"></form></c:if>
 		</td>
 		</tr>
 

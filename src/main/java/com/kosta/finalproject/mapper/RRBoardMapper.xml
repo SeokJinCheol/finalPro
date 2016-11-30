@@ -43,8 +43,6 @@
 
 
 
-
-
    <!--Rp board -->
 
    <insert id="RPboardinsert" parameterType="com.kosta.finalproject.vo.RPboardVO">
