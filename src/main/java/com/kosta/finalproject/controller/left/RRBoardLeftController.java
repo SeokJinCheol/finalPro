@@ -57,7 +57,7 @@ public class RRBoardLeftController {
 			fileName = uploadfile.getOriginalFilename();
 			dto.setOname(fileName);
 			try {
-				File file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + fileName);
+				File file = new File("C:/inalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/" + fileName);
 
 				int indexes = fileName.lastIndexOf(".");
 				if (indexes != -1) {
@@ -69,7 +69,7 @@ public class RRBoardLeftController {
 						String newFileName = fileName.substring(0, indexes) + "_" + extension;
 						System.out.println("새 파일 이름 = " + newFileName);
 						fileName = newFileName;
-						file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + newFileName);
+						file = new File("C:/inalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/" + newFileName);
 					}
 
 					uploadfile.transferTo(file);
@@ -474,7 +474,7 @@ public class RRBoardLeftController {
 			fileName = uploadfile.getOriginalFilename();
 			dto.setOname(fileName);
 			try {
-				File file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + fileName);
+				File file = new File("C:/inalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/" + fileName);
 
 				int indexes = fileName.lastIndexOf(".");
 				if (indexes != -1) {
@@ -486,7 +486,7 @@ public class RRBoardLeftController {
 						String newFileName = fileName.substring(0, indexes) + "_" + extension;
 						System.out.println("새 파일 이름 = " + newFileName);
 						fileName = newFileName;
-						file = new File("C:/finalproject/team4/src/main/webapp/resources/BoardImg/" + newFileName);
+						file = new File("C:/inalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/" + newFileName);
 					}
 
 					uploadfile.transferTo(file);
