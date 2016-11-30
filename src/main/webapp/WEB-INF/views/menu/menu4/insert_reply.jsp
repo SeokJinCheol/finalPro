@@ -24,7 +24,7 @@
 				<table style="border-collapse: collapse; border-spacing: 0; margin-bottom:15px;">
 					<tr>
 						<td>
-							<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="3" cols="60" required>${contents}</textarea>
+							<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="3" cols="60" required maxlength="350">${contents}</textarea>
 						</td>
 						
 						<td>
