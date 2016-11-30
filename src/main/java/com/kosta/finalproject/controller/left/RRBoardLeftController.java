@@ -57,7 +57,9 @@ public class RRBoardLeftController {
 			fileName = uploadfile.getOriginalFilename();
 			dto.setOname(fileName);
 			try {
-				File file = new File("C:/inalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/" + fileName);
+				File file = new File(
+						"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/"
+								+ fileName);
 
 				int indexes = fileName.lastIndexOf(".");
 				if (indexes != -1) {
@@ -69,7 +71,9 @@ public class RRBoardLeftController {
 						String newFileName = fileName.substring(0, indexes) + "_" + extension;
 						System.out.println("새 파일 이름 = " + newFileName);
 						fileName = newFileName;
-						file = new File("C:/inalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/" + newFileName);
+						file = new File(
+								"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/"
+										+ newFileName);
 					}
 
 					uploadfile.transferTo(file);
@@ -308,8 +312,8 @@ public class RRBoardLeftController {
 	public String modifyRPB2(Model model, @RequestParam("seqNum") int seqNum) {
 
 		RPboardVO vo = dao.selectModyRPB(seqNum);
-		RRboardVO dto = dao.getcontents(vo.getCodeNum());	
-		
+		RRboardVO dto = dao.getcontents(vo.getCodeNum());
+
 		model.addAttribute("dto", dto);
 		model.addAttribute("vo", vo);
 		model.addAttribute("CONTENT", "menu/menu3/admin/modyRPB.jsp");
@@ -337,14 +341,13 @@ public class RRBoardLeftController {
 		vo.setSeqNum(seqNum);
 
 		System.out.println(vo.toString());
-		
+
 		dao.updateRPB(vo);
 
 		return "redirect:menu3_4";
 	}
 
-	
-	////일반회원용
+	//// 일반회원용
 	// 수정폼으로 보내기
 	@RequestMapping("/modifyRPB")
 	public String modifyRPB(Model model, @RequestParam("seqNum") int seqNum) {
@@ -383,7 +386,6 @@ public class RRBoardLeftController {
 
 		dao.updateRPB(vo);
 
-		
 		return "redirect:menu3_5";
 	}
 
@@ -401,31 +403,31 @@ public class RRBoardLeftController {
 
 		return "redirect:menu3_5";
 	}
-	
-	//마이 페이지
-	
+
+	// 마이 페이지
+
 	@RequestMapping("/myRRBlist")
 	public String myRRBlist(Model model) {
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
-
-		List<RRboardVO> vo =dao.myRoomlist(session_id);
+		System.out.println(session_id);
+		List<RRboardVO> vo = dao.myRoomlist(session_id);
 
 		model.addAttribute("list", vo);
 		model.addAttribute("CONTENT", "menu/menu3/mypage/myRoomlist.jsp");
 		model.addAttribute("LEFT", "join/mypage_left.jsp");
 		return "main";
 	}
-	
+
 	@RequestMapping("/myRPBlist")
 	public String myRPBlist(Model model) {
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
-		
-		List<RPboardVO> vo =dao.myRentlist(session_id);
-		
+
+		List<RPboardVO> vo = dao.myRentlist(session_id);
+
 		model.addAttribute("list", vo);
 		model.addAttribute("CONTENT", "menu/menu3/mypage/myRentlist.jsp");
 		model.addAttribute("LEFT", "join/mypage_left.jsp");
@@ -433,7 +435,7 @@ public class RRBoardLeftController {
 	}
 
 	@RequestMapping("/myModifyRPB")
-	public String myModifyRPB(Model model, @RequestParam("seqNum")int seqNum) {
+	public String myModifyRPB(Model model, @RequestParam("seqNum") int seqNum) {
 
 		RPboardVO vo = dao.selectModyRPB(seqNum);
 		RRboardVO dto = dao.getcontents(vo.getCodeNum());
@@ -446,7 +448,7 @@ public class RRBoardLeftController {
 	}
 
 	@RequestMapping("/myModifyRRB")
-	public String myModifyRRB(Model model, @RequestParam("codeNum")int codeNum) {
+	public String myModifyRRB(Model model, @RequestParam("codeNum") int codeNum) {
 
 		RRboardVO vo = dao.getcontents(codeNum);
 
@@ -455,26 +457,26 @@ public class RRBoardLeftController {
 		model.addAttribute("LEFT", "join/mypage_left.jsp");
 		return "main";
 	}
-	
-	//RRBupdate
+
+	// RRBupdate
 	@RequestMapping("/RRBupdate")
-	public String RRBupdate(Model model, UploadVO dto,
-			@RequestParam("contents") String contents, @RequestParam("bill") int bill,
-			@RequestParam("title") String title,@RequestParam("adress") String adress,
-			@RequestParam("company") String company,@RequestParam("spotNum") String spotNum,
+	public String RRBupdate(Model model, UploadVO dto, @RequestParam("contents") String contents,
+			@RequestParam("bill") int bill, @RequestParam("title") String title, @RequestParam("adress") String adress,
+			@RequestParam("company") String company, @RequestParam("spotNum") String spotNum,
 			@RequestParam("startDate") String startDate, @RequestParam("endDate") String endDate,
-			@RequestParam("category") String category, @RequestParam("codeNum") int codeNum
-	) {
-		//파일처리
+			@RequestParam("category") String category, @RequestParam("codeNum") int codeNum) {
+		// 파일처리
 		String fileName = null;
 		MultipartFile uploadfile = dto.getFile();
-		
+
 		if (uploadfile == null) {
 		} else {
 			fileName = uploadfile.getOriginalFilename();
 			dto.setOname(fileName);
 			try {
-				File file = new File("C:/inalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/" + fileName);
+				File file = new File(
+						"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/"
+								+ fileName);
 
 				int indexes = fileName.lastIndexOf(".");
 				if (indexes != -1) {
@@ -486,7 +488,9 @@ public class RRBoardLeftController {
 						String newFileName = fileName.substring(0, indexes) + "_" + extension;
 						System.out.println("새 파일 이름 = " + newFileName);
 						fileName = newFileName;
-						file = new File("C:/inalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/" + newFileName);
+						file = new File(
+								"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/"
+										+ newFileName);
 					}
 
 					uploadfile.transferTo(file);
@@ -496,7 +500,6 @@ public class RRBoardLeftController {
 			} // try - catch
 		} // if
 
-		
 		// vo 생성
 		RRboardVO vo = new RRboardVO();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -512,44 +515,42 @@ public class RRBoardLeftController {
 		vo.setEndDate(endDate);
 		vo.setRegisterId(session_id);
 		vo.setCodeNum(codeNum);
-		
+
 		if (fileName.equals(null)) {
 			vo.setImg("이미지없음");
 		} else {
 			vo.setImg(fileName);
 		}
-		
+
 		System.out.println(vo.toString());
-		
+
 		dao.RRBupdate(vo);
 
-		
 		return "redirect:myRRBlist";
 	}
-	//RPBupdate
+
+	// RPBupdate
 	// 수정하기
-		@RequestMapping("/RPBupdate")
-		public String RPBupdate(Model model,
-				@RequestParam("contents") String contents, @RequestParam("bill") int bill,
-				@RequestParam("userstartDate") String userstartDate, @RequestParam("userendDate") String userendDate,
-				@RequestParam("reaquestId") String reaquestId, @RequestParam("seqNum") int seqNum
+	@RequestMapping("/RPBupdate")
+	public String RPBupdate(Model model, @RequestParam("contents") String contents, @RequestParam("bill") int bill,
+			@RequestParam("userstartDate") String userstartDate, @RequestParam("userendDate") String userendDate,
+			@RequestParam("reaquestId") String reaquestId, @RequestParam("seqNum") int seqNum
 
-		) {
-			// vo 생성
-			RPboardVO vo = new RPboardVO();
-			// 세팅
-			vo.setReaquestId(reaquestId);
-			vo.setContents(contents);
-			vo.setUserendDate(userendDate);
-			vo.setUserstartDate(userstartDate);
-			vo.setBill(bill);
-			vo.setSeqNum(seqNum);
+	) {
+		// vo 생성
+		RPboardVO vo = new RPboardVO();
+		// 세팅
+		vo.setReaquestId(reaquestId);
+		vo.setContents(contents);
+		vo.setUserendDate(userendDate);
+		vo.setUserstartDate(userstartDate);
+		vo.setBill(bill);
+		vo.setSeqNum(seqNum);
 
-			System.out.println(vo.toString());
-			
-			dao.updateRPB(vo);
+		System.out.println(vo.toString());
 
-			
-			return "redirect:myRPBlist";
-		}
+		dao.updateRPB(vo);
+
+		return "redirect:myRPBlist";
+	}
 }
