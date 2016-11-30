@@ -34,7 +34,7 @@
 					</table>
 					
 					<p>
-						<input type="submit" class="free_delete-btn222 w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;탈　퇴" />
+						<input type="submit" class="free_delete-btn222 w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;탈　퇴" onclick="setpakageStatus(); return false;"/>
 						&nbsp;&nbsp;&nbsp;
 						<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='mypage'"/>
 					</p>
@@ -45,4 +45,11 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	function setpakageStatus() {
+		if (confirm("정말 탈퇴하시겠습니까??") == true) {
+			document.form.submit();
+		} else { return false; }
+	}
+</script>
 </html>

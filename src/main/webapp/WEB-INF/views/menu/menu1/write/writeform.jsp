@@ -27,7 +27,7 @@
 				<table border="1">
 					<tr>
 						<td>제목</td>
-						<td><input type="text" name="title" required></td>
+						<td><input type="text" name="title" required maxlength="30"></td>
 					</tr>
 					<tr>
 						<td>카테고리</td>
@@ -81,15 +81,15 @@
 					</tr>
 					<tr>
 						<td>대여비</td>
-						<td><input type="text" name="bill" required>원</td>
+						<td><input type="text" name="bill" required maxlength="10">원</td>
 					</tr>
 					<tr>
 						<td>보증금</td>
-						<td><input type="text" name="deposit" required>원</td>
+						<td><input type="text" name="deposit" required maxlength="10">원</td>
 					</tr>
 					<tr>
 						<td>내용</td>
-						<td><textarea name="contents" cols="30" rows="15" required></textarea></td>
+						<td><textarea name="contents" cols="30" rows="15" required maxlength="350"></textarea></td>
 					</tr>
 				</table>
 				<input type="submit" value="글쓰기">

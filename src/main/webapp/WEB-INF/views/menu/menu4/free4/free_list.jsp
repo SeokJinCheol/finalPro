@@ -21,7 +21,7 @@
 	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
 		<div style="margin-bottom: 20px; margin-top: 70px;">
 			<div class="w3-row" style="margin-top:50px;">
-				<form action="free_list" method=post>
+				<form action="free4_list" method=post>
 		        	<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
 		        		<option value="#" style="text-align:center;">선택하세요.</option>
 				       	<option value="title" style="text-align:center;">제목</option>
@@ -149,7 +149,7 @@
 			                     <td><a style="text-decoration:none;" href="free4_list?pageNum=${i}&word=${word}&keyword=${keyword}">${i}</a></td>
 			                  </c:if>
 			               </c:forEach>
-			            </table>
+			           </table>
 			
 			            <c:if test="${endPage<pageCount}">
 			               <c:if test="${word == null}">

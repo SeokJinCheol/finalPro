@@ -30,7 +30,7 @@
 				            	<td style="text-align: center; width:80px; font-family: 'Jeju Gothic', sans-serif; border-right:1px solid white;" class="top-bottom-border">제　목</td>
 				            
 				                <td class="top-bottom-border">
-				                	<input type="text" value="${title}" class="free-insert-title" name="title" readonly>
+				                	<input type="text" value="${title}" class="free-insert-title" name="title" readonly >
 				            	</td>
 			                </tr>
 							
@@ -45,7 +45,7 @@
 			               
 			                <tr align="center" height="35"> 
 			                    <td colspan="2" class="bottom-border">
-			                		<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="10" cols="43" required>${contents}</textarea>
+			                		<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="10" cols="43" required maxlength="350">${contents}</textarea>
 			                    </td>
 			                </tr>
 	
@@ -57,7 +57,7 @@
 					
 						<p>
 							<input type="hidden" name="bnum" value="${bnum}">
-							<input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수　정" />
+							<input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수　정" onclick="updatesubmit(); return false;"/>
 							&nbsp;&nbsp;&nbsp;
 							<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='free4_list'"/>
 						</p>
@@ -67,4 +67,11 @@
       </div>
    </div>
 </body>
+<script type="text/javascript">
+	function updatesubmit() {
+		if (confirm("수정하시겠습니까??") == true) {
+			document.form.submit();
+		} else { return false; }
+	}
+	</script>
 </html>

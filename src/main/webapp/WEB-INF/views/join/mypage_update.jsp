@@ -93,7 +93,7 @@
 				</table>
 				
                 <p>
-					<input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수　정" />
+					<input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수　정" onclick="setpakageStatus(); return false;"/>
 					&nbsp;&nbsp;&nbsp;
 					<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='mypage'"/>
 				</p>
@@ -101,7 +101,13 @@
 		</div>
 	</div>
 </body>
-
+<script type="text/javascript">
+	function setpakageStatus() {
+		if (confirm("수정하시겠습니까??") == true) {
+			document.form.submit();
+		} else { return false; }
+	}
+</script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
    //우편번호 검색

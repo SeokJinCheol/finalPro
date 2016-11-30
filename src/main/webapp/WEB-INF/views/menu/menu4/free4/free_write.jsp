@@ -26,7 +26,7 @@
 					<tr align="center" height="35">
 		               	<td style="text-align: center; width:80px; font-family: 'Jeju Gothic', sans-serif; border-right:1px solid white;" class="top-bottom-border">제　목</td>
 		               	<td class="top-bottom-border">
-		               		<input type="text" name="title" class="free-insert-title" value="${title}" style="text-align:center;" maxlength="5"  required>
+		               		<input type="text" name="title" class="free-insert-title" value="${title}" style="text-align:center;" required maxlength="30">
 		               	</td>
 		            </tr>
 		            
@@ -48,7 +48,7 @@
 				
 					<tr align="center" height="35">
 	                	<td colspan="2" class="bottom-border2">
-	                  		<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="10" cols="43" required></textarea>
+	                  		<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="10" cols="43" required maxlength="350"></textarea>
 	                	</td>
 	               	</tr>	
 				</table>
@@ -62,5 +62,4 @@
 		</div>
 	</div>
 </body>
-
 </html>

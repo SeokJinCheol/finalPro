@@ -2,6 +2,7 @@ package com.kosta.finalproject.controller.top;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -26,253 +27,277 @@ import com.kosta.finalproject.vo.StorageBoardVO;
 @Controller
 public class RegisterBoardController {
 
-	@Autowired
-	private RequestBoardDaoImpl requestBoardDaoImpl;
+   @Autowired
+   private RequestBoardDaoImpl requestBoardDaoImpl;
 
-	@Autowired
-	private RegisterBoardDaoImpl registerBoardDaoImpl;
+   @Autowired
+   private RegisterBoardDaoImpl registerBoardDaoImpl;
 
-	@Autowired
-	private CheckBoardDaoImpl checkBoardDaoImpl;
+   @Autowired
+   private CheckBoardDaoImpl checkBoardDaoImpl;
 
-	@Autowired
-	private StorageBoardDaoImpl storageBoardDaoImpl;
+   @Autowired
+   private StorageBoardDaoImpl storageBoardDaoImpl;
 
-	@RequestMapping("/menu2")
-	public String menu2(Model model) {
+   @RequestMapping("/menu2")
+   public String menu2(Model model, HttpServletRequest request) {
 
-		// 로그인 정보 확인
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String session_id = auth.getName();
-		model.addAttribute("session_id", session_id);
+      // 로그인 정보 확인
+      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+      String session_id = auth.getName();
+      model.addAttribute("session_id", session_id);
 
-		// 대여목록
-		List<RegisterBoardVO> Registerselect = registerBoardDaoImpl.Registerselect();
-		model.addAttribute("Registerselect", Registerselect);
+    //검색 확인
+    String keyword = request.getParameter("keyword");
+    String word = request.getParameter("word");
+    String id = request.getParameter("id");
+      
+   // 전체 등록글
+   		List<RegisterBoardVO> Registerselect = null;
+   		
+   		if (keyword == null) {
+   			Registerselect = registerBoardDaoImpl.Registerselect();
 
-		model.addAttribute("CONTENT", "menu/menu2/menu2.jsp");
-		model.addAttribute("LEFT", "menu/menu2/left.jsp");
-		return "main";
-	}
+   		}else if(keyword.equalsIgnoreCase("title") && word != null){
+   			Registerselect = registerBoardDaoImpl.selectTitle(word);
+   			model.addAttribute("word", word);
+   			model.addAttribute("keyword", keyword);
+   			
+   		}else if(keyword.equalsIgnoreCase("category") && word != null){
+   			Registerselect = registerBoardDaoImpl.selectCategory(word);
+   			model.addAttribute("word", word);
+   			model.addAttribute("keyword", keyword);
+   			
+   		} else {
+   			Registerselect = Collections.EMPTY_LIST;
+   		}
 
-	// 대여가능 폼 admin만 가능
-	@RequestMapping("/RegisterBoardwrite")
-	public String RegisterBoardwrite(Model model, HttpServletRequest request) {
+   		model.addAttribute("LEFT", "menu/menu2/left.jsp");
+   		model.addAttribute("CONTENT", "menu/menu2/menu2.jsp");
+   		model.addAttribute("Registerselect", Registerselect);
 
-		// id 받아오기
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String session_id = auth.getName();
-		model.addAttribute("session_id", session_id);
+   		return "main";
+  }
 
-		int codeNum = Integer.parseInt(request.getParameter("codeNum"));
-		List<RequestBoardVO> RegisterBoardform = requestBoardDaoImpl.RegisterBoardWriteForm(codeNum);
+   // 대여가능 폼 admin만 가능
+   @RequestMapping("/RegisterBoardwrite")
+   public String RegisterBoardwrite(Model model, HttpServletRequest request) {
 
-		model.addAttribute("RegisterBoardform", RegisterBoardform);
-		model.addAttribute("CONTENT", "menu/menu2/write/writeform.jsp");
-		model.addAttribute("LEFT", "menu/menu2/left.jsp");
-		return "main";
-	}
+      // id 받아오기
+      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+      String session_id = auth.getName();
+      model.addAttribute("session_id", session_id);
 
-	// 대여가능 띄우기 admin만 가능
-	@RequestMapping("/RegisterBoardWrite")
-	public String RegisterBoardWrite(Model model, HttpServletRequest request) throws Exception {
+      int codeNum = Integer.parseInt(request.getParameter("codeNum"));
+      List<RequestBoardVO> RegisterBoardform = requestBoardDaoImpl.RegisterBoardWriteForm(codeNum);
 
-		// 날짜 변환
-		SimpleDateFormat simpledate = new SimpleDateFormat("yyyy-MM-dd");
-		Date parsedDate1 = simpledate.parse(request.getParameter("startDate"));
-		Date parsedDate2 = simpledate.parse(request.getParameter("endDate"));
-		Timestamp startDate = new Timestamp(parsedDate1.getTime());
-		Timestamp endDate = new Timestamp(parsedDate2.getTime());
+      model.addAttribute("RegisterBoardform", RegisterBoardform);
+      model.addAttribute("CONTENT", "menu/menu2/write/writeform.jsp");
+      model.addAttribute("LEFT", "menu/menu2/left.jsp");
+      return "main";
+   }
 
-		// 대여가능 게시판 추가
-		RegisterBoardVO vo = new RegisterBoardVO();
-		vo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
-		vo.setTitle(request.getParameter("title"));
-		vo.setCategory(request.getParameter("category"));
-		vo.setCompany(request.getParameter("company"));
-		vo.setStartDate(simpledate.format(startDate));
-		vo.setEndDate(simpledate.format(endDate));
-		vo.setBill(Integer.parseInt(request.getParameter("bill")));
-		vo.setDeposit(Integer.parseInt(request.getParameter("deposit")));
-		vo.setContents(request.getParameter("contents"));
-		vo.setReaquestId(request.getParameter("reaquestId"));
-		vo.setImg(request.getParameter("img"));
-		registerBoardDaoImpl.Registerinsert(vo);
+   // 대여가능 띄우기 admin만 가능
+   @RequestMapping("/RegisterBoardWrite")
+   public String RegisterBoardWrite(Model model, HttpServletRequest request) throws Exception {
 
-		// 등록게시판 상태바꾸기
-		RequestBoardVO requestBoardVO = new RequestBoardVO();
+      // 날짜 변환
+      SimpleDateFormat simpledate = new SimpleDateFormat("yyyy-MM-dd");
+      Date parsedDate1 = simpledate.parse(request.getParameter("startDate"));
+      Date parsedDate2 = simpledate.parse(request.getParameter("endDate"));
+      Timestamp startDate = new Timestamp(parsedDate1.getTime());
+      Timestamp endDate = new Timestamp(parsedDate2.getTime());
 
-		String Status = "대여중";
-		requestBoardVO.setPackageStatus(Status);
-		requestBoardVO.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
-		requestBoardDaoImpl.packageStatusupdate(requestBoardVO);
+      // 대여가능 게시판 추가
+      RegisterBoardVO vo = new RegisterBoardVO();
+      vo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
+      vo.setTitle(request.getParameter("title"));
+      vo.setCategory(request.getParameter("category"));
+      vo.setCompany(request.getParameter("company"));
+      vo.setStartDate(simpledate.format(startDate));
+      vo.setEndDate(simpledate.format(endDate));
+      vo.setBill(Integer.parseInt(request.getParameter("bill")));
+      vo.setDeposit(Integer.parseInt(request.getParameter("deposit")));
+      vo.setContents(request.getParameter("contents"));
+      vo.setReaquestId(request.getParameter("reaquestId"));
+      vo.setImg(request.getParameter("img"));
+      registerBoardDaoImpl.Registerinsert(vo);
 
-		// 체크 리스트 추가
-		CheckBoardVO Checkvo = new CheckBoardVO();
-		Checkvo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
-		Checkvo.setStartDate(simpledate.format(startDate));
-		Checkvo.setEndDate(simpledate.format(endDate));
-		Checkvo.setBill(Integer.parseInt(request.getParameter("bill")));
-		Checkvo.setDeposit(Integer.parseInt(request.getParameter("deposit")));
-		Checkvo.setResister(request.getParameter("reaquestId"));
-		checkBoardDaoImpl.CheckBoardInsert(Checkvo);
+      // 등록게시판 상태바꾸기
+      RequestBoardVO requestBoardVO = new RequestBoardVO();
 
-		// 로그인 정보 확인
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String session_id = auth.getName();
-		model.addAttribute("session_id", session_id);
+      String Status = "대여중";
+      requestBoardVO.setPackageStatus(Status);
+      requestBoardVO.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
+      requestBoardDaoImpl.packageStatusupdate(requestBoardVO);
 
-		// 심사가능 page 이동
-		String status = "심사중";
-		List<RequestBoardVO> requestboardstatus = requestBoardDaoImpl.requeststatus(status);
-		model.addAttribute("requestboardstatus", requestboardstatus);
-		model.addAttribute("CONTENT", "menu/menu1/left_menu/requeststatus.jsp");
-		model.addAttribute("LEFT", "menu/menu1/left.jsp");
+      // 체크 리스트 추가
+      CheckBoardVO Checkvo = new CheckBoardVO();
+      Checkvo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
+      Checkvo.setStartDate(simpledate.format(startDate));
+      Checkvo.setEndDate(simpledate.format(endDate));
+      Checkvo.setBill(Integer.parseInt(request.getParameter("bill")));
+      Checkvo.setDeposit(Integer.parseInt(request.getParameter("deposit")));
+      Checkvo.setResister(request.getParameter("reaquestId"));
+      checkBoardDaoImpl.CheckBoardInsert(Checkvo);
 
-		return "main";
-	}
+      // 로그인 정보 확인
+      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+      String session_id = auth.getName();
+      model.addAttribute("session_id", session_id);
 
-	// 대여신청하기
-	@RequestMapping("/RegisterUpForm")
-	public String RegisterUpForm(Model model, HttpServletRequest request) {
+      // 심사가능 page 이동
+      String status = "심사중";
+      List<RequestBoardVO> requestboardstatus = requestBoardDaoImpl.requeststatus(status);
+      model.addAttribute("requestboardstatus", requestboardstatus);
+      model.addAttribute("CONTENT", "menu/menu1/left_menu/requeststatus.jsp");
+      model.addAttribute("LEFT", "menu/menu1/left.jsp");
 
-		// 현재시간 가져오기
-		long time = System.currentTimeMillis();
-		SimpleDateFormat ctime = new SimpleDateFormat("yyyy-MM-dd");
-		String CurrentTime = ctime.format(new Date(time));
-		model.addAttribute("CurrentTime", CurrentTime);
+      return "main";
+   }
 
-		// 로그인 정보 확인
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String session_id = auth.getName();
-		model.addAttribute("session_id", session_id);
+   // 대여신청하기
+   @RequestMapping("/RegisterUpForm")
+   public String RegisterUpForm(Model model, HttpServletRequest request) {
 
-		// 대여가능 게시판 등록 Form 뿌리기
-		String codeNum = request.getParameter("codeNum");
+      // 현재시간 가져오기
+      long time = System.currentTimeMillis();
+      SimpleDateFormat ctime = new SimpleDateFormat("yyyy-MM-dd");
+      String CurrentTime = ctime.format(new Date(time));
+      model.addAttribute("CurrentTime", CurrentTime);
 
-		List<RegisterBoardVO> registerform = registerBoardDaoImpl.RegisterUpForm(codeNum);
-		model.addAttribute("registerform", registerform);
+      // 로그인 정보 확인
+      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+      String session_id = auth.getName();
+      model.addAttribute("session_id", session_id);
 
-		model.addAttribute("LEFT", "menu/menu2/left.jsp");
-		model.addAttribute("CONTENT", "menu/menu2/write/registerboardupForm.jsp");
+      // 대여가능 게시판 등록 Form 뿌리기
+      String codeNum = request.getParameter("codeNum");
 
-		return "main";
-	}
+      List<RegisterBoardVO> registerform = registerBoardDaoImpl.RegisterUpForm(codeNum);
+      model.addAttribute("registerform", registerform);
 
-	// 대여자 신청
-	@RequestMapping("/registerboardup")
-	public String registerboardup(Model model, HttpServletRequest request) throws Exception {
+      model.addAttribute("LEFT", "menu/menu2/left.jsp");
+      model.addAttribute("CONTENT", "menu/menu2/write/registerboardupForm.jsp");
 
-		// 날짜 변환
-		SimpleDateFormat simpledate = new SimpleDateFormat("yyyy-MM-dd");
-		Date parsedDate1 = simpledate.parse(request.getParameter("userstartDate"));
-		Date parsedDate2 = simpledate.parse(request.getParameter("userendDate"));
-		Timestamp userstartDate = new Timestamp(parsedDate1.getTime());
-		Timestamp userendDate = new Timestamp(parsedDate2.getTime());
+      return "main";
+   }
 
-		// 로그인 정보 확인
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String session_id = auth.getName();
-		model.addAttribute("session_id", session_id);
+   // 대여자 신청
+   @RequestMapping("/registerboardup")
+   public String registerboardup(Model model, HttpServletRequest request) throws Exception {
 
-		// 대여자 추가
-		String packageStatus = "대여신청";
-		CheckBoardVO checkvo = new CheckBoardVO();
-		checkvo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
-		checkvo.setUserstartDate(simpledate.format(userstartDate));
-		checkvo.setUserendDate(simpledate.format(userendDate));
-		checkvo.setPackageStatus(packageStatus);
-		checkvo.setRentter(session_id);
-		checkBoardDaoImpl.Checkrentterup(checkvo);
+      // 날짜 변환
+      SimpleDateFormat simpledate = new SimpleDateFormat("yyyy-MM-dd");
+      Date parsedDate1 = simpledate.parse(request.getParameter("userstartDate"));
+      Date parsedDate2 = simpledate.parse(request.getParameter("userendDate"));
+      Timestamp userstartDate = new Timestamp(parsedDate1.getTime());
+      Timestamp userendDate = new Timestamp(parsedDate2.getTime());
 
-		// 상태바꾸기
-		RegisterBoardVO registervo = new RegisterBoardVO();
-		registervo.setPackageStatus(packageStatus);
-		registervo.setRegisterId(session_id);
-		registervo.setUserstartDate(simpledate.format(userstartDate));
-		registervo.setUserendDate(simpledate.format(userendDate));
-		registervo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
-		registerBoardDaoImpl.PackageStatusUP(registervo);
+      // 로그인 정보 확인
+      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+      String session_id = auth.getName();
+      model.addAttribute("session_id", session_id);
 
-		// 대여목록
-		List<RegisterBoardVO> Registerselect = registerBoardDaoImpl.Registerselect();
-		model.addAttribute("Registerselect", Registerselect);
+      // 대여자 추가
+      String packageStatus = "대여신청";
+      CheckBoardVO checkvo = new CheckBoardVO();
+      checkvo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
+      checkvo.setUserstartDate(simpledate.format(userstartDate));
+      checkvo.setUserendDate(simpledate.format(userendDate));
+      checkvo.setPackageStatus(packageStatus);
+      checkvo.setRentter(session_id);
+      checkBoardDaoImpl.Checkrentterup(checkvo);
 
-		model.addAttribute("CONTENT", "menu/menu2/menu2.jsp");
-		model.addAttribute("LEFT", "menu/menu2/left.jsp");
-		return "main";
-	}
+      // 상태바꾸기
+      RegisterBoardVO registervo = new RegisterBoardVO();
+      registervo.setPackageStatus(packageStatus);
+      registervo.setRegisterId(session_id);
+      registervo.setUserstartDate(simpledate.format(userstartDate));
+      registervo.setUserendDate(simpledate.format(userendDate));
+      registervo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
+      registerBoardDaoImpl.PackageStatusUP(registervo);
 
-	// 대여 시작하기 admin만 가능
-	@RequestMapping("/startrent")
-	public String startrent(Model model, HttpServletRequest request) throws Exception {
+      // 대여목록
+      List<RegisterBoardVO> Registerselect = registerBoardDaoImpl.Registerselect();
+      model.addAttribute("Registerselect", Registerselect);
 
-		// id 받아오기
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String session_id = auth.getName();
-		model.addAttribute("session_id", session_id);
+      model.addAttribute("CONTENT", "menu/menu2/menu2.jsp");
+      model.addAttribute("LEFT", "menu/menu2/left.jsp");
+      return "main";
+   }
 
-		String packageStatus = "대여중";
+   // 대여 시작하기 admin만 가능
+   @RequestMapping("/startrent")
+   public String startrent(Model model, HttpServletRequest request) throws Exception {
 
-		// 대여게시판 상황 변경
-		RegisterBoardVO registervo = new RegisterBoardVO();
-		registervo.setPackageStatus(packageStatus);
-		registervo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
-		registerBoardDaoImpl.packageStatus(registervo);
+      // id 받아오기
+      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+      String session_id = auth.getName();
+      model.addAttribute("session_id", session_id);
 
-		// 체크 리스트 상황 변경
-		CheckBoardVO checkvo = new CheckBoardVO();
-		checkvo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
-		checkvo.setPackageStatus(packageStatus);
-		checkBoardDaoImpl.packageStatus(checkvo);
+      String packageStatus = "대여중";
 
-		// StorageBoard 추가
-		StorageBoardVO storagevo = new StorageBoardVO();
+      // 대여게시판 상황 변경
+      RegisterBoardVO registervo = new RegisterBoardVO();
+      registervo.setPackageStatus(packageStatus);
+      registervo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
+      registerBoardDaoImpl.packageStatus(registervo);
 
-		// 현재시간 가져오기
-		long time = System.currentTimeMillis();
-		SimpleDateFormat ctime = new SimpleDateFormat("yyyy-MM-dd");
-		String CurrentTime = ctime.format(new Date(time));
+      // 체크 리스트 상황 변경
+      CheckBoardVO checkvo = new CheckBoardVO();
+      checkvo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
+      checkvo.setPackageStatus(packageStatus);
+      checkBoardDaoImpl.packageStatus(checkvo);
 
-		storagevo.setsNum(Integer.parseInt(request.getParameter("sNum")));
-		storagevo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
-		storagevo.setRentter(request.getParameter("rentter"));
-		storagevo.setBill(Integer.parseInt(request.getParameter("bill")));
-		storagevo.setDeposit(Integer.parseInt(request.getParameter("deposit")));
-		storagevo.setPackageStatus(packageStatus);
-		storagevo.setStartDate(CurrentTime);
+      // StorageBoard 추가
+      StorageBoardVO storagevo = new StorageBoardVO();
 
-		storageBoardDaoImpl.storageinsert(storagevo);
+      // 현재시간 가져오기
+      long time = System.currentTimeMillis();
+      SimpleDateFormat ctime = new SimpleDateFormat("yyyy-MM-dd");
+      String CurrentTime = ctime.format(new Date(time));
 
-		// 대여목록
-		List<RegisterBoardVO> Registerselect = registerBoardDaoImpl.Registerselect();
-		model.addAttribute("Registerselect", Registerselect);
+      storagevo.setsNum(Integer.parseInt(request.getParameter("sNum")));
+      storagevo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
+      storagevo.setRentter(request.getParameter("rentter"));
+      storagevo.setBill(Integer.parseInt(request.getParameter("bill")));
+      storagevo.setDeposit(Integer.parseInt(request.getParameter("deposit")));
+      storagevo.setPackageStatus(packageStatus);
+      storagevo.setStartDate(CurrentTime);
 
-		model.addAttribute("CONTENT", "menu/menu2/menu2.jsp");
-		model.addAttribute("LEFT", "menu/menu2/left.jsp");
-		return "main";
-	}
+      storageBoardDaoImpl.storageinsert(storagevo);
 
-	// 대여시작 폼
-	@RequestMapping("/startrentForm")
-	public String startrentForm(Model model, HttpServletRequest request) {
+      // 대여목록
+      List<RegisterBoardVO> Registerselect = registerBoardDaoImpl.Registerselect();
+      model.addAttribute("Registerselect", Registerselect);
 
-		// id 받아오기
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String session_id = auth.getName();
-		model.addAttribute("session_id", session_id);
+      model.addAttribute("CONTENT", "menu/menu2/menu2.jsp");
+      model.addAttribute("LEFT", "menu/menu2/left.jsp");
+      return "main";
+   }
 
-		// 대여 목록 카운트
-		int codeNum = Integer.parseInt(request.getParameter("codeNum"));
-		List<StorageBoardVO> storagecount = storageBoardDaoImpl.codeNumCount(codeNum);
-		model.addAttribute("storagecount", storagecount);
+   // 대여시작 폼
+   @RequestMapping("/startrentForm")
+   public String startrentForm(Model model, HttpServletRequest request) {
 
-		List<CheckBoardVO> rentstartlist = checkBoardDaoImpl.codeNumselect(codeNum);
+      // id 받아오기
+      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+      String session_id = auth.getName();
+      model.addAttribute("session_id", session_id);
 
-		model.addAttribute("rentstartlist", rentstartlist);
-		model.addAttribute("CONTENT", "menu/menu2/write/startrentForm.jsp");
-		model.addAttribute("LEFT", "menu/menu2/left.jsp");
+      // 대여 목록 카운트
+      int codeNum = Integer.parseInt(request.getParameter("codeNum"));
+      List<StorageBoardVO> storagecount = storageBoardDaoImpl.codeNumCount(codeNum);
+      model.addAttribute("storagecount", storagecount);
 
-		return "main";
-	}
+      List<CheckBoardVO> rentstartlist = checkBoardDaoImpl.codeNumselect(codeNum);
+
+      model.addAttribute("rentstartlist", rentstartlist);
+      model.addAttribute("CONTENT", "menu/menu2/write/startrentForm.jsp");
+      model.addAttribute("LEFT", "menu/menu2/left.jsp");
+
+      return "main";
+   }
+
 }
