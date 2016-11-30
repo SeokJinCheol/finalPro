@@ -45,7 +45,7 @@ public class RegisterBoardLeftController {
 	private MailImpl mailImpl;
 
 	@RequestMapping("/menu2_1")
-	public String menu2_1(Model model, HttpServletRequest request) {
+	public String menu2_1(Model model, HttpServletRequest request) throws Exception{
 
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -62,6 +62,49 @@ public class RegisterBoardLeftController {
 		// 대여목록
         List<RegisterBoardVO> Registerpossibility = null;
    		
+      //기간 종료
+        // 현재시간 가져오기
+        long time = System.currentTimeMillis();
+        SimpleDateFormat ctime = new SimpleDateFormat("yyyy-MM-dd");
+        String CurrentTime = ctime.format(new Date(time));
+              
+        //일정 종료
+        List<RegisterBoardVO> count = registerBoardDaoImpl.registercount();
+        int registercount = count.get(0).getCodeNum();
+        System.out.println(registercount);
+        
+        SimpleDateFormat simpledate = new SimpleDateFormat("yyyy-MM-dd");
+        Date nowDate = simpledate.parse(CurrentTime);
+        Registerpossibility = registerBoardDaoImpl.Registerselect();
+              
+              int i = 0;
+              while(true){
+                 if(Registerpossibility.get(i).getPackageStatus().equals("대여가능")){
+                    int codeNum = Registerpossibility.get(i).getCodeNum();
+                    String endDate = Registerpossibility.get(i).getStartDate();
+                    Date endDate1 = simpledate.parse(endDate);
+                    //종료 판별
+                    if((nowDate.getTime() - endDate1.getTime()) >= 0){
+                      String Status = "기간종료";
+                       // 대여게시판 상황 변경
+                       RegisterBoardVO registervo = new RegisterBoardVO();
+                       registervo.setPackageStatus(Status);
+                       registervo.setCodeNum(codeNum);
+                       registerBoardDaoImpl.packageStatus(registervo);
+    
+                       // 체크 리스트 상황 변경
+                       CheckBoardVO checkvo = new CheckBoardVO();
+                       checkvo.setCodeNum(codeNum);
+                       checkvo.setPackageStatus(Status);
+                       checkBoardDaoImpl.packageStatus(checkvo);
+                    }
+                 }
+                 if((registercount-1) == i){
+                    break;
+                 } else i++;
+              }
+           //기간종료 끝
+        
    		if (keyword == null) {
    			Registerpossibility = registerBoardDaoImpl.Registerpossibility(packageStatus);
 

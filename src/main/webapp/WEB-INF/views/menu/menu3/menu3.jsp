@@ -10,8 +10,8 @@
 /*클릭시 자료가 있는 지 체크 합니다.  */
 function check() {
 	
-	if(document.forms["sendCode"].elements["codeNum"].value.length > 1 ){
-		
+	if(document.forms["sendCode"].elements["codeNum"].value.length >= 1 ){
+
 		document.forms["sendCode"].submit();
 	}else{
 		

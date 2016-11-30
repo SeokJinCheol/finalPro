@@ -107,31 +107,37 @@ public class RequestBoardController {
       Timestamp startDate = new Timestamp(parsedDate1.getTime());
       Timestamp endDate = new Timestamp(parsedDate2.getTime());
 
+    //파일이 null 이 아니면 실행.
       String fileName = null;
-          
-         //이미지 처리 
+      String img = request.getParameter("file");
+      System.out.println(img);
+      
+      if(img != null){
           System.out.println("이미지 처리 시작");
-           MultipartFile uploadfile = dto.getFile();
-           if (uploadfile != null) {
-               fileName = uploadfile.getOriginalFilename();
-               dto.setOname(fileName);
-               try {
-                   File file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/RequestImg/" + fileName);
-                      while(file.exists()) {
-                         int indexes = fileName.lastIndexOf(".");
-                         System.out.println("순서 = "+indexes);
-                         String extension = fileName.substring(indexes);
-                         System.out.println("확장자 = "+extension);
-                         String newFileName = fileName.substring(0, indexes)+"_"+extension;
-                         System.out.println("새 파일 이름 = "+newFileName);
-                         fileName = newFileName;
-                         file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/RequestImg/" + newFileName);
-                      }
-                   uploadfile.transferTo(file);
-               } catch (IOException e) {
-                   e.printStackTrace();
-               } // try - catch
-           } // if
+          MultipartFile uploadfile = dto.getFile();
+          if (uploadfile != null) {
+              fileName = uploadfile.getOriginalFilename();
+              dto.setOname(fileName);
+              try {
+                  File file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/RequestImg/" + fileName);
+                     while(file.exists()) {
+                        int indexes = fileName.lastIndexOf(".");
+                        System.out.println("순서 = "+indexes);
+                        String extension = fileName.substring(indexes);
+                        System.out.println("확장자 = "+extension);
+                        String newFileName = fileName.substring(0, indexes)+"_"+extension;
+                        System.out.println("새 파일 이름 = "+newFileName);
+                        fileName = newFileName;
+                        file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/RequestImg/" + newFileName);
+                     }
+                  uploadfile.transferTo(file);
+              } catch (IOException e) {
+                  e.printStackTrace();
+              } // try - catch
+          }
+         } else {
+         fileName = "no_img.jpg";
+      }
 
       // id 받아오기
       Authentication auth = SecurityContextHolder.getContext().getAuthentication();

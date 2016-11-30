@@ -75,5 +75,9 @@
 	<select id="registercontent" resultMap="RegisterBoard"> 
        SELECT * FROM registerBoard WHERE codeNum=#{codeNum}  ORDER BY codeNum DESC
     </select>
+    
+     <select id="registercount" resultMap="RegisterBoard">
+      SELECT count(*) codeNum FROM registerBoard
+     </select>
 	
 </mapper>
