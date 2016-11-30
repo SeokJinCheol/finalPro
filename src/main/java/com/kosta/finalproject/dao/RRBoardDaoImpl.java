@@ -92,4 +92,16 @@ public class RRBoardDaoImpl implements RRBoardDao {
 		sqlSession.update("com.kosta.finalproject.dao.RRBoardMapper.setRRtask");
 	}
 
+	public List<RPboardVO> myRentlist(String session_id) {
+		
+		return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.myRentlist", session_id);
+	
+	}
+	
+	public List<RRboardVO> myRoomlist(String session_id) {
+		
+		return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.myRoomlist", session_id);
+
+	}
+
 }
