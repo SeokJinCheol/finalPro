@@ -6,6 +6,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+/*클릭시 자료가 있는 지 체크 합니다.  */
+function check() {
+	
+	if(document.forms["sendCode"].elements["codeNum"].value.length > 1 ){
+		
+		document.forms["sendCode"].submit();
+	}else{
+		
+		alert("보고싶은 장소를 선택해주세요!");
+		
+		return false;
+ 	}
+}
+</script>
 <title>free_list</title>
 <!-- CSS 연결-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -25,18 +40,18 @@
 		</div>
 	
 		<div>
-			<form id="sendCode" action="showContentsForm" method=post>
-				<input type="hidden" name="codeNum" value="" id="codeNum">
+			<form id="sendCode" action="showContentsForm" method=post >
+				<input type="hidden" name="codeNum" value="" id="codeNum" >
 				
 				<table>
 					<tr>
 						<td>
 							<!-- 위치 조절하느라 밀어놓은 거임~~ -->
-			            	<textarea placeholder="&nbsp;&nbsp;* 장소를 선택한 후 버튼을 누르시면 더 상세정보 및 예약을 할 수 있습니다. *" class="free-insert-content-title" style="resize: none;" id="show" rows="4" cols="60" readonly></textarea>
+			            	<textarea placeholder="&nbsp;&nbsp;* 장소를 선택한 후 버튼을 누르시면 더 상세정보 및 예약을 할 수 있습니다. *" class="free-insert-content-title" style="resize: none;" id="show" rows="4" cols="60" readonly required="required"></textarea>
 						</td>
 						
 						<td>
-							<input type="submit" class="mang-btn w3-card-8" value="">
+							<input type="submit" class="mang-btn w3-card-8" value="" onclick="check(); return false;">
 						</td>
 					</tr>
 				</table>
@@ -67,7 +82,7 @@
 	    });
 	</script>
     
-    <c:forEach end="${ total}" begin="0" var="i" >
+    <c:forEach end="${ total-1}" begin="0" var="i" >
 		<script>
 			// 마커를 생성합니다
 		    marker[${i}] = new daum.maps.Marker({
@@ -87,12 +102,12 @@
 		    document.forms["sendCode"].elements["codeNum"].value=inpo[${i}].codeNum;
 			});
 		    // 클러스터러에 마커들을 추가합니다
-		    
+		    clusterer.addMarkers(marker[${i}]);
 		</script>
 	</c:forEach>
 	
 	<script>
-		clusterer.addMarkers(marker[]);
+		
 	
 	    // 마커 클러스터러에 클릭이벤트를 등록합니다 
 	    // 마커 클러스터러를 생성할 때 disableClickZoom을 true로 설정하지 않은 경우 
