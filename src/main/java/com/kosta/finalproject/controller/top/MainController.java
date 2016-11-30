@@ -51,6 +51,53 @@ public class MainController {
 		model.addAttribute("CONTENT", "about_us.jsp");
 		return "main";
 	}
+	
+	// Cost get
+	@RequestMapping(value="/Cost", method = RequestMethod.GET)
+	public String Cost(HttpServletRequest request, Model model) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		int check=0;
+		
+		model.addAttribute("check", check);
+		return "Cost";
+	}
+	
+	// Cost post
+		@RequestMapping(value="/Cost", method = RequestMethod.POST)
+		public String Cost1(HttpServletRequest request, Model model) throws Exception {
+			request.setCharacterEncoding("utf-8");
+
+			String keyword = request.getParameter("keyword");
+			int times = Integer.parseInt(request.getParameter("times"));
+			int check = 0;
+						
+			if(keyword.equals("category1")){ check = 3000 * times;
+			} else if(keyword.equals("category2")){ check = 1000 * times;
+		    } else if(keyword.equals("category3")){ check = 2000 * times;
+            } else if(keyword.equals("category4")){ check = 3000 * times;
+            } else if(keyword.equals("category5")){ check = 1000 * times;
+		    } else if(keyword.equals("category6")){ check = 2000 * times;
+            } else if(keyword.equals("category7")){ check = 3000 * times;
+            } else if(keyword.equals("category8")){ check = 5000 * times;
+		    } else if(keyword.equals("category9")){ check = 5000 * times;
+            } else if(keyword.equals("category10")){ check = 5000 * times;
+            } else if(keyword.equals("category11")){ check = 6000 * times;
+            } else if(keyword.equals("category12")){ check = 6000 * times;
+            } else if(keyword.equals("category13")){ check = 3000 * times;
+            } else if(keyword.equals("category14")){ check = 50000 * times;
+            } else if(keyword.equals("category15")){ check = 60000 * times;
+            } else if(keyword.equals("category16")){ check = 70000 * times;
+            } else if(keyword.equals("category17")){ check = 80000 * times;
+            } else if(keyword.equals("category18")){ check = 90000 * times;
+            } else if(keyword.equals("category19")){ check = 100000 * times;
+            } else if(keyword.equals("category21")){ check = 110000 * times;
+            } else if(keyword.equals("category22")){ check = 120000 * times;
+            }
+		
+			model.addAttribute("check", check);
+			
+			return "Cost";
+		}
 
 	// mainSearch
 	@RequestMapping("/mainSearch")

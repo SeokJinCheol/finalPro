@@ -140,8 +140,8 @@
                         <td colspan="3" align="center">${Registerselect.title}</td>
                      <tr>
                      <tr>
-                        <td style="width: 20%" colspan="3"><a href="registercontent?codeNum=${requestlist.codeNum}">
-                        <img src="/team4/resources/RequestImg/${Registerselect.img }" style="width: 100%; height: 170px;"></td>
+                        <td style="width: 20%" colspan="3"><a href="registercontent?codeNum=${Registerselect.codeNum}">
+                        <img src="/team4/resources/RequestImg/${Registerselect.img }" style="width: 100%; height: 170px;"></a></td>
                      </tr>
                      <tr>
                         <td style="width: 170px;" align="left">No.${Registerselect.codeNum}</td>
