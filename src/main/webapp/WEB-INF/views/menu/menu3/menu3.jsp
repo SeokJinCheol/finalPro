@@ -25,7 +25,7 @@
 		</div>
 	
 		<div>
-			<form id="sendCode" action="showContentsForm">
+			<form id="sendCode" action="showContentsForm" method=post>
 				<input type="hidden" name="codeNum" value="" id="codeNum">
 				
 				<table>
