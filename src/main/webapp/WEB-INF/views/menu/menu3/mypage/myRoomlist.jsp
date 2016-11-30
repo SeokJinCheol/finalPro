@@ -50,11 +50,13 @@ function setpakageStatus(name){
 	<td>${vo.endDate }</td>
 	<td>${vo.title }</td>
 	<td>${vo.contents }</td>
-	<td>${vo.packageStatus }		</td>
+	<td>${vo.packageStatus }</td>
 		<td>
-		<form action="showContentsForm" method="post">
+		<c:if test="${vo.packageStatus == '허가대기' }">바보
+		<form action="myModifyRRB" method="post">
 		<input type="hidden" name="codeNum" value="${vo.codeNum }">
-		<input type="submit" name="mody" value="수정"></form></td>
+		<input type="submit" name="mody" value="수정"></form>
+		</c:if></td>
 </tr>
 </c:forEach>
 		</table>		
