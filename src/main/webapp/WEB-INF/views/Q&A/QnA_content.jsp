@@ -106,8 +106,8 @@
 				</tr>
 	        </table>
 	        
-	        <input type="hidden" name="bnum" value="${vo.bnum}">
-		    <input type="hidden" name="title" value="${vo.title}">
+	        <input type="hidden" name="bnum" id="bnum" value="${vo.bnum}">
+		    <input type="hidden" name="title" id="title" value="${vo.title}">
 		</form>
       
         <input type="hidden" name="bNum" value="${vo.bnum }"> 
