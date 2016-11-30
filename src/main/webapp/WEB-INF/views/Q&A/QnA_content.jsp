@@ -163,7 +163,7 @@
 getReplylist();
 function replywrite() {
    $.ajax({
-      type:"GET",
+      type:"POST",
       url:"QnA_reply",
       cache:false,
       datatype:"json",
