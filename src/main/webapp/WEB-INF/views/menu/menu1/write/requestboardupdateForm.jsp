@@ -34,7 +34,7 @@
 						<tr>
 							<td>제목</td>
 							<td><input type="text" name="title"
-								value="${updatelist.title}"></td>
+								value="${updatelist.title}" maxlength="30"></td>
 						</tr>
 						<tr>
 							<td>카테고리</td>
@@ -70,16 +70,16 @@
 						<tr>
 							<td>대여비</td>
 							<td><input type="text" name="bill"
-								value="${updatelist.bill}" required>원</td>
+								value="${updatelist.bill}" required maxlength="10">원</td>
 						</tr>
 						<tr>
 							<td>보증금</td>
 							<td><input type="text" name="deposit"
-								value="${updatelist.deposit}" required>원</td>
+								value="${updatelist.deposit}" required maxlength="10">원</td>
 						</tr>
 						<tr>
 							<td>내용</td>
-							<td><textarea name="contents" cols="30" rows="15" required>${updatelist.contents}</textarea></td>
+							<td><textarea name="contents" cols="30" rows="15" required maxlength="350">${updatelist.contents}</textarea></td>
 						</tr>
 					</table>
 					<input type="submit" value="수정하기">
