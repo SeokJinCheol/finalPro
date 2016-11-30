@@ -5,10 +5,8 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -112,7 +110,7 @@ public class RRBoardLeftController {
 		dao.RRboardinsert(vo);
 		// 모델 전송
 		model.addAttribute("id", session_id);
-	
+
 		return "redirect:menu3";
 	}
 
@@ -134,7 +132,6 @@ public class RRBoardLeftController {
 		return "main";
 	}
 
-	
 	@RequestMapping("/insertSubmit")
 	public String insertSubmit(Model model, @RequestParam("codeNum") int codeNum, @RequestParam("id") String id,
 			@RequestParam("contents") String contents, @RequestParam("bill") int bill,
@@ -305,6 +302,45 @@ public class RRBoardLeftController {
 		return "main";
 	}
 
+	//// 관리자용 수정
+	// 수정폼으로 보내기
+	@RequestMapping("/modifyRPB2")
+	public String modifyRPB2(Model model, @RequestParam("seqNum") int seqNum) {
+
+		RPboardVO vo = dao.selectModyRPB(seqNum);
+		System.out.println(vo.toString());
+		model.addAttribute("vo", vo);
+		model.addAttribute("CONTENT", "menu/menu3/admin/modyRPB.jsp");
+		model.addAttribute("LEFT", "join/admin_left.jsp");
+		return "main";
+	}
+
+	// 수정하기
+	@RequestMapping("/updateRPB2")
+	public String updateRPB2(Model model, @RequestParam("codeNum") int codeNum,
+			@RequestParam("contents") String contents, @RequestParam("bill") int bill,
+			
+			@RequestParam("userstartDate") String userstartDate, @RequestParam("userendDate") String userendDate,
+			@RequestParam("reaquestId") String reaquestId, @RequestParam("seqNum") int seqNum
+
+	) {
+		// vo 생성
+		RPboardVO vo = new RPboardVO();
+		// 세팅
+		vo.setCodeNum(codeNum);
+		vo.setReaquestId(reaquestId);
+		vo.setContents(contents);
+		vo.setUserendDate(userendDate);
+		vo.setUserstartDate(userstartDate);
+		vo.setBill(bill);
+
+		dao.updateRPB(vo);
+
+		return "redirect:menu3_4";
+	}
+
+	
+	////일반회원용
 	// 수정폼으로 보내기
 	@RequestMapping("/modifyRPB")
 	public String modifyRPB(Model model, @RequestParam("seqNum") int seqNum) {

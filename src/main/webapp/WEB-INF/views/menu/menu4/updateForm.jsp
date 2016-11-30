@@ -35,9 +35,9 @@
 			                  	</td>
 				            
 				                <td class="top-bottom-border">
-				                	<input type="text"  value="${result.title }" class="free-insert-title" name="title" readonly>
+				                	<input type="text"  value="${result.title }" class="free-insert-title" maxlength="30" name="title" readonly>
 				                </td>
-			               </tr>
+			             	</tr>
 		
 						   <tr align="center" height="35">
 			               		<td style="text-align: center; font-family: 'Jeju Gothic', sans-serif; border-right:1px solid white;" class="bottom-border">작　성　자</td>
@@ -50,13 +50,13 @@
 			               
 			               <tr align="center" height="35"> 
 			                  <td colspan="2" class="bottom-border">
-			                  	<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="10" cols="43" required>${result.contents }</textarea>
+			                  	<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="10" cols="43" maxlength="350" required>${result.contents }</textarea>
 			                  </td>
 			               </tr>
 	
 							<tr align="center" height="35">
 			                  <td style="text-align: center; width: 80;border-right:1px solid white; font-family: 'Jeju Gothic', sans-serif;" class="bottom-border2">사　진</td>
-			                  <td class="bottom-border2"><input type="file" name="file" style="margin-left: 10px;" required></td>
+			                  <td class="bottom-border2"><input type="file" name="file" style="margin-left: 10px;"></td>
 			               </tr>
 						</table>
 		            
@@ -77,7 +77,7 @@
 			                  	</td>
 				            
 				                <td class="top-bottom-border">
-				                	<input type="text"  value="${result.title }" class="free-insert-title" name="title" readonly>
+				                	<input type="text"  value="${result.title }" maxlength="30" class="free-insert-title" name="title" readonly>
 				                </td>
 			               </tr>
 			               
@@ -92,7 +92,7 @@
 			               
 			               <tr align="center" height="35"> 
 			                  <td colspan="2" class="bottom-border">
-			                  	<textarea class="free-insert-content-title" style="resize: none;" name="contents" value="${result.contents }" rows="10" cols="43" required></textarea>
+			                  	<textarea class="free-insert-content-title" style="resize: none;" name="contents" maxlength="350"  rows="10" cols="43" required>value="${result.contents }"</textarea>
 			                  </td>
 			               </tr>
 						</table>

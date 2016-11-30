@@ -34,7 +34,7 @@
 
 				<tbody style="height:340px; overflow-y: auto; position: absolute;">
 					<c:forEach items="${storagelist}" var="storagelist" begin="0" end="${fn:length(storagelist)}" varStatus="status">
-						<c:set var="total" value="${total+storagelist.bill }" />
+						<c:set var="total" value="${total+pay[status.index] }" />
 							<tr onMouseOver="this.style.backgroundColor='#eff7fc'" onMouseOut="this.style.backgroundColor='#fafafa'" style=" height:30px;">
 						    	<td width=100 style="border-bottom: 3px solid #fff;">${storagelist.rentter} 님</td>
 					            <td width=110 style="border-bottom: 3px solid #fff;">${storagelist.startDate}</td>

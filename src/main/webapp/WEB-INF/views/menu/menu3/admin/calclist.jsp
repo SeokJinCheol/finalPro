@@ -80,9 +80,10 @@
 					            
 					            <td width=100 style="border-bottom: 3px solid #fff;">${list.packageStatus }</td>
 					            <td width=60 style="border-bottom: 3px solid #fff;">
-					            	<form action="modifyRPB" method="post">
+					            	<form action="modifyRPB2" method="post">
 										<input type="hidden" name="seqNum" value="${list.seqNum }">
-										<input type="submit" value="OK">
+										
+										<input type="submit" value="" class="update-btn2 w3-card-4" >
 									</form>
 					            </td>
 					        </tr>

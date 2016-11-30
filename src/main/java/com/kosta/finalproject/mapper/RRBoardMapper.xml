@@ -82,12 +82,10 @@
 
    <update id="updateRPB" parameterType="com.kosta.finalproject.vo.RPboardVO">
       update RpBoard set
-      startDate=#{startDate}, endDate= #{endDate},
       bill=#{bill},
       userendDate=#{userendDate},
       userstartDate=#{userstartDate},
-      contents=
-      #{contents}, registerId=#{registerId}, adress=#{adress},
+      contents=#{contents},
       reaquestId=#{reaquestId}
       where seqNum=#{seqNum}
    </update>
