@@ -61,7 +61,7 @@
 		document.RR.endDate.min=date;
 	}
 	function getdate() {
-    	document.RR.startDate.min=date;
+    	document.RR.startDate.max=document.RR.endDate.value;
 	
 	}
 

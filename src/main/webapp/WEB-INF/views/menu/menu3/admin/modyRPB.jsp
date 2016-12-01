@@ -88,7 +88,7 @@
 	
 						<tr height="35"> 
 		                  	<td colspan="2" class="bottom-border">
-		                  		&nbsp;<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="3" cols="45">${vo.contents}</textarea>
+		                  		&nbsp;<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="3" cols="45" required maxlength="350">${vo.contents}</textarea>
 		                  	</td>
 		               	</tr>
 						
@@ -103,7 +103,7 @@
 					<p>
 						<input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수　정" />
 						&nbsp;&nbsp;&nbsp;
-						<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='menu3_4'"/>
+						<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='menu3_5'"/>
 					</p>
 				</form>
 			</div>
