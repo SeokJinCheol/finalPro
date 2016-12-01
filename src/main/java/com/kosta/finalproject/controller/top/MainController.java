@@ -240,7 +240,7 @@ public class MainController {
 			String keyword = request.getParameter("keyword");
 			String word = request.getParameter("word");
 			String id = request.getParameter("id");
-			int pageSize = 10;
+			int pageSize = 7;
 			String pageNum = request.getParameter("pageNum");
 
 			if (pageNum == null)
