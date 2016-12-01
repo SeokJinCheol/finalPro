@@ -93,7 +93,7 @@ function check() {
 		        
 			daum.maps.event.addListener(marker[${i}], 'click', function() {
 		
-		    var message = '\n   글        제       목   :    '+ inpo[${i}].title;
+		    var message = '   장        소       명   :    '+ inpo[${i}].title;
 		    message += '\n　주 　 　 　 　 소　:　' + inpo[${i}].adress + '\n';
 		    message += '　대 여 가 능 일 자　:　' + inpo[${i}].startDate+'　~　' + inpo[${i}].endDate + '\n';
 		        	    
