@@ -23,71 +23,78 @@
 			<form name="insertSubmit" action="insertSubmit" method="post">
 				<table  style="border-collapse: collapse; border-spacing: 0;">
 					<tr height="35">
-						<td class="top-border" style="font-family: 'Jeju Gothic', sans-serif;">&nbsp;&nbsp;위 　 치</td>
-	                    	
-			            <td class="top-border" style="font-family: 'Jeju Gothic', sans-serif;">&nbsp;&nbsp;외 관 사 진</td>
+						<td colspan="2" class="top-border" style="font-family: 'Jeju Gothic', sans-serif;">　　위 치　&　외 관 사 진</td>
 					</tr>
 					
-					<!-- 상세주소 & 대여가능일자 -->
+					<!-- 상세주소 -->
 					<tr align=center>
-						<td colspan="2" >
-							<input type="text" style="width:560px;" value=" ${vo.adress}" class="free-insert-title" name="adress" readonly>
+						<td colspan="2">
+							<input type="text" style="padding-bottom:10px; width:540px;" value=" ${vo.adress}" class="free-insert-title" name="adress" readonly>
 						</td>
-						
-						<%-- <td class="bottom-border" align=center>
-	                  		&nbsp;<input type="text" class="free-insert-title" style="width:38%; text-align: center" name="startDate" value="${vo.startDate}" readonly/>
-	                  		<!-- ~ 앞뒤로 ㄱ한자 1 숨겨져 있음 -->
-	                  		　~　
-	                  		<input type="text" class="free-insert-title" style="width:38%; text-align: center" name="endDate" value="${vo.endDate}" readonly/>
-	                  	</td> --%>
 					</tr>
 					
-					<!-- 위치 지도로 표시 -->
+					<!-- 지도 & 외관사진 표시 -->
 					<tr align=center>
-						<td style="margin-right:50px; padding-bottom:10px; padding-right:20px;">
-							<!-- 지도나오는 부분 -->
-							<div class="w3-card-4" id="map" style="border-radius:5px ; width:280px; height:350px;"></div>
+						<td style="padding-bottom:10px; padding-left:20px; padding-right:20px;" class="bottom-border">
+							<!-- 지도 -->
+							<div class="w3-card-4" id="map" style="border-radius:5px ; width:250px; height:300px;"></div>
 						</td>
 						
-						<td style="margin-right:50px; padding-bottom:10px;">
+						<td align=center style="padding-bottom:10px;" class="bottom-border">
 							<!-- 외관사진 -->
-							<div class="w3-card-4" style="border-radius:5px; width:280px; height:350px;">
-								<img src="/team4/resources/BoardImg/${vo.img}" style="border-radius:5px; width: 280px; height: 350px;">
+							<div class="w3-card-4" style="border-radius:5px; width:250px; height:300px;">
+								<img src="/team4/resources/BoardImg/${vo.img}" style="border-radius:5px; width: 250px; height: 300px;">
 							</div>
 						</td>
 					</tr>
 					
-					<%-- <!-- 신청일자 -->
+					<!-- 대여가능일자 & 신청일자 타이틀 -->
 					<tr height="35">
-	                    <td style="font-family: 'Jeju Gothic', sans-serif;">&nbsp;&nbsp;신 청 일 자</td>
+						<td style="font-family: 'Jeju Gothic', sans-serif; padding-bottom:0px;">　　대 여 가 능 일 자</td>
+						<td style="font-family: 'Jeju Gothic', sans-serif; padding-bottom:0px;">　　신 청 일 자</td>
 					</tr>
 					
-					<tr align=center height="35">
-	                	<td class="bottom-border">
-	                  		&nbsp;<input type="date" class="free-insert-title" style="width:38%; text-align: center" required name="userstartDate" min="${vo.startDate }" value="${vo.userstartDate}"/>
+					<!-- 날짜 선택 -->
+					<tr align=center >
+						<!-- 대여가능일자 -->
+						<td class="bottom-border" align=center width=300 style="padding-bottom:10px;">
+	                  		&nbsp;<input type="text" class="free-insert-title" style="width:35%; text-align: center; font-size:3px;" name="startDate" value="${vo.startDate}" readonly/>
 	                  		<!-- ~ 앞뒤로 ㄱ한자 1 숨겨져 있음 -->
 	                  		　~　
-	                  		<input type="date" class="free-insert-title" style="width:38%; text-align: center" required name="userendDate" min="${vo.startDate }" max="${vo.endDate}" value="${vo.userendDate}"/>
+	                  		<input type="text" class="free-insert-title" style="width:35%; text-align: center; font-size:3px;" name="endDate" value="${vo.endDate}" readonly/>
+	                  	</td>
+	                  	
+	                  	<!-- 신청일자 -->
+	                  	<td class="bottom-border" width=300 style="padding-bottom:10px;">
+	                  		&nbsp;<input type="date" class="free-insert-title" style="width:35%; text-align: center; font-size:3px;" required name="userstartDate" min="${vo.startDate }" value="${vo.userstartDate}"/>
+	                  		<!-- ~ 앞뒤로 ㄱ한자 1 숨겨져 있음 -->
+	                  		　~　
+	                  		<input type="date" class="free-insert-title" style="width:35%; text-align: center; font-size:3px;" required name="userendDate" min="${vo.startDate }" max="${vo.endDate}" value="${vo.userendDate}"/>
 	                	</td>
-	               	</tr>
-					
-					<!-- 행사내용 -->
-					<tr height="35">
-	                    <td style="font-family: 'Jeju Gothic', sans-serif;">&nbsp;&nbsp;행 사 내 용</td>
 					</tr>
 					
-					<tr align="center" height="35"> 
-	                  	<td>
-	                  		<textarea class="free-insert-content-title" style="resize: none; padding-bottom:10px;" name="contents" rows="10" cols="30" required></textarea>
+					<!-- 장소소개 & 사용용도 타이틀 -->
+					<tr height="35">
+						<td style="font-family: 'Jeju Gothic', sans-serif; padding-bottom:0px;">　　장 소 소 개</td>
+						<td style="font-family: 'Jeju Gothic', sans-serif; padding-bottom:0px;">　　사 용 용 도</td>
+					</tr>
+					
+					<tr align="center" height="35">
+						<!-- 장소소개 -->
+	                  	<td style="padding-bottom:3px;">
+	                  		<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="3" cols="28" readonly>${vo.}</textarea>
 	                  	</td>
-	               	</tr> --%>
-	               	
+						
+						<!-- 사용용도 -->
+	                  	<td style="padding-bottom:3px;">
+	                  		<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="3" cols="28" required>${vo.}</textarea>
+	                  	</td>
+	               	</tr>
+					
 	               	<tr align="center" height="30" style="padding-top:10px;">
 	                  	<td  class="bottom-border2 top-border" colspan="2" onclick="test();return false;">
 	                  		<b id="days">총 금 액　:　</b>
 	                  	</td>
-	                  	
-	                  	<!-- <td><p id="days"></p></td> -->
 	               	</tr>
 				</table>				
 				
