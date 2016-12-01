@@ -58,14 +58,29 @@
 						<c:set var="total" value="${total+list.bill }" />
 							<tr onMouseOver="this.style.backgroundColor='#eff7fc'" onMouseOut="this.style.backgroundColor='#fafafa'" style="height:30px;">
 						    	<td width=66 style="border-bottom: 3px solid #fff;">${list.codeNum }</td>
-						    	<td width=100 style="border-bottom: 3px solid #fff;">${list.reaquestId } 님</td>
+						    	
+						    	<!-- 이름이 6자 이상일 경우 줄여쓰기 기능 -->
+			             		<c:choose>
+				             		<c:when test="${fn:length(list.reaquestId) > 6}">
+										<td width=100 style="border-bottom: 3px solid #fff; font-size: 1;">
+											<c:out value="${fn:substring(list.reaquestId,0,6)}" />... 님
+										</td>
+									</c:when>
+									
+									<c:otherwise>
+										<td width=100 style="border-bottom: 3px solid #fff; font-size: 1;">
+											<c:out value="${list.reaquestId}"/> 님
+										</td>
+									</c:otherwise>
+								</c:choose>
+					            
 					            <td width=110 style="border-bottom: 3px solid #fff;">${list.userstartDate }</td>
 					            <td width=110 style="border-bottom: 3px solid #fff;">${list.userendDate }</td>
 					            <td width=110 style="border-bottom: 3px solid #fff;"><fmt:formatNumber value="${list.bill}" pattern="￦ ###,###"/> 원</td>
 					            
-					            <!-- 주소가 10자 이상일 경우 줄여쓰기 기능 -->
+					            <!-- 주소가 12자 이상일 경우 줄여쓰기 기능 -->
 			             		<c:choose>
-				             		<c:when test="${fn:length(list.adress) > 12 }">
+				             		<c:when test="${fn:length(list.adress) > 12}">
 										<td width=170 style="border-bottom: 3px solid #fff; font-size: 1;">
 											<c:out value="${fn:substring(list.adress,0,12)}" />...
 										</td>
@@ -73,7 +88,7 @@
 									
 									<c:otherwise>
 										<td width=170 style="border-bottom: 3px solid #fff; font-size: 1;">
-											<c:out value="${list.adress }"/>
+											<c:out value="${list.adress}"/>
 										</td>
 									</c:otherwise>
 								</c:choose>

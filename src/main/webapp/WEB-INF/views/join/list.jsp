@@ -13,14 +13,13 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/login.css" type="text/css" media="screen">
 </head>
 <body>
-   <div class="row" style="background: #6699DC; color: white; height: 100px; text-align: right; line-height: 130px;">
-      <img src="/team4/resources/images/left-admin.png" style="margin-right: 10px;"> 
-      <font style="margin-right: 30px; font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px;">회 원 목 록</font>
-   </div>
+	<div class="row" style="background: #6699DC; color: white; height: 100px; text-align: right; line-height: 130px;">
+      	<img src="/team4/resources/images/left-admin.png" style="margin-right: 10px;"> 
+      	<font style="margin-right: 30px; font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px;">회 원 목 록</font>
+	</div>
 
-   <div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
-   
-      <!-- 검색 -->
+   	<div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
+	    <!-- 검색 -->
 		<div class="w3-row" style="margin-top:50px;">	
 			<form action="list" method=post>
 				<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
@@ -37,45 +36,45 @@
 			<br>
 		</div>
    
-      <div style="margin-bottom: 20px; width: 95%; background-color: #fafafa" class="w3-card-8">
-         <table style="padding: 20px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
-            <tr class="bottom-border2" style=" height:30px; margin-bottom: 20px; background-color: #80b5ea; color:white; text-align: center;">
-                 <td width=120 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">I　　D</td>
-                 <td width=80 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">이　름</td>
-                 <td width=130 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">생년월일</td>
-                 <td width=180 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">E-mail</td>
-                 <td width=300 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">주　 　소</td>
-                 <td width=80 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">등　급</td>
-                 <td width=60 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">Update</td>
-                 <td width=60 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">Delete</td>
-             </tr>
-
-            <c:forEach items="${result}" var="member">
-               <tr onMouseOver="this.style.backgroundColor='#eff7fc'" onMouseOut="this.style.backgroundColor='#fafafa'">
-                   <td style="border-bottom: 3px solid #fff;">${member.id}</td>
-                     <td style="border-bottom: 3px solid #fff;">${member.name }</td>
-                     <td style="border-bottom: 3px solid #fff;">${member.birthday }</td>
-                     <td style="border-bottom: 3px solid #fff;">${member.email }</td>
-                     <td style="border-bottom: 3px solid #fff; font-size: 1;">${member.address} ${member.address2}</td>
-                     <td style="border-bottom: 3px solid #fff;">${member.memberRank }</td>
-                     <td style="border-bottom: 3px solid #fff;">
-                        <form action="admin_update" method="post" name="adminupdate" >
-                           <input type="submit" value="" class="update-btn2 w3-card-4" >
-                            
-                             <input type="hidden" name="id" value="${member.id}"/>
-                         </form>
-                     </td>
-                     <td style="border-bottom: 3px solid #fff;">
-                     <form action="admin_delete" method=post name="${member.id}">
-                           <input type="submit" value="" class="cancel-btn3 w3-card-4" onclick="checkDel('${member.id}'); return false;">
-                           
-                           <input type="hidden" name="m_id" value="${member.id}"/>
-                        </form>
-                     </td>
-               </tr>                                                   
-            </c:forEach>
-         </table>
-         
+		<div style="margin-bottom: 20px; width: 95%; background-color: #fafafa" class="w3-card-8">
+			<table style="padding: 20px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
+				<tr class="bottom-border2" style=" height:30px; margin-bottom: 20px; background-color: #80b5ea; color:white; text-align: center;">
+					<td width=120 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">I　　D</td>
+	                <td width=80 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">이　름</td>
+	                <td width=130 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">생년월일</td>
+	                <td width=180 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">E-mail</td>
+	                <td width=300 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">주　 　소</td>
+	                <td width=80 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">등　급</td>
+	                <td width=60 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">Update</td>
+	                <td width=60 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">Delete</td>
+				</tr>
+	
+	            <c:forEach items="${result}" var="member">
+	               	<tr onMouseOver="this.style.backgroundColor='#eff7fc'" onMouseOut="this.style.backgroundColor='#fafafa'">
+	                   	<td style="border-bottom: 3px solid #fff;">${member.id}</td>
+	                    <td style="border-bottom: 3px solid #fff;">${member.name }</td>
+						<td style="border-bottom: 3px solid #fff;">${member.birthday }</td>
+	                    <td style="border-bottom: 3px solid #fff;">${member.email }</td>
+	                    <td style="border-bottom: 3px solid #fff; font-size: 1;">${member.address} ${member.address2}</td>
+	                    <td style="border-bottom: 3px solid #fff;">${member.memberRank }</td>
+	                    <td style="border-bottom: 3px solid #fff;">
+	                    	<form action="admin_update" method="post" name="adminupdate" >
+	                        	<input type="submit" value="" class="update-btn2 w3-card-4" >
+	                            
+	                            <input type="hidden" name="id" value="${member.id}"/>
+	                        </form>
+	                    </td>
+	                    <td style="border-bottom: 3px solid #fff;">
+	                    	<form action="admin_delete" method=post name="${member.id}">
+	                           	<input type="submit" value="" class="cancel-btn3 w3-card-4" onclick="checkDel('${member.id}'); return false;">
+	                           
+	                           	<input type="hidden" name="m_id" value="${member.id}"/>
+	                        </form>
+	                    </td>
+	               	</tr>                                                   
+	            </c:forEach>
+			</table>
+	         
          	<!-- 전체 페이지의 수를 연산 -->
 		    <div align="center">
                	<c:if test="${count>0}" >
@@ -137,7 +136,7 @@
 	                <br>
 				</c:if>
 			</div>
-      </div>
+		</div>
    </div>
 </body>
 <script type="text/javascript">

@@ -50,7 +50,7 @@ function setpakageStatus(name){
 					<c:forEach items="${list}" var="vo">
 						<tr onMouseOver="this.style.backgroundColor='#eff7fc'" onMouseOut="this.style.backgroundColor='#fafafa'" height="60">
 							<td width=80 style="border-bottom: 3px solid #fff;">
-								${vo.registerId}
+								${vo.registerId} 님
 							</td>
 							
 							<td width=140 style="border-bottom: 3px solid #fff; text-align: left;">
@@ -64,10 +64,21 @@ function setpakageStatus(name){
 							<td width=120 style="border-bottom: 3px solid #fff;">
 								${vo.title}
 							</td>
-	
-							<td width=240 style="border-bottom: 3px solid #fff;">
-								${vo.adress}
-							</td>
+							
+							<!-- 주소가 20자 이상일 경우 줄여쓰기 기능 -->
+		             		<c:choose>
+			             		<c:when test="${fn:length(vo.adress) > 20}">
+									<td width=240 style="border-bottom: 3px solid #fff;">
+										<c:out value="${fn:substring(vo.adress,0,20)}" />...
+									</td>
+								</c:when>
+								
+								<c:otherwise>
+									<td width=240 style="border-bottom: 3px solid #fff;">
+										<c:out value="${vo.adress}"/>
+									</td>
+								</c:otherwise>
+							</c:choose>
 							
 							<td width=90 style="border-bottom: 3px solid #fff;">
 								${vo.packageStatus}

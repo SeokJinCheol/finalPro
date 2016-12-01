@@ -36,9 +36,23 @@
 						<tr onMouseOver="this.style.backgroundColor='#eff7fc'" onMouseOut="this.style.backgroundColor='#fafafa'" style="height:100px;">
 		                	<td width=70 style="border-bottom: 3px solid #fff;">${MyRegisterselect.codeNum}</td>
 		                    <td width=100 style="border-bottom: 3px solid #fff;"><img src="/team4/resources/RequestImg/${MyRegisterselect.img}" style="width: 100%; height: 95px;"></td>
-		                    <td width=180 style="border-bottom: 3px solid #fff;">${MyRegisterselect.title}</td>
+		                    
+		                    <!-- 제목이 10자 이상일 경우 줄여쓰기 기능 -->
+		             		<c:choose>
+			             		<c:when test="${fn:length(MyRegisterselect.title) > 10}">
+									<td width=180 style="border-bottom: 3px solid #fff;">
+										<c:out value="${fn:substring(MyRegisterselect.title,0,10)}" />...
+									</td>
+								</c:when>
+								
+								<c:otherwise>
+									<td width=180 style="border-bottom: 3px solid #fff;">
+										<c:out value="${MyRegisterselect.title}"/>
+									</td>
+								</c:otherwise>
+							</c:choose>
+
 		                    <td width=120 style="border-bottom: 3px solid #fff;">${MyRegisterselect.userendDate}</td>
-		
 		                    <td width=80 style="border-bottom: 3px solid #fff;">
 		                        <c:if test="${MyRegisterselect.packageStatus == '대여중'}">
 									<form action="reviewendrent" method="post">

@@ -37,13 +37,35 @@
 						    		<img src="/team4/resources/images/mail4444.png" style="width: 40%; height: 30px;">
 						    	</td>
 						    	
-						    	<td width=130  style="border-bottom: 3px solid #fff;">
-						    		${maillist.sid}
-						    	</td>
+						    	<!-- 보낸이가 12자 이상일 경우 줄여쓰기 기능 -->
+			             		<c:choose>
+				             		<c:when test="${fn:length(maillist.sid) > 12}">
+										<td width=130 style="border-bottom: 3px solid #fff;">
+											<c:out value="${fn:substring(maillist.sid,0,12)}" />...
+										</td>
+									</c:when>
+									
+									<c:otherwise>
+										<td width=130 style="border-bottom: 3px solid #fff;">
+											<c:out value="${maillist.sid}"/>
+										</td>
+									</c:otherwise>
+								</c:choose>
 						    	
-						    	<td width=300 style="border-bottom: 3px solid #fff;">
-						    		${maillist.text}
-						    	</td>
+						    	<!-- 내용이 25자 이상일 경우 줄여쓰기 기능 -->
+			             		<c:choose>
+				             		<c:when test="${fn:length(maillist.text) > 25}">
+										<td width=300 style="border-bottom: 3px solid #fff;">
+											<c:out value="${fn:substring(maillist.text,0,25)}" />...
+										</td>
+									</c:when>
+									
+									<c:otherwise>
+										<td width=300 style="border-bottom: 3px solid #fff;">
+											<c:out value="${maillist.text}"/>
+										</td>
+									</c:otherwise>
+								</c:choose>
 						    	
 						    	<td width=100  style="border-bottom: 3px solid #fff;">
 						    		${maillist.senddate}

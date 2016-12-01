@@ -37,7 +37,22 @@
 		            	<tr onMouseOver="this.style.backgroundColor='#eff7fc'" onMouseOut="this.style.backgroundColor='#fafafa'" style="height:100px;">
 		                	<td width=70 style="border-bottom: 3px solid #fff;">${requestlist.codeNum}</td>
 		                    <td width=100 style=" border-bottom: 3px solid #fff;"><img src="/team4/resources/RequestImg/${requestlist.img }" style="width: 100%; height: 95px;"></td>
-		                    <td width=140 style="border-bottom: 3px solid #fff;">${requestlist.title}</td>
+		                    
+		                    <!-- 제목이 8자 이상일 경우 줄여쓰기 기능 -->
+		             		<c:choose>
+			             		<c:when test="${fn:length(requestlist.title) > 8}">
+									<td width=140 style="border-bottom: 3px solid #fff;">
+										<c:out value="${fn:substring(requestlist.title,0,8)}" />...
+									</td>
+								</c:when>
+								
+								<c:otherwise>
+									<td width=140 style="border-bottom: 3px solid #fff;">
+										<c:out value="${requestlist.title}"/>
+									</td>
+								</c:otherwise>
+							</c:choose>
+
 		                    <td width=100 style="border-bottom: 3px solid #fff;">${requestlist.packageStatus}</td>
 		                    <td width=60 style="border-bottom: 3px solid #fff;">
 		                        <form action="RequestBoardUpdateForm">
