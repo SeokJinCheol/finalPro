@@ -40,6 +40,12 @@
 		SELECT * FROM freeBoard
 		WHERE bgnum=#{bgnum} ORDER BY GROUPNUM ASC, RANKNUM	ASC
 	</select>
+	
+	<!-- 게시판 리플 상세페이지 -->
+	<select id="recontentget" resultMap="boardResultMap">
+		SELECT * FROM freeBoard
+		WHERE bgnum=#{bgnum} ORDER BY GROUPNUM ASC, RANKNUM	ASC
+	</select>
 
 	<!-- 게시판 조회수 관련 -->
 	<update id="readcountUpdate" parameterType="com.kosta.finalproject.vo.BoardVO">
