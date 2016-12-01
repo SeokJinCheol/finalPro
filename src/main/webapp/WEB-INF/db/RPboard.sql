@@ -13,7 +13,8 @@ spotNum varchar2(150),
 packageStatus varchar2(20) default '허가대기',
 reaquestId varchar2(25) not null,
 registerId varchar2(25) not null,
-company varchar2(20)
+company varchar2(20),
+registerDate date
 );
 
  alter table RPBoard add(registerDate date);

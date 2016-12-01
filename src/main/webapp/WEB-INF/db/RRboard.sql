@@ -24,7 +24,9 @@ select * from rpboard
 
  select * from RPBoard WHERE packageStatus='정산완료' and codeNum = 14 and registerDate between TO_DATE('2016-11-01 00:00:01','YYYY-MM-DD HH24:MI:SS') and TO_DATE('2016-11-31 23:59:59','YYYY-MM-DD HH24:MI:SS') ORDER BY registerDate DESC;00
 
-
+ alter table RRBoard MODIFY (img varchar2(2000) DEFAULT '이미지없음');
+            
+ 
 select * from rrBoard
 
 insert into RRBoard(codeNum, title, category, company, startDate,endDate, bill, contents, reaquestId, img, adress, spotNum)

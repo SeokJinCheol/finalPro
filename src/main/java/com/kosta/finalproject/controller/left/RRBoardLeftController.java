@@ -103,8 +103,8 @@ public class RRBoardLeftController {
 		vo.setAdress(request.getParameter("adress"));
 		vo.setSpotNum(request.getParameter("spotNum"));
 		vo.setContents(request.getParameter("contents"));
-		if (fileName.equals(null)) {
-			vo.setImg("이미지없음");
+		if (fileName.equals(null)||fileName.length()<1) {
+			vo.setImg("이미지없음.jpg");
 		} else {
 			vo.setImg(fileName);
 		}
@@ -518,8 +518,8 @@ public class RRBoardLeftController {
 		vo.setRegisterId(session_id);
 		vo.setCodeNum(codeNum);
 
-		if (fileName.equals(null)) {
-			vo.setImg("이미지없음");
+		if (fileName.equals(null)||fileName.length()<1) {
+			vo.setImg("이미지없음.jpg");
 		} else {
 			vo.setImg(fileName);
 		}
