@@ -134,8 +134,7 @@
 				
 				<tfoot style="height:30px; table-layout:fixed">
 					<tr>
-						<th colspan="2"  style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">총 결 산</th>
-						<td colspan="5" style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">
+						<td colspan="7" style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">
 							총 등록물 수　:　<fmt:formatNumber value="${total}" pattern=" ###,###"/> 곳
 						</td>
 					</tr>
