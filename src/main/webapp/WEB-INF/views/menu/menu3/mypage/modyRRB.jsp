@@ -104,7 +104,7 @@ function fncLPAD(num)
 				<table border="1">
 					<tr>
 						<td>제목</td>
-						<td><input type="text" name="title" value="${vo.title }" required></td>
+						<td><input type="text" name="title" value="${vo.title }" required maxlength="30"></td>
 					</tr>
 					<tr>
 						<td>카테고리</td>
@@ -148,7 +148,7 @@ function fncLPAD(num)
 					</tr>
 					<tr>
 						<td>내용</td>
-						<td><textarea name="contents" cols="30" rows="15" required>${vo.contents }</textarea></td>
+						<td><textarea name="contents" cols="30" rows="15" required maxlength="350">${vo.contents }</textarea></td>
 					</tr>
 				</table>
 				<input type="submit" value="수정하기">

@@ -87,7 +87,7 @@
 						
 						<!-- 사용용도 -->
 	                  	<td style="padding-bottom:3px;">
-	                  		<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="6" cols="28" required></textarea>
+	                  		<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="6" cols="28" required maxlength="350"></textarea>
 	                  	</td>
 	               	</tr>
 					

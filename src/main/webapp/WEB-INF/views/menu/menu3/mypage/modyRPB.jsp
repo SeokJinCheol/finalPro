@@ -86,7 +86,7 @@
 	
 						<tr height="35"> 
 		                  	<td colspan="2" class="bottom-border">
-		                  		&nbsp;<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="3" cols="45">${vo.contents}</textarea>
+		                  		&nbsp;<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="3" cols="45" maxlength="350">${vo.contents}</textarea>
 		                  	</td>
 		               	</tr>
 						
