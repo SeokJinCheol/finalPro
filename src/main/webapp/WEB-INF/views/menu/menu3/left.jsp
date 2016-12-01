@@ -27,7 +27,7 @@
 			<div class="left-menu"><a href="menu3_1" class="rollover">
 				<img src="/team4/resources/images/map11.png" style="margin-right:5px;">
 				<img src="/team4/resources/images/map12.png" class="imgover" style="margin-right:5px;">
-				&nbsp;장 소 등 록 하 기</a></div><br>	
+				&nbsp;장　 소　 등　 록</a></div><br>	
 			<div class="left-menu"><a href="menu3" class="rollover">
 				<img src="/team4/resources/images/map21.png" style="margin-right:5px;">
 				<img src="/team4/resources/images/map22.png" class="imgover" style="margin-right:5px;">
