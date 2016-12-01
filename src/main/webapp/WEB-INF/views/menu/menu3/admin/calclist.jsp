@@ -46,10 +46,10 @@
 				        <td width=100 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">대여자</td>
 				        <td width=110 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">대여일자</td>
 				        <td width=110 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">반납일자</td>
-				        <td width=100 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">대여비</td>
+				        <td width=110 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">대여비</td>
 				        <td width=170 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">장　소</td>
-				        <td width=100 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">현　황</td>
-				        <td width=60 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">비　고</td>
+				        <td width=90 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">현　황</td>
+				        <td width=60 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">수　정</td>
 				    </tr>
 			    </thead>
 			    
@@ -61,7 +61,7 @@
 						    	<td width=100 style="border-bottom: 3px solid #fff;">${list.reaquestId } 님</td>
 					            <td width=110 style="border-bottom: 3px solid #fff;">${list.userstartDate }</td>
 					            <td width=110 style="border-bottom: 3px solid #fff;">${list.userendDate }</td>
-					            <td width=100 style="border-bottom: 3px solid #fff;"><fmt:formatNumber value="${list.bill}" pattern="￦ ###,###"/> 원</td>
+					            <td width=110 style="border-bottom: 3px solid #fff;"><fmt:formatNumber value="${list.bill}" pattern="￦ ###,###"/> 원</td>
 					            
 					            <!-- 주소가 10자 이상일 경우 줄여쓰기 기능 -->
 			             		<c:choose>
@@ -78,7 +78,7 @@
 									</c:otherwise>
 								</c:choose>
 					            
-					            <td width=100 style="border-bottom: 3px solid #fff;">${list.packageStatus }</td>
+					            <td width=90 style="border-bottom: 3px solid #fff;">${list.packageStatus }</td>
 					            <td width=60 style="border-bottom: 3px solid #fff;">
 					            	<form action="modifyRPB2" method="post">
 										<input type="hidden" name="seqNum" value="${list.seqNum }">

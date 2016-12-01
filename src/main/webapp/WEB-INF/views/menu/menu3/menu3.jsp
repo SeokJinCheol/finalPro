@@ -21,7 +21,7 @@ function check() {
  	}
 }
 </script>
-<title>free_list</title>
+<title>menu3</title>
 <!-- CSS 연결-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/w3.css" type="text/css" media="screen">
