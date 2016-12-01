@@ -1,6 +1,7 @@
 package com.kosta.finalproject.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.kosta.finalproject.vo.BoardVO;
 
@@ -9,6 +10,7 @@ public interface BoardDao {
 	public void insertMember(BoardVO vo); // 게시판 insert
 	public void reinsertMember(BoardVO vo); // 게시판 insert (댓글)
 	public ArrayList<BoardVO> contentgetMembers(int bgnum); // 게시판 상세페이지
+	public ArrayList<BoardVO> recontentget(int bgnum); // 게시판 상세페이지 리플
 	public void readcountUpdate(int bNum); // 조회수 관련
 	public void update(BoardVO vo); // 게시판 댓글 관련
 	public int getListAllCount(); // 게시글 수 구하기

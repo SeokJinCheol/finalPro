@@ -257,9 +257,11 @@ public class BoardController {
 
 		boardDaoImpl.readcountUpdate(bNum);
 		List<BoardVO> content = boardDaoImpl.contentgetMembers(bgnum);
-
+		List<BoardVO> recontent = boardDaoImpl.recontentget(bgnum);
+		
 		model.addAttribute("session_id", session_id);
 		model.addAttribute("result", content);
+		model.addAttribute("result1", recontent);
 		// model.addAttribute("pageNum", pageNum);
 		model.addAttribute("CONTENT", "menu/menu4/content.jsp");
 		model.addAttribute("LEFT", "menu/menu4/left.jsp");

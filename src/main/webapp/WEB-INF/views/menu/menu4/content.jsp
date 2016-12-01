@@ -129,7 +129,7 @@
 
 			<!-- 리플 리스트 -->
 			<table style="border-collapse: collapse; border-spacing: 0; width: 559px; height: 40px; text-align: center;">
-				<c:forEach items="${result}" var="result">
+				<c:forEach items="${result1}" var="result">
 					<c:if test="${result.groupnum != 0}">
 						<tr style="border-top:2px solid black; border-bottom:2px solid black;">
 							<td width="15%">

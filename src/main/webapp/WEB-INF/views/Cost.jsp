@@ -47,9 +47,9 @@
 							</td>
 							
 							<td rowspan="2">
-								<p>
-									<input type="submit" class="login-btn w3-card-4"  value="계산하기" style="height:75px; font-family: Roboto sans-serif;" id="btnLogin" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login" />
-								</p>
+						
+									&nbsp;<input type="submit" class="login-btn w3-card-4"  value="계산하기" style="height:75px; font-family: Roboto sans-serif;" id="btnLogin" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login" />
+							
 							</td>
 						</tr>
 						

@@ -9,6 +9,7 @@ public interface BoardMapper {
 	void insertMember(BoardVO vo); // 게시판 insert
 	void reinsertMember(BoardVO vo); // 게시판 insert (댓글)
 	ArrayList<BoardVO> contentgetMembers(int bgnum); // 게시판 상세페이지
+	ArrayList<BoardVO> recontentget(int bgnum); // 게시판 상세페이지 리플
 	void readcountUpdate(int bNum); // 조회수 관련
 	void update(BoardVO vo); // 게시판 댓글 관련
 	int getListAllCount(); // 게시글 수 구하기
