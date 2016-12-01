@@ -25,32 +25,39 @@
 					<tr height="35">
 						<td class="top-border" style="font-family: 'Jeju Gothic', sans-serif;">&nbsp;&nbsp;위 　 치</td>
 	                    	
-			            <td class="top-border" style="font-family: 'Jeju Gothic', sans-serif;">&nbsp;&nbsp;대 여 가 능 일 자</td>
+			            <td class="top-border" style="font-family: 'Jeju Gothic', sans-serif;">&nbsp;&nbsp;외 관 사 진</td>
 					</tr>
 					
 					<!-- 상세주소 & 대여가능일자 -->
-					<tr>
-						<td>
-							<input type="text" style="width:280px;" value=" ${vo.adress}" class="free-insert-title" name="adress" readonly>
+					<tr align=center>
+						<td colspan="2" >
+							<input type="text" style="width:560px;" value=" ${vo.adress}" class="free-insert-title" name="adress" readonly>
 						</td>
 						
-						<td class="bottom-border" align=center>
+						<%-- <td class="bottom-border" align=center>
 	                  		&nbsp;<input type="text" class="free-insert-title" style="width:38%; text-align: center" name="startDate" value="${vo.startDate}" readonly/>
 	                  		<!-- ~ 앞뒤로 ㄱ한자 1 숨겨져 있음 -->
 	                  		　~　
 	                  		<input type="text" class="free-insert-title" style="width:38%; text-align: center" name="endDate" value="${vo.endDate}" readonly/>
-	                  	</td>
+	                  	</td> --%>
 					</tr>
 					
 					<!-- 위치 지도로 표시 -->
 					<tr align=center>
-						<td style="margin-right:50px; padding-bottom:10px;" rowspan="5">
+						<td style="margin-right:50px; padding-bottom:10px; padding-right:20px;">
 							<!-- 지도나오는 부분 -->
 							<div class="w3-card-4" id="map" style="border-radius:5px ; width:280px; height:350px;"></div>
 						</td>
+						
+						<td style="margin-right:50px; padding-bottom:10px;">
+							<!-- 외관사진 -->
+							<div class="w3-card-4" style="border-radius:5px; width:280px; height:350px;">
+								<img src="/team4/resources/BoardImg/${vo.img}" style="border-radius:5px; width: 280px; height: 350px;">
+							</div>
+						</td>
 					</tr>
 					
-					<!-- 신청일자 -->
+					<%-- <!-- 신청일자 -->
 					<tr height="35">
 	                    <td style="font-family: 'Jeju Gothic', sans-serif;">&nbsp;&nbsp;신 청 일 자</td>
 					</tr>
@@ -73,7 +80,7 @@
 	                  	<td>
 	                  		<textarea class="free-insert-content-title" style="resize: none; padding-bottom:10px;" name="contents" rows="10" cols="30" required></textarea>
 	                  	</td>
-	               	</tr>
+	               	</tr> --%>
 	               	
 	               	<tr align="center" height="30" style="padding-top:10px;">
 	                  	<td  class="bottom-border2 top-border" colspan="2" onclick="test();return false;">

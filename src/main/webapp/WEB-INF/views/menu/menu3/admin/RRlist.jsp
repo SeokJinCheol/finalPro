@@ -85,7 +85,7 @@
 							</td>
 							
 							<td width=138 align=center style="border-bottom: 3px solid #fff;">
-								<select id="mySelect${vo.codeNum }" size="1">
+								<select id="mySelect${vo.codeNum }" size="1" style="border-radius:4px;">
 									<option>${vo.packageStatus }</option>
 										
 									<c:if test="${vo.packageStatus=='대여가능'}">

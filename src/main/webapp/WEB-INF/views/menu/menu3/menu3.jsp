@@ -82,7 +82,7 @@ function check() {
 	    });
 	</script>
     
-    <c:forEach end="${ total-1}" begin="0" var="i" >
+    <c:forEach end="${total-1}" begin="0" var="i" >
 		<script>
 			// 마커를 생성합니다
 		    marker[${i}] = new daum.maps.Marker({

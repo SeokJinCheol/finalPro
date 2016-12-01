@@ -85,7 +85,7 @@
 								</td>
 		
 								<td width=138 align=center style="border-bottom: 3px solid #fff;">
-									<select id="mySelect${list.seqNum }" size="1">
+									<select id="mySelect${list.seqNum }" size="1" style="border-radius:4px;">
 										<option>${list.packageStatus }</option>
 								
 										<c:if test="${list.packageStatus=='허가대기'}">
