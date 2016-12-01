@@ -31,8 +31,8 @@ public class BoardDaoImpl implements BoardDao {
 
 	// 상세페이지
 	@Override
-	public ArrayList<BoardVO> contentgetMembers(int bgnum) {
-		ArrayList<BoardVO> result = new ArrayList<BoardVO>();
+	public BoardVO contentgetMembers(int bgnum) {
+		BoardVO result = new BoardVO();
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
 		result = BoardMapper.contentgetMembers(bgnum);
 

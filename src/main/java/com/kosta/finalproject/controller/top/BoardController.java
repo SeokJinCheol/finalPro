@@ -9,20 +9,25 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.View;
 
 import com.kosta.finalproject.dao.BoardDaoImpl;
 import com.kosta.finalproject.vo.BoardVO;
-import com.kosta.finalproject.vo.QandAVO;
+
 import com.kosta.finalproject.vo.UploadVO;
 
 @Controller
@@ -30,6 +35,8 @@ import com.kosta.finalproject.vo.UploadVO;
 public class BoardController {
 	@Autowired
 	private BoardDaoImpl boardDaoImpl;
+
+	private View jsonview;
 
 	//////
 	// 전체 글 리스트 출력 + 검색기능
@@ -174,68 +181,37 @@ public class BoardController {
 		int bgnum = Integer.parseInt(request.getParameter("bgnum"));
 
 		// 게시글인 경우
-		if (bNum == 0) {
-			vo.setbNum(bNum);
-			vo.setId(request.getParameter("id"));
-			vo.setCategory(request.getParameter("category"));
-			vo.setTitle(request.getParameter("title"));
-			vo.setContents(request.getParameter("contents"));
-			vo.setImg(fileName);
-			vo.setBgnum(bgnum);
-			vo.setGroupnum(groupnum);
-			vo.setRanknum(ranknum);
-			vo.setbDate(new Timestamp(System.currentTimeMillis()));
-			int number = 0;
 
-			number = boardDaoImpl.getMaxNum();
+		vo.setbNum(bNum);
+		vo.setId(request.getParameter("id"));
+		vo.setCategory(request.getParameter("category"));
+		vo.setTitle(request.getParameter("title"));
+		vo.setContents(request.getParameter("contents"));
+		vo.setImg(fileName);
+		vo.setBgnum(bgnum);
+		vo.setGroupnum(groupnum);
+		vo.setRanknum(ranknum);
+		vo.setbDate(new Timestamp(System.currentTimeMillis()));
+		int number = 0;
 
-			if (number != 0) {
-				number += 1;
-			} else {
-				number = 1;
-			}
+		number = boardDaoImpl.getMaxNum();
 
-			bgnum = number;
-			groupnum = 0;
-			ranknum = 0;
-			vo.setBgnum(bgnum);
-			vo.setGroupnum(groupnum);
-			vo.setRanknum(ranknum);
-
-			boardDaoImpl.insertMember(vo);
-
-			result = "redirect:free_list";
+		if (number != 0) {
+			number += 1;
+		} else {
+			number = 1;
 		}
 
-		// 댓글인 경우
-		if (bNum != 0) {
-			vo.setbNum(bNum);
-			vo.setId(request.getParameter("id"));
-			vo.setContents(request.getParameter("contents"));
-			vo.setBgnum(bgnum);
-			vo.setGroupnum(groupnum);
-			vo.setRanknum(ranknum);
-			vo.setbDate(new Timestamp(System.currentTimeMillis()));
-			int number = 0;
+		bgnum = number;
+		groupnum = 0;
+		ranknum = 0;
+		vo.setBgnum(bgnum);
+		vo.setGroupnum(groupnum);
+		vo.setRanknum(ranknum);
 
-			String sid = request.getParameter("id");
-			System.out.println(sid);
+		boardDaoImpl.insertMember(vo);
 
-			number = boardDaoImpl.getMaxNum();
-
-			boardDaoImpl.update(vo);
-			groupnum += 1;
-			ranknum += 1;
-			vo.setGroupnum(groupnum);
-			vo.setRanknum(ranknum);
-
-			boardDaoImpl.reinsertMember(vo);
-
-			model.addAttribute("bNum", vo.getbNum());
-			model.addAttribute("bgnum", vo.getBgnum());
-
-			result = "redirect:content";
-		}
+		result = "redirect:free_list";
 
 		model.addAttribute("session_id", session_id);
 		model.addAttribute("groupnum", vo.getGroupnum());
@@ -243,6 +219,38 @@ public class BoardController {
 		// model.addAttribute("CONTENT", "menu/menu4/insertPro.jsp");
 
 		return result;
+	}
+
+	@RequestMapping(value = "/writeReply", method = RequestMethod.POST)
+	public View writeReply(Model model, HttpServletRequest request, HttpServletResponse response) {
+		BoardVO vo = new BoardVO();
+		int groupnum = Integer.parseInt(request.getParameter("groupnum"));
+		int ranknum = Integer.parseInt(request.getParameter("ranknum"));
+		int bNum = Integer.parseInt(request.getParameter("bNum"));
+		int bgnum = Integer.parseInt(request.getParameter("bgnum"));
+		vo.setbNum(bNum);
+		vo.setId(request.getParameter("id"));
+		vo.setContents(request.getParameter("contents"));
+		vo.setBgnum(bgnum);
+		vo.setbDate(new Timestamp(System.currentTimeMillis()));
+		int number = 0;
+
+		String sid = request.getParameter("id");
+		System.out.println(sid);
+
+		number = boardDaoImpl.getMaxNum();
+
+		boardDaoImpl.update(vo);
+		groupnum += 1;
+		ranknum += 1;
+		vo.setGroupnum(groupnum);
+		vo.setRanknum(ranknum);
+
+		boardDaoImpl.reinsertMember(vo);
+
+		model.addAttribute("bNum", vo.getbNum());
+		model.addAttribute("bgnum", vo.getBgnum());
+		return jsonview;
 	}
 
 	// 상세페이지
@@ -256,20 +264,49 @@ public class BoardController {
 		int bgnum = Integer.parseInt(request.getParameter("bgnum"));
 
 		boardDaoImpl.readcountUpdate(bNum);
-		List<BoardVO> content = boardDaoImpl.contentgetMembers(bgnum);
-		List<BoardVO> recontent = boardDaoImpl.recontentget(bgnum);
+		BoardVO content = boardDaoImpl.contentgetMembers(bgnum);
 		
+
 		model.addAttribute("session_id", session_id);
 		model.addAttribute("result", content);
-		model.addAttribute("result1", recontent);
 		// model.addAttribute("pageNum", pageNum);
 		model.addAttribute("CONTENT", "menu/menu4/content.jsp");
 		model.addAttribute("LEFT", "menu/menu4/left.jsp");
 		return "main";
 	}
+	@RequestMapping(value = "/replylist/{bgnum}")
+	public ResponseEntity<ArrayList<BoardVO>> QnA_replylist(@PathVariable("bgnum") Integer bgnum) {
+		/*
+		 * int pageSize = 10;
+		 * 
+		 * if (pageNum == null) pageNum = "1";
+		 * 
+		 * int currentPage = Integer.parseInt(pageNum);
+		 * 
+		 * int startrow = (currentPage * pageSize) - (pageSize - 1); int endrow
+		 * = currentPage * pageSize; int count = 0, number = 0; count =
+		 * qandADaoImpl.replyCount(bnum); int pageCount = Math.round(count /
+		 * pageSize + (count % pageSize == 0 ? 0 : 1));
+		 */
+		ResponseEntity<ArrayList<BoardVO>> entity = null;
+		// if (count > 0) {
+		try {
+			// entity = new
+			// ResponseEntity<>(qandADaoImpl.selectReply(bnum,startrow,endrow),HttpStatus.OK);
+			entity = new ResponseEntity<>(boardDaoImpl.recontentget(bgnum), HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
+		}
+		// 나짜변환 - > 스트링
+		//
+		// }
+		return entity;
+
+	}
 	// 댓글에 댓글
-	@RequestMapping("/insert_reply")
+	/*@RequestMapping("/insert_reply")
 	public String insert_reply(HttpServletRequest request, Model model) throws Exception {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
@@ -284,7 +321,7 @@ public class BoardController {
 		int bgnum = Integer.parseInt(request.getParameter("bgnum"));
 
 		boardDaoImpl.readcountUpdate(bNum);
-		List<BoardVO> content = boardDaoImpl.contentgetMembers(bgnum);
+		BoardVO content = boardDaoImpl.contentgetMembers(bgnum);
 
 		model.addAttribute("contents", contents);
 		model.addAttribute("session_id", session_id);
@@ -294,7 +331,7 @@ public class BoardController {
 		model.addAttribute("LEFT", "menu/menu4/left.jsp");
 
 		return "main";
-	}
+	}*/
 
 	// 게시글, 답글 수정
 	@RequestMapping(value = "/updateForm")
@@ -395,7 +432,7 @@ public class BoardController {
 	}
 
 	// 게시글 삭제
-	@RequestMapping(value = "/deleteForm")
+	@RequestMapping(value = "/delete")
 	public String delete(HttpServletRequest request, Model model) {
 		String result = null;
 		int bNum = Integer.parseInt(request.getParameter("bNum"));
@@ -404,13 +441,15 @@ public class BoardController {
 		if (bNum == bgnum) {
 			boardDaoImpl.delete(id, bNum);
 			result = "redirect:free_list";
-		} else {
-			boardDaoImpl.delete(id, bNum);
-			model.addAttribute("bNum", bNum);
-			model.addAttribute("bgnum", bgnum);
-			result = "redirect:content";
 		}
-
 		return result;
+	}
+	@RequestMapping(value="/deleteReply",method=RequestMethod.POST)
+	public View deleteReply(Model model, HttpServletRequest request, HttpServletResponse response){
+		String id = request.getParameter("id");
+		int bNum = Integer.parseInt(request.getParameter("bNum"));
+		System.out.println("id="+id+",bNum="+bNum);
+		boardDaoImpl.delete(id, bNum);
+		return jsonview;
 	}
 }
