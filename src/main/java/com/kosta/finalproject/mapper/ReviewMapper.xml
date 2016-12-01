@@ -15,4 +15,8 @@
 		INSERT INTO review(codeNum, reviewpoint, reviewid, reviewtext) VALUES (#{codeNum}, #{reviewpoint}, #{reviewid}, #{reviewtext})
 	</insert>
 	
+	<select id="reviewselect" resultMap="Review">
+      SELECT * FROM review WHERE codeNum = #{codeNum}
+    </select>
+	
 </mapper>

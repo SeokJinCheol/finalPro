@@ -37,7 +37,7 @@
 									<input type="submit" value="반납신청">
 								</form>
 							</c:if>
-							<c:if test="${MyRegisterselect.packageStatus == '대여신청'}">
+							<c:if test="${MyRegisterselect.packageStatus == '대여신청' or MyRegisterselect.packageStatus == '기간종료'}">
 								<form action="rentcancel" method="post">
 									<input type="hidden" value="${MyRegisterselect.codeNum}" name="codeNum">
 									<input type="hidden" name="pagecheck" value="user">
@@ -45,9 +45,7 @@
 								</form>
 							</c:if>
 							<c:if test="${MyRegisterselect.packageStatus != '대여신청'}">
-							<c:if test="${MyRegisterselect.packageStatus != '대여신청'}">
 								${MyRegisterselect.packageStatus}
-							</c:if>
 							</c:if>
 						</td>
 					</tr>
