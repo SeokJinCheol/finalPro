@@ -7,6 +7,68 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+getReplylist();
+function replywrite() {
+   $.ajax({
+      type:"POST",
+      url:"free_reply",
+      cache:false,
+      datatype:"json",
+      data: {'bnum':$("#bnum").val(),'title':$("#title").val(),'contents':$("#contents").val()},
+      success: function (data){
+         
+         alert("답글작성");
+         getReplylist();
+      },
+      complete: function (data) {
+         $("#contents").val('');
+      }
+   });
+}
+function replydelete(){
+   $.ajax({
+      type:"POST",
+      url:"free_re_delete",
+      cache:false,
+      datatype:"json",
+      data: {'bnum':$("#bnum").val(),'reply_bnum':$("#reply_bnum").val()},
+      success: function (data){
+         alert("답글삭제!!");
+         getReplylist();
+      }
+      });
+   }
+function getReplylist() {
+   
+   var bnum=${vo.bnum};
+   var str="";
+   var imglink="resources/images/redelete.png";
+   var session_id="${session_id}";
+   $.getJSON("/team4/free_replylist/"+bnum,function(data){
+      console.log(data.length);
+      $(data).each(
+         function(){
+             str +="<tr style='border-top: 2px solid #000; border-bottom: 2px solid #000;'>"+"<td width='15%'>"
+                +this.id+"</td>"+"<td width='40%'>"
+                +this.contents+"</td>"+"<td width='17%'>"
+                +this.date+"</td>";
+            if((this.id == session_id) || (this.id == 'admin')){
+               str+= "<td><form>"+
+                "<input class='reply-btn2' type='button' onclick='replydelete()' style='background-image:url("+imglink+"); width: 30px; background-repeat: no-repeat; background-position: center;' value=''>"
+                +"<input type='hidden' id='reply_bnum' name='reply_bnum' value="+this.bnum+">"+
+                "<input type='hidden' id='bnum' name='bnum' value='${vo.bnum}'>"+
+                "</form></td></tr>";
+            }else{
+               str+="<td></td></tr>";
+            } 
+            
+         });
+      $("#replylist").html(str);
+   });
+}
+</script>
 <title>자유게시판_상세보기</title>
 <!-- CSS 연결-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -126,24 +188,23 @@
 						style="border-collapse: collapse; border-spacing: 0; margin-bottom: 15px;">
 						<tr>
 							<td><textarea class="free-insert-content-title"
-									style="resize: none;" name="contents" rows="3" cols="60"
+									style="resize: none;" id="contents" name="contents" rows="3" cols="60"
 									required></textarea></td>
 
-							<td><input class="reply-btn" type="submit" value="답글">
+							<td><input class="reply-btn" type="button" value="답글" onclick="replywrite()">
 							</td>
 						</tr>
 					</table>
 
-					<input type="hidden" name="bnum" value="${vo.bnum}"> <input
-						type="hidden" name="title" value="${vo.title}"> <input
-						type="hidden" name="img" value="${vo.img}">
+					<input type="hidden" name="bnum" id="bnum" value="${vo.bnum}"> <input
+						type="hidden" name="title" id="title" value="${vo.title}">
 				</form>
 			</security:authorize>
 
 			<!-- 리플 리스트 -->
-			<table
+			<table id="replylist"
 				style="border-collapse: collapse; border-spacing: 0; width: 559px; height: 40px; text-align: center;">
-				<c:forEach items="${list}" var="reply">
+				<%-- <c:forEach items="${list}" var="reply">
 					<c:if test="${result.groupnum != 0}">
 						<tr
 							style="border-top: 2px solid black; border-bottom: 2px solid black;">
@@ -180,7 +241,7 @@
 							</td>
 						</tr>
 					</c:if>
-				</c:forEach>
+				</c:forEach> --%>
 			</table>
 		</div>
 	</div>

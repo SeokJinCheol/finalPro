@@ -2,11 +2,14 @@ package com.kosta.finalproject.vo;
 
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class BoardVO {
 	int bNum, bgnum, groupnum, ranknum;
 	String title, contents, id, img, category;
-	Timestamp bDate;
 	int startRow, endRow, readcount;
+	@JsonFormat(pattern="yyyy-MM-dd")
+	Timestamp bDate;
 
 	public int getReadcount() {
 		return readcount;

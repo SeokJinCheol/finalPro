@@ -2,10 +2,13 @@ package com.kosta.finalproject.vo;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class FreeBoardVO {
 
 	private int bnum, bgnum, groupnum, ranknum, count, rnum, startRow, endRow, replyCount;
 	private String title, contents, id, img;
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date date;
 	
 	public int getBnum() {
