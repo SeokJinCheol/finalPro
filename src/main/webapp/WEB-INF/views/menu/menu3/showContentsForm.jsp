@@ -122,7 +122,7 @@
 	
 	if(document.forms["insertSubmit"].elements["userstartDate"].value.length < 1 || document.forms["insertSubmit"].elements["userendDate"].value.length < 1){
 	
-		alert("날짜를 채워 주세요!")
+		alert("신청일자를 지정해주세요!!")
 	
 	/* 안돼네 */
 	}else{

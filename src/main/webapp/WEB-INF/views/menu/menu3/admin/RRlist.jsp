@@ -65,7 +65,7 @@
 						<c:set var="total" value="${total+1 }" />
 						<tr onMouseOver="this.style.backgroundColor='#eff7fc'" onMouseOut="this.style.backgroundColor='#fafafa'" height="65">
 							<td width=80 style="border-bottom: 3px solid #fff;">
-								<img src="/team4/resources/BoardImg/${vo.img}" style="width: 80px; height: 65px;">
+								<img src="/team4/resources/BoardImg/${vo.img}" style="width: 78px; height: 65px;">
 							</td>
 							
 							<td width=80 style="border-bottom: 3px solid #fff;">
@@ -117,7 +117,7 @@
 									<input type="hidden" name="codeNum" value="${vo.codeNum }">
 									<input type="hidden" name="status" id="status">
 									
-									<input type="submit" class="update-menu3 w3-card-8" value="" onclick="setpakageStatus(${vo.codeNum });	return false;">
+									<input type="submit" class="update-menu3 w3-card-4" value="" onclick="setpakageStatus(${vo.codeNum });	return false;">
 								</form>
 							</td>
 							

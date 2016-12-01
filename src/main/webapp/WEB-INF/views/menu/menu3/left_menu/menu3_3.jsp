@@ -57,7 +57,7 @@
 								</td>
 								
 								<td width=53 style="border-bottom: 3px solid #fff;">
-									<input type="submit" class="update-menu3 w3-card-8" value="">
+									<input type="submit" class="update-menu3 w3-card-4" value="">
 								</td>
 							</tr>
 							

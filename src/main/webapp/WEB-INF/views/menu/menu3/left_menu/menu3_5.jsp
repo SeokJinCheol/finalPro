@@ -117,7 +117,7 @@
 										<input type="hidden" name="seqNum" value="${list.seqNum }">
 										<input type="hidden" name="status" id="status">
 										
-										<input type="submit" class="update-menu3 w3-card-8" value="" onclick="setpakageStatus(${list.seqNum }); return false;">
+										<input type="submit" class="update-menu3 w3-card-4" value="" onclick="setpakageStatus(${list.seqNum }); return false;">
 									</form>
 								</td>
 									
