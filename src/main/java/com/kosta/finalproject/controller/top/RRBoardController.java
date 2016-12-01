@@ -38,7 +38,7 @@ public class RRBoardController {
 			inpo += "{ codeNum : '" + result.get(i).getCodeNum() + "', spotNum : new daum.maps.LatLng"
 					+ result.get(i).getSpotNum() + ", adress : '" + result.get(i).getAdress() + "', startDate : '"
 					+ result.get(i).getStartDate() + "', endDate : '" + result.get(i).getEndDate() + "', title : '"
-					+ result.get(i).getTitle() + "', contents : '" + result.get(i).getContents() + "'}";
+					+ result.get(i).getTitle() +"'}";
 
 		}
 

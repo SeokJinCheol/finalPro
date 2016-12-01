@@ -66,7 +66,7 @@
 	                  	
 	                  	<!-- 신청일자 -->
 	                  	<td class="bottom-border" width=300 style="padding-bottom:10px;">
-	                  		&nbsp;<input type="date" class="free-insert-title" style="width:35%; text-align: center; font-size:3px;" required name="userstartDate" min="${vo.startDate }" value="${vo.userstartDate}"/>
+	                  		&nbsp;<input type="date" class="free-insert-title" style="width:35%; text-align: center; font-size:3px;" required name="userstartDate" min="${vo.startDate }" max="${vo.endDate}" value="${vo.userstartDate}"/>
 	                  		<!-- ~ 앞뒤로 ㄱ한자 1 숨겨져 있음 -->
 	                  		　~　
 	                  		<input type="date" class="free-insert-title" style="width:35%; text-align: center; font-size:3px;" required name="userendDate" min="${vo.startDate }" max="${vo.endDate}" value="${vo.userendDate}"/>
@@ -82,12 +82,12 @@
 					<tr align="center" height="35">
 						<!-- 장소소개 -->
 	                  	<td style="padding-bottom:3px;">
-	                  		<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="3" cols="28" readonly>${vo.}</textarea>
+	                  		<textarea class="free-insert-content-title" style="resize: none;" name="readonlycontents" rows="3" cols="28" readonly>${vo.contents}</textarea>
 	                  	</td>
 						
 						<!-- 사용용도 -->
 	                  	<td style="padding-bottom:3px;">
-	                  		<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="3" cols="28" required>${vo.}</textarea>
+	                  		<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="3" cols="28" required></textarea>
 	                  	</td>
 	               	</tr>
 					

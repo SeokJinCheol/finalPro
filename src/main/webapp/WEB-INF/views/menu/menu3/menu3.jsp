@@ -81,7 +81,7 @@ function check() {
 	        disableClickZoom: true // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다 
 	    });
 	</script>
-    
+    <c:if test="${total > 0 }">
     <c:forEach end="${total-1}" begin="0" var="i" >
 		<script>
 			// 마커를 생성합니다
@@ -93,7 +93,8 @@ function check() {
 		        
 			daum.maps.event.addListener(marker[${i}], 'click', function() {
 		
-		    var message = '\n　장 　 　 　 　 소　:　' + inpo[${i}].title + '\n';
+		    var message = '\n   글        제       목   :    '+ inpo[${i}].title;
+		    message += '\n　주 　 　 　 　 소　:　' + inpo[${i}].adress + '\n';
 		    message += '　대 여 가 능 일 자　:　' + inpo[${i}].startDate+'　~　' + inpo[${i}].endDate + '\n';
 		        	    
 		    var resultDiv = document.getElementById('show'); 
@@ -102,12 +103,13 @@ function check() {
 		    document.forms["sendCode"].elements["codeNum"].value=inpo[${i}].codeNum;
 			});
 		    // 클러스터러에 마커들을 추가합니다
-		    clusterer.addMarkers(marker);
 		</script>
 	</c:forEach>
-	
+	</c:if>
 	<script>
 		
+    	clusterer.addMarkers(marker);
+
 	
 	    // 마커 클러스터러에 클릭이벤트를 등록합니다 
 	    // 마커 클러스터러를 생성할 때 disableClickZoom을 true로 설정하지 않은 경우 
