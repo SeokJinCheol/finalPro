@@ -52,7 +52,7 @@
 					
 					<td rowspan="2" style="margin-top:0px; margin-bottom:0px; height:90px;">
 						<p style="height:90px;">
-							&nbsp;<input type="submit" class="login-btn w3-card-4"  value="계산하기" style="height:90px; font-family: Roboto sans-serif;" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login" />
+							&nbsp;<input type="submit" onMouseOver="this.style.backgroundColor='#3399ff'" onMouseOut="this.style.backgroundColor='#65B2FF'" class=" "  value="　계　산　" style="height:90px; font-family: Roboto sans-serif; border-radius: 4px; color:white; border-color:#65B2FF; background-color: #65B2FF;"/>
 						</p>
 					</td>
 				</tr>

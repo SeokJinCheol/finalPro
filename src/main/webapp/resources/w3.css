@@ -1481,6 +1481,22 @@
 	background-size: 30px 30px;
 	background-image: url("/team4/resources/images/login32.png")
 }
+.login-btn22 {
+	border: none;
+	display: inline-block;
+	outline: 0;
+	padding: 10px 16px;
+	vertical-align: middle;
+	overflow: hidden;
+	text-decoration: none !important;
+	color: #fff;
+	background-color: #65B2FF;
+	text-align: right;
+	cursor: pointer;
+	white-space: nowrap;
+	margin-bottom: 20px;
+	
+}
 
 .login-btn:hover {
 	border: none;
@@ -1501,7 +1517,21 @@
 	background-position: 10px;
 	background-size: 30px 30px;
 }
-
+.login-btn22:hover {
+	border: none;
+	display: inline-block;
+	outline: 0;
+	padding: 10px 16px;
+	vertical-align: middle;
+	overflow: hidden;
+	text-decoration: none !important;
+	color: #fff;
+	background-color: #3399ff;
+	text-align: right;
+	cursor: pointer;
+	white-space: nowrap;
+	margin-bottom: 20px;
+}
 .message {
 	color: #808080;
 	font-size: 12px;
