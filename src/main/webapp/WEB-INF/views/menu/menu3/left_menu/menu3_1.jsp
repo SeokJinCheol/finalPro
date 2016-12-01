@@ -55,8 +55,14 @@
 	window.onload = function() {
     	var now = new Date();
     
-    	var date= (now.getYear()+1900)+'-'+fncLPAD((now.getMonth()+1)+'-'+now.getDate());
-		document.RR.startDate.min=date;
+    	var date= (now.getYear()+1900)+'-'+fncLPAD((now.getMonth()+1)+'-'+ fncLPAD(now.getDate()));
+    	
+    	document.RR.startDate.min=date;
+		document.RR.endDate.min=date;
+	}
+	function getdate() {
+    	document.RR.startDate.min=date;
+	
 	}
 
 	function getMin() {
@@ -173,10 +179,10 @@
 					
 					<tr height=34>
 						<td colspan="3" style="padding-left:2px; padding-top:0px;" class="bottom-border">
-							&nbsp;<input type="date" class="free-insert-title" style="width:35%; text-align: center" name="startDate" required/>
+							&nbsp;<input type="date" class="free-insert-title" style="width:35%; text-align: center" onclick="getdate()" name="startDate" required/>
 		                  	<!-- ~ 앞뒤로 ㄱ한자 1 숨겨져 있음 -->
 		                  	　~　
-		                  	<input type="date" class="free-insert-title" onclick="getMin()" style="width:35%; text-align: center" name="endDate" required/>
+		                  	<input type="date" class="free-insert-title" onclick="getMin()" style="width:35%; text-align: center" min="" name="endDate" required/>
 		                </td>
 					</tr>
 		
@@ -200,7 +206,7 @@
 					
 					<tr height=34>
 						<td colspan="3" style="padding-left:2px; padding-top:0px;" class="bottom-border2">			
-		                	<textarea class="free-insert-content-title" style="resize: none;" name="contents" cols="48" rows="5" required></textarea>
+		                	<textarea class="free-insert-content-title" style="resize: none;" name="contents" cols="48" rows="5" required maxlength="350"></textarea>
 		                </td>
 					</tr>
 				</table>
@@ -453,9 +459,6 @@
 	var marker = new daum.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
 	    infowindow = new daum.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
 	
-	// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
-	searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-
 	// 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
 	daum.maps.event.addListener(map, 'click', function(mouseEvent) {
 		var latlng = mouseEvent.latLng;
@@ -488,10 +491,6 @@
 	    });
 	});
 
-	// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
-	daum.maps.event.addListener(map, 'idle', function() {
-	    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-	});
 
 	function searchAddrFromCoords(coords, callback) {
 	    // 좌표로 행정동 주소 정보를 요청합니다
@@ -503,13 +502,5 @@
     	geocoder.coord2detailaddr(coords, callback);
 	}
 
-	// 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
-	function displayCenterInfo(status, result) {
-	    if (status === daum.maps.services.Status.OK) {
-	    	var infoDiv = document.getElementById('inpo');
-	    	
-	    	infoDiv.innerHTML = result[0].jibunAddress.name;
-	    }    
-	}
 </script>
 </html>
