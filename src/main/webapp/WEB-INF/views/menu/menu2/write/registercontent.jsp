@@ -77,15 +77,20 @@
                </tr>
                
                <!-- 일반유저 -->
-                     <c:if test="${session_id != 'admin'}">
-                        <c:if test="${result.packageStatus == '대여가능'}">
-                           <td colspan="3" align="center">
-                              <form action="RegisterUpForm" method="post">
-                                 <input type="hidden" value="${result.codeNum}" name="codeNum"> 
-                                 <input type="submit" value="신청하기">
-                              </form>
-                           </td>
-                        </c:if>
+					<c:if test="${session_id != 'admin'}">
+						<c:if test="${Registerselect.packageStatus == '대여가능'}">
+							<c:if test="${session_id == Registerselect.reaquestId}">
+								<td align="left" style="WIDTH: 60pt; HEIGHT: 20pt">신청불가</td>
+							</c:if>
+							<c:if test="${session_id != Registerselect.reaquestId}">
+								<td align="left">
+									<form action="RegisterUpForm" method="post">
+										<input type="hidden" value="${Registerselect.codeNum}"
+											name="codeNum"> <input type="submit" value="신청하기">
+									</form>
+								</td>
+							</c:if>
+						</c:if>
 
                         <c:if test="${result.packageStatus != '대여가능'}">
                            <td colspan="3" align="center" style="WIDTH: 60pt; HEIGHT: 20pt">신청불가</td>
