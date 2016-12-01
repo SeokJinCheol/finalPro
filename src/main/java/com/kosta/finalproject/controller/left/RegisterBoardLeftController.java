@@ -437,6 +437,9 @@ public class RegisterBoardLeftController {
 
 		List<RegisterBoardVO> registercontent = registerBoardDaoImpl.registercontent(codeNum);
 
+	    List<ReviewVO> reviews = reviewImpl.reviewselect(codeNum);
+
+	    model.addAttribute("reviews", reviews);
 		model.addAttribute("session_id", session_id);
 		model.addAttribute("result", registercontent);
 		model.addAttribute("LEFT", "menu/menu2/left.jsp");

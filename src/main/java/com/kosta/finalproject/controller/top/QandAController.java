@@ -138,43 +138,33 @@ public class QandAController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 		String oldimg = request.getParameter("img");
-		String fileName = null;
-		MultipartFile uploadfile = dto.getFile();
-
-		// 이미지 처리
-		if (uploadfile == null) {
-		} else {
-			fileName = uploadfile.getOriginalFilename();
-			dto.setOname(fileName);
-			try {
-				File updatefile = new File(
-						"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/QandAImg/"
-								+ fileName);
-				File oldfile = new File(
-						"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/QandAImg/"
-								+ oldimg);
-				oldfile.delete();
-				int indexes = fileName.lastIndexOf(".");
-				if (indexes != -1) {
-					while (updatefile.exists()) {
-						indexes = fileName.lastIndexOf(".");
-						System.out.println("순서 = " + indexes);
-						String extension = fileName.substring(indexes);
-						System.out.println("확장자 = " + extension);
-						String newFileName = fileName.substring(0, indexes) + "_" + extension;
-						System.out.println("새 파일 이름 = " + newFileName);
-						fileName = newFileName;
-						updatefile = new File(
-								"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/QandAImg/"
-										+ newFileName);
-					}
-				}
-				uploadfile.transferTo(updatefile);
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			} // try - catch
-		} // if
+		//파일이 null 이 아니면 실행.
+	      String fileName = null;
+	      
+	      System.out.println("이미지 처리 시작");
+	      MultipartFile uploadfile = dto.getFile();
+	      if (uploadfile != null) {
+	          fileName = uploadfile.getOriginalFilename();
+	          if(!fileName.equals("")){
+	             dto.setOname(fileName);
+	             try {
+	                 File file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/QandAImg/" + fileName);
+	                    while(file.exists()) {
+	                       int indexes = fileName.lastIndexOf(".");
+	                       System.out.println("순서 = "+indexes);
+	                       String extension = fileName.substring(indexes);
+	                       System.out.println("확장자 = "+extension);
+	                       String newFileName = fileName.substring(0, indexes)+"_"+extension;
+	                       System.out.println("새 파일 이름 = "+newFileName);
+	                       fileName = newFileName;
+	                       file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/QandAImg/" + newFileName);
+	                    }
+	                 uploadfile.transferTo(file);
+	             } catch (IOException e) {
+	                 e.printStackTrace();
+	             } // try - catch
+	          } else fileName = "no_img.jpg";
+	      }
 
 		QandAVO vo = new QandAVO();
 		String category = request.getParameter("category");
@@ -223,42 +213,33 @@ public class QandAController {
 	// 글쓰기 기능 수행
 	@RequestMapping("/QnA_write2")
 	public String QnA_write2(Model model, HttpServletRequest request, UploadVO dto) {
-		String fileName = null;
-
-		// 이미지 처리
-		System.out.println("이미지 처리 시작");
-
-		MultipartFile uploadfile = dto.getFile();
-
-		if (uploadfile == null) {
-		} else {
-			fileName = uploadfile.getOriginalFilename();
-			dto.setOname(fileName);
-			try {
-				File file = new File(
-						"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/QandAImg/"
-								+ fileName);
-
-				int indexes = fileName.lastIndexOf(".");
-				if (indexes != -1) {
-					while (file.exists()) {
-						indexes = fileName.lastIndexOf(".");
-						System.out.println("순서 = " + indexes);
-						String extension = fileName.substring(indexes);
-						System.out.println("확장자 = " + extension);
-						String newFileName = fileName.substring(0, indexes) + "_" + extension;
-						System.out.println("새 파일 이름 = " + newFileName);
-						fileName = newFileName;
-						file = new File(
-								"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/QandAImg/"
-										+ newFileName);
-					}
-				}
-				uploadfile.transferTo(file);
-			} catch (IOException e) {
-				e.printStackTrace();
-			} // try - catch
-		} // if
+		//파일이 null 이 아니면 실행.
+	      String fileName = null;
+	      
+	      System.out.println("이미지 처리 시작");
+	      MultipartFile uploadfile = dto.getFile();
+	      if (uploadfile != null) {
+	          fileName = uploadfile.getOriginalFilename();
+	          if(!fileName.equals("")){
+	             dto.setOname(fileName);
+	             try {
+	                 File file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/QandAImg/" + fileName);
+	                    while(file.exists()) {
+	                       int indexes = fileName.lastIndexOf(".");
+	                       System.out.println("순서 = "+indexes);
+	                       String extension = fileName.substring(indexes);
+	                       System.out.println("확장자 = "+extension);
+	                       String newFileName = fileName.substring(0, indexes)+"_"+extension;
+	                       System.out.println("새 파일 이름 = "+newFileName);
+	                       fileName = newFileName;
+	                       file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/QandAImg/" + newFileName);
+	                    }
+	                 uploadfile.transferTo(file);
+	             } catch (IOException e) {
+	                 e.printStackTrace();
+	             } // try - catch
+	          } else fileName = "no_img.jpg";
+	      }
 			// 데이터 베이스 처리를 현재 위치에서 처리
 		System.out.println("데이터 베이스 처리 시작");
 
