@@ -24,7 +24,7 @@
 </script>
 <style>
 .left {
-    height: 270px;
+    height: 250px;
    float: left;
    margin-left: 15px;
    margin-bottom: 15px;
@@ -62,22 +62,18 @@
                <div style="width: 30%" class="left">
                   <table>
                      <tr>
-                        <td colspan="3" align="center">${Registerselect.title}</td>
+                        <td>[${Registerselect.category}]</td>
+                        <td colspan="2" align="left">${Registerselect.title}</td>
                      <tr>
                      <tr>
-                        <td style="width: 20%" colspan="3"><a href="registercontent?codeNum=${Registerselect.codeNum}">
-                        <img src="/team4/resources/RequestImg/${Registerselect.img }" style="width: 100%; height: 170px;"></td>
+                        <td align="center" style="width: 20%" colspan="3"><a href="registercontent?codeNum=${Registerselect.codeNum}">
+                        <img src="/team4/resources/RequestImg/${Registerselect.img }" style="width: 85%; height: 170px;"></a></td>
                      </tr>
                      <tr>
-                        <td style="width: 170px;" align="left">No.${Registerselect.codeNum}</td>
-                        <td style="width: 170px;" align="center"><a onclick="window.open('mail?rid=${Registerselect.reaquestId}', '','width=400, height=350, status=1')">${Registerselect.reaquestId}</a></td>
-                        <td style="width: 170px;" align="center">${Registerselect.category}</td>
-                     </tr>
-
                      <!-- 일반유저 -->
                      <c:if test="${session_id != 'admin'}">
                         <c:if test="${Registerselect.packageStatus == '대여가능'}">
-                           <td colspan="3" align="center">
+                           <td align="left">
                               <form action="RegisterUpForm" method="post">
                                  <input type="hidden" value="${Registerselect.codeNum}" name="codeNum">
                                  <input type="submit" value="신청하기">
@@ -86,14 +82,13 @@
                         </c:if>
 
                         <c:if test="${Registerselect.packageStatus != '대여가능'}">
-                           <td colspan="3" align="center" style="WIDTH: 60pt; HEIGHT: 20pt">신청불가</td>
+                           <td align="left" style="WIDTH: 60pt; HEIGHT: 20pt">신청불가</td>
                         </c:if>
                      </c:if>
-
                      <!-- admin 버튼 -->
                      <c:if test="${session_id == 'admin'}">
                         <c:if test="${Registerselect.packageStatus == '대여신청'}">
-                           <td colspan="3" align="center">
+                           <td align="left">
                               <form action="startrentForm" method="post">
                                  <input type="hidden" value="${Registerselect.codeNum}" name="codeNum"> 
                                  <input type="submit" style="WIDTH: 60pt; HEIGHT: 20pt" value="대여시작">
@@ -101,16 +96,20 @@
                            </td>
                         </c:if>
                         
+                        <c:if test="${Registerselect.packageStatus == '기간종료'}">
+                            <td align="left" style="WIDTH: 60pt; HEIGHT: 22pt">기간종료</td>
+                        </c:if>
+                        
                         <c:if test="${Registerselect.packageStatus == '대여가능'}">
-                            <td colspan="3" align="center" style="WIDTH: 60pt; HEIGHT: 22pt">미신청</td></tr>
+                            <td align="left" style="WIDTH: 60pt; HEIGHT: 22pt">미신청</td>
                         </c:if>
                         
                         <c:if test="${Registerselect.packageStatus == '대여중'}">
-                            <td colspan="3" align="center" style="WIDTH: 60pt; HEIGHT: 22pt">대여중</td></tr>
+                            <td align="left" style="WIDTH: 60pt; HEIGHT: 22pt">대여중</td>
                         </c:if>
 
                         <c:if test="${Registerselect.packageStatus == '반납신청'}">
-                           <td colspan="3" align="center">
+                           <td align="left">
                               <form action="storageendrent" method="post">
                                  <input type="hidden" value="${Registerselect.codeNum}"  name="codeNum">
                                  <input type="submit" value="반납완료하기">
@@ -119,7 +118,7 @@
                         </c:if>
 
                         <c:if test="${Registerselect.packageStatus == '대여종료신청'}">
-                           <td colspan="3" align="center">
+                           <td align="left">
                               <form action="" method="post">
                                  <input type="hidden" value="${Registerselect.codeNum}" name="codeNum"> 
                                  <input type="submit" value="대여종료">
@@ -127,6 +126,8 @@
                            </td>
                         </c:if>
                      </c:if>
+                       <td style="width: 170px;" align="right">${Registerselect.reaquestId}<a onclick="window.open('mail?rid=${Registerselect.reaquestId}', '','width=400, height=350, status=1')">사진</a></td>
+                     </tr>
                   </table>
                </div>
             </c:forEach>
@@ -137,71 +138,71 @@
                <div style="width: 30%" class="left">
                   <table>
                      <tr>
-                        <td colspan="3" align="center">${Registerselect.title}</td>
+                        <td>[${Registerselect.category}]</td>
+                        <td colspan="3" align="left">${Registerselect.title}</td>
                      <tr>
                      <tr>
-                        <td style="width: 20%" colspan="3"><a href="registercontent?codeNum=${Registerselect.codeNum}">
-                        <img src="/team4/resources/RequestImg/${Registerselect.img }" style="width: 100%; height: 170px;"></a></td>
+                        <td align="center" style="width: 20%" colspan="4"><a href="registercontent?codeNum=${Registerselect.codeNum}">
+                        <img src="/team4/resources/RequestImg/${Registerselect.img }" style="width: 85%; height: 170px;"></a></td>
                      </tr>
-                     <tr>
-                        <td style="width: 170px;" align="left">No.${Registerselect.codeNum}</td>
-                        <td style="width: 170px;" align="center"><a onclick="window.open('mail?rid=${Registerselect.reaquestId}', '','width=400, height=350, status=1')">${Registerselect.reaquestId}</a></td>
-                        <td style="width: 170px;" align="center">${Registerselect.category}</td>
-                     </tr>
-
-                     <!-- 일반유저 -->
+                     <tr><!-- 일반유저 -->
                      <c:if test="${session_id != 'admin'}">
                         <c:if test="${Registerselect.packageStatus == '대여가능'}">
-                           <td colspan="3" align="center">
+                           <td align="left">
                               <form action="RegisterUpForm" method="post">
-                                 <input type="hidden" value="${Registerselect.codeNum}"
-                                    name="codeNum"> <input type="submit" value="신청하기">
+                                 <input type="hidden" value="${Registerselect.codeNum}" name="codeNum">
+                                 <input type="submit" value="신청하기">
                               </form>
                            </td>
                         </c:if>
 
                         <c:if test="${Registerselect.packageStatus != '대여가능'}">
-                           <td colspan="3" align="center" style="WIDTH: 60pt; HEIGHT: 20pt">신청불가</td>
+                           <td align="left" style="WIDTH: 60pt; HEIGHT: 20pt">신청불가</td>
                         </c:if>
                      </c:if>
-
                      <!-- admin 버튼 -->
                      <c:if test="${session_id == 'admin'}">
                         <c:if test="${Registerselect.packageStatus == '대여신청'}">
-                           <td colspan="3" align="center">
+                           <td align="left">
                               <form action="startrentForm" method="post">
-                                 <input type="hidden" value="${Registerselect.codeNum}"
-                                    name="codeNum"> <input type="submit" style="WIDTH: 60pt; HEIGHT: 20pt" value="대여시작">
+                                 <input type="hidden" value="${Registerselect.codeNum}" name="codeNum"> 
+                                 <input type="submit" style="WIDTH: 60pt; HEIGHT: 20pt" value="대여시작">
                               </form>
                            </td>
                         </c:if>
                         
+                        <c:if test="${Registerselect.packageStatus == '기간종료'}">
+                            <td align="left" style="WIDTH: 60pt; HEIGHT: 22pt">기간종료</td>
+                        </c:if>
+                        
                         <c:if test="${Registerselect.packageStatus == '대여가능'}">
-                            <td colspan="3" align="center" style="WIDTH: 60pt; HEIGHT: 22pt">미신청</td></tr>
+                            <td align="left" style="WIDTH: 60pt; HEIGHT: 22pt">미신청</td>
                         </c:if>
                         
                         <c:if test="${Registerselect.packageStatus == '대여중'}">
-                            <td colspan="3" align="center" style="WIDTH: 60pt; HEIGHT: 22pt">대여중</td></tr>
+                            <td align="left" style="WIDTH: 60pt; HEIGHT: 22pt">대여중</td>
                         </c:if>
 
                         <c:if test="${Registerselect.packageStatus == '반납신청'}">
-                           <td colspan="3" align="center">
+                           <td align="left">
                               <form action="storageendrent" method="post">
-                                 <input type="hidden" value="${Registerselect.codeNum}"
-                                    name="codeNum"> <input type="submit" value="반납완료하기">
+                                 <input type="hidden" value="${Registerselect.codeNum}"  name="codeNum">
+                                 <input type="submit" value="반납완료하기">
                               </form>
                            </td>
                         </c:if>
 
                         <c:if test="${Registerselect.packageStatus == '대여종료신청'}">
-                           <td colspan="3" align="center">
+                           <td align="left">
                               <form action="" method="post">
-                                 <input type="hidden" value="${Registerselect.codeNum}"
-                                    name="codeNum"> <input type="submit" value="대여종료">
+                                 <input type="hidden" value="${Registerselect.codeNum}" name="codeNum"> 
+                                 <input type="submit" value="대여종료">
                               </form>
                            </td>
                         </c:if>
                      </c:if>
+                       <td style="width: 170px;" align="right">${Registerselect.reaquestId}<a onclick="window.open('mail?rid=${Registerselect.reaquestId}', '','width=400, height=350, status=1')">사진</a></td>
+                     </tr>
                   </table>
                </div>
             </c:forEach>

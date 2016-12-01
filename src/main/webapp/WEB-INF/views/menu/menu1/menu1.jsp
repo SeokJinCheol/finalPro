@@ -20,7 +20,7 @@
 </script>
 <style>
    .left {
-     height: 270px;
+     height: 250px;
       float: left;
       margin-left: 15px;
       margin-bottom: 15px;
@@ -58,22 +58,25 @@
                <div style="width: 30%" class="left">
                   <table>
                      <tr>
-                        <td colspan="3" align="center">${requestlist.title}</td>
+                        <td>[${requestlist.category}]</td>
+                        <td colspan="2" align="left">${requestlist.title}</td>
                      </tr>
                      <tr>
-                        <td colspan="3"><a href="requestcontent?codeNum=${requestlist.codeNum}"> 
-                        <img src="/team4/resources/RequestImg/${requestlist.img }" style="width: 100%; height: 170px;"></a>
+                        <td colspan="3" align="center"><a href="requestcontent?codeNum=${requestlist.codeNum}"> 
+                        <img src="/team4/resources/RequestImg/${requestlist.img }" style="width: 85%; height: 170px;"></a>
                         </td>
                      </tr>
                      <tr>
-                        <td style="width: 170px;" align="left">No.${requestlist.codeNum}</td>
-                        <td style="width: 170px;" align="center"><a onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">${requestlist.reaquestId}</a></td>
-                        <td style="width: 170px;" align="center">${requestlist.category}</td>
+                     <!-- user일때 -->
+                        <c:if test="${session_id != 'admin'}">
+                           <td style="width: 170px;" align="left">
+                              ${requestlist.packageStatus}
+                           </td>
+                        </c:if>
                         <!-- admin 일때 -->
                         <c:if test="${session_id == 'admin'}">
-                           <tr>
                            <c:if test="${requestlist.packageStatus =='심사중'}">
-                              <td colspan="3" align="center">
+                              <td style="width: 170px;" align="left">
                                  <form action="RegisterBoardwrite" method="post">
                                     <input type="hidden" name="codeNum" value="${requestlist.codeNum}"> 
                                     <input type="submit" value="심사하기">
@@ -82,7 +85,7 @@
                            </c:if>
 
                            <c:if test="${requestlist.packageStatus =='대여종료신청'}">
-                              <td colspan="3" align="center">
+                              <td style="width: 170px;" align="left">
                                  <form action="Requestboardend" method="post">
                                     <input type="hidden" name="codeNum" value="${requestlist.codeNum}"> 
                                     <input type="submit" value="대여종료">
@@ -91,13 +94,13 @@
                            </c:if>
                            
                           <c:if test="${requestlist.packageStatus =='대여중'}">
-                              <td colspan="3" align="center">
+                              <td style="width: 170px;" align="left">
                                  <input type="submit" value="대여중">
                               </td>
                            </c:if>
-                           </tr>
                         </c:if>
                         <!-- admin 일때 END -->
+                        <td style="width: 170px;" align="right">${requestlist.reaquestId}<a onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">사진</a></td>
                      </tr>
                   </table>
                   <br>
@@ -110,22 +113,25 @@
                <div style="width: 30%" class="left">
                   <table>
                      <tr>
-                        <td colspan="3" align="center">${requestlist.title}</td>
+                        <td>[${requestlist.category}]</td>
+                        <td colspan="2" align="left">${requestlist.title}</td>
                      </tr>
                      <tr>
-                        <td colspan="3"><a href="requestcontent?codeNum=${requestlist.codeNum}"> 
-                        <img src="/team4/resources/RequestImg/${requestlist.img }" style="width: 100%; height: 170px;"></a>
+                        <td colspan="3" align="center"><a href="requestcontent?codeNum=${requestlist.codeNum}"> 
+                        <img src="/team4/resources/RequestImg/${requestlist.img }" style="width: 85%; height: 170px;"></a>
                         </td>
                      </tr>
                      <tr>
-                        <td style="width: 170px;" align="left">No.${requestlist.codeNum}</td>
-                        <td style="width: 170px;" align="center"><a onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">${requestlist.reaquestId}</a></td>
-                        <td style="width: 170px;" align="center">${requestlist.category}</td>
+                     <!-- user일때 -->
+                        <c:if test="${session_id != 'admin'}">
+                           <td style="width: 170px;" align="left">
+                              ${requestlist.packageStatus}
+                           </td>
+                        </c:if>
                         <!-- admin일때 -->
                         <c:if test="${session_id == 'admin'}">
-                           <tr>
                            <c:if test="${requestlist.packageStatus =='심사중'}">
-                              <td colspan="3" align="center">
+                              <td align="center">
                                  <form action="RegisterBoardwrite" method="post">
                                     <input type="hidden" name="codeNum" value="${requestlist.codeNum}"> 
                                     <input type="submit" value="심사하기">
@@ -134,7 +140,7 @@
                            </c:if>
 
                            <c:if test="${requestlist.packageStatus =='대여종료신청'}">
-                              <td colspan="3" align="center">
+                              <td align="center">
                                  <form action="Requestboardend" method="post">
                                     <input type="hidden" name="codeNum"
                                        value="${requestlist.codeNum}"> <input type="submit" value="대여종료">
@@ -143,12 +149,12 @@
                            </c:if>
                            
                           <c:if test="${requestlist.packageStatus =='대여중'}">
-                              <td colspan="3" align="center">
+                              <td align="center">
                                  <input type="submit" value="대여중">
                               </td>
                            </c:if>
-                           </tr>
                         </c:if>
+                  <td style="width: 170px;" align="right">${requestlist.reaquestId}<a onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">사진</a></td>
                      </tr>
                   </table>
                   <br>

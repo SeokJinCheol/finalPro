@@ -14,8 +14,8 @@
 </head>
 <body>
 	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
-		<img src="/team4/resources/images/map22.png" style="margin-right:10px;">
-		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">대 여 신 청</font>
+		<img src="/team4/resources/images/free_update.png" style="margin-right:10px;">
+		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">장 소 등 록 정 보 수 정</font>
 	</div>
 
 	<div align=center style="background: #f5f6f7; width: 1350px; height: 600px; vertical-align: middle; display: table-cell;">		
@@ -82,7 +82,7 @@
 					<tr align="center" height="35">
 						<!-- 장소소개 -->
 	                  	<td style="padding-bottom:3px;">
-	                  		<textarea class="free-insert-content-title" style="resize: none;" name="readonlycontents" rows="6" cols="28" readonly>${vo.contents}</textarea>
+	                  		<textarea class="free-insert-content-title" style="resize: none;" name="readonlycontents" rows="6" cols="28" required>${vo.contents}</textarea>
 	                  	</td>
 						
 						<!-- 사용용도 -->
@@ -99,7 +99,7 @@
 				</table>				
 				
 				<p>
-					<input type="submit" class="free_update-btn222 w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;신　청" />
+					<input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수　정" />
 					&nbsp;&nbsp;&nbsp;
 					<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='menu3'"/>
 				</p>

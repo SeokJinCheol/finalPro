@@ -63,24 +63,22 @@
                <div style="width: 30%" class="left">
                   <table>
                      <tr>
-                        <td colspan="3" align="center">${Registerpossibility.title}</td>
+                        <td>[${Registerpossibility.category}]</td>
+                        <td colspan="2" align="left">${Registerpossibility.title}</td>
                      </tr>
                      <tr>
-                        <td style="width: 20%" colspan="3"><a href="registercontent?codeNum=${Registerpossibility.codeNum}">
-                        <img src="/team4/resources/RequestImg/${Registerpossibility.img }" style="width: 100%; height: 170px;"></td>
+                        <td style="width: 20%" colspan="3" align="center">
+                        <img src="/team4/resources/RequestImg/${Registerpossibility.img }" style="width: 85%; height: 170px;">
+                        </td>
                      </tr>
                      <tr>
-                        <td style="width: 170px;" align="left">No.${Registerpossibility.codeNum}</td>
-                        <td style="width: 170px;" align="center"><a onclick="window.open('mail?rid=${Registerpossibility.reaquestId}', '','width=400, height=350, status=1')">${Registerpossibility.reaquestId}</a></td>
-                        <td style="width: 170px;" align="center">${Registerpossibility.category}</td>
-                     </tr>
-                     <tr>
-                        <td align="center" colspan="3">
+                        <td align="left">
                            <form action="RegisterUpForm" method="post">
                               <input type="hidden" value="${Registerpossibility.codeNum}"
-                                 name="codeNum"> <input type="submit" value="신청하기">
+                                 name="codeNum"> <input type="submit" value="신청">
                            </form>
                         </td>
+                        <td style="width: 170px;" align="right">${Registerpossibility.reaquestId}<a onclick="window.open('mail?rid=${Registerpossibility.reaquestId}', '','width=400, height=350, status=1')">사진</a></td>
                      </tr>
                   </table>
                </div>
@@ -93,25 +91,22 @@
                <div style="width: 30%" class="left">
                   <table>
                      <tr>
-                        <td colspan="3" align="center">${Registerpossibility.title}</td>
+                        <td>[${Registerpossibility.category}]</td>
+                        <td colspan="2" align="left">${Registerpossibility.title}</td>
                      </tr>
                      <tr>
-                        <td style="width: 20%" colspan="3">
-                        <img src="/team4/resources/RequestImg/${Registerpossibility.img }" style="width: 100%; height: 170px;">
+                        <td style="width: 20%" colspan="3" align="center">
+                        <img src="/team4/resources/RequestImg/${Registerpossibility.img }" style="width: 85%; height: 170px;">
                         </td>
                      </tr>
                      <tr>
-                        <td style="width: 170px;" align="left">No.${Registerpossibility.codeNum}</td>
-                        <td style="width: 170px;" align="center"><a onclick="window.open('mail?rid=${Registerpossibility.reaquestId}', '','width=400, height=350, status=1')">${Registerpossibility.reaquestId}</a></td>
-                        <td style="width: 170px;" align="center">${Registerpossibility.category}</td>
-                     </tr>
-                     <tr>
-                        <td align="center" colspan="3">
+                        <td align="left">
                            <form action="RegisterUpForm" method="post">
                               <input type="hidden" value="${Registerpossibility.codeNum}"
-                                 name="codeNum"> <input type="submit" value="신청하기">
+                                 name="codeNum"> <input type="submit" value="신청">
                            </form>
                         </td>
+                        <td style="width: 170px;" align="right">${Registerpossibility.reaquestId}<a onclick="window.open('mail?rid=${Registerpossibility.reaquestId}', '','width=400, height=350, status=1')">사진</a></td>
                      </tr>
                   </table>
                </div>

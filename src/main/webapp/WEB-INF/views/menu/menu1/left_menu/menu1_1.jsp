@@ -60,19 +60,19 @@
                <div style="width: 30%" class="left">
                   <table>
                      <tr>
-                        <td colspan="3" align="center">${requestlist.title}</td>
+                        <td>[${requestlist.category}]</td>
+                        <td colspan="2" align="left">${requestlist.title}</td>
                      </tr>
                      <tr>
-                        <td colspan="3">
+                        <td colspan="3" align="center">
                            <a href="requestcontent?codeNum=${requestlist.codeNum}">
-                             <img src="/team4/resources/RequestImg/${requestlist.img }" style="width: 100%; height: 170px;">
+                             <img src="/team4/resources/RequestImg/${requestlist.img }" style="width: 85%; height: 170px;">
                             </a>
                          </td>
                      </tr>
                      <tr>
-                        <td style="width: 170px;" align="left">No.${requestlist.codeNum}</td>
-                        <td style="width: 170px;" align="center"><a onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">${requestlist.reaquestId}</a></td>
-                        <td style="width: 170px;" align="center">${requestlist.category}</td>
+                  <td style="width: 170px;" align="left"> ${requestlist.packageStatus}</td>
+                        <td style="width: 170px;" align="right">${requestlist.reaquestId}<a onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">사진</a></td>
                      </tr>
                   </table>
                   <br>
@@ -85,19 +85,19 @@
                <div style="width: 30%" class="left">
                   <table>
                      <tr>
-                        <td colspan="3" align="center">${requestlist.title}</td>
+                        <td>[${requestlist.category}]</td>
+                        <td colspan="2" align="left">${requestlist.title}</td>
                      </tr>
                      <tr>
-                        <td colspan="3">
+                        <td colspan="3" align="center">
                            <a href="requestcontent?codeNum=${requestlist.codeNum}"> 
-                              <img src="/team4/resources/RequestImg/${requestlist.img }" style="width: 100%; height: 170px;">
+                              <img src="/team4/resources/RequestImg/${requestlist.img }" style="width: 85%; height: 170px;">
                            </a>
                         </td>
                      </tr>
                      <tr>
-                        <td style="width: 170px;" align="left">No.${requestlist.codeNum}</td>
-                        <td style="width: 170px;" align="center"><a onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">${requestlist.reaquestId}</a></td>
-                        <td style="width: 170px;" align="center">${requestlist.category}</td>
+                  <td style="width: 170px;" align="left"> ${requestlist.packageStatus}</td>
+                        <td style="width: 170px;" align="right">${requestlist.reaquestId}<a onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">사진</a></td>
                      </tr>
                   </table>
                   <br>

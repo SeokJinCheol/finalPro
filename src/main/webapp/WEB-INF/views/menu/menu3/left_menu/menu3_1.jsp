@@ -60,6 +60,7 @@
     	document.RR.startDate.min=date;
 		document.RR.endDate.min=date;
 	}
+	
 	function getdate() {
     	document.RR.startDate.max=document.RR.endDate.value;
 	
@@ -324,7 +325,6 @@
 	            	        }   
 	            	        
 	            	        document.forms["RR"].elements["inpo"].value = result[0].jibunAddress.name;
-	            	       
 	            	        
 	            	        document.forms["RR"].elements["adress"].value=result[0].jibunAddress.name;
 	            	        document.forms["RR"].elements["spotNum"].value=marker.getPosition();
@@ -465,7 +465,6 @@
 		
 	    searchDetailAddrFromCoords(mouseEvent.latLng, function(status, result) {
 	        if (status === daum.maps.services.Status.OK) {
-	          
 	        	var detailAddr = !!result[0].roadAddress.name ? '<div>도로명주소 : ' + result[0].roadAddress.name + '</div>' : '';
 	            detailAddr += '<div>지번 주소 : ' + result[0].jibunAddress.name + '</div>';
 	            
@@ -491,7 +490,6 @@
 	    });
 	});
 
-
 	function searchAddrFromCoords(coords, callback) {
 	    // 좌표로 행정동 주소 정보를 요청합니다
 	    geocoder.coord2addr(coords, callback);         
@@ -501,6 +499,5 @@
     	// 좌표로 법정동 상세 주소 정보를 요청합니다
     	geocoder.coord2detailaddr(coords, callback);
 	}
-
 </script>
 </html>
