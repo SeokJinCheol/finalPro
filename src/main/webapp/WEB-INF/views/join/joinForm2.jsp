@@ -18,7 +18,7 @@
    <div align=center class="main-table" style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align:middle; display:table-cell;">
       <div style="width: 40%;" align=center>
          <div class="w3-rest w3-container w3-round-large w3-card-4" style="background-color: #F0F0f0;margin-bottom:20px; margin-top:20px;">
-			<form action="joinForm1" method="post" style="margin-top:20px;">
+			<form action="joinForm2" method="post" style="margin-top:20px;">
                 <!-- 이용약관 동의 -->
 				<div class="w3-row w3-wide" align=center style="margin-bottom:20px;">
 					<input type="checkbox" name="check" required> 
