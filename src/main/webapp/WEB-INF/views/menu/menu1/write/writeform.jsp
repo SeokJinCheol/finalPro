@@ -69,7 +69,7 @@
 					</tr>
 					<tr>
 						<td>이미지</td>
-						<td><input type="file" name="file" ></td>
+						<td><input type="file" name="file" accept="image/*"></td>
 					</tr>
 					<tr>
 						<td>대여시작일</td>

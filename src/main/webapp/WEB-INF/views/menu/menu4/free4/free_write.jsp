@@ -38,7 +38,7 @@
 		            <tr align="center" height="35">
 		                <td style="text-align: center; width: 80;border-right:1px solid white; font-family: 'Jeju Gothic', sans-serif;" class="bottom-border">사　진</td>
 		            	<td class="bottom-border">
-		            		<input type="file" name="file" style="margin-left: 10px;">
+		            		<input type="file" name="file" accept="image/*" style="margin-left: 10px;">
 		            	</td>
 		            </tr>
 		            
