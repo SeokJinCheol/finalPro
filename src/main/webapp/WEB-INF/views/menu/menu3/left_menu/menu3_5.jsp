@@ -62,7 +62,7 @@
 	
 				<tbody style="height:340px; overflow-y: auto; position: absolute;">
 					<c:forEach items="${list}" var="list">
-						<c:set var="total" value="${total+list.bill }" />
+						<c:set var="total" value="${total+1 }" />
 							<tr onMouseOver="this.style.backgroundColor='#eff7fc'" onMouseOut="this.style.backgroundColor='#fafafa'" height="65">
 								<td width=50 style="border-bottom: 3px solid #fff;">
 									${list.codeNum }
@@ -136,7 +136,7 @@
 					<tr>
 						<th colspan="2"  style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">총 결 산</th>
 						<td colspan="5" style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">
-							총 금액　:　<fmt:formatNumber value="${total}" pattern="￦ ###,###"/> 원
+							총 등록물 수　:　<fmt:formatNumber value="${total}" pattern=" ###,###"/> 곳
 						</td>
 					</tr>
 				</tfoot>

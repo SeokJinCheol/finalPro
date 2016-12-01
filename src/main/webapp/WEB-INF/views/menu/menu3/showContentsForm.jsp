@@ -82,12 +82,12 @@
 					<tr align="center" height="35">
 						<!-- 장소소개 -->
 	                  	<td style="padding-bottom:3px;">
-	                  		<textarea class="free-insert-content-title" style="resize: none;" name="readonlycontents" rows="3" cols="28" readonly>${vo.contents}</textarea>
+	                  		<textarea class="free-insert-content-title" style="resize: none;" name="readonlycontents" rows="6" cols="28" readonly>${vo.contents}</textarea>
 	                  	</td>
 						
 						<!-- 사용용도 -->
 	                  	<td style="padding-bottom:3px;">
-	                  		<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="3" cols="28" required></textarea>
+	                  		<textarea class="free-insert-content-title" style="resize: none;" name="contents" rows="6" cols="28" required></textarea>
 	                  	</td>
 	               	</tr>
 					
