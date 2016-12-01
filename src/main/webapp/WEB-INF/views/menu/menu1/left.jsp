@@ -14,14 +14,21 @@
 		<div  style="background:#6699DC; color:white; width:20%; height:100px; vertical-align:middle; display:table-cell;"><img src="/team4/resources/images/left-in.png"><font size="5">&nbsp;&nbsp;물 품 등 록</font></div><br>
 		
 		<c:if test="${session_id != 'admin'}">
+			<div class="left-menu"><a href="menu1" class="rollover">
+				<img src="/team4/resources/images/left-freeboard11.png" style="margin-right:5px;">
+				<img src="/team4/resources/images/free_list.png" class="imgover" style="margin-right:5px;">
+				&nbsp;전 체 등 록 된 목 록</a></div><br>
+
 			<div class="left-menu"><a href="menu1_1" class="rollover">
 				<img src="/team4/resources/images/left-menu11.png" style="margin-right:5px;">
 				<img src="/team4/resources/images/left-menu12.png" class="imgover" style="margin-right:5px;">
-				&nbsp;업 체 등 록 현 황</a></div><br>
+				&nbsp;업 체 별 등 록 현 황</a></div><br>
+			
 			<div class="left-menu"><a href="menu1_2" class="rollover">
 				<img src="/team4/resources/images/left-menu21.png" style="margin-right:5px;">
 				<img src="/team4/resources/images/left-menu22.png" class="imgover" style="margin-right:5px;">
-				&nbsp;개 인 등 록 현 황</a></div><br>
+				&nbsp;개 인 별 등 록 현 황</a></div><br>
+
 			<div class="left-menu"><a href="menu1_3" class="rollover">
 				<img src="/team4/resources/images/left-menu31.png" style="margin-right:5px;">
 				<img src="/team4/resources/images/left-menu32.png" class="imgover" style="margin-right:5px;">
