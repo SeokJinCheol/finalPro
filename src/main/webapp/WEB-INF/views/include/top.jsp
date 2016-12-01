@@ -229,7 +229,7 @@
 	// 이용요금 안내 팝업창
 	function openCost(Cost) {
 		url = "Cost";
-		winObject = window.open(url, "id", "left=100, top=150, width=500, height=400");
+		winObject = window.open(url, "id", "left=100, top=150, width=500%, height=400%");
 		winObject.document.all.id.value = document.all.id.value;
 	}
 </script>
