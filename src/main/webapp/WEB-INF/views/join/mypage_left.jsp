@@ -16,22 +16,67 @@
 			<img src="/team4/resources/images/mail1.png" style="margin-right:5px;">
 			<img src="/team4/resources/images/mail2.png" class="imgover" style="margin-right:5px;">
 			&nbsp;메 일 확 인 하 기</a></div><br>
-		<div class="left-menu"><a href="myrequest" class="rollover">
-			<img src="/team4/resources/images/mywrite1.png" style="margin-right:5px;">
-			<img src="/team4/resources/images/mywrite2.png" class="imgover" style="margin-right:5px;">
-			&nbsp;나 의 물 품 목 록</a></div><br>	
-		<div class="left-menu"><a href="myrentlist" class="rollover">
-			<img src="/team4/resources/images/lend1.png" style="margin-right:5px;">
-			<img src="/team4/resources/images/lend2.png" class="imgover" style="margin-right:5px;">
-			&nbsp;나 의 대 여 목 록</a></div><br>
-			<div class="left-menu"><a href="myRRBlist" class="rollover">
-			<img src="/team4/resources/images/mywrite1.png" style="margin-right:5px;">
-			<img src="/team4/resourceㄹs/images/mywrite2.png" class="imgover" style="margin-right:5px;">
-			&nbsp;나 의 장 소 목 록</a></div><br>	
-		<div class="left-menu"><a href="myRPBlist" class="rollover">
-			<img src="/team4/resources/images/lend1.png" style="margin-right:5px;">
-			<img src="/team4/resources/images/lend2.png" class="imgover" style="margin-right:5px;">
-			&nbsp;나 의 대 관 목 록</a></div><br>
+		
+		
+		<!-- 나의 물품 목록 -->
+		<div class="left-menu left-admin">
+			<ul style="padding: 0px; margin-bottom:0px; margin-top:0px;">
+				<li>
+					<a href="myrequest" class="rollover ">
+						<img src="/team4/resources/images/box1.png" style="margin-right:5px;">
+						<img src="/team4/resources/images/box.png" class="imgover" style="margin-right:5px;">
+						&nbsp;물　품　목　록
+					</a>
+		
+					<ul style="padding: 0px;" class="left-admin2">
+						<li>
+							<a href="myrequest" class="rollover ">
+								<img src="/team4/resources/images/mywrite1.png" style="margin-right:5px;">
+								<img src="/team4/resources/images/mywrite2.png" class="imgover" style="margin-right:5px;">
+								&nbsp;나 의 물 품 목 록</a>
+						</li>
+						
+						<li>
+							<a href="myrentlist" class="rollover ">
+								<img src="/team4/resources/images/lend1.png" style="margin-right:5px;">
+								<img src="/team4/resources/images/lend2.png" class="imgover" style="margin-right:5px;">
+								&nbsp;나 의 대 여 목 록</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div><br>
+
+		<!-- 나의 장소 목록 -->
+		<div class="left-menu left-admin">
+			<ul style="padding: 0px; margin-bottom:0px; margin-top:0px;">
+				<li>
+					<a href="myRRBlist" class="rollover ">
+						<img src="/team4/resources/images/location1.png" style="margin-right:5px;">
+						<img src="/team4/resources/images/left-location.png" class="imgover" style="margin-right:5px;">
+						&nbsp;장　소　목　록
+					</a>
+		
+					<ul style="padding: 0px;" class="left-admin2">
+						<li>
+							<a href="myRRBlist" class="rollover ">
+								<img src="/team4/resources/images/mywrite1.png" style="margin-right:5px;">
+								<img src="/team4/resources/images/mywrite2.png" class="imgover" style="margin-right:5px;">
+								&nbsp;나 의 장 소 목 록</a>
+						</li>
+		
+						<li>
+							<a href="myRPBlist" class="rollover ">
+								<img src="/team4/resources/images/lend1.png" style="margin-right:5px;">
+								<img src="/team4/resources/images/lend2.png" class="imgover" style="margin-right:5px;">
+								&nbsp;나 의 대 관 목 록</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div><br>
+
+		<!-- 기본정보 수정 & 탈퇴 -->
 		<div class="left-menu"><a href="mypage_update" class="rollover">
 			<img src="/team4/resources/images/left-mypage11.png" style="margin-right:5px;">
 			<img src="/team4/resources/images/left-mypage12.png" class="imgover" style="margin-right:5px;">

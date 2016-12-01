@@ -4728,6 +4728,26 @@ ul.w3-ul li:last-child {
 	height: 50px;
 }
 
+.left-admin a {
+	display: block;
+	padding: 8px 16px;
+	text-decoration: none;
+	height: 50px;
+	line-height: 40px;
+}
+
+.left-admin {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	width: 20%;
+	margin-bottom: 10px;
+	vertical-align: middle;
+	display: table-cell;
+	height: 50px;
+}
+
 .left-menu-bottom {
 	width: 20%;
 	height: 50px;

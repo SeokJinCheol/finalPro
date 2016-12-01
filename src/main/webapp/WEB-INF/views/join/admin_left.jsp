@@ -44,19 +44,6 @@
 				</li>
 			</ul>
 		</div><br>
-		
-		<!-- <div class="left-menu"><a href="#" class="rollover">
-			<img src="/team4/resources/images/#" style="margin-right:5px;">
-			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">
-			&nbsp;admin_3</a></div><br>	
-		<div class="left-menu"><a href="#" class="rollover">
-			<img src="/team4/resources/images/#" style="margin-right:5px;">
-			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">
-			&nbsp;admin_4</a></div><br>	
-		<div class="left-menu"><a href="#" class="rollover">
-			<img src="/team4/resources/images/#" style="margin-right:5px;">
-			<img src="/team4/resources/images/#" class="imgover" style="margin-right:5px;">
-			&nbsp;admin_5</a></div><br> -->
 	</div>
 </body>
 </html>
