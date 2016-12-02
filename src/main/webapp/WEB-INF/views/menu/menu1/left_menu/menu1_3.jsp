@@ -44,6 +44,7 @@
 							<c:if test="${requestlist.packageStatus != '심사중'}">
 								<form action="RequestEnd" method="post">
 									<input type="hidden" name="codeNum" value="${requestlist.codeNum}">
+									<input type="hidden" name="mypage" value="nomypage">
 									<input type="submit" value="대여종료신청" onclick="stopStatus(); return false;"/>
 								</form>
 							</c:if>
