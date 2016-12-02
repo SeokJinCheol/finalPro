@@ -128,7 +128,6 @@ public class RRBoardLeftController {
 
 		// 체크
 		RRboardVO vo = dao.getcontents(codeNum);
-		System.out.println(vo.toString());
 		// vo 전송
 		model.addAttribute("vo", dao.getcontents(codeNum));
 		model.addAttribute("CONTENT", "menu/menu3/showContentsForm.jsp");
@@ -139,7 +138,8 @@ public class RRBoardLeftController {
 	@RequestMapping("/insertSubmit")
 	public String insertSubmit(Model model, @RequestParam("codeNum") int codeNum,
 			@RequestParam("contents") String contents, @RequestParam("bill") int bill,
-			@RequestParam("startDate") String startDate, @RequestParam("endDate") String endDate) {
+			@RequestParam("userstartDate") String userstartDate, @RequestParam("userendDate") String userendDate) {
+		
 		// 세션 아이디 가져 오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
@@ -150,8 +150,8 @@ public class RRBoardLeftController {
 		vo.setCodeNum(codeNum);
 		vo.setReaquestId(session_id);
 		vo.setContents(contents);
-		vo.setUserendDate(endDate);
-		vo.setUserstartDate(startDate);
+		vo.setUserendDate(userendDate);
+		vo.setUserstartDate(userstartDate);
 		vo.setBill(bill);
 
 		RRboardVO rrvo = dao.getcontents(codeNum);

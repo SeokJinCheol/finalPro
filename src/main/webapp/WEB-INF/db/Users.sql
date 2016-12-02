@@ -39,6 +39,8 @@ insert into userRank values('tt1','role_com');
 insert into userRank values('tt2','role_com');
 insert into userRank values('tt3','role_com');
 
+update userRank set RightRank='role_com' where id='company03';
+
 DELETE from userRank WHERE ID = 'admin' and rightrank = 'role_user';
 
 select * from USERRANK;

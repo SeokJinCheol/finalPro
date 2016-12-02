@@ -20,7 +20,7 @@ company varchar2(20)
 
 drop table RRBoard
 
-select * from rpboard
+select * from rrboard
 
  select * from RPBoard WHERE packageStatus='정산완료' and codeNum = 14 and registerDate between TO_DATE('2016-11-01 00:00:01','YYYY-MM-DD HH24:MI:SS') and TO_DATE('2016-11-31 23:59:59','YYYY-MM-DD HH24:MI:SS') ORDER BY registerDate DESC;00
 
@@ -36,6 +36,8 @@ insert into RRBoard(codeNum, title, category, company, startDate,endDate, bill, 
 delete from rrboard where title = 'love';
 
 select * from RRBoard;
+
+update RRboard set img='이미지없음.jpg' where codeNum= 24;
 
 CREATE SEQUENCE rrb_seq
 start with 1
