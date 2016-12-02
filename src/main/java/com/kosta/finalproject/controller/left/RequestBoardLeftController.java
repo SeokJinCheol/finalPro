@@ -25,6 +25,9 @@ public class RequestBoardLeftController {
 
 	@RequestMapping("/menu1_1")
 	public String menu1_1(Model model) {
+		
+		String title = "업 체 별 등 록 현 황";
+		model.addAttribute("title", title);
 
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -36,6 +39,8 @@ public class RequestBoardLeftController {
 		List<RequestBoardVO> requestlist = requestBoardDaoImpl.companyselect(company);
 		model.addAttribute("requestlist", requestlist);
 
+		model.addAttribute("company", company);
+		
 		model.addAttribute("CONTENT", "menu/menu1/left_menu/menu1_1.jsp");
 		model.addAttribute("LEFT", "menu/menu1/left.jsp");
 		return "main";
@@ -43,6 +48,7 @@ public class RequestBoardLeftController {
 
 	@RequestMapping("/menu1_2")
 	public String menu1_2(Model model) {
+		
 
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -53,6 +59,8 @@ public class RequestBoardLeftController {
 		String company = "개인";
 		List<RequestBoardVO> requestlist = requestBoardDaoImpl.companyselect(company);
 		model.addAttribute("requestlist", requestlist);
+		
+		model.addAttribute("company", company);
 
 		model.addAttribute("CONTENT", "menu/menu1/left_menu/menu1_1.jsp");
 		model.addAttribute("LEFT", "menu/menu1/left.jsp");
