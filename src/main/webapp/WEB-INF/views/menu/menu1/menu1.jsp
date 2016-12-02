@@ -27,15 +27,14 @@
 		<!-- 검색 -->
 		<div class="w3-row" style="margin-top: 30px;">
 			<form action="menu1" method=post>
-				<select name="keyword"
-					style="width: 15%; border-radius: 4px; text-align: center; height: 27px;">
+				<select name="keyword" style="width: 15%; border-radius: 4px; text-align: center; height: 27px;">
 					<option value="#" style="text-align: center;">선택하세요.</option>
 					<option value="title" style="text-align: center;">Title</option>
 					<option value="category" style="text-align: center;">카테고리</option>
-				</select> <input type="text" name="word" value="${word}"
-					placeholder="&nbsp;Search . . . " class="free-search-title"
-					required="required" /> <input type="submit" class="list-search"
-					value="Search" style="width: 8%;">
+				</select> 
+				
+				<input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" style="border-color: rgb(169, 169, 169);" required="required" /> 
+				<input type="submit" class="list-search" value="Search" style="width: 8%;">
 			</form>
 		</div>
 
@@ -43,20 +42,19 @@
 		<div style="margin-bottom: 20px; width: 90%;">
 			<security:authorize ifAnyGranted="role_user, role_com, role_master">
 				<div class="w3-row">
-					<div class="w3-col w3-right"
-						style="margin-right: 30px; width: 10%; margin-bottom: 10px;">
+					<div class="w3-col w3-right" style="margin-right: 30px; width: 10%; margin-bottom: 10px;">
 						<br>
-						<br> <input type="button" class="button-write" value="글 쓰 기"
-							onclick="location='requestwriteform'">
+						<br> 
+						<input type="button" class="button-write" value="글 쓰 기" onclick="location='requestwriteform'">
 					</div>
 				</div>
 			</security:authorize>
 
 			<security:authorize ifNotGranted="role_user, role_com, role_master">
 				<div class="w3-row">
-					<div class="w3-col w3-right"
-						style="margin-right: 5px; width: 10%; margin-bottom: 7px;">
-						<br> <br>
+					<div class="w3-col w3-right" style="margin-right: 5px; width: 10%; margin-bottom: 7px;">
+						<br> 
+						<br>
 					</div>
 				</div>
 			</security:authorize>
