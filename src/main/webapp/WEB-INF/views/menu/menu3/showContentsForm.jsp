@@ -6,6 +6,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript">
+	//날짜처리
+	window.onload = function() {
+    	var now = new Date();
+  
+    	var startDate= new Date(${vo.startDate});
+  if(now < startDate){
+    	var date= (now.getYear()+1900)+'-'+fncLPAD((now.getMonth()+1)+'-'+ fncLPAD(now.getDate()));
+    	
+    	document.insertSubmit.userstartDate.min=date;
+		document.insertSubmit.userendDate.min=date;
+  }
+  }
+	
+	function getdate() {
+    	document.insertSubmit.userstartDate.max=document.RR.userendDate.value;
+	
+	}
+
+	function getMin() {
+		document.insertSubmit.userendDate.min=document.RR.userstartDate.value;
+	
+	}
+
+	function fncLPAD(num) {
+	    if(num < 10) { 
+	    	return '0' + num;
+	    }
+	    
+	    else {
+	    	return num;
+	    }
+	}
+</script>
 <title>장소 상세보기</title>
 <!-- CSS 연결-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -15,7 +49,7 @@
 <body>
 	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
 		<img src="/team4/resources/images/free_update.png" style="margin-right:10px;">
-		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">장 소 등 록 정 보 수 정</font>
+		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">대관 신청 등록</font>
 	</div>
 
 	<div align=center style="background: #f5f6f7; width: 1350px; height: 600px; vertical-align: middle; display: table-cell;">		
@@ -66,10 +100,10 @@
 	                  	
 	                  	<!-- 신청일자 -->
 	                  	<td class="bottom-border" width=300 style="padding-bottom:10px;">
-	                  		&nbsp;<input type="date" class="free-insert-title" style="width:35%; text-align: center; font-size:3px;" required name="userstartDate" min="${vo.startDate }" max="${vo.endDate}" value="${vo.userstartDate}"/>
+	                  		&nbsp;<input type="date" class="free-insert-title" style="width:35%; text-align: center; font-size:3px;" required name="userstartDate" onclick="getdate()" min="${vo.startDate }" max="${vo.endDate}" value="${vo.userstartDate}"/>
 	                  		<!-- ~ 앞뒤로 ㄱ한자 1 숨겨져 있음 -->
 	                  		　~　
-	                  		<input type="date" class="free-insert-title" style="width:35%; text-align: center; font-size:3px;" required name="userendDate" min="${vo.startDate }" max="${vo.endDate}" value="${vo.userendDate}"/>
+	                  		<input type="date" class="free-insert-title" style="width:35%; text-align: center; font-size:3px;" required name="userendDate" onclick="getmin()" min="${vo.startDate }" max="${vo.endDate}" value="${vo.userendDate}"/>
 	                	</td>
 					</tr>
 					
