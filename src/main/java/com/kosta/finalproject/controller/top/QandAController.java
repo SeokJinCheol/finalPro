@@ -55,9 +55,7 @@ public class QandAController {
 
 		int currentPage = Integer.parseInt(pageNum);
 
-		int startrow = (currentPage * pageSize) - (pageSize - 1);
-		int endrow = currentPage * pageSize;
-		int count = 0, number = 0;
+		int count =0;  int  number = 0;
 		List<QandAVO> list = null;
 		if (keyword == null) {
 			count = qandADaoImpl.ListAllCount(); ///
@@ -66,6 +64,9 @@ public class QandAController {
 		} else if (keyword.equalsIgnoreCase("id") && word != null) {
 			count = qandADaoImpl.getListIDCount(word);
 		}
+		
+		int endrow = count - ((currentPage-1)*pageSize);
+		int startrow = endrow - pageSize + 1;
 
 		int pageCount = Math.round(count / pageSize + (count % pageSize == 0 ? 0 : 1));
 		if (count > 0) {
