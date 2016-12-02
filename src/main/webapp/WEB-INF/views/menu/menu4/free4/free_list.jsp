@@ -71,7 +71,7 @@
 			        	<tr height="40" onMouseOver="this.style.backgroundColor='#eff7fc'" onMouseOut="this.style.backgroundColor='#fafafa'" style="background-color: #fafafa;">
 			            	<td style="border-bottom: 3px solid #fff;">${list.rnum}</td>
 			            	<td style="width: 10%; border-bottom: 3px solid #fff;">
-			            		<img src="/team4/resources/BoardImg/${list.img}" style="width: 100%; height: 50px;">
+			            		<img src="/team4/resources/FreeBoardImg/${list.img}" style="width: 100%; height: 50px;">
 			            	</td>
 			
 							<!-- 제목이 6자 이상일 경우 줄여쓰기 기능 -->
