@@ -122,7 +122,7 @@
 							</td>
 							
 							<td width=70 align=center style="border-bottom: 3px solid #fff;">
-								<form action="showContentsForm" method=post>
+								<form action="modyADRRB" method=post>
 									<input type="hidden" name="codeNum" value="${vo.codeNum }">
 									
 									<input type="submit" value="" class="update-btn2 w3-card-4" name="mody">

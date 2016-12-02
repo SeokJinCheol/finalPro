@@ -82,7 +82,7 @@
 					<tr align="center" height="35">
 						<!-- 장소소개 -->
 	                  	<td style="padding-bottom:3px;">
-	                  		<textarea class="free-insert-content-title" style="resize: none;" name="readonlycontents" rows="6" cols="28" required>${vo.contents}</textarea>
+	                  		<textarea class="free-insert-content-title" style="resize: none;" name="readonlycontents" rows="6" cols="28" required readonly="readonly">${vo.contents}</textarea>
 	                  	</td>
 						
 						<!-- 사용용도 -->
@@ -99,7 +99,7 @@
 				</table>				
 				
 				<p>
-					<input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수　정" />
+					<input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;신　청" />
 					&nbsp;&nbsp;&nbsp;
 					<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='menu3'"/>
 				</p>
