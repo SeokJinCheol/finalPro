@@ -84,7 +84,8 @@
 		               		</td>
 		               		
 		               		<td colspan="2" class="bottom-border">
-		               			사진넣어라 <!-- <input type="file" name="file" style="margin-left: 10px;"> -->
+		               			<input type="hidden" name="img" value="${updatelist.img}">
+		               			<input type="file" name="file" style="margin-left: 10px;">
 		               		</td>
 		                </tr>
 						

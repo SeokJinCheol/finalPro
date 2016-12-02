@@ -37,7 +37,7 @@
 	</select>
 	
 	<update id="requestBoardUpdate" parameterType="com.kosta.finalproject.vo.RequestBoardVO">
-		UPDATE requestBoard SET title=#{title}, startDate=#{startDate}, endDate=#{endDate}, bill=#{bill}, deposit=#{deposit}, contents=#{contents}, category=#{category}, company=#{company} WHERE codeNum=#{codeNum}
+		UPDATE requestBoard SET title=#{title}, startDate=#{startDate}, endDate=#{endDate}, bill=#{bill}, deposit=#{deposit}, contents=#{contents}, category=#{category}, company=#{company}, img=#{img} WHERE codeNum=#{codeNum}
 	</update>
 	
 	<select id="selectdate" resultMap="RequestBoard">

@@ -19,4 +19,5 @@ public interface RegisterBoardMapper {
 	public ArrayList<RegisterBoardVO> pselectCategory(RegisterBoardVO vo);
 	public ArrayList<RegisterBoardVO> registercontent(int codeNum);
 	public ArrayList<RegisterBoardVO> registercount();
+	public void imgupdate(RegisterBoardVO vo);
 }
