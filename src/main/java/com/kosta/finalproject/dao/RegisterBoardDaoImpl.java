@@ -131,4 +131,11 @@ public class RegisterBoardDaoImpl implements RegisterBoardDao{
 	      result = mapper.registercount();
 	      return result;
 	   }
+
+	@Override
+	public void imgupdate(RegisterBoardVO vo) {
+		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
+		mapper.imgupdate(vo);
+	}
+
 }
