@@ -37,7 +37,7 @@
 						<form action="showContentsForm" method="post">
 							<tr onMouseOver="this.style.backgroundColor='#eff7fc'" onMouseOut="this.style.backgroundColor='#fafafa'">
 								<td width=82 style="border-bottom: 3px solid #fff;">
-									<img onclick="location.href='${vo.img}'" src="/team4/resources/BoardImg/${vo.img}" style="width: 80px; height: 50px;">
+									<img src="/team4/resources/BoardImg/${vo.img}" style="width: 80px; height: 50px;">
 								</td>
 								
 								<td width=120 style="border-bottom: 3px solid #fff;">

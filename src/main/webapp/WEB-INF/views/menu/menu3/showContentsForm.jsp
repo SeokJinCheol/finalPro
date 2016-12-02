@@ -21,12 +21,12 @@
   }
 	
 	function getdate() {
-    	document.insertSubmit.userstartDate.max=document.RR.userendDate.value;
+    	document.insertSubmit.userstartDate.max=document.insertSubmit.endDate.value;
 	
 	}
 
 	function getMin() {
-		document.insertSubmit.userendDate.min=document.RR.userstartDate.value;
+		document.insertSubmit.userendDate.min=document.insertSubmit.userstartDate.value;
 	
 	}
 
@@ -38,6 +38,16 @@
 	    else {
 	    	return num;
 	    }
+	}
+	
+	function check(){
+		if(document.insertSubmit.userstartDate.value>document.insertSubmit.userendDate.value){
+			alert("대여가 끝나는 날짜가 시작한 날짜보다 빠를 수는 없습니다.");
+			return false;
+		}else if(document.insertSubmit.userstartDate.value<=document.insertSubmit.userendDate.value){
+			document.insertSubmit.submit();
+		}
+		
 	}
 </script>
 <title>장소 상세보기</title>
@@ -133,14 +143,13 @@
 				</table>				
 				
 				<p>
-					<input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;신　청" />
+					<input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;신　청" onclick="check(); return false;" />
 					&nbsp;&nbsp;&nbsp;
 					<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='menu3'"/>
 				</p>
 				
 				<input type="hidden" value="${vo.codeNum }" name="codeNum">
  				<%-- <input type="hidden" value="${id}" name="id"> --%>
-				<input type="hidden" value="${vo}" name="vo">
 				<input type="hidden" name="bill">
 			</form>
 		</div>

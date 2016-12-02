@@ -549,6 +549,20 @@ public class RRBoardLeftController {
 		return "main";
 	}
 
+	//자기 상태 수정
+	@RequestMapping("/setMyRRBstatus")
+	public String setMyRRBstatus(Model model, @RequestParam("status") String status, @RequestParam("codeNum") int codeNum) {
+
+		RRboardVO vo = new RRboardVO();
+
+		vo.setCodeNum(codeNum);
+		vo.setPackageStatus(status);
+
+		dao.setRRStatus(vo);
+
+		return "redirect:myRRBlist";
+	}
+	
 	// RRBupdate
 	@RequestMapping("/RRBupdate")
 	public String RRBupdate(Model model, UploadVO dto, @RequestParam("contents") String contents,

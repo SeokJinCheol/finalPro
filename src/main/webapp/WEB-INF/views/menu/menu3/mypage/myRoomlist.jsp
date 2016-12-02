@@ -18,6 +18,7 @@ function setpakageStatus(name){
 		 document.forms(name).submit();
 	}else{		return false;		}
 	}
+	
 </script>
 <title>나의장소목록</title>
 <!-- CSS 연결-->
@@ -79,13 +80,11 @@ function setpakageStatus(name){
 									</td>
 								</c:otherwise>
 							</c:choose>
-							
-							<td width=90 style="border-bottom: 3px solid #fff;">
-								${vo.packageStatus}
-							</td>
-							
+									<td width=90 style="border-bottom: 3px solid #fff;">
+										${vo.packageStatus}
+									</td>
 							<td width=50 style="border-bottom: 3px solid #fff;" align=center>
-								<c:if test="${vo.packageStatus == '대여가능'}">
+								<c:if test="${vo.packageStatus == '대여가능'||vo.packageStatus == '정산완료'}">
 									<form action="myModifyRRB" method="post">
 										<input type="hidden" name="codeNum" value="${vo.codeNum }">
 										
