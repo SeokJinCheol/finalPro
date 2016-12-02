@@ -40,15 +40,7 @@
 	    }
 	}
 	
-	function check(){
-		if(document.insertSubmit.userstartDate.value>document.insertSubmit.userendDate.value){
-			alert("대여가 끝나는 날짜가 시작한 날짜보다 빠를 수는 없습니다.");
-			return false;
-		}else if(document.insertSubmit.userstartDate.value<=document.insertSubmit.userendDate.value){
-			document.insertSubmit.submit();
-		}
-		
-	}
+
 </script>
 <title>장소 상세보기</title>
 <!-- CSS 연결-->
@@ -136,7 +128,7 @@
 	               	</tr>
 					
 	               	<tr align="center" height="30" style="padding-top:10px;">
-	                  	<td  class="bottom-border2 top-border" colspan="2" onclick="test();return false;">
+	                  	<td  class="bottom-border2 top-border" colspan="2" onclick="test(); return false;">
 	                  		<b id="days">총 금 액　:　</b>
 	                  	</td>
 	               	</tr>
@@ -149,7 +141,6 @@
 				</p>
 				
 				<input type="hidden" value="${vo.codeNum }" name="codeNum">
- 				<%-- <input type="hidden" value="${id}" name="id"> --%>
 				<input type="hidden" name="bill">
 			</form>
 		</div>
@@ -158,6 +149,34 @@
 
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=d8a783ab647cf241b46707bc4e31d1ac&libraries=clusterer"></script>
 <script>
+
+	function check(){
+		
+			var startDay = new Date(document.forms["insertSubmit"].elements["userstartDate"].value);
+			
+			var endDay = new Date(document.forms["insertSubmit"].elements["userendDate"].value);
+			
+			if(document.forms["insertSubmit"].elements["userstartDate"].value.length < 1 || document.forms["insertSubmit"].elements["userendDate"].value.length < 1){
+			
+				alert("신청일자를 지정해주세요!!")
+				return false;
+			}else if(document.insertSubmit.userstartDate.value>document.insertSubmit.userendDate.value){
+						alert("대여가 끝나는 날짜가 시작한 날짜보다 빠를 수는 없습니다.");
+						return false;
+					}else if(document.insertSubmit.userstartDate.value<=document.insertSubmit.userendDate.value){
+
+						var totalDay = Math.round(((endDay-startDay)/(1000 * 60 * 60 * 24)) + 1);
+
+			var bill = ${vo.bill} * (totalDay);
+
+			document.forms["insertSubmit"].elements["bill"].value = bill;
+			
+			document.getElementById("days").innerHTML = "￦ " + bill + " 원" +" ("+totalDay+"일)";
+			
+			document.insertSubmit.submit();
+		}
+	}
+	
 	function test() {
 	var startDay = new Date(document.forms["insertSubmit"].elements["userstartDate"].value);
 	
@@ -166,10 +185,13 @@
 	if(document.forms["insertSubmit"].elements["userstartDate"].value.length < 1 || document.forms["insertSubmit"].elements["userendDate"].value.length < 1){
 	
 		alert("신청일자를 지정해주세요!!")
-	
-	/* 안돼네 */
-	}else{
-	var totalDay = Math.round(((endDay-startDay)/(1000 * 60 * 60 * 24)) + 1);
+		return false;
+	}else if(document.insertSubmit.userstartDate.value>document.insertSubmit.userendDate.value){
+				alert("대여가 끝나는 날짜가 시작한 날짜보다 빠를 수는 없습니다.");
+				return false;
+			}else if(document.insertSubmit.userstartDate.value<=document.insertSubmit.userendDate.value){
+
+				var totalDay = Math.round(((endDay-startDay)/(1000 * 60 * 60 * 24)) + 1);
 
 	var bill = ${vo.bill} * (totalDay);
 

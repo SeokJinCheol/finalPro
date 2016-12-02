@@ -55,10 +55,10 @@
 							</c:choose>
 
 							<td width=110 style="border-bottom: 3px solid #fff;">${requestboardstatus.packageStatus}</td>
-
+							
 							<td width=80 style="border-bottom: 3px solid #fff;">
 				            	<c:if test="${requestboardstatus.packageStatus == '심사중'}">
-									<form action="modifyRPB2" method="post">
+									<form action="RegisterBoardwrite" method="post">
 										<input type="hidden" name="codeNum" value="${requestboardstatus.codeNum}"> 
 										
 										<input type="submit" value="" class="update-btn98 w3-card-4">
