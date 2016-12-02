@@ -151,10 +151,21 @@ public class RegisterBoardLeftController {
 	// 리뷰작성 대여종료
 	@RequestMapping("/reviewendrent")
 	public String reviewendrent(Model model, HttpServletRequest request) {
+		
+		// 로그인 정보 확인
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+		model.addAttribute("session_id", session_id);
+		
+		//마이페이지 판별
+		String mypage = request.getParameter("mypage");
+		model.addAttribute("mypage", mypage);
 
 		int codeNum = Integer.parseInt(request.getParameter("codeNum"));
 		model.addAttribute("codeNum", codeNum);
-		model.addAttribute("LEFT", "menu/menu2/left.jsp");
+		if(mypage.equals("mypage")){
+			model.addAttribute("LEFT", "join/mypage_left.jsp");
+		}else model.addAttribute("LEFT", "menu/menu2/left.jsp");
 		model.addAttribute("CONTENT", "menu/menu2/Review.jsp");
 		return "main";
 	}
@@ -162,6 +173,10 @@ public class RegisterBoardLeftController {
 	// 반납 신청
 	@RequestMapping("/endrent")
 	public String endrent(Model model, HttpServletRequest request) {
+		
+		//마이페이지 판별
+		String mypage = request.getParameter("mypage");
+		model.addAttribute("mypage", mypage);
 
 		// 로그인 정보 확인
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -197,15 +212,23 @@ public class RegisterBoardLeftController {
 
 		model.addAttribute("MyRegisterselect", MyRegisterselect);
 
-		model.addAttribute("CONTENT", "menu/menu2/left_menu/menu2_2.jsp");
-		model.addAttribute("LEFT", "menu/menu2/left.jsp");
-
+		
+		if(mypage.equals("mypage")){
+			model.addAttribute("LEFT", "join/mypage_left.jsp");
+			model.addAttribute("CONTENT", "join/myrentlist.jsp");
+		} else {
+			model.addAttribute("LEFT", "menu/menu2/left.jsp");
+			model.addAttribute("CONTENT", "menu/menu2/left_menu/menu2_2.jsp");
+		}
+		
 		return "main";
 	}
 
 	// 대여 취소
 	@RequestMapping("/rentcancel")
 	public String rentcancel(Model model, HttpServletRequest request) {
+		
+		String mypage = request.getParameter("mypage");
 
 		// 현재시간 가져오기
 		long time = System.currentTimeMillis();
@@ -250,7 +273,7 @@ public class RegisterBoardLeftController {
 		checkvo.setRentter("");
 		checkBoardDaoImpl.Checkrentterup(checkvo);
 
-		if (pagecheck == "admin") {
+		if (pagecheck.equals("admin")) {
 
 			String possibility = "대여신청";
 			List<RegisterBoardVO> rentreadylist = registerBoardDaoImpl.Registerpossibility(possibility);
@@ -258,13 +281,21 @@ public class RegisterBoardLeftController {
 			model.addAttribute("CONTENT", "menu/menu2/left_menu/registeradminpage.jsp");
 
 		} else {
-			// 나의 대여목록
-			List<RegisterBoardVO> MyRegisterselect = registerBoardDaoImpl.MyRegisterselect(session_id);
-			model.addAttribute("MyRegisterselect", MyRegisterselect);
-			model.addAttribute("CONTENT", "menu/menu2/left_menu/menu2_2.jsp");
-		}
+			
+			if(mypage.equals("mypage")){
 
-		model.addAttribute("LEFT", "menu/menu2/left.jsp");
+				List<RegisterBoardVO> MyRegisterselect = registerBoardDaoImpl.MyRegisterselect(session_id);
+				model.addAttribute("MyRegisterselect", MyRegisterselect);
+				model.addAttribute("CONTENT", "join/myrentlist.jsp");
+				model.addAttribute("LEFT", "join/mypage_left.jsp");
+			} else {
+			// 나의 대여목록
+				List<RegisterBoardVO> MyRegisterselect = registerBoardDaoImpl.MyRegisterselect(session_id);
+				model.addAttribute("MyRegisterselect", MyRegisterselect);
+				model.addAttribute("CONTENT", "menu/menu2/left_menu/menu2_2.jsp");
+				model.addAttribute("LEFT", "menu/menu2/left.jsp");
+			}
+		}
 
 		return "main";
 	}
@@ -287,7 +318,7 @@ public class RegisterBoardLeftController {
 		return "main";
 	}
 
-	// 대여 취소 admin만 가능
+	// 반납신청 admin만 가능
 	@RequestMapping("/rentcancelend")
 	public String rentcancelend(Model model, HttpServletRequest request) throws Exception {
 
@@ -333,7 +364,7 @@ public class RegisterBoardLeftController {
 		List<StorageBoardVO> storagecount = storageBoardDaoImpl.codeNumCount(codeNum);
 		model.addAttribute("storagecount", storagecount);
 
-		String possibility = "대여신청";
+		String possibility = "반납신청";
 		List<RegisterBoardVO> rentreadylist = registerBoardDaoImpl.Registerpossibility(possibility);
 		model.addAttribute("rentreadylist", rentreadylist);
 		model.addAttribute("CONTENT", "menu/menu2/left_menu/registeradminpage.jsp");
@@ -369,6 +400,7 @@ public class RegisterBoardLeftController {
 
 		String possibility = "반납신청";
 		List<RegisterBoardVO> rentreadylist = registerBoardDaoImpl.Registerpossibility(possibility);
+		
 		model.addAttribute("rentreadylist", rentreadylist);
 		model.addAttribute("CONTENT", "menu/menu2/left_menu/registeradminpage.jsp");
 		model.addAttribute("LEFT", "menu/menu2/left.jsp");

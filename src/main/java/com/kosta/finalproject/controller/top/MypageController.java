@@ -70,9 +70,11 @@ public class MypageController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 		model.addAttribute("session_id", session_id);
+		String mypage = "mypage";
 
 		List<RequestBoardVO> myrequest = requestBoardDaoImpl.RequestBoardUserSelectAll(session_id);
 
+		model.addAttribute("mypage", mypage);
 		model.addAttribute("myrequest", myrequest);
 		model.addAttribute("CONTENT", "mypage/myrequest.jsp");
 		model.addAttribute("LEFT", "join/mypage_left.jsp");

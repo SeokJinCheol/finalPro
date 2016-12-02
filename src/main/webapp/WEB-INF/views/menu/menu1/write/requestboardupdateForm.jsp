@@ -82,6 +82,7 @@
 							<td><textarea name="contents" cols="30" rows="15" required maxlength="350">${updatelist.contents}</textarea></td>
 						</tr>
 					</table>
+					<input type="hidden" value="${mypage}" name="mypage">
 					<input type="submit" value="수정하기">
 				</form>
 				<c:if test="${updatelist.packageStatus == '심사중'}">

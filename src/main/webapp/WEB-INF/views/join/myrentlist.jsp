@@ -57,24 +57,23 @@
 		                        <c:if test="${MyRegisterselect.packageStatus == '대여중'}">
 									<form action="reviewendrent" method="post">
 										<input type="hidden" value="${MyRegisterselect.codeNum}" name="codeNum">
-										
+										<input type="hidden" value="mypage" name="mypage">
 										<input type="submit" value="" class="mycancel2-btn w3-card-4">
 									</form>
 								</c:if>
 								
 								<c:if test="${MyRegisterselect.packageStatus == '대여신청'}">
 									<form action="rentcancel" method="post">
+										<input type="hidden" value="${MyRegisterselect.registerId}" name="rentter">
 										<input type="hidden" value="${MyRegisterselect.codeNum}" name="codeNum">
 										<input type="hidden" name="pagecheck" value="user">
-										
+										<input type="hidden" name="mypage" value="mypage">
 										<input type="submit" value="" class="mycancel-btn w3-card-4">
 									</form>
 								</c:if>
 								
 								<c:if test="${MyRegisterselect.packageStatus != '대여신청'}">
-									<c:if test="${MyRegisterselect.packageStatus != '대여신청'}">
-										${MyRegisterselect.packageStatus}
-									</c:if>
+									${MyRegisterselect.packageStatus}
 								</c:if>
 		                    </td>
 						</tr>

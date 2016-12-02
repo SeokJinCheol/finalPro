@@ -313,10 +313,11 @@ public class RegisterBoardController {
 		storageBoardDaoImpl.storageinsert(storagevo);
 
 		// 대여목록
-		List<RegisterBoardVO> Registerselect = registerBoardDaoImpl.Registerselect();
-		model.addAttribute("Registerselect", Registerselect);
+		String possibility = "대여신청";
+		List<RegisterBoardVO> Registerselect = registerBoardDaoImpl.Registerpossibility(possibility);
+		model.addAttribute("rentreadylist", Registerselect);
 
-		model.addAttribute("CONTENT", "menu/menu2/menu2.jsp");
+		model.addAttribute("CONTENT", "menu/menu2/left_menu/registeradminpage.jsp");
 		model.addAttribute("LEFT", "menu/menu2/left.jsp");
 		return "main";
 	}

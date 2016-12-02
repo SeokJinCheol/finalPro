@@ -79,7 +79,11 @@ public class RequestBoardLeftController {
 	// 등록 글 수정폼
 	@RequestMapping("/RequestBoardUpdateForm")
 	public String RequestBoardUpdateForm(Model model, HttpServletRequest request) {
-
+		
+		//마이페이지 판별
+		String mypage = request.getParameter("mypage");
+		model.addAttribute("mypage", mypage);
+		
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
@@ -91,7 +95,9 @@ public class RequestBoardLeftController {
 		List<RequestBoardVO> updatelist = requestBoardDaoImpl.RequestBoardUpdateForm(codeNum);
 
 		model.addAttribute("CONTENT", "menu/menu1/write/requestboardupdateForm.jsp");
-		model.addAttribute("LEFT", "menu/menu1/left.jsp");
+		if(mypage.equals("mypage")){
+			model.addAttribute("LEFT", "join/mypage_left.jsp");
+		}else model.addAttribute("LEFT", "menu/menu1/left.jsp");
 		model.addAttribute("updatelist", updatelist);
 
 		return "main";
@@ -99,6 +105,10 @@ public class RequestBoardLeftController {
 
 	@RequestMapping("/requestBoardUpdate")
 	public String requestBoardUpdate(Model model, HttpServletRequest request) throws Exception {
+		
+		//마이페이지 판별
+		String mypage = request.getParameter("mypage");
+		model.addAttribute("mypage", mypage);
 
 		// 날짜 변환
 		SimpleDateFormat simpledate = new SimpleDateFormat("yyyy-MM-dd");
@@ -127,11 +137,17 @@ public class RequestBoardLeftController {
 		requestBoardDaoImpl.requestBoardUpdate(vo);
 
 		// 내가 등록 한글
-		List<RequestBoardVO> requestlist = requestBoardDaoImpl.RequestBoardUserSelectAll(session_id);
+		List<RequestBoardVO> myrequest = requestBoardDaoImpl.RequestBoardUserSelectAll(session_id);
 
-		model.addAttribute("CONTENT", "menu/menu1/left_menu/menu1_3.jsp");
-		model.addAttribute("LEFT", "menu/menu1/left.jsp");
-		model.addAttribute("requestlist", requestlist);
+		model.addAttribute("requestlist", myrequest);
+		model.addAttribute("myrequest", myrequest);
+		if(mypage.equals("mypage")){
+			model.addAttribute("LEFT", "join/mypage_left.jsp");
+			model.addAttribute("CONTENT", "mypage/myrequest.jsp");
+		}else{ 
+			model.addAttribute("LEFT", "menu/menu1/left.jsp");
+			model.addAttribute("CONTENT", "menu/menu1/left_menu/menu1_3.jsp");
+		}
 
 		return "main";
 	}
@@ -159,6 +175,10 @@ public class RequestBoardLeftController {
 
 	@RequestMapping("/RequestEnd")
 	public String RequestEnd(Model model, HttpServletRequest request) {
+		
+		//마이페이지 판별
+		String mypage = request.getParameter("mypage");
+		model.addAttribute("mypage", mypage);
 
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -172,11 +192,18 @@ public class RequestBoardLeftController {
 		requestBoardDaoImpl.packageStatusupdate(vo);
 
 		// 내 목록보기
-		List<RequestBoardVO> requestlist = requestBoardDaoImpl.RequestBoardUserSelectAll(session_id);
-		model.addAttribute("requestlist", requestlist);
+		List<RequestBoardVO> myrequest = requestBoardDaoImpl.RequestBoardUserSelectAll(session_id);
+		
+		model.addAttribute("requestlist", myrequest);
+		model.addAttribute("myrequest", myrequest);
 
-		model.addAttribute("CONTENT", "menu/menu1/left_menu/menu1_3.jsp");
-		model.addAttribute("LEFT", "menu/menu1/left.jsp");
+		if(mypage.equals("mypage")){
+			model.addAttribute("LEFT", "join/mypage_left.jsp");
+			model.addAttribute("CONTENT", "mypage/myrequest.jsp");
+		}else{ 
+			model.addAttribute("LEFT", "menu/menu1/left.jsp");
+			model.addAttribute("CONTENT", "menu/menu1/left_menu/menu1_3.jsp");
+		}
 
 		return "main";
 	}

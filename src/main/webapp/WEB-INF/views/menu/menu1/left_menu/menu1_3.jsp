@@ -34,7 +34,7 @@
 						<td>${requestlist.title}</td>
 						<td>${requestlist.packageStatus}</td>
 						<td>
-							<form action="RequestBoardUpdateForm">
+							<form action="RequestBoardUpdateForm" method="post">
 								<input type="hidden" name="codeNum" value="${requestlist.codeNum}">
 								<input type="submit" value="수정하기">
 							</form>

@@ -34,13 +34,16 @@
 							<c:if test="${MyRegisterselect.packageStatus == '대여중'}">
 								<form action="reviewendrent" method="post">
 									<input type="hidden" value="${MyRegisterselect.codeNum}" name="codeNum">
+									<input type="hidden" value="nomypage" name="mypage">
 									<input type="submit" value="반납신청">
 								</form>
 							</c:if>
-							<c:if test="${MyRegisterselect.packageStatus == '대여신청' or MyRegisterselect.packageStatus == '기간종료'}">
+							<c:if test="${MyRegisterselect.packageStatus == '대여신청'}">
 								<form action="rentcancel" method="post">
 									<input type="hidden" value="${MyRegisterselect.codeNum}" name="codeNum">
-									<input type="hidden" name="pagecheck" value="user">
+									<input type="hidden" value="user" name="pagecheck" >
+									<input type="hidden" value="nomypage"  name="mypage">
+									<input type="hidden" value="${session_id}" name="rentter">
 									<input type="submit" value="신청취소">
 								</form>
 							</c:if>

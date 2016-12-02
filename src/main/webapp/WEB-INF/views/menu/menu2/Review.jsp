@@ -49,7 +49,7 @@
 			</table>
 			
 			<input type="hidden" value="${codeNum}" name="codeNum">
-			
+			<input type="hidden" value="${mypage}" name="mypage">
 			<p>
 				<input type="submit" class="free_insert w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;게　시" />
 				&nbsp;&nbsp;&nbsp;

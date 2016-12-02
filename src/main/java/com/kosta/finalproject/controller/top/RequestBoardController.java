@@ -167,6 +167,8 @@ public class RequestBoardController {
 
    @RequestMapping("/Requestboardend")
    public String Requestboardend(Model model, HttpServletRequest request) {
+	   
+	  String pagecheck = request.getParameter("pagecheck");
 
       // id 받아오기
       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
