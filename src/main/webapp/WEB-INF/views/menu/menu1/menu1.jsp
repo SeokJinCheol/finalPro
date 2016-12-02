@@ -40,7 +40,7 @@
 
 		<!-- 글쓰기 버튼 -->
 		<div style="margin-bottom: 20px; width: 90%;">
-			<security:authorize ifAnyGranted="role_user, role_com, role_master">
+			<security:authorize ifAnyGranted="role_user, role_com">
 				<div class="w3-row">
 					<div class="w3-col w3-right" style="margin-right: 30px; width: 10%; margin-bottom: 10px;">
 						<br>
@@ -51,6 +51,15 @@
 			</security:authorize>
 
 			<security:authorize ifNotGranted="role_user, role_com, role_master">
+				<div class="w3-row">
+					<div class="w3-col w3-right" style="margin-right: 5px; width: 10%; margin-bottom: 7px;">
+						<br> 
+						<br>
+					</div>
+				</div>
+			</security:authorize>
+			
+			<security:authorize ifAnyGranted="role_master">
 				<div class="w3-row">
 					<div class="w3-col w3-right" style="margin-right: 5px; width: 10%; margin-bottom: 7px;">
 						<br> 

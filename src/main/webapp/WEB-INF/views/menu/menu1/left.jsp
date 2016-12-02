@@ -36,6 +36,12 @@
   		</c:if>
 	
 		<c:if test="${session_id == 'admin'}">
+			<div class="left-menu"><a href="menu1" class="rollover">
+				<img src="/team4/resources/images/left-freeboard11.png" style="margin-right:5px;">
+				<img src="/team4/resources/images/free_list.png" class="imgover" style="margin-right:5px;">
+				&nbsp;전 체 등 록 된 목 록</a></div><br>
+		
+		
 			<div class="left-menu"><a href="rentready" class="rollover">
 				<img src="/team4/resources/images/left-menu41.png" style="margin-right:5px;">
 				<img src="/team4/resources/images/left-menu42.png" class="imgover" style="margin-right:5px;">

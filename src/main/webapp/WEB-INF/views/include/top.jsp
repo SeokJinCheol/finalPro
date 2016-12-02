@@ -135,6 +135,7 @@
 	        <security:authorize ifAnyGranted="role_master">
 	       		<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="menu1">물 품 등 록&nbsp;<i class="fa fa-caret-down"></i></a>
 					<div class="w3-dropdown-content w3-white w3-card-4">
+	       				<a href="menu1">전 체 등 록 된 목 록</a>
 	       				<a href="rentready">심 사 대 기 현 황</a>
 	       				<a href="rentend">대 여 종 료 대 기</a>
 	       			</div>
