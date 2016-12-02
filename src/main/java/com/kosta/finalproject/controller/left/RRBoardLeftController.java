@@ -2,6 +2,8 @@ package com.kosta.finalproject.controller.left;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,12 +13,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kosta.finalproject.dao.MailImpl;
 import com.kosta.finalproject.dao.RRBoardDaoImpl;
+import com.kosta.finalproject.vo.MailVO;
 import com.kosta.finalproject.vo.RPboardVO;
 import com.kosta.finalproject.vo.RRboardVO;
 import com.kosta.finalproject.vo.SearchVO;
@@ -25,6 +30,9 @@ import com.kosta.finalproject.vo.UploadVO;
 @Controller
 public class RRBoardLeftController {
 
+	@Autowired
+	MailImpl mailImpl;
+	
 	@Autowired
 	private RRBoardDaoImpl dao;
 
@@ -324,7 +332,8 @@ public class RRBoardLeftController {
 
 
 	@RequestMapping("/setRRBstatus")
-	public String RRset(Model model, @RequestParam("status") String status, @RequestParam("codeNum") int codeNum) {
+	public String RRset(Model model, @RequestParam("status") String status, @RequestParam("codeNum") int codeNum,
+							@RequestParam("Rid")String rid) {
 
 		RRboardVO vo = new RRboardVO();
 
@@ -333,6 +342,24 @@ public class RRBoardLeftController {
 
 		dao.setRRStatus(vo);
 
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+		
+		// 현재시간 가져오기
+		long time = System.currentTimeMillis();
+		SimpleDateFormat ctime = new SimpleDateFormat("yyyy-MM-dd");
+		String CurrentTime = ctime.format(new Date(time));
+
+		MailVO mailvo = new MailVO();
+		
+		mailvo.setRid(rid);
+		mailvo.setSid(session_id);
+		mailvo.setText(codeNum+"번 글의 상태가 "+status+"로 변경 됐습니다.");
+		mailvo.setSenddate(CurrentTime);
+
+		mailImpl.sendmail(mailvo);
+
+		
 		return "redirect:RRlist?status='허가대기'";
 	}
 
@@ -481,7 +508,8 @@ public class RRBoardLeftController {
 	}
 
 	@RequestMapping("/setRPBstatus")
-	public String setRPBstatus(Model model, @RequestParam("seqNum") int seqNum, @RequestParam("status") String status) {
+	public String setRPBstatus(Model model, @RequestParam("seqNum") int seqNum, @RequestParam("status") String status,
+			@RequestParam("Rid")String rid, @RequestParam("codeNum")int codeNum) {
 		// vo 생성
 		RPboardVO vo = new RPboardVO();
 		// 세팅
@@ -491,6 +519,23 @@ public class RRBoardLeftController {
 		System.out.println("sta" + status);
 
 		dao.setRPBstatus(vo);
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+		
+		// 현재시간 가져오기
+		long time = System.currentTimeMillis();
+		SimpleDateFormat ctime = new SimpleDateFormat("yyyy-MM-dd");
+		String CurrentTime = ctime.format(new Date(time));
+
+		MailVO mailvo = new MailVO();
+		
+		mailvo.setRid(rid);
+		mailvo.setSid(session_id);
+		mailvo.setText(codeNum+"번 글에 대한 대관 신청 상태가 "+status+"로 변경 됐습니다.");
+		mailvo.setSenddate(CurrentTime);
+
+		mailImpl.sendmail(mailvo);
 
 		return "redirect:menu3_5";
 	}
