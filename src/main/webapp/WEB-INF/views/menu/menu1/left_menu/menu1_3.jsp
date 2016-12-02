@@ -23,9 +23,8 @@
 		<div style="margin-bottom: 20px; width: 90%;">
 			<security:authorize ifAnyGranted="role_user, role_com, role_master">
 				<div class="w3-row">
-					<div class="w3-col w3-right" style="margin-right: 30px; width: 10%; margin-bottom: 10px;">
+					<div class="w3-col w3-right" style="margin-right: 88px; width: 10%; margin-bottom: 10px;">
 						<br>
-						<br> 
 						<input type="button" class="button-write" value="글 쓰 기" onclick="location='requestwriteform'">
 					</div>
 				</div>
@@ -34,7 +33,6 @@
 			<security:authorize ifNotGranted="role_user, role_com, role_master">
 				<div class="w3-row">
 					<div class="w3-col w3-right" style="margin-right: 5px; width: 10%; margin-bottom: 7px;">
-						<br> 
 						<br>
 					</div>
 				</div>
