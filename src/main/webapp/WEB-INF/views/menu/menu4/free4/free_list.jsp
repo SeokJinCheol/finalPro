@@ -28,7 +28,7 @@
 				       	<option value="id" style="text-align:center;">작성자</option>
 			        </select> 
 			        
-			        <input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" required="required"/>
+			        <input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" style="border-color: rgb(169, 169, 169);" required="required"/>
 			
 			        <input type="submit" value="Search" class="list-search" style="width: 8%">
 			    </form>
