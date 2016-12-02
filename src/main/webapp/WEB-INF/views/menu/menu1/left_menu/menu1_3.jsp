@@ -44,7 +44,7 @@
 							<c:if test="${requestlist.packageStatus != '심사중'}">
 								<form action="RequestEnd" method="post">
 									<input type="hidden" name="codeNum" value="${requestlist.codeNum}">
-									<input type="submit" value="대여종료신청">
+									<input type="submit" value="대여종료신청" onclick="stopStatus(); return false;"/>
 								</form>
 							</c:if>
 							</c:if>
@@ -60,4 +60,11 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	function stopStatus() {
+		if (confirm("대여 종료 하시겠습니까??") == true) {
+			document.form.submit();
+		} else { return false; }
+	}
+</script>
 </html>

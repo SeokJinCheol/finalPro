@@ -7,6 +7,14 @@
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+.left {
+	height: 250px;
+	float: left;
+	margin-left: 15px;
+	margin-bottom: 15px;
+	border: 1px solid;
+}
+
 .left-admin ul {
 	list-style-type: none;
 }
@@ -417,6 +425,53 @@
 }
 
 /* ///////////////////////////////////////////////////////////// */
+.button-write99 {
+	-moz-box-shadow: inset 0px 1px 0px 0px #dcecfb;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #dcecfb;
+	box-shadow: inset 0px 1px 0px 0px #dcecfb;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bddbfa
+		), color-stop(1, #80b5ea));
+	background: -moz-linear-gradient(top, #bddbfa 5%, #80b5ea 100%);
+	background: -webkit-linear-gradient(top, #bddbfa 5%, #80b5ea 100%);
+	background: -o-linear-gradient(top, #bddbfa 5%, #80b5ea 100%);
+	background: -ms-linear-gradient(top, #bddbfa 5%, #80b5ea 100%);
+	background: linear-gradient(to bottom, #bddbfa 5%, #80b5ea 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bddbfa',
+		endColorstr='#80b5ea', GradientType=0);
+	background-color: #bddbfa;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	border: 1px solid #84bbf3;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 2px 10px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #528ecc;
+}
+
+.button-write99:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #80b5ea
+		), color-stop(1, #bddbfa));
+	background: -moz-linear-gradient(top, #80b5ea 5%, #bddbfa 100%);
+	background: -webkit-linear-gradient(top, #80b5ea 5%, #bddbfa 100%);
+	background: -o-linear-gradient(top, #80b5ea 5%, #bddbfa 100%);
+	background: -ms-linear-gradient(top, #80b5ea 5%, #bddbfa 100%);
+	background: linear-gradient(to bottom, #80b5ea 5%, #bddbfa 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80b5ea',
+		endColorstr='#bddbfa', GradientType=0);
+	background-color: #80b5ea;
+}
+
+.button-write99:active {
+	position: relative;
+
+}
+
 .button-write22 {
 	-moz-box-shadow: inset 0px 1px 0px 0px #dcecfb;
 	-webkit-box-shadow: inset 0px 1px 0px 0px #dcecfb;
@@ -463,6 +518,7 @@
 	position: relative;
 	top: 1px;
 }
+
 .rollover img {
 	display: inline;
 }
@@ -695,6 +751,23 @@
 	padding-top: 3px;
 }
 
+.good1 {
+	width: 70px;
+	border: none;
+	display: inline-block;
+	outline: 0;
+	padding: 3px 5px;
+	vertical-align: middle;
+	overflow: hidden;
+	text-decoration: none !important;
+	color: #fff;
+	background-color: #80b5ea;
+	text-align: center;
+	cursor: pointer;
+	white-space: nowrap;
+	border-radius: 10px;
+}
+
 .free_update-btn {
 	width: 95px;
 	border: none;
@@ -718,6 +791,26 @@
 	background-size: 28px 28px;
 	padding-top: 3px;
 }
+
+.good11 {
+	width: 83px;
+	border: none;
+	display: inline-block;
+	outline: 0;
+	padding: 6px 16px;
+	vertical-align: middle;
+	overflow: hidden;
+	text-decoration: none !important;
+	color: #000;
+	text-align: right;
+	cursor: pointer;
+	white-space: nowrap;
+	background-image: url("/team4/resources/images/good11.png");
+	background-repeat: no-repeat;
+	background-position: 3px;
+	background-size: 25px 25px;
+}
+
 
 .free_update-btn222 {
 	width: 95px;
@@ -1322,7 +1415,6 @@
 	background-repeat: no-repeat;
 	background-position: 10px;
 	background-size: 30px 30px;
-
 }
 
 .mang-btn:hover {
@@ -1347,7 +1439,6 @@
 	position: relative;
 	top: 1px;
 }
-
 
 .myfinish2-btn {
 	-moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
@@ -1481,6 +1572,7 @@
 	background-size: 30px 30px;
 	background-image: url("/team4/resources/images/login32.png")
 }
+
 .login-btn22 {
 	border: none;
 	display: inline-block;
@@ -1495,7 +1587,6 @@
 	cursor: pointer;
 	white-space: nowrap;
 	margin-bottom: 20px;
-	
 }
 
 .login-btn:hover {
@@ -1517,6 +1608,7 @@
 	background-position: 10px;
 	background-size: 30px 30px;
 }
+
 .login-btn22:hover {
 	border: none;
 	display: inline-block;
@@ -1532,6 +1624,7 @@
 	white-space: nowrap;
 	margin-bottom: 20px;
 }
+
 .message {
 	color: #808080;
 	font-size: 12px;
@@ -2038,6 +2131,10 @@ audio
 
 
 
+
+
+
+
 :not
 
 
@@ -2123,7 +2220,11 @@ audio
 
 
 
+
+
  
+
+
 
 
 
@@ -2296,7 +2397,11 @@ controls
 
 
 
+
+
  
+
+
 
 
 
@@ -2551,7 +2656,13 @@ display
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -2721,7 +2832,13 @@ display
 
 
 
+
+
 none
+
+
+
+
 
 
 
@@ -3060,6 +3177,10 @@ height
 
 
 
+
+
+
+
 :
 
 
@@ -3145,7 +3266,11 @@ height
 
 
 
+
+
  
+
+
 
 
 
@@ -3452,6 +3577,10 @@ svg
 
 
 
+
+
+
+
 :not
 
 
@@ -3537,7 +3666,11 @@ svg
 
 
 
+
+
  
+
+
 
 
 
@@ -3708,7 +3841,11 @@ svg
 
 
 
+
+
  
+
+
 
 
 
@@ -3963,7 +4100,13 @@ overflow
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -4133,7 +4276,13 @@ overflow
 
 
 
+
+
 hidden
+
+
+
+
 
 
 
@@ -4805,7 +4954,6 @@ ul.w3-ul li:last-child {
 	background-position: bottom;
 	transition: all 0.8s ease;
 	font: bolder;
-	
 }
 
 .w3-navbar .w3-dropdown-hover:hover, .w3-navbar .w3-dropdown-hover:first-child,
@@ -5390,7 +5538,11 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -5644,6 +5796,10 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
+	
+	
 	:not
 	
 	
@@ -5729,7 +5885,11 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -5900,7 +6060,11 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -6155,7 +6319,13 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
+	
+	
 	:
+	
+	
 	
 	
 	
@@ -6325,7 +6495,13 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
 	none
+	
+	
+	
+	
 	
 	
 	
@@ -6664,6 +6840,10 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
+	
+	
 	:
 	
 	
@@ -6749,7 +6929,11 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -6923,6 +7107,10 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
+
+
 
 
 
@@ -7576,7 +7764,15 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -7919,7 +8115,15 @@ transform
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -8270,7 +8474,15 @@ keyframes w3-spin { 0%{
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -8613,7 +8825,15 @@ transform
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -9056,7 +9276,15 @@ opacity
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -9401,7 +9629,15 @@ opacity
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -9752,7 +9988,15 @@ opacity
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -10097,7 +10341,15 @@ opacity
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 

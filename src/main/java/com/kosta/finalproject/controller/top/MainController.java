@@ -360,9 +360,7 @@ public class MainController {
 
 		List<UsersVO> userlist = finalDaoImpl.getMembers();
 
-		model.addAttribute("result", userlist);
-
-		model.addAttribute("CONTENT", "mainpage.jsp");
+		model.addAttribute("CONTENT", "Login.jsp");
 
 		return "main";
 	}
@@ -406,9 +404,7 @@ public class MainController {
 
 		List<UsersVO> userlist = finalDaoImpl.getMembers();
 
-		model.addAttribute("result", userlist);
-
-		model.addAttribute("CONTENT", "mainpage.jsp");
+		model.addAttribute("CONTENT", "Login.jsp");
 		return "main";
 	}
 

@@ -77,10 +77,10 @@
 						
 						<tr height="20">
 		                	<td colspan="2">
-		                  		&nbsp;<input type="date" class="free-insert-title" style="width:34%; text-align: center" name="userstartDate" value="${vo.userstartDate}"/>
+		                  		&nbsp;<input type="date" class="free-insert-title" style="width:34%; text-align: center" name="userstartDate" min="${vo.startDate }" max="${vo.endDate }" value="${vo.userstartDate}"/>
 		                  		<!-- ~ 앞뒤로 ㄱ한자 1 숨겨져 있음 -->
 		                  		　~　
-		                  		<input type="date" class="free-insert-title" style="width:34%; text-align: center" name="userendDate" value="${vo.userendDate}"/>
+		                  		<input type="date" class="free-insert-title" style="width:34%; text-align: center" name="userendDate" min="${vo.startDate }" max="${vo.endDate }" value="${vo.userendDate}"/>
 		                  	</td>
 		               	</tr>
 	

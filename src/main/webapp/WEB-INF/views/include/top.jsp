@@ -19,7 +19,7 @@
 				<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="main"><img src="/team4/resources/images/home18.png">&nbsp;H o m e</a></li>
 				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><a href="about_us"><img src="/team4/resources/images/korea18.png">&nbsp;About us</a></li>
 				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QnA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
-				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><input type="button"  name="cost" value="대여비용" style="margin-right:5px;" onclick="openCost(this.form)"></li>
+				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><input class="button-write99" type="button"  name="cost" value="대여비용" style="margin-right:5px;" onclick="openCost(this.form)"></li>
 				<li style="width:25%; padding: 0 0 3px 0;"><img class="w3-animate-opacity" src="/team4/resources/images/test-top.png" onclick="location.href='main'"></li>
 				<li style="width:30%"><p></p></li>
 				
@@ -44,7 +44,7 @@
 				<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="main"><img src="/team4/resources/images/home18.png">&nbsp;H o m e</a></li>
 				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><a href="about_us"><img src="/team4/resources/images/korea18.png">&nbsp;About us</a></li>
 				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QnA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
-				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><input type="button"  name="cost" value="대여비용" style="margin-right:5px;" onclick="openCost(this.form)"></li>
+				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><input class="button-write99" type="button"  name="cost" value="대여비용" style="margin-right:5px;" onclick="openCost(this.form)"></li>
 				<li style="width:25%; padding: 0 0 3px 0;"><img class="w3-animate-opacity" src="/team4/resources/images/test-top.png" onclick="location.href='main'"></li>
 				<li style="width:30%"><p></p></li>
 				
@@ -68,7 +68,7 @@
 				<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="main"><img src="/team4/resources/images/home18.png">&nbsp;H o m e</a></li>
 				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><a href="about_us"><img src="/team4/resources/images/korea18.png">&nbsp;About us</a></li>
 				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QnA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
-				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><input type="button"  name="cost" value="대여비용" style="margin-right:5px;" onclick="openCost(this.form)"></li>
+				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><input class="button-write99" type="button"  name="cost" value="대여비용" style="margin-right:5px;" onclick="openCost(this.form)"></li>
 				<li style="width:25%; padding: 0 0 3px 0;"><img class="w3-animate-opacity" src="/team4/resources/images/test-top.png" onclick="location.href='main'"></li>
 				<li style="width:22%"><p></p></li>
 				
@@ -81,7 +81,7 @@
 						
 			   			<input type="text" name="word" value="${word}"/><input type="submit" value ="검색">
 			  		</form>
-               </li> --%>
+                </li> --%>
 
 		   		<li style="width:9%; padding: 45px 0 3px 0; font-size: 1px;"><a href="<c:url value="j_spring_security_logout"/>"><img src="/team4/resources/images/logout18.png">&nbsp;L o g o u t</a></li>	
 		    	<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="mypage"><img src="/team4/resources/images/mypage18.png">&nbsp;My Page</a></li>
@@ -110,8 +110,9 @@
 				<security:authorize ifNotGranted="role_user, role_com, role_master">
 					<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="Login">물 품 등 록&nbsp;<i class="fa fa-caret-down"></i></a>
 						<div class="w3-dropdown-content w3-white w3-card-4">
-				        	<a href="Login">업 체 등 록 현 황</a>
-				        	<a href="Login">개 인 등 록 현 황</a>
+				        	<a href="Login">전 체 등 록 된 목 록</a>
+				        	<a href="Login">업 체 별 등 록 현 황</a>
+				        	<a href="Login">개 인 별 등 록 현 황</a>
 				    		<a href="Login">나 의 등 록 현 황</a>
 				    	</div>
 				    </li>
@@ -121,8 +122,9 @@
 				<security:authorize ifAnyGranted="role_user, role_com">
 					<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="menu1">물 품 등 록&nbsp;<i class="fa fa-caret-down"></i></a>
 						<div class="w3-dropdown-content w3-white w3-card-4">
-				        	<a href="menu1_1">업 체 등 록 현 황</a>
-				        	<a href="menu1_2">개 인 등 록 현 황</a>
+				        	<a href="menu1">전 체 등 록 된 목 록</a>
+				        	<a href="menu1_1">업 체 별 등 록 현 황</a>
+				        	<a href="menu1_2">개 인 별 등 록 현 황</a>
 				    		<a href="menu1_3">나 의 등 록 현 황</a>
 				    	</div>
 				    </li>
