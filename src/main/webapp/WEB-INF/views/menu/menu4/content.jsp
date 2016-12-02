@@ -7,69 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-<script type="text/javascript">
-getReplylist();
-function writereply() {
-   $.ajax({
-      type:"POST",
-      url:"writeReply",
-      cache:false,
-      datatype:"json",
-      data: {'bNum':$("#bNum").val(),'bgnum':$("#bgnum").val(),'groupnum':$("#groupnum").val(),'ranknum':$("#ranknum").val(),'id':$("#id").val(),'contents':$("#contents").val()},
-      
-      success: function (data){
-         
-         alert("답글작성");
-         getReplylist();
-      },
-      complete: function (data) {
-         $("#contents").val('');
-      }
-   });
-}
-function getReplylist() {
-	   
-	   var bgnum=${result.bgnum};
-	   var str="";
-	   var imglink="resources/images/redelete.png";
-	   var session_id="${session_id}";
-	   $.getJSON("/team4/replylist/"+bgnum,function(data){
-	      console.log(data.length);
-	      $(data).each(
-	         function(){
-	             str +="<tr style='border-top: 2px solid #000; border-bottom: 2px solid #000;'>"+"<td width='15%'>"
-	                +this.id+"</td>"+"<td width='40%'>"
-	                +this.contents+"</td>"+"<td width='17%'>"
-	                +this.bDate+"</td>";
-	            if((this.id == session_id) || (session_id == 'admin')){
-	               str+= "<td><form>"+
-	                "<input class='reply-btn2' type='button' onclick='replydelete()' style='background-image:url("+imglink+"); width: 30px; background-repeat: no-repeat; background-position: center;' value=''>"
-	                +"<input type='hidden' id='reply_bNum' name='reply_bNum' value="+this.bNum+">"+
-	                "<input type='hidden' id='bnum' name='bnum' value='${result.id}'>"+
-	                "</form></td></tr>";
-	            }else{
-	               str+="<td></td></tr>";
-	            } 
-	            
-	         });
-	      $("#replylist").html(str);
-	   });
-	}
-function replydelete(){
-	   $.ajax({
-	      type:"POST",
-	      url:"deleteReply",
-	      cache:false,
-	      datatype:"json",
-	      data: {'id':$("#id").val(),'bNum':$("#reply_bNum").val()},
-	      success: function (data){
-	         alert("답글삭제!!");
-	         getReplylist();
-	      }
-	      });
-	   }
-</script>
+
 <title>요청게시판_상세보기</title>
 <!-- CSS 연결-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -206,81 +144,75 @@ function replydelete(){
 			<!-- 리플 리스트 -->
 			<table id="replylist"
 				style="border-collapse: collapse; border-spacing: 0; width: 559px; height: 40px; text-align: center;">
-				<%-- <%-- <c:forEach items="${result1}" var="result">
-					<c:if test="${result.groupnum != 0}">
-						<tr
-							style="border-top: 2px solid black; border-bottom: 2px solid black;">
-							<td width="15%"><c:if test="${ result.ranknum>1}">
-									<c:forEach begin="1" end="${ result.ranknum -1}">ㅡ>&nbsp;&nbsp;</c:forEach>
-								</c:if> ${result.id }</td>
-
-							<td width="50%">${result.contents} <input type="hidden"
-								value="${result.contents}" name="contents">
-							</td>
-
-							<!-- 날짜 -->
-							<td width="25%"><fmt:formatDate value="${result.bDate}"
-									pattern="yyyy-MM-dd" /></td>
-
-							<td>
-								<!-- 댓글에 댓글버튼 -->
-								<form action="insert_reply" method=post style="width:20px;">
-			                        <input class="reply-btn2" type="submit" style="background-image: url('/team4/resources/images/arrow.png'); width:30px; background-repeat: no-repeat; background-position: center;" value="">
-			                        <input type="hidden" name="bNum" value="${result.bNum}">
-			                        <input type="hidden" name="bgnum" value="${result.bgnum}">
-			                        <input type="hidden" name="groupnum" value="${result.groupnum}">
-			                        <input type="hidden" name="ranknum" value="${result.ranknum}">
-		                   		</form>
-							</td>
-
-							<td>
-								<!-- 내가 쓴 리플 수정/삭제 --> <security:authorize
-									ifNotGranted="role_master">
-									<c:if test="${result.id == session_id}">
-										<!-- 수정버튼 -->
-										<form action="update_reply" method=post>
-					                        <input class="reply-btn2" type="submit" style="background-image: url('/team4/resources/images/reupdate.png'); width:30px; background-repeat: no-repeat; background-position: center;" value="">
-					                        <input type="hidden" name="bNum" value="${result.bNum}">
-					                        <input type="hidden" name="bgnum" value="${result.bgnum}">
-					                        <input type="hidden" name="id" value="${result.id}">
-				                   		</form>
-
-										<!-- 삭제버튼 -->
-										<form action="deleteForm" method=post style="width: 20px;">
-											<input class="reply-btn2" type="submit"
-												style="background-image: url('/team4/resources/images/redelete.png'); width: 30px; background-repeat: no-repeat; background-position: center;"
-												value=""> <input type="hidden" name="bNum"
-												value="${result.bNum}"> <input type="hidden"
-												name="bgnum" value="${result.bgnum}"> <input
-												type="hidden" name="id" value="${result.id}">
-										</form>
-									</c:if>
-								</security:authorize> <!-- 관리자일 경우 모든 댓글 삭제 가능 --> <security:authorize
-									ifAnyGranted="role_master">
-									<!-- 수정버튼 -->
-									<form action="update_reply" method=post>
-				                        <input class="reply-btn2" type="submit" style="background-image: url('/team4/resources/images/reupdate.png'); width:30px; background-repeat: no-repeat; background-position: center;" value="">
-				                        <input type="hidden" name="bNum" value="${result.bNum}">
-				                        <input type="hidden" name="bgnum" value="${result.bgnum}">
-				                        <input type="hidden" name="id" value="${result.id}">
-			                   		</form>
-
-									<!-- 삭제버튼 -->
-									<form action="deleteForm" method=post style="width: 20px;">
-										<input class="reply-btn2" type="submit"
-											style="background-image: url('/team4/resources/images/redelete.png'); width: 30px; background-repeat: no-repeat; background-position: center;"
-											value=""> <input type="hidden" name="bNum"
-											value="${result.bNum}"> <input type="hidden"
-											name="bgnum" value="${result.bgnum}"> <input
-											type="hidden" name="id" value="${result.id}">
-									</form>
-								</security:authorize>
-							</td>
-						</tr>
-					</c:if>
-				</c:forEach> --%>
+				
 			</table>
 		</div>
 	</div>
 </body>
+<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+getReplylist();
+function writereply() {
+   $.ajax({
+      type:"POST",
+      url:"writeReply",
+      cache:false,
+      datatype:"json",
+      data: {'bNum':$("#bNum").val(),'bgnum':$("#bgnum").val(),'groupnum':$("#groupnum").val(),'ranknum':$("#ranknum").val(),'id':$("#id").val(),'contents':$("#contents").val()},
+      
+      success: function (data){
+         
+         alert("답글작성");
+         getReplylist();
+      },
+      complete: function (data) {
+         $("#contents").val('');
+      }
+   });
+}
+function getReplylist() {
+	   
+	   var bgnum=${result.bgnum};
+	   var str="";
+	   var imglink="resources/images/redelete.png";
+	   var session_id="${session_id}";
+	   $.getJSON("/team4/replylist/"+bgnum,function(data){
+	      console.log(data.length);
+	      $(data).each(
+	         function(){
+	             str +="<tr style='border-top: 2px solid #000; border-bottom: 2px solid #000;'>"+"<td width='15%'>"
+	                +this.id+"</td>"+"<td width='40%'>"
+	                +this.contents+"</td>"+"<td width='17%'>"
+	                +this.bDate+"</td>";
+	            if((this.id == session_id) || (session_id == 'admin')){
+	               str+= "<td data-id='"+this.id+"' data-rno='"+this.bNum+"'>"+
+	                "<input class='reply-btn2' type='button' style='background-image:url("+imglink+"); width: 30px; background-repeat: no-repeat; background-position: center;' value=''>"
+	                +"<input type='hidden' id='reply_bNum' name='reply_bNum' value="+this.bNum+">"+
+	                "<input type='hidden' id='bnum' name='bnum' value='${result.id}'>"+
+	                "</form></td></tr>";
+	            }else{
+	               str+="<td></td></tr>";
+	            } 
+	            
+	         });
+	      $("#replylist").html(str);
+	   });
+	}
+$("#replylist").on("click",".reply-btn2", function(){
+	var replylist = $(this).parent();
+	var id = replylist.attr("data-id");
+	var replynum = replylist.attr("data-rno");
+	   $.ajax({
+	      type:"POST",
+	      url:"deleteReply",
+	      cache:false,
+	      datatype:"json",
+	      data: {'id':id,'bNum':replynum},
+	      success: function (data){
+	         alert("답글삭제!!");
+	         getReplylist();
+	      }
+	      });
+	   });
+</script>
 </html>
