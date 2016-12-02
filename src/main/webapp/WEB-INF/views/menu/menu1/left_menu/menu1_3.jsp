@@ -36,6 +36,7 @@
 						<td>
 							<form action="RequestBoardUpdateForm" method="post">
 								<input type="hidden" name="codeNum" value="${requestlist.codeNum}">
+								<input type="hidden" name="mypage" value="nomypage">
 								<input type="submit" value="수정하기">
 							</form>
 						</td>

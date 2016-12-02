@@ -41,31 +41,12 @@
                </tr>
                <tr>
                <td>업체</td>
-                  
-                  <security:authorize ifAnyGranted="role_user">
-                     <td>
-                        <select name="company" required>
-                           <option value="개인">개인</option>
-                        </select>
-                     </td>
-                  </security:authorize>
-                  
-                  <security:authorize ifAnyGranted="role_com">
-                     <td>
-                        <select name="company" required>
-                           <option value="업체">업체</option>
-                        </select>
-                     </td>
-                  </security:authorize>
-                  
-                  <security:authorize ifAnyGranted="role_master">
-                     <td>
-                        <select name="company" required>
-                           <option value="개인">개인</option>
-                           <option value="업체">업체</option>
-                        </select>
-                     </td>
-                  </security:authorize>
+                   <td>
+                      <select name="company" required>
+                         <option value="개인">개인</option>
+                         <option value="업체">업체</option>
+                      </select>
+                   </td>
                </tr>
                <tr>
                   <td>이미지</td>
