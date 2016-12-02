@@ -160,7 +160,7 @@ function replywrite() {
       data: {'bnum':$("#bnum").val(),'title':$("#title").val(),'contents':$("#contents").val()},
       success: function (data){
          
-         alert("답글작성");
+        
          getReplylist();
       },
       complete: function (data) {
