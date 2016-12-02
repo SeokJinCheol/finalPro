@@ -72,37 +72,40 @@ public class RegisterBoardLeftController {
 		List<RegisterBoardVO> count = registerBoardDaoImpl.registercount();
 		int registercount = count.get(0).getCodeNum();
 		System.out.println(registercount);
-
-		SimpleDateFormat simpledate = new SimpleDateFormat("yyyy-MM-dd");
-		Date nowDate = simpledate.parse(CurrentTime);
-		Registerpossibility = registerBoardDaoImpl.Registerselect();
-
-		int i = 0;
-		while (true) {
-			if (Registerpossibility.get(i).getPackageStatus().equals("대여가능")) {
-				int codeNum = Registerpossibility.get(i).getCodeNum();
-				String endDate = Registerpossibility.get(i).getEndDate();
-				Date endDate1 = simpledate.parse(endDate);
-				// 종료 판별
-				if ((nowDate.getTime() - endDate1.getTime()) >= 0) {
-					String Status = "기간종료";
-					// 대여게시판 상황 변경
-					RegisterBoardVO registervo = new RegisterBoardVO();
-					registervo.setPackageStatus(Status);
-					registervo.setCodeNum(codeNum);
-					registerBoardDaoImpl.packageStatus(registervo);
-
-					// 체크 리스트 상황 변경
-					CheckBoardVO checkvo = new CheckBoardVO();
-					checkvo.setCodeNum(codeNum);
-					checkvo.setPackageStatus(Status);
-					checkBoardDaoImpl.packageStatus(checkvo);
+		
+		if(registercount != 0 ){
+		
+			SimpleDateFormat simpledate = new SimpleDateFormat("yyyy-MM-dd");
+			Date nowDate = simpledate.parse(CurrentTime);
+			Registerpossibility = registerBoardDaoImpl.Registerselect();
+	
+			int i = 0;
+			while (true) {
+				if (Registerpossibility.get(i).getPackageStatus().equals("대여가능")) {
+					int codeNum = Registerpossibility.get(i).getCodeNum();
+					String endDate = Registerpossibility.get(i).getEndDate();
+					Date endDate1 = simpledate.parse(endDate);
+					// 종료 판별
+					if ((nowDate.getTime() - endDate1.getTime()) >= 0) {
+						String Status = "기간종료";
+						// 대여게시판 상황 변경
+						RegisterBoardVO registervo = new RegisterBoardVO();
+						registervo.setPackageStatus(Status);
+						registervo.setCodeNum(codeNum);
+						registerBoardDaoImpl.packageStatus(registervo);
+	
+						// 체크 리스트 상황 변경
+						CheckBoardVO checkvo = new CheckBoardVO();
+						checkvo.setCodeNum(codeNum);
+						checkvo.setPackageStatus(Status);
+						checkBoardDaoImpl.packageStatus(checkvo);
+					}
 				}
+				if ((registercount - 1) == i) {
+					break;
+				} else
+					i++;
 			}
-			if ((registercount - 1) == i) {
-				break;
-			} else
-				i++;
 		}
 		// 기간종료 끝
 
@@ -229,6 +232,7 @@ public class RegisterBoardLeftController {
 	public String rentcancel(Model model, HttpServletRequest request) {
 		
 		String mypage = request.getParameter("mypage");
+		String pagecheck = request.getParameter("pagecheck");
 
 		// 현재시간 가져오기
 		long time = System.currentTimeMillis();
@@ -236,7 +240,6 @@ public class RegisterBoardLeftController {
 		String CurrentTime = ctime.format(new Date(time));
 
 		// 메일 발송
-		String pagecheck = request.getParameter("pagecheck");
 		String rentter = request.getParameter("rentter");
 		String codeNum = request.getParameter("codeNum");
 		String text = codeNum + "번의 대여 신청이 취소되었습니다.";
@@ -279,6 +282,7 @@ public class RegisterBoardLeftController {
 			List<RegisterBoardVO> rentreadylist = registerBoardDaoImpl.Registerpossibility(possibility);
 			model.addAttribute("rentreadylist", rentreadylist);
 			model.addAttribute("CONTENT", "menu/menu2/left_menu/registeradminpage.jsp");
+			model.addAttribute("LEFT", "menu/menu2/left.jsp");
 
 		} else {
 			

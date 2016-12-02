@@ -29,7 +29,7 @@
 					<option value="memberRank" style="text-align:center;">등 급</option>
 				</select>
 				
-				<input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" required="required"/>
+				<input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" style="border-color: rgb(169, 169, 169);" required="required"/>
 				
 				<input type="submit" class="list-search" value ="Search" style="width:8%;">
 			</form>

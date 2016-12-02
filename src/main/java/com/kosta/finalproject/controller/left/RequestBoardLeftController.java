@@ -1,5 +1,7 @@
 package com.kosta.finalproject.controller.left;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,15 +15,22 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.kosta.finalproject.dao.RegisterBoardDaoImpl;
 import com.kosta.finalproject.dao.RequestBoardDaoImpl;
+import com.kosta.finalproject.vo.RegisterBoardVO;
 import com.kosta.finalproject.vo.RequestBoardVO;
+import com.kosta.finalproject.vo.UploadVO;
 
 @Controller
 public class RequestBoardLeftController {
 
 	@Autowired
 	private RequestBoardDaoImpl requestBoardDaoImpl;
+	
+	@Autowired
+	private RegisterBoardDaoImpl registerBoardDaoImpl;
 
 	@RequestMapping("/menu1_1")
 	public String menu1_1(Model model) {
@@ -112,11 +121,43 @@ public class RequestBoardLeftController {
 	}
 
 	@RequestMapping("/requestBoardUpdate")
-	public String requestBoardUpdate(Model model, HttpServletRequest request) throws Exception {
+	public String requestBoardUpdate(Model model, HttpServletRequest request, UploadVO dto) throws Exception {
 		
 		//마이페이지 판별
 		String mypage = request.getParameter("mypage");
 		model.addAttribute("mypage", mypage);
+		
+		//이전 이미지 이름 받아오기
+		String img = request.getParameter("img");
+		System.out.println(img);
+		
+		//파일이 null 이 아니면 실행.
+	      String fileName = null;
+	      
+	      System.out.println("이미지 처리 시작");
+	      MultipartFile uploadfile = dto.getFile();
+	      if (uploadfile != null) {
+	          fileName = uploadfile.getOriginalFilename();
+	          if(!fileName.equals("")){
+	             dto.setOname(fileName);
+	             try {
+	                 File file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/RequestImg/" + fileName);
+	                    while(file.exists()) {
+	                       int indexes = fileName.lastIndexOf(".");
+	                       System.out.println("순서 = "+indexes);
+	                       String extension = fileName.substring(indexes);
+	                       System.out.println("확장자 = "+extension);
+	                       String newFileName = fileName.substring(0, indexes)+"_"+extension;
+	                       System.out.println("새 파일 이름 = "+newFileName);
+	                       fileName = newFileName;
+	                       file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/RequestImg/" + newFileName);
+	                    }
+	                 uploadfile.transferTo(file);
+	             } catch (IOException e) {
+	                 e.printStackTrace();
+	             } // try - catch
+	          } else fileName = img;
+	      }
 
 		// 날짜 변환
 		SimpleDateFormat simpledate = new SimpleDateFormat("yyyy-MM-dd");
@@ -141,8 +182,15 @@ public class RequestBoardLeftController {
 		vo.setBill(Integer.parseInt(request.getParameter("bill")));
 		vo.setDeposit(Integer.parseInt(request.getParameter("deposit")));
 		vo.setContents(request.getParameter("contents"));
+		vo.setImg(fileName);
 
 		requestBoardDaoImpl.requestBoardUpdate(vo);
+		
+		RegisterBoardVO registervo = new RegisterBoardVO();
+		registervo.setImg(fileName);
+		registervo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
+		
+		registerBoardDaoImpl.imgupdate(registervo);
 
 		// 내가 등록 한글
 		List<RequestBoardVO> myrequest = requestBoardDaoImpl.RequestBoardUserSelectAll(session_id);
@@ -162,6 +210,10 @@ public class RequestBoardLeftController {
 
 	@RequestMapping("/requestboarddelete")
 	public String requestboarddelete(Model model, HttpServletRequest request) {
+		
+		//마이페이지 판별
+		String mypage = request.getParameter("mypage");
+		model.addAttribute("mypage", mypage);
 
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -172,11 +224,18 @@ public class RequestBoardLeftController {
 		vo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
 		requestBoardDaoImpl.requestBoardDelete(vo);
 
-		List<RequestBoardVO> requestlist = requestBoardDaoImpl.RequestBoardUserSelectAll(session_id);
-
-		model.addAttribute("CONTENT", "menu/menu1/left_menu/menu1_3.jsp");
-		model.addAttribute("LEFT", "menu/menu1/left.jsp");
-		model.addAttribute("requestlist", requestlist);
+		List<RequestBoardVO> myrequest = requestBoardDaoImpl.RequestBoardUserSelectAll(session_id);
+		model.addAttribute("requestlist", myrequest);
+		model.addAttribute("myrequest", myrequest);
+		
+		if(mypage.equals("mypage")){
+			model.addAttribute("LEFT", "join/mypage_left.jsp");
+			model.addAttribute("CONTENT", "mypage/myrequest.jsp");
+		} else{
+			model.addAttribute("CONTENT", "menu/menu1/left_menu/menu1_3.jsp");
+			model.addAttribute("LEFT", "menu/menu1/left.jsp");
+		}
+		
 
 		return "main";
 	}

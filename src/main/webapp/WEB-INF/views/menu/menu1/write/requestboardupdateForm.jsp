@@ -84,7 +84,8 @@
 		               		</td>
 		               		
 		               		<td colspan="2" class="bottom-border">
-		               			사진넣어라 <!-- <input type="file" name="file" style="margin-left: 10px;"> -->
+		               			<input type="hidden" name="img" value="${updatelist.img}">
+		               			<input type="file" name="file" style="margin-left: 10px;">
 		               		</td>
 		                </tr>
 						
@@ -141,7 +142,7 @@
 					</table>
 				
 					<input type="hidden" value="${mypage}" name="mypage">
-				
+					<input type="hidden" value="${updatelist.codeNum}" name="codeNum">
 					
 					<input type="submit" class="free_update-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수　정" />
 					&nbsp;&nbsp;&nbsp;
@@ -150,7 +151,7 @@
 				<c:if test="${updatelist.packageStatus == '심사중'}">
 					<form action="requestboarddelete" method="post" style="display:inline;" id="${updatelist.codeNum}" name="${updatelist.codeNum}">
 						<input type="hidden" name="codeNum" value="${updatelist.codeNum}">
-						
+						<input type="hidden" name="mypage" value="${mypage}">
 						<input type="submit" class="btn2222 w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;삭　제" onclick="del(${updatelist.codeNum });	return false;">
 					</form>
 					&nbsp;&nbsp;&nbsp;

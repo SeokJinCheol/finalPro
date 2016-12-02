@@ -26,9 +26,9 @@
    </insert>
    
    <select id="showBoard" resultMap="FreeResultMap"  parameterType="com.kosta.finalproject.vo.FreeBoardVO">
-      select * from (select * from (select rownum rnum ,bDate,bnum,title,id,img,count,(SELECT COUNT(*) FROM freeboard4 B WHERE B.bgnum=a.bnum) replyCount from freeBoard4 a where bgnum = 0 ORDER BY BNUM DESC, GROUPNUM ASC)
+      select * from (select * from (select rownum rnum ,bDate,bnum,title,id,img,count,(SELECT COUNT(*) FROM freeboard4 B WHERE B.bgnum=a.bnum) replyCount from freeBoard4 a where bgnum = 0)
        
-       where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow}
+       where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow} order by rnum desc
    </select>
    
    <select id="showBoardthis" resultMap="FreeResultMap" parameterType="com.kosta.finalproject.vo.FreeBoardVO">
@@ -45,7 +45,7 @@
    
    <select id="selectBoardTitle" parameterType="com.kosta.finalproject.vo.FreeBoardVO" resultMap="FreeResultMap">
       select * from (select * from (select rownum rnum,bDate,bnum,title,id,img,count from FREEBOARD4 where bgnum= 0 and title like  '%' || #{title} || '%' )
-       where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow}
+       where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow} order by rnum desc
    </select>
    
    <select id="getListAllCount" resultType="Integer">
@@ -62,7 +62,7 @@
    
    <select id="selectBoardId" parameterType="com.kosta.finalproject.vo.FreeBoardVO" resultMap="FreeResultMap">
       select * from (select * from (select rownum as rnum ,bDate,bnum,title,id,img,count from freeBoard4 where bgnum= 0 and id like  '%' || #{id}  || '%')
-      where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow}
+      where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow} order by rnum desc
    </select>
    
    <delete id="deleteBoard" parameterType="com.kosta.finalproject.vo.FreeBoardVO">

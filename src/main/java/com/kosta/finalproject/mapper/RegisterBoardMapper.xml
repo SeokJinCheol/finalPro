@@ -44,6 +44,10 @@
 		UPDATE registerBoard SET packageStatus = #{packageStatus} WHERE codeNum = #{codeNum}
 	</update>
 	
+	<update id="imgupdate" parameterType="com.kosta.finalproject.vo.RegisterBoardVO">
+		UPDATE registerBoard SET img = #{img} WHERE codeNum = #{codeNum}
+	</update>
+	
 	<select id="MyRegisterselect" resultMap="RegisterBoard">
 		SELECT * FROM registerBoard WHERE registerId = #{session_id} ORDER BY codeNum DESC
 	</select>

@@ -26,7 +26,7 @@
 	<div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
 		<!-- 검색 -->
 		<div class="w3-row" style="margin-top: 30px;">
-			<form action="menu1" method=post>
+			<form action="menu2" method=post>
 				<select name="keyword" style="width: 15%; border-radius: 4px; text-align: center; height: 27px;">
 					<option value="#" style="text-align: center;">선택하세요.</option>
 					<option value="title" style="text-align: center;">Title</option>

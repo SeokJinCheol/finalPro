@@ -58,6 +58,7 @@
 									<input type="hidden" value="${rentstartlist.codeNum}" name="codeNum">
 									<input type="hidden" name="rentter" value="${rentstartlist.rentter}">
 									<input type="hidden" value="admin" name="pagecheck">
+									<input type="hidden" value="nomypage" name="mypage">
 									<input type="submit" value="대여부적격자">
 								</form>
 							</td>
