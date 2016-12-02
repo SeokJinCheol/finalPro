@@ -110,7 +110,7 @@
 				<security:authorize ifNotGranted="role_user, role_com, role_master">
 					<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="Login">물 품 등 록&nbsp;<i class="fa fa-caret-down"></i></a>
 						<div class="w3-dropdown-content w3-white w3-card-4">
-				        	<a href="Login">전 체 등 록 된 목 록</a>
+				        	<a href="Login">전 체 등 록 목 록</a>
 				        	<a href="Login">업 체 별 등 록 현 황</a>
 				        	<a href="Login">개 인 별 등 록 현 황</a>
 				    		<a href="Login">나 의 등 록 현 황</a>
@@ -122,7 +122,7 @@
 				<security:authorize ifAnyGranted="role_user, role_com">
 					<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="menu1">물 품 등 록&nbsp;<i class="fa fa-caret-down"></i></a>
 						<div class="w3-dropdown-content w3-white w3-card-4">
-				        	<a href="menu1">전 체 등 록 된 목 록</a>
+				        	<a href="menu1">전 체 등 록 목 록</a>
 				        	<a href="menu1_1">업 체 별 등 록 현 황</a>
 				        	<a href="menu1_2">개 인 별 등 록 현 황</a>
 				    		<a href="menu1_3">나 의 등 록 현 황</a>
@@ -135,7 +135,7 @@
 	        <security:authorize ifAnyGranted="role_master">
 	       		<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="menu1">물 품 등 록&nbsp;<i class="fa fa-caret-down"></i></a>
 					<div class="w3-dropdown-content w3-white w3-card-4">
-	       				<a href="menu1">전 체 등 록 된 목 록</a>
+	       				<a href="menu1">전 체 등 록 목 록</a>
 	       				<a href="rentready">심 사 대 기 현 황</a>
 	       				<a href="rentend">대 여 종 료 대 기</a>
 	       			</div>
@@ -150,6 +150,7 @@
 				<security:authorize ifNotGranted="role_user, role_com, role_master">
 					<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="Login">물 품 대 여&nbsp;<i class="fa fa-caret-down"></i></a>
 						<div class="w3-dropdown-content w3-white w3-card-4" >
+				        	<a href="Login">전 체 대 여 목 록</a>
 				        	<a href="Login">대 여 가 능 현 황</a>
 				        	<a href="Login">나 의 대 여 현 황</a>
 				    	</div>
@@ -160,6 +161,7 @@
 				<security:authorize ifAnyGranted="role_user, role_com">
 					<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="menu2">물 품 대 여&nbsp;<i class="fa fa-caret-down"></i></a>
 						<div class="w3-dropdown-content w3-white w3-card-4" >
+				        	<a href="menu2">전 체 대 여 목 록</a>
 				        	<a href="menu2_1">대 여 가 능 현 황</a>
 				        	<a href="menu2_2">나 의 대 여 현 황</a>
 				    	</div>
@@ -171,6 +173,7 @@
 	        <security:authorize ifAnyGranted="role_master">
 	       		<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="menu2">물 품 대 여&nbsp;<i class="fa fa-caret-down"></i></a>
 					<div class="w3-dropdown-content w3-white w3-card-4" >
+	       				<a href="menu2">전 체 대 여 목 록</a>
 	       				<a href="rentreadylist">물 품 대 여 관 리</a>
 	       				<a href="rentoutlist">물 품 반 납 관 리</a>
 	       			</div>
