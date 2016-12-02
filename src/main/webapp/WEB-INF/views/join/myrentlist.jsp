@@ -19,45 +19,50 @@
 	</div>
 	
 	<div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
-	    <div style="margin-bottom: 20px; width:550px; background-color: #fafafa" class="w3-card-8">
-	    	<table style="width:550px; height:400px; padding: 70px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
+	    <div style="margin-bottom: 20px; width:600px; background-color: #fafafa" class="w3-card-8">
+	    	<table style="width:600px; height:403px; padding: 70px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
 				<thead style="table-layout:fixed; height:30px;">
 					<tr class="top-border bottom-border2" style=" height:30px; margin-bottom: 20px; background-color: #80b5ea; color:white; text-align: center;">
 			        	<td width=70 style="font-family: 'Jeju Gothic', sans-serif; border-right: 1px solid #fff;">물품번호</td>
-			        	<td width=100 style="font-family: 'Jeju Gothic', sans-serif; border-right: 1px solid #fff;">사　진</td>
-			         	<td width=180 style="font-family: 'Jeju Gothic', sans-serif; border-right: 1px solid #fff;">제　 　목</td>
-			         	<td width=120 style="font-family: 'Jeju Gothic', sans-serif; border-right: 1px solid #fff;">반 납 기 일</td>
-			         	<td width=80 style="font-family: 'Jeju Gothic', sans-serif;">신　청</td>
+			        	<td width=130 style="font-family: 'Jeju Gothic', sans-serif; border-right: 1px solid #fff;">물품사진</td>
+			         	<td width=170 style="font-family: 'Jeju Gothic', sans-serif; border-right: 1px solid #fff;">제　 　목</td>
+			         	<td width=150 style="font-family: 'Jeju Gothic', sans-serif; border-right: 1px solid #fff;">대여기간</td>
+			         	<td width=80 style="font-family: 'Jeju Gothic', sans-serif;">비　고</td>
 			    	</tr>
 			    </thead>
 	
-				<tbody style="height:520px; overflow-y: auto; position: absolute;">
+				<tbody style="height:370px; overflow-y: auto; position: absolute;">
 					<c:forEach items="${MyRegisterselect}" var="MyRegisterselect">
 						<tr onMouseOver="this.style.backgroundColor='#eff7fc'" onMouseOut="this.style.backgroundColor='#fafafa'" style="height:100px;">
 		                	<td width=70 style="border-bottom: 3px solid #fff;">${MyRegisterselect.codeNum}</td>
-		                    <td width=100 style="border-bottom: 3px solid #fff;"><img src="/team4/resources/RequestImg/${MyRegisterselect.img}" style="width: 100%; height: 95px;"></td>
+		                    <td width=130 style="border-bottom: 3px solid #fff;"><img src="/team4/resources/RequestImg/${MyRegisterselect.img}" style="width: 100%; height: 95px;"></td>
 		                    
-		                    <!-- 제목이 10자 이상일 경우 줄여쓰기 기능 -->
+		                    <!-- 제목이 12자 이상일 경우 줄여쓰기 기능 -->
 		             		<c:choose>
-			             		<c:when test="${fn:length(MyRegisterselect.title) > 10}">
-									<td width=180 style="border-bottom: 3px solid #fff;">
-										<c:out value="${fn:substring(MyRegisterselect.title,0,10)}" />...
+			             		<c:when test="${fn:length(MyRegisterselect.title) > 12}">
+									<td width=170 style="border-bottom: 3px solid #fff;">
+										<c:out value="${fn:substring(MyRegisterselect.title,0,12)}" />...
 									</td>
 								</c:when>
 								
 								<c:otherwise>
-									<td width=180 style="border-bottom: 3px solid #fff;">
+									<td width=170 style="border-bottom: 3px solid #fff;">
 										<c:out value="${MyRegisterselect.title}"/>
 									</td>
 								</c:otherwise>
 							</c:choose>
 
-		                    <td width=120 style="border-bottom: 3px solid #fff;">${MyRegisterselect.userendDate}</td>
-		                    <td width=80 style="border-bottom: 3px solid #fff;">
-		                        <c:if test="${MyRegisterselect.packageStatus == '대여중'}">
+		                    <!-- 대여기간 -->
+							<td width=150 style="border-bottom: 3px solid #fff;">
+								${MyRegisterselect.userstartDate}<br>　　~　${MyRegisterselect.userendDate}
+							</td>
+							
+		                    <td width=80 style="border-bottom: 3px solid #fff;">								
+								<c:if test="${MyRegisterselect.packageStatus == '대여중'}">
 									<form action="reviewendrent" method="post">
 										<input type="hidden" value="${MyRegisterselect.codeNum}" name="codeNum">
 										<input type="hidden" value="mypage" name="mypage">
+										
 										<input type="submit" value="" class="mycancel2-btn w3-card-4">
 									</form>
 								</c:if>
@@ -68,12 +73,17 @@
 										<input type="hidden" value="${MyRegisterselect.codeNum}" name="codeNum">
 										<input type="hidden" name="pagecheck" value="user">
 										<input type="hidden" name="mypage" value="mypage">
+										
 										<input type="submit" value="" class="mycancel-btn w3-card-4">
 									</form>
 								</c:if>
 								
 								<c:if test="${MyRegisterselect.packageStatus != '대여신청'}">
-									${MyRegisterselect.packageStatus}
+									<div style="margin-top:10px; font-family: 'Jeju Gothic', sans-serif;">[ 반납신청 ]</div>
+								</c:if>
+								
+								<c:if test="${MyRegisterselect.packageStatus == '대여신청'}">
+									<div style="margin-top:10px; font-family: 'Jeju Gothic', sans-serif;">[ 신청취소 ]</div>
 								</c:if>
 		                    </td>
 						</tr>

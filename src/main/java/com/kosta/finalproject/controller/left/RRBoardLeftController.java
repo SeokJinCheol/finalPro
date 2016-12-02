@@ -333,7 +333,7 @@ public class RRBoardLeftController {
 
 	@RequestMapping("/setRRBstatus")
 	public String RRset(Model model, @RequestParam("status") String status, @RequestParam("codeNum") int codeNum,
-							@RequestParam("Rid")String rid) {
+			@RequestParam("Rid")String rid) {
 
 		RRboardVO vo = new RRboardVO();
 

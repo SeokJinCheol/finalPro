@@ -116,7 +116,7 @@
 								<form name="${vo.codeNum }" id="${vo.codeNum }" action="setRRBstatus">
 									<input type="hidden" name="codeNum" value="${vo.codeNum }">
 									<input type="hidden" name="status" id="status">
-									
+									<input type="hidden" name="Rid" value="${vo.registerId}">
 									<input type="submit" class="update-menu3 w3-card-4" value="" onclick="setpakageStatus(${vo.codeNum });	return false;">
 								</form>
 							</td>
@@ -124,7 +124,6 @@
 							<td width=70 align=center style="border-bottom: 3px solid #fff;">
 								<form action="modyADRRB" method=post>
 									<input type="hidden" name="codeNum" value="${vo.codeNum }">
-									<input type="hidden" name="Rid" value="${vo.registerId }">
 									<input type="submit" value="" class="update-btn2 w3-card-4" name="mody">
 								</form>
 							</td>
