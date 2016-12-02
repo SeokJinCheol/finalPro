@@ -6,21 +6,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript">
+   function visible() {
+      document.getElementById('moreview').style.display = "block";
+   }
+</script>
 <title>menu2</title>
 <!-- CSS 연결-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/w3.css" type="text/css" media="screen">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/login.css" type="text/css" media="screen">
 </head>
-<script type="text/javascript">
-   function visible() {
-      document.getElementById('moreview').style.display = "block";
-   }
-</script>
 <body>
 	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
-		<img src="/team4/resources/images/free_list.png" style="margin-right:10px;">
-	    <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">전 체 등 록 된 목 록</font>
+		<img src="/team4/resources/images/left-menu62.png" style="margin-right:10px;">
+	    <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">대 여 가 능 현 황</font>
 	</div>
 
 	<div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
@@ -90,6 +90,7 @@
 					</div>
 				</c:forEach>
 			</div>
+			
 			<!-- 숨겨진 리스트 볼 경우 -->
 			<div style="display: none" id="moreview">
 				<c:forEach items="${Registerpossibility}" var="Registerpossibility" begin="6">
