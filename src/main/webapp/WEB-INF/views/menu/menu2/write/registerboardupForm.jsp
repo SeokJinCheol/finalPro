@@ -46,6 +46,9 @@
 				    <tr>
 						<td align=center style="padding-bottom:10px;" class="bottom-border">${registerform.contents}</td>
 				    </tr>	
+				    <tr>
+				    	<td><img src="/team4/resources/RequestImg/${registerform.img}" style="width: 85%; height: 170px; border-radius: 7px;"></td>
+				    </tr>
 				</table>	
 				
 				<form action="registerboardup" name ="insert" method="post">
