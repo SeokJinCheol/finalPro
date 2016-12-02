@@ -13,6 +13,9 @@ increment BY 1;
 
 select * from freeBoard
 
+SELECT * FROM freeBoard
+		WHERE bgnum=110 and bnum != bgnum
+
 drop table freeboard;
 drop sequence fb_seq;
 

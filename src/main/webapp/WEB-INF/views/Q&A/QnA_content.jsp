@@ -171,6 +171,7 @@ function replywrite() {
 $("#replylist").on("click",".reply-btn2", function(){
 	var replylist = $(this).parent();
 	var replynum = replylist.attr("data-rno");
+	console.log(this);
    $.ajax({
       type:"POST",
       url:"QnA_re_delete",
@@ -180,9 +181,6 @@ $("#replylist").on("click",".reply-btn2", function(){
       success: function (data){
          alert("답글삭제!!");
          getReplylist();
-      },
-      complete:function (data){
-    	  getReplylist();
       }
       });
    }

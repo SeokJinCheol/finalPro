@@ -317,8 +317,10 @@ public class RequestBoardLeftController {
 
 	@RequestMapping("/requestcontent")
 	public String content(HttpServletRequest request, Model model) throws Exception {
+		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
+		model.addAttribute("session_id", session_id);
 
 		int codeNum = Integer.parseInt(request.getParameter("codeNum"));
 
