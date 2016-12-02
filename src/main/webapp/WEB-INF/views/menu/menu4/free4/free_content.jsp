@@ -4,72 +4,11 @@
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-<script type="text/javascript">
-getReplylist();
-function replywrite() {
-   $.ajax({
-      type:"POST",
-      url:"free_reply",
-      cache:false,
-      datatype:"json",
-      data: {'bnum':$("#bnum").val(),'title':$("#title").val(),'contents':$("#contents").val()},
-      success: function (data){
-         
-         alert("답글작성");
-         getReplylist();
-      },
-      complete: function (data) {
-         $("#contents").val('');
-      }
-   });
-}
-function replydelete(){
-   $.ajax({
-      type:"POST",
-      url:"free_re_delete",
-      cache:false,
-      datatype:"json",
-      data: {'bnum':$("#bnum").val(),'reply_bnum':$("#reply_bnum").val()},
-      success: function (data){
-         alert("답글삭제!!");
-         getReplylist();
-      }
-      });
-   }
-function getReplylist() {
-   
-   var bnum=${vo.bnum};
-   var str="";
-   var imglink="resources/images/redelete.png";
-   var session_id="${session_id}";
-   $.getJSON("/team4/free_replylist/"+bnum,function(data){
-      console.log(data.length);
-      $(data).each(
-         function(){
-             str +="<tr style='border-top: 2px solid #000; border-bottom: 2px solid #000;'>"+"<td width='15%'>"
-                +this.id+"</td>"+"<td width='40%'>"
-                +this.contents+"</td>"+"<td width='17%'>"
-                +this.date+"</td>";
-            if((this.id == session_id) || (this.id == 'admin')){
-               str+= "<td><form>"+
-                "<input class='reply-btn2' type='button' onclick='replydelete()' style='background-image:url("+imglink+"); width: 30px; background-repeat: no-repeat; background-position: center;' value=''>"
-                +"<input type='hidden' id='reply_bnum' name='reply_bnum' value="+this.bnum+">"+
-                "<input type='hidden' id='bnum' name='bnum' value='${vo.bnum}'>"+
-                "</form></td></tr>";
-            }else{
-               str+="<td></td></tr>";
-            } 
-            
-         });
-      $("#replylist").html(str);
-   });
-}
-</script>
-<title>자유게시판_상세보기</title>
+<title>Q&A_상세보기</title>
 <!-- CSS 연결-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet"
@@ -183,7 +122,6 @@ function getReplylist() {
 
 			<security:authorize ifAnyGranted="role_user, role_com, role_master">
 				<!-- 리플 달기!! -->
-				<form action="free4_reply" method="post">
 					<table
 						style="border-collapse: collapse; border-spacing: 0; margin-bottom: 15px;">
 						<tr>
@@ -196,61 +134,84 @@ function getReplylist() {
 						</tr>
 					</table>
 
-					<input type="hidden" name="bnum" id="bnum" value="${vo.bnum}"> <input
-						type="hidden" name="title" id="title" value="${vo.title}">
-				</form>
+					<input type="hidden" name="bnum" id="bnum" value="${vo.bnum}">
+					<input	type="hidden" name="title" id="title" value="${vo.title}">
 			</security:authorize>
 
 			<!-- 리플 리스트 -->
 			<table id="replylist"
 				style="border-collapse: collapse; border-spacing: 0; width: 559px; height: 40px; text-align: center;">
-				<%-- <c:forEach items="${list}" var="reply">
-					<c:if test="${result.groupnum != 0}">
-						<tr
-							style="border-top: 2px solid black; border-bottom: 2px solid black;">
-							<td width="15%">${reply.id}</td>
-
-							<td width="50%">${reply.contents}</td>
-
-							<!-- 날짜 -->
-							<td width="25%"><fmt:formatDate value="${reply.date}"
-									pattern="yyyy-MM-dd" /></td>
-
-							<td>
-								<!-- 내가 쓴 리플 삭제 --> <security:authorize
-									ifNotGranted="role_master">
-									<c:if test="${reply.id == session_id}">
-										<form action="free_re_delete" method=post>
-											<input class="reply-btn2" type="submit" onclick="setpakageStatus(); return false;"
-												style="background-image: url('/team4/resources/images/redelete.png'); width: 30px; background-repeat: no-repeat; background-position: center;"
-												value=""> <input type="hidden" name="reply_bnum"
-												value="${reply.bnum}"> <input type="hidden"
-												name="bnum" value="${vo.bnum}">
-										</form>
-									</c:if>
-								</security:authorize> <!-- 관리자일 경우 모든 댓글 삭제 가능 --> <security:authorize
-									ifAnyGranted="role_master">
-									<form action="free_re_delete" method=post>
-										<input class="reply-btn2" type="submit"
-											style="background-image: url('/team4/resources/images/redelete.png'); width: 30px; background-repeat: no-repeat; background-position: center;"
-											value=""> <input type="hidden" name="reply_bnum"
-											value="${reply.bnum}"> <input type="hidden"
-											name="bnum" value="${vo.bnum}">
-									</form>
-								</security:authorize>
-							</td>
-						</tr>
-					</c:if>
-				</c:forEach> --%>
 			</table>
 		</div>
 	</div>
-</body>
+
+<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 <script type="text/javascript">
-	function setpakageStatus() {
-		if (confirm("정말 삭제하시겠습니까??") == true) {
-			document.form.submit();
-		} else { return false; }
-	}
+getReplylist();
+function replywrite() {
+   $.ajax({
+      type:"POST",
+      url:"free_reply",
+      cache:false,
+      datatype:"json",
+      data: {'bnum':$("#bnum").val(),'title':$("#title").val(),'contents':$("#contents").val()},
+      success: function (data){
+         
+        
+         getReplylist();
+      },
+      complete: function (data) {
+         $("#contents").val('');
+      }
+   });
+}
+$("#replylist").on("click",".reply-btn2", function(){
+	var replylist = $(this).parent();
+	var replynum = replylist.attr("data-rno");
+	console.log(this);
+   $.ajax({
+      type:"POST",
+      url:"free_re_delete",
+      cache:false,
+      datatype:"json",
+      data: {'reply_bnum': replynum},
+      success: function (data){
+         alert("답글삭제!!");
+         getReplylist();
+      }
+      });
+   }
+   );
+function getReplylist() {
+   var bnum=${vo.bnum};
+   var str="";
+   var imglink="resources/images/redelete.png";
+   var session_id="${session_id}";
+   $.getJSON("/team4/free_replylist/"+bnum,function(data){
+      console.log(data.length);
+      if(data != null){
+      $(data).each(
+         function(){
+        	
+             str +="<tr style='border-top: 2px solid #000; border-bottom: 2px solid #000;'>"+"<td width='15%'>"
+                +this.id+"</td>"+"<td width='40%'>"
+                +this.contents+"</td>"+"<td width='17%'>"
+                +this.date+"</td>";
+            if((this.id == session_id) || (session_id == 'admin')){
+               str+= "<td data-rno="+this.bnum+">"+
+                "<input class='reply-btn2' type='button' style='background-image:url("+imglink+"); width: 30px; background-repeat: no-repeat; background-position: center;' value=''>"
+                +"<input type='hidden' id='reply_bnum' name='reply_bnum' value="+this.bnum+">"
+                +"</td></tr>";
+            }else{
+               str+="<td></td></tr>";
+            }
+         }
+      );}else{
+    	  str+="";  
+      }
+      $("#replylist").html(str);
+   });
+}
+
 </script>
 </html>
