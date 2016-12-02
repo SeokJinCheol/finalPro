@@ -1,58 +1,107 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>rantendForm</title>
+<title>물품반납관리</title>
 <!-- CSS 연결-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/w3.css" type="text/css" media="screen">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/login.css" type="text/css" media="screen">
 </head>
-<body>	
-	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height:500px; vertical-align:middle; display:table-cell;">
-		<div style="margin-bottom:20px; margin-top:70px;">
-			<h4> - rantendForm - </h4>
+<body>
+	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
+		<img src="/team4/resources/images/left-menu82.png" style="margin-right:10px;">
+	    <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">물 품 반 납 관 리</font>
+	</div>
+	
+	<div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
+		<div style="margin-bottom: 20px; width:780px; background-color: #fafafa" class="w3-card-8">
+        	<table style="height:453px; width:780px; padding: 20px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; margin-top:10px; padding-bottom: 10px;">
+	            <thead style="height:30px; table-layout:fixed">
+		            <tr class="bottom-border2" style=" height:30px; margin-bottom: 20px; background-color: #80b5ea; color:white; text-align: center;">
+		                <td width=60 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">대여횟수</td>
+		                <td width=80 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">등록자</td>
+		                <td width=140 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">대여가능일자</td>
+		                <td width=80 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">대여자</td>
+		                <td width=140 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">대여일자</td>
+		                <td width=110 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">일일요금</td>
+		                <td width=110 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">보 증 금</td>
+		                <td width=60 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">비　고</td>
+		            </tr>
+		        </thead>
+		        
+		        <tbody style="height:420px; overflow-y: auto; position: absolute;">
+					<c:forEach items="${rentstartlist}" var="rentstartlist">
+						<c:forEach items="${storagecount1}" var="storagecount1">
+							<tr onMouseOver="this.style.backgroundColor='#eff7fc'" onMouseOut="this.style.backgroundColor='#fafafa'" style="height:38px;">
+						    	<td width=60 style="border-bottom: 3px solid #fff;">${storagecount1.sNum}</td>
+						    	
+						    	<!-- 등록자 이름이 5자 이상일 경우 줄여쓰기 기능 -->
+			             		<c:choose>
+				             		<c:when test="${fn:length(rentstartlist.resister) > 5}">
+										<td width=80 style="border-bottom: 3px solid #fff; font-size: 1;">
+											<c:out value="${fn:substring(rentstartlist.resister,0,5)}" />... 님
+										</td>
+									</c:when>
+									
+									<c:otherwise>
+										<td width=80 style="border-bottom: 3px solid #fff; font-size: 1;">
+											<c:out value="${rentstartlist.resister}"/> 님
+										</td>
+									</c:otherwise>
+								</c:choose>
+		        				
+		        				<!-- 대여가능일자 -->
+		        				<td width=140 style="border-bottom: 3px solid #fff; text-align: left;">
+									　${rentstartlist.startDate}<br>　　~　${rentstartlist.endDate}
+								</td>
+								
+		        				<!-- 대여자 이름이 5자 이상일 경우 줄여쓰기 기능 -->
+			             		<c:choose>
+				             		<c:when test="${fn:length(rentstartlist.rentter) > 5}">
+										<td width=80 style="border-bottom: 3px solid #fff; font-size: 1;">
+											<c:out value="${fn:substring(rentstartlist.rentter,0,5)}" />... 님
+										</td>
+									</c:when>
+									
+									<c:otherwise>
+										<td width=80 style="border-bottom: 3px solid #fff; font-size: 1;">
+											<c:out value="${rentstartlist.rentter}"/> 님
+										</td>
+									</c:otherwise>
+								</c:choose>
+	
+								<!-- 대여일자 -->
+		        				<td width=140 style="border-bottom: 3px solid #fff; text-align: left;">
+									　${rentstartlist.userstartDate}<br>　　~　${rentstartlist.userendDate}
+								</td>
+	
+								<!-- 일일요금 -->
+								<td width=110 style="border-bottom: 3px solid #fff;">
+									<fmt:formatNumber value="${rentstartlist.bill}" pattern="￦ ###,###"/> 원
+								</td>
+	
+								<!-- 보증금 -->
+								<td width=110 style="border-bottom: 3px solid #fff;">
+									<fmt:formatNumber value="${rentstartlist.deposit}" pattern="￦ ###,###"/> 원
+								</td>
 
-			<table>
-				<tr>
-					<td>대여횟수</td>
-					<td>글번호</td>
-					<td>판매자</td>
-					<td>판매자시작날짜</td>
-					<td>판매자종료날짜</td>
-					<td>대여자</td>
-					<td>대여자시작날짜</td>
-					<td>대여자종료날짜</td>
-					<td>대여비</td>
-					<td>보증금</td>
-				</tr>
-				
-				<c:forEach items="${rentstartlist}" var="rentstartlist">
-					<c:forEach items="${storagecount1}" var="storagecount1">
-						<tr>
-							<td>${storagecount1.sNum}</td>
-							<td>${rentstartlist.codeNum}</td>
-							<td>${rentstartlist.resister}</td>
-							<td>${rentstartlist.startDate}</td>
-							<td>${rentstartlist.endDate}</td>
-							<td>${rentstartlist.rentter}</td>
-							<td>${rentstartlist.userstartDate}</td>
-							<td>${rentstartlist.userendDate}</td>
-							<td>${rentstartlist.bill}</td>
-							<td>${rentstartlist.deposit}</td>
-							<td>
-								<form action="rentcancelend" method="post">
-									<input type="hidden" name="codeNum" value="${rentstartlist.codeNum}">
-									<input type="hidden" name="sNum"  value="${storagecount1.sNum}">
-									<input type="submit" value="반납완료">
-								</form>
-							</td>
-						</tr>
+								<td width=60 style="border-bottom: 3px solid #fff;">
+					            	<form action="rentcancelend" method="post">
+										<input type="hidden" name="codeNum" value="${rentstartlist.codeNum}">
+										<input type="hidden" name="sNum"  value="${storagecount1.sNum}">
+										
+										<input type="submit" value="" class="update-btn97 w3-card-4" >
+									</form>
+					            </td>
+							</tr>
+						</c:forEach>
 					</c:forEach>
-				</c:forEach>
+				</tbody>
 			</table>
 		</div>
 	</div>

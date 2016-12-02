@@ -313,6 +313,8 @@ public class RegisterBoardLeftController {
 		model.addAttribute("session_id", session_id);
 
 		String possibility = "대여신청";
+		model.addAttribute("possibility", possibility);
+		
 		List<RegisterBoardVO> rentreadylist = registerBoardDaoImpl.Registerpossibility(possibility);
 
 		model.addAttribute("rentreadylist", rentreadylist);
@@ -334,6 +336,7 @@ public class RegisterBoardLeftController {
 		// 대여가능 게시판 반납신청
 		RegisterBoardVO registervo = new RegisterBoardVO();
 		String packageStatus = "대여가능";
+		
 		registervo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
 		registervo.setPackageStatus(packageStatus);
 		registervo.setRegisterId("");
@@ -369,6 +372,8 @@ public class RegisterBoardLeftController {
 		model.addAttribute("storagecount", storagecount);
 
 		String possibility = "반납신청";
+		model.addAttribute("possibility", possibility);
+		
 		List<RegisterBoardVO> rentreadylist = registerBoardDaoImpl.Registerpossibility(possibility);
 		model.addAttribute("rentreadylist", rentreadylist);
 		model.addAttribute("CONTENT", "menu/menu2/left_menu/registeradminpage.jsp");
@@ -403,6 +408,8 @@ public class RegisterBoardLeftController {
 		model.addAttribute("session_id", session_id);
 
 		String possibility = "반납신청";
+		model.addAttribute("possibility", possibility);
+		
 		List<RegisterBoardVO> rentreadylist = registerBoardDaoImpl.Registerpossibility(possibility);
 		
 		model.addAttribute("rentreadylist", rentreadylist);

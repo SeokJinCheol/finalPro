@@ -13,10 +13,21 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/login.css" type="text/css" media="screen">
 </head>
 <body>
-	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
-		<img src="/team4/resources/images/left-menu42.png" style="margin-right:10px;">
-	    <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">심 사 대 기 현 황</font>
-	</div>
+	<!-- 심사대기현황 타이틀 -->
+	<c:if test="${status == '심사중'}">
+		<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
+			<img src="/team4/resources/images/left-menu42.png" style="margin-right:10px;">
+		    <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">심 사 대 기 현 황</font>
+		</div>
+	</c:if>
+	
+	<!-- 대여종료대기 타이틀 -->
+	<c:if test="${status == '대여종료신청'}">
+		<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
+			<img src="/team4/resources/images/left-menu52.png" style="margin-right:10px;">
+		    <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">대 여 종 료 대 기</font>
+		</div>
+	</c:if>
 
 	<div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
 		<div style="margin-bottom: 20px; width:550px; background-color: #fafafa;" class="w3-card-8">

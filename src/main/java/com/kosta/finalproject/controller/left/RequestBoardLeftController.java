@@ -285,6 +285,7 @@ public class RequestBoardLeftController {
 		model.addAttribute("session_id", session_id);
 
 		String status = "심사중";
+		model.addAttribute("status", status);
 
 		List<RequestBoardVO> requestboardstatus = requestBoardDaoImpl.requeststatus(status);
 
@@ -305,6 +306,7 @@ public class RequestBoardLeftController {
 		model.addAttribute("session_id", session_id);
 
 		String status = "대여종료신청";
+		model.addAttribute("status", status);
 
 		List<RequestBoardVO> requestboardstatus = requestBoardDaoImpl.requeststatus(status);
 

@@ -60,7 +60,7 @@
 
 					<tr height="35">
 						<td colspan="2" style="font-family: 'Jeju Gothic', sans-serif;">
-							대 여 일 자<br>
+							대 여 가 능 일 자<br>
 						</td>
 					</tr>
 
