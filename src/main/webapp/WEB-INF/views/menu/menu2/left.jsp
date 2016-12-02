@@ -36,11 +36,11 @@
 			<div class="left-menu"><a href="rentreadylist" class="rollover">
 				<img src="/team4/resources/images/left-menu71.png" style="margin-right:5px;">
 				<img src="/team4/resources/images/left-menu72.png" class="imgover" style="margin-right:5px;">
-				&nbsp;대  여  신  청</a></div><br>
+				&nbsp;대　  여　  신　  청</a></div><br>
 			<div class="left-menu"><a href="rentoutlist" class="rollover">
 				<img src="/team4/resources/images/left-menu81.png" style="margin-right:5px;">
 				<img src="/team4/resources/images/left-menu82.png" class="imgover" style="margin-right:5px;">
-				&nbsp;반  납  신  청</a></div><br>
+				&nbsp;반　  납　  신　  청</a></div><br>
 		</c:if>
 	</div>
 </body>
