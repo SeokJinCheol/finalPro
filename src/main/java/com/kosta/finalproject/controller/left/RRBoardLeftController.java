@@ -233,6 +233,95 @@ public class RRBoardLeftController {
 		model.addAttribute("LEFT", "menu/menu3/left.jsp");
 		return "main";
 	}
+	
+	//관리자 rrb수저페이지
+	@RequestMapping("/modyADRRB")
+	public String modyADRRB(Model model, @RequestParam("codeNum") int codeNum) {
+
+		// id 체크
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+		model.addAttribute("id", session_id);
+
+		// 체크
+		RRboardVO vo = dao.getcontents(codeNum);
+		// vo 전송
+		model.addAttribute("vo", dao.getcontents(codeNum));
+		model.addAttribute("CONTENT", "menu/menu3/admin/modyRRB.jsp");
+		model.addAttribute("LEFT", "menu/menu3/left.jsp");
+		return "main";
+	}
+	// 관리자 RRBupdate
+	@RequestMapping("/RRBADupdate")
+	public String RRBADupdate(Model model, UploadVO dto, @RequestParam("contents") String contents,
+			@RequestParam("bill") int bill, @RequestParam("title") String title, @RequestParam("adress") String adress,
+			@RequestParam("company") String company, @RequestParam("spotNum") String spotNum,
+			@RequestParam("startDate") String startDate, @RequestParam("endDate") String endDate,
+			@RequestParam("category") String category, @RequestParam("codeNum") int codeNum) {
+		// 파일처리
+		String fileName = null;
+		MultipartFile uploadfile = dto.getFile();
+
+		if (uploadfile == null) {
+		} else {
+			fileName = uploadfile.getOriginalFilename();
+			dto.setOname(fileName);
+			try {
+				File file = new File(
+						"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/"
+								+ fileName);
+
+				int indexes = fileName.lastIndexOf(".");
+				if (indexes != -1) {
+					while (file.exists()) {
+						indexes = fileName.lastIndexOf(".");
+						System.out.println("순서 = " + indexes);
+						String extension = fileName.substring(indexes);
+						System.out.println("확장자 = " + extension);
+						String newFileName = fileName.substring(0, indexes) + "_" + extension;
+						System.out.println("새 파일 이름 = " + newFileName);
+						fileName = newFileName;
+						file = new File(
+								"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/BoardImg/"
+										+ newFileName);
+					}
+
+					uploadfile.transferTo(file);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} // try - catch
+		} // if
+
+		// vo 생성
+		RRboardVO vo = new RRboardVO();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+		// 세팅
+		vo.setCategory(category);
+		vo.setContents(contents);
+		vo.setTitle(title);
+		vo.setAdress(adress);
+		vo.setCompany(company);
+		vo.setContents(contents);
+		vo.setStartDate(startDate);
+		vo.setEndDate(endDate);
+		vo.setRegisterId(session_id);
+		vo.setCodeNum(codeNum);
+
+		if (fileName.equals(null)||fileName.length()<1) {
+			vo.setImg("이미지없음.jpg");
+		} else {
+			vo.setImg(fileName);
+		}
+
+		System.out.println(vo.toString());
+
+		dao.RRBupdate(vo);
+
+		return "redirect:RRlist";
+	}
+
 
 	@RequestMapping("/setRRBstatus")
 	public String RRset(Model model, @RequestParam("status") String status, @RequestParam("codeNum") int codeNum) {
