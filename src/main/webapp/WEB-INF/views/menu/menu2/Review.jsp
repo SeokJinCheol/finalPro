@@ -23,8 +23,8 @@
 		    <table style="padding: 70px; text-align:center; border-collapse: collapse; margin-bottom: 20px; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
 				<tr class="top-bottom-border" style=" height:30px; margin-bottom: 20px;">
 		        	<td width=80 style="font-family: 'Jeju Gothic', sans-serif; text-align: center; border-right: 1px solid #fff;">평 　 점</td>
-		        	<td>	
-		    			<select name="reviewpoint">
+		        	<td align="center" height="33">	
+		    			<select name="reviewpoint" style="height:27px; border-radius:4px; text-align:center;" required>
 							<option>선택하세요.</option>
 							<option>1</option>
 							<option>2</option>
@@ -50,10 +50,11 @@
 			
 			<input type="hidden" value="${codeNum}" name="codeNum">
 			<input type="hidden" value="${mypage}" name="mypage">
+			
 			<p>
 				<input type="submit" class="free_insert w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;게　시" />
 				&nbsp;&nbsp;&nbsp;
-				<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="location.href='main'"/>
+				<input type="button" class="free_insert-btn w3-card-4" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소" onclick="javascript:window.history.back();"/>
 			</p>
 		</form>
 	</div>
