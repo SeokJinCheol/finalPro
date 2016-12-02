@@ -367,7 +367,7 @@ public class QandAController {
 	@RequestMapping("/QnA_re_delete")
 	public View QnA_re_delete(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String reply_bnum = request.getParameter("reply_bnum");
-		int bnum = Integer.parseInt(request.getParameter("bnum"));
+
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 		qandADaoImpl.delete(Integer.parseInt(reply_bnum));
