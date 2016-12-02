@@ -328,6 +328,10 @@ public class RegisterBoardController {
 	// 대여시작 폼
 	@RequestMapping("/startrentForm")
 	public String startrentForm(Model model, HttpServletRequest request) {
+		
+		//마이페이지 판별
+		String mypage = request.getParameter("mypage");
+		model.addAttribute("mypage", mypage);
 
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

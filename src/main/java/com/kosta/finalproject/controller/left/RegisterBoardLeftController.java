@@ -232,6 +232,7 @@ public class RegisterBoardLeftController {
 	public String rentcancel(Model model, HttpServletRequest request) {
 		
 		String mypage = request.getParameter("mypage");
+		String pagecheck = request.getParameter("pagecheck");
 
 		// 현재시간 가져오기
 		long time = System.currentTimeMillis();
@@ -239,7 +240,6 @@ public class RegisterBoardLeftController {
 		String CurrentTime = ctime.format(new Date(time));
 
 		// 메일 발송
-		String pagecheck = request.getParameter("pagecheck");
 		String rentter = request.getParameter("rentter");
 		String codeNum = request.getParameter("codeNum");
 		String text = codeNum + "번의 대여 신청이 취소되었습니다.";
@@ -282,6 +282,7 @@ public class RegisterBoardLeftController {
 			List<RegisterBoardVO> rentreadylist = registerBoardDaoImpl.Registerpossibility(possibility);
 			model.addAttribute("rentreadylist", rentreadylist);
 			model.addAttribute("CONTENT", "menu/menu2/left_menu/registeradminpage.jsp");
+			model.addAttribute("LEFT", "menu/menu2/left.jsp");
 
 		} else {
 			
