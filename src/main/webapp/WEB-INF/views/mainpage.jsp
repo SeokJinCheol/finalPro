@@ -57,6 +57,101 @@
 			</td>
 		</tr>
 	</table>
+	<br><hr><br>
+	<div>
+		[물품]
+	</div>
+	<div>
+		<table>
+			<tr>
+				<td>
+					<form action="menu2_1" method="post">
+						<table>
+							<tr>
+								<td align="left">[DIY용품]</td>
+								<td align="right"><button onclick="script:submit()">+더보기</button></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<img alt="" src="/team4/resources/images/baby2.jpg" onclick="script:submit()">
+								</td>
+							</tr>
+						</table>
+						<input type="hidden" name="keyword" value="category">
+						<input type="hidden" name="word" value="DIY용품">
+					</form>
+				</td>
+				<td>
+					<form action="menu2_1" method="post">
+						<table>
+							<tr>
+								<td align="left">[공구]</td>
+								<td align="right"><button onclick="script:submit()">+더보기</button></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<img alt="" src="/team4/resources/images/m2.jpg" onclick="script:submit()">
+								</td>
+							</tr>
+						</table>
+						<input type="hidden" name="keyword" value="category">
+						<input type="hidden" name="word" value="공구">
+					</form>
+				</td>
+				<td>
+					<form action="menu2_1" method="post">
+						<table>
+							<tr>
+								<td align="left">[주방용품]</td>
+								<td align="right"><button onclick="script:submit()">+더보기</button></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<img alt="" src="/team4/resources/images/m3.jpg" onclick="script:submit()">
+								</td>
+							</tr>
+						</table>
+						<input type="hidden" name="keyword" value="category">
+						<input type="hidden" name="word" value="주방용품">
+					</form>
+				</td>
+				<td>
+					<form action="menu2_1" method="post">
+						<table>
+							<tr>
+								<td align="left">[전자기기]</td>
+								<td align="right"><button onclick="script:submit()">+더보기</button></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<img alt="" src="/team4/resources/images/m5.jpg" onclick="script:submit()">
+								</td>
+							</tr>
+						</table>
+						<input type="hidden" name="keyword" value="category">
+						<input type="hidden" name="word" value="전자기기">
+					</form>
+				</td>
+				<td>
+					<form action="menu2_1" method="post">
+						<table>
+							<tr>
+								<td align="left">[레저용품]</td>
+								<td align="right"><button onclick="script:submit()">+더보기</button></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<img alt="" src="/team4/resources/images/m0.jpg" onclick="script:submit()">
+								</td>
+							</tr>
+						</table>
+						<input type="hidden" name="keyword" value="category">
+						<input type="hidden" name="word" value="레저용품">
+					</form>
+				</td>
+			</tr>
+		</table>
+	</div>
 </body>
 <script>
 	var myIndex = 0;
