@@ -64,8 +64,8 @@
 									<form action="reviewendrent" method="post">
 										<input type="hidden" value="${MyRegisterselect.codeNum}" name="codeNum">
 										<input type="hidden" value="nomypage" name="mypage">
-										
-										<input type="submit" value="" class="mycancel2-btn w3-card-4">
+																									
+										<input type="submit" value="" class="mycancel2-btn w3-card-4" onclick="review(${MyRegisterselect.codeNum});	return false;">
 									</form>
 								</c:if>
 								
@@ -76,7 +76,7 @@
 										<input type="hidden" value="nomypage"  name="mypage">
 										<input type="hidden" value="${session_id}" name="rentter">
 										
-										<input type="submit" value="" class="mycancel-btn w3-card-4">
+										<input type="submit" value="" class="mycancel-btn w3-card-4" onclick="del(${MyRegisterselect.codeNum});	return false;">
 									</form>
 								</c:if>
 								
@@ -94,4 +94,34 @@
 		</div>
 	</div>
 </body>
+
+<script type="text/javascript">
+function del(name){
+	var myselect= "mySelect"+name;
+	
+	if(confirm("신청을 취소하시겠습니까?") == true) {
+		document.getElementById(name).status.value=document.getElementById(myselect).value;
+
+		document.forms(name).submit();
+	}
+	
+	else {
+		return false;
+	}
+}
+
+function review(name){
+	var myselect= "mySelect"+name;
+	
+	if(confirm("리뷰를 작성해주세요.") == true) {
+		document.getElementById(name).status.value=document.getElementById(myselect).value;
+
+		document.forms(name).submit();
+	}
+	
+	else {
+		return false;
+	}
+}
+</script>
 </html>
