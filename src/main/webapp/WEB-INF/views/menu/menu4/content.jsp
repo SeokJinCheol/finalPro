@@ -162,7 +162,7 @@ function writereply() {
       
       success: function (data){
          
-         alert("답글작성");
+         
          getReplylist();
       },
       complete: function (data) {
