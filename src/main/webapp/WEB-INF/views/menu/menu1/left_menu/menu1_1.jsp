@@ -18,10 +18,21 @@
    }
 </script>
 <body>
-	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
-		<img src="/team4/resources/images/left-menu12.png" style="margin-right:10px;">
-	    <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">업 체 별 등 록 현 황</font>
-	</div>
+	<!-- 업체별등록현황 타이틀 -->
+	<c:if test="${company == '업체'}">
+		<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
+			<img src="/team4/resources/images/left-menu12.png" style="margin-right:10px;">
+		    <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">업 체 별 등 록 현 황</font>
+		</div>
+	</c:if>
+	
+	<!-- 개인별등록현황 타이틀 -->
+	<c:if test="${company == '개인'}">
+		<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
+			<img src="/team4/resources/images/left-menu22.png" style="margin-right:10px;">
+		    <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">업 체 별 등 록 현 황</font>
+		</div>
+	</c:if>
 
 	<div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
 		<!-- 검색 -->
