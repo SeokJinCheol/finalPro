@@ -73,72 +73,59 @@ function replydelete(){
 <title>요청게시판_상세보기</title>
 <!-- CSS 연결-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/w3.css"
-	type="text/css" media="screen">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/login.css"
-	type="text/css" media="screen">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/w3.css" type="text/css" media="screen">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/login.css" type="text/css" media="screen">
 </head>
 <body>
-	<div class="row"
-		style="background: #6699DC; color: white; height: 100px; text-align: right; line-height: 130px;">
-		<img src="/team4/resources/images/free_content.png"
-			style="margin-right: 10px;"> <font
-			style="margin-right: 30px; font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px;">상
-			세 보 기</font>
+	<div class="row" style="background: #6699DC; color: white; height: 100px; text-align: right; line-height: 130px;">
+		<img src="/team4/resources/images/free_content.png" style="margin-right: 10px;"> 
+		<font style="margin-right: 30px; font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px;">상 세 보 기</font>
 	</div>
 
-	<div align=center class="w3-container"
-		style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
+	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
 		<div style="margin-bottom: 20px; width: 73%; margin-top: 40px;">
 			<table style="border-collapse: collapse; border-spacing: 0;">
-				
-					
-						<tr height="35">
-							<td class="top-border"
-								style="font-family: 'Jeju Gothic', sans-serif;">&nbsp;&nbsp;물
-								품 사 진</td>
+				<tr height="35">
+					<td class="top-border" style="font-family: 'Jeju Gothic', sans-serif;">&nbsp;&nbsp;물 품 사 진</td>
 
-							<td width=30 class="top-bottom-border"><select
-								name="category" readonly
-								style="border-radius: 4px; text-align: center; height: 27px; width: 82px;">
-									<option style="text-align: center;">${result.category}</option>
-							</select></td>
+					<td width=30 class="top-bottom-border"><select
+						name="category" readonly
+						style="border-radius: 4px; text-align: center; height: 27px; width: 82px;">
+							<option style="text-align: center;">${result.category}</option>
+					</select></td>
 
-							<td class="top-bottom-border"><input type="text"
-								class="free-insert-title" name="title"
-								style="margin-left: 12px;" readonly value="${result.title }">
-							</td>
-						</tr>
+					<td class="top-bottom-border"><input type="text"
+						class="free-insert-title" name="title"
+						style="margin-left: 12px;" readonly value="${result.title }">
+					</td>
+				</tr>
 
-						<tr align=center>
-							<td style="margin-right: 50px;" rowspan="4"
-								class="bottom-border2"><img
-								src="/team4/resources/FreeBoardImg/${result.img}"
-								style="width: 300px; height: 300px;"></td>
-						</tr>
+				<tr align=center>
+					<td style="margin-right: 50px;" rowspan="4" class="bottom-border2">
+						<img src="/team4/resources/FreeBoardImg/${result.img}" style="width: 300px; height: 300px;">
+					</td>
+				</tr>
 
-						<tr align="center" height="35">
-							<td
-								style="text-align: center; font-family: 'Jeju Gothic', sans-serif; border-right: 1px solid white;"
-								class="bottom-border">작 성 자</td>
-							<td class="bottom-border"><input type="text" name="id"
-								class="free-insert-title" value="${result.id }"
-								style="text-align: center;" readonly></td>
-						</tr>
+				<tr align="center" height="35">
+					<td
+						style="text-align: center; font-family: 'Jeju Gothic', sans-serif; border-right: 1px solid white;"
+						class="bottom-border">작 성 자</td>
+					<td class="bottom-border"><input type="text" name="id"
+						class="free-insert-title" value="${result.id }"
+						style="text-align: center;" readonly></td>
+				</tr>
 
-						<tr height="35">
-							<td colspan="2" style="font-family: 'Jeju Gothic', sans-serif;">
-								내 용</td>
-						</tr>
+				<tr height="35">
+					<td colspan="2" style="font-family: 'Jeju Gothic', sans-serif;">
+						내 용</td>
+				</tr>
 
-						<tr align="center">
-							<td colspan="2" class="bottom-border2"><textarea
-									class="free-insert-content-title" style="resize: none;"
-									name="contents" rows="10" cols="35" readonly>${result.contents }</textarea>
-							</td>
-						</tr>
+				<tr align="center">
+					<td colspan="2" class="bottom-border2"><textarea
+							class="free-insert-content-title" style="resize: none;"
+							name="contents" rows="10" cols="35" readonly>${result.contents }</textarea>
+					</td>
+				</tr>
 			</table>
 
 			<div align=center>
