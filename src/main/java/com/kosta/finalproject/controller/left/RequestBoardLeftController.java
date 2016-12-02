@@ -162,6 +162,10 @@ public class RequestBoardLeftController {
 
 	@RequestMapping("/requestboarddelete")
 	public String requestboarddelete(Model model, HttpServletRequest request) {
+		
+		//마이페이지 판별
+		String mypage = request.getParameter("mypage");
+		model.addAttribute("mypage", mypage);
 
 		// id 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -172,11 +176,18 @@ public class RequestBoardLeftController {
 		vo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
 		requestBoardDaoImpl.requestBoardDelete(vo);
 
-		List<RequestBoardVO> requestlist = requestBoardDaoImpl.RequestBoardUserSelectAll(session_id);
-
-		model.addAttribute("CONTENT", "menu/menu1/left_menu/menu1_3.jsp");
-		model.addAttribute("LEFT", "menu/menu1/left.jsp");
-		model.addAttribute("requestlist", requestlist);
+		List<RequestBoardVO> myrequest = requestBoardDaoImpl.RequestBoardUserSelectAll(session_id);
+		model.addAttribute("requestlist", myrequest);
+		model.addAttribute("myrequest", myrequest);
+		
+		if(mypage.equals("mypage")){
+			model.addAttribute("LEFT", "join/mypage_left.jsp");
+			model.addAttribute("CONTENT", "mypage/myrequest.jsp");
+		} else{
+			model.addAttribute("CONTENT", "menu/menu1/left_menu/menu1_3.jsp");
+			model.addAttribute("LEFT", "menu/menu1/left.jsp");
+		}
+		
 
 		return "main";
 	}

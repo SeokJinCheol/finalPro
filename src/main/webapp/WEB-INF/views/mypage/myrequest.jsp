@@ -56,10 +56,9 @@
 		                    <td width=100 style="border-bottom: 3px solid #fff;">${requestlist.packageStatus}</td>
 		                    <td width=60 style="border-bottom: 3px solid #fff;">
 		                        <form action="RequestBoardUpdateForm" method="post">
-		                        	<input type="hidden" name="mypage" value="${mypage}">
+		                        	<input type="hidden" name="mypage" value="mypage">
 		                            <input type="hidden" name="codeNum" value="${requestlist.codeNum}">
 		                            <input type="hidden" name="leftcontroll" value="mypage">
-		                            
 		                            <input type="submit" value="" class="myfinish2-btn w3-card-4">
 		                        </form>
 		                    </td>
@@ -69,7 +68,7 @@
 			                            <form action="RequestEnd" method="post">
 			                                <input type="hidden" name="codeNum" value="${requestlist.codeNum}">
 			                                <input type="hidden" name="leftcontroll" value="mypage">
-			                                <input type="hidden" name="mypage" value="${mypage}">
+			                                <input type="hidden" name="mypage" value="mypage">
 			                                <input type="submit" value="" class="myfinish-btn w3-card-4">
 			                            </form>
 			                        </c:if>
