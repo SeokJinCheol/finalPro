@@ -96,7 +96,7 @@
 								<!-- admin 버튼 -->
 			                     <c:if test="${session_id == 'admin'}">
 			                        <c:if test="${requestlist.packageStatus == '대여신청'}">
-			                           <td align="left">
+			                           <td height=30 style="width: 140px;" align="left">
 			                              <form action="startrentForm" method="post">
 			                                 <input type="hidden" value="${requestlist.codeNum}" name="codeNum"> 
 			                                 　<b><input type="submit" class="good1 w3-card-4" value="대여시작" onMouseOver="this.style.backgroundColor='#4593e0'"onMouseOut="this.style.backgroundColor='#80b5ea'" style="background-color: #80b5ea;"></b>
@@ -205,7 +205,7 @@
 								<!-- admin 버튼 -->
 			                     <c:if test="${session_id == 'admin'}">
 			                        <c:if test="${requestlist.packageStatus == '대여신청'}">
-			                           <td align="left">
+			                           <td height=30 style="width: 140px;" align="left">
 			                              <form action="startrentForm" method="post">
 			                                 <input type="hidden" value="${requestlist.codeNum}" name="codeNum"> 
 			                                 　<b><input type="submit" class="good1 w3-card-4" value="대여시작" onMouseOver="this.style.backgroundColor='#4593e0'"onMouseOut="this.style.backgroundColor='#80b5ea'" style="background-color: #80b5ea;"></b>
