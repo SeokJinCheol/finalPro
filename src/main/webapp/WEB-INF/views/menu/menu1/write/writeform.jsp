@@ -82,7 +82,7 @@
 	               		</td>
 	               		
 	               		<td colspan="2" class="bottom-border">
-	               			<input type="number" name="bill" class="free-insert-title" required style="text-align: center; margin-left: 10px; width:150px;" min="10" maxlength="10"> 원
+	               			<input type="number" name="bill" class="free-insert-title" required style="text-align: center; margin-left: 10px; width:150px;" min="10"> 원
 	               		</td>
 	                </tr>
 	                
@@ -93,7 +93,7 @@
 	               		</td>
 	               		
 	               		<td colspan="2" class="bottom-border">
-	               			<input type="number" name="deposit" class="free-insert-title" required style="text-align: center; margin-left: 10px; width:150px;" min="10" maxlength="10"> 원
+	               			<input type="number" name="deposit" class="free-insert-title" required style="text-align: center; margin-left: 10px; width:150px;" min="10"> 원
 	               		</td>
 	                </tr>
 					
