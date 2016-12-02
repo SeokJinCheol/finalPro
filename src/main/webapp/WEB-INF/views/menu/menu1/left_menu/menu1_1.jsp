@@ -30,25 +30,11 @@
 	<c:if test="${company == '개인'}">
 		<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
 			<img src="/team4/resources/images/left-menu22.png" style="margin-right:10px;">
-		    <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">업 체 별 등 록 현 황</font>
+		    <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">개 인 별 등 록 현 황</font>
 		</div>
 	</c:if>
 
 	<div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
-		<!-- 검색 -->
-		<div class="w3-row" style="margin-top: 30px;">
-			<form action="menu1" method=post>
-				<select name="keyword" style="width: 15%; border-radius: 4px; text-align: center; height: 27px;">
-					<option value="#" style="text-align: center;">선택하세요.</option>
-					<option value="title" style="text-align: center;">Title</option>
-					<option value="category" style="text-align: center;">카테고리</option>
-				</select> 
-				
-				<input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" style="border-color: rgb(169, 169, 169);" required="required" /> 
-				<input type="submit" class="list-search" value="Search" style="width: 8%;">
-			</form>
-		</div>
-
 		<!-- 글쓰기 버튼 -->
 		<div style="margin-bottom: 20px; width: 90%;">
 			<security:authorize ifAnyGranted="role_user, role_com, role_master">
