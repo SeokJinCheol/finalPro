@@ -384,6 +384,11 @@ public class RegisterBoardLeftController {
 
 	@RequestMapping("/storageendrent")
 	public String storageendrent(Model model, HttpServletRequest request) {
+		
+		// 로그인 정보 확인
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+		model.addAttribute("session_id", session_id);
 
 		// 대여 목록 카운트
 		int codeNum = Integer.parseInt(request.getParameter("codeNum"));

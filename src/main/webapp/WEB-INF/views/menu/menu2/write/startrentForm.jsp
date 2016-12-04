@@ -93,7 +93,7 @@
 								
 								<!-- 대여승인 버튼 -->
 								<td width=50 style="border-bottom: 3px solid #fff;">
-					            	<form action="rentcancelend" method="post">
+					            	<form action="startrent" method="post">
 										<input type="hidden" name="sNum"  value="${storagecount.sNum}">
 										<input type="hidden" name="codeNum" value="${rentstartlist.codeNum}">
 										<input type="hidden" name="rentter" value="${rentstartlist.rentter}">
