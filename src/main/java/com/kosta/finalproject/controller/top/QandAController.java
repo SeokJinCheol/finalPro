@@ -43,8 +43,6 @@ public class QandAController {
 
 		String keyword = request.getParameter("keyword");
 		String word = request.getParameter("word");
-		String id = request.getParameter("id");
-		String bnum = request.getParameter("bnum");
 
 		int pageSize = 10;
 
@@ -55,7 +53,7 @@ public class QandAController {
 
 		int currentPage = Integer.parseInt(pageNum);
 
-		int count =0;  int  number = 0;
+		int count =0;
 		List<QandAVO> list = null;
 		if (keyword == null) {
 			count = qandADaoImpl.ListAllCount(); ///
@@ -97,7 +95,7 @@ public class QandAController {
 				model.addAttribute("keyword", keyword);
 			}
 		} else {
-			list = Collections.EMPTY_LIST;
+			list = Collections.emptyList();
 			System.out.println("여기는 리스트가 비어있으면 와");
 		}
 
@@ -138,7 +136,6 @@ public class QandAController {
 	public String QnA_update2(Model model, HttpServletRequest request, UploadVO dto) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
-		String oldimg = request.getParameter("img");
 		//파일이 null 이 아니면 실행.
 	      String fileName = null;
 	      
@@ -194,16 +191,6 @@ public class QandAController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 
-		String bnum = request.getParameter("bnum");
-
-		System.out.println("타요~~");
-
-		/*
-		 * if (bnum != null) { model.addAttribute("title", "[답변] ");
-		 * model.addAttribute("bnum", bnum);
-		 * 
-		 * model.addAttribute("session_id", session_id); }
-		 */
 		model.addAttribute("session_id", session_id);
 		model.addAttribute("CONTENT", "Q&A/QnA_write.jsp");
 		model.addAttribute("LEFT", "Q&A/left.jsp");
@@ -368,8 +355,6 @@ public class QandAController {
 	public View QnA_re_delete(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String reply_bnum = request.getParameter("reply_bnum");
 
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String session_id = auth.getName();
 		qandADaoImpl.delete(Integer.parseInt(reply_bnum));
 
 		return jsonview;
