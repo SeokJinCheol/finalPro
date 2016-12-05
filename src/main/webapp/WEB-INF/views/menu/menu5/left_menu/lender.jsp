@@ -30,12 +30,12 @@
 		    <table  style="padding: 70px; padding-top: 20px;padding-bottom: 15px;">
 				<tr>
 					<td colspan="4" style="height:27px;">
-						<h5><b>&nbsp;&nbsp;&nbsp;&nbsp;※ 물 품 대 여 과 정 ※</b></h5>
+						<h5><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ 물 품 대 여 과 정 ※</b></h5>
 					</td>
 				</tr>
 				
 				<tr>
-				    <td><img src="/team4/resources/images/ttt8.png"></td>
+				    <td><img src="/team4/resources/images/ttt11.png"></td>
 				</tr>
 
 				<tr>
