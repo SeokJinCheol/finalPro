@@ -32,6 +32,10 @@
 		SELECT * FROM registerBoard ORDER BY codeNum DESC
 	</select>
 	
+	<select id="getMain" resultMap="RegisterBoard">
+		SELECT * FROM registerBoard where category = #{category} and packageStatus = '대여가능' ORDER BY codeNum DESC
+	</select>
+	
 	<select id="RegisterUpForm" resultMap="RegisterBoard">
 		SELECT * FROM registerBoard WHERE codeNum = #{codeNum} ORDER BY codeNum DESC
 	</select>

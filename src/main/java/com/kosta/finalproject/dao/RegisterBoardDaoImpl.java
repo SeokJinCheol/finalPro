@@ -137,4 +137,14 @@ public class RegisterBoardDaoImpl implements RegisterBoardDao{
 		mapper.imgupdate(vo);
 	}
 
+	@Override
+	public ArrayList<RegisterBoardVO> getMain(String category) {
+	      ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
+	      RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
+	      result = mapper.getMain(category);
+	      return result;
+	}
+	
+	
+
 }

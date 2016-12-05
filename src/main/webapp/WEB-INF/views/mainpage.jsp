@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,6 +66,7 @@
 		<table>
 			<tr>
 				<td>
+					<c:forEach items="${registervo1}" var="registervo1" begin="0" end="0">
 					<form action="menu2_1" method="post">
 						<table>
 							<tr>
@@ -73,15 +75,19 @@
 							</tr>
 							<tr>
 								<td colspan="2">
-									<img alt="" src="/team4/resources/images/baby2.jpg" onclick="script:submit()">
+									<a href="requestcontent?codeNum=${registervo1.codeNum}"> 
+										<img alt="" src="/team4/resources/RequestImg/${registervo1.img}">
+									</a>
 								</td>
 							</tr>
 						</table>
 						<input type="hidden" name="keyword" value="category">
 						<input type="hidden" name="word" value="DIY용품">
 					</form>
+					</c:forEach>
 				</td>
 				<td>
+					<c:forEach items="${registervo2}" var="registervo2" begin="0" end="0">
 					<form action="menu2_1" method="post">
 						<table>
 							<tr>
@@ -90,15 +96,19 @@
 							</tr>
 							<tr>
 								<td colspan="2">
-									<img alt="" src="/team4/resources/images/m2.jpg" onclick="script:submit()">
+									<a href="requestcontent?codeNum=${registervo2.codeNum}"> 
+										<img alt="" src="/team4/resources/RequestImg/${registervo2.img}">
+									</a>
 								</td>
 							</tr>
 						</table>
 						<input type="hidden" name="keyword" value="category">
 						<input type="hidden" name="word" value="공구">
 					</form>
+					</c:forEach>
 				</td>
 				<td>
+					<c:forEach items="${registervo3}" var="registervo3" begin="0" end="0">
 					<form action="menu2_1" method="post">
 						<table>
 							<tr>
@@ -107,15 +117,19 @@
 							</tr>
 							<tr>
 								<td colspan="2">
-									<img alt="" src="/team4/resources/images/m3.jpg" onclick="script:submit()">
+									<a href="requestcontent?codeNum=${registervo3.codeNum}"> 
+										<img alt="" src="/team4/resources/RequestImg/${registervo3.img}">
+									</a>
 								</td>
 							</tr>
 						</table>
 						<input type="hidden" name="keyword" value="category">
 						<input type="hidden" name="word" value="주방용품">
 					</form>
+					</c:forEach>
 				</td>
 				<td>
+					<c:forEach items="${registervo4}" var="registervo4" begin="0" end="0">
 					<form action="menu2_1" method="post">
 						<table>
 							<tr>
@@ -124,30 +138,37 @@
 							</tr>
 							<tr>
 								<td colspan="2">
-									<img alt="" src="/team4/resources/images/m5.jpg" onclick="script:submit()">
+									<a href="requestcontent?codeNum=${registervo4.codeNum}"> 
+										<img alt="" src="/team4/resources/RequestImg/${registervo4.img}">
+									</a>
 								</td>
 							</tr>
 						</table>
 						<input type="hidden" name="keyword" value="category">
 						<input type="hidden" name="word" value="전자기기">
 					</form>
+					</c:forEach>
 				</td>
 				<td>
+					<c:forEach items="${registervo5}" var="registervo5" begin="0" end="0">
 					<form action="menu2_1" method="post">
 						<table>
 							<tr>
-								<td align="left">[레저용품]</td>
+								<td align="left">[레져용품]</td>
 								<td align="right"><button onclick="script:submit()">+더보기</button></td>
 							</tr>
 							<tr>
 								<td colspan="2">
-									<img alt="" src="/team4/resources/images/m0.jpg" onclick="script:submit()">
+									<a href="requestcontent?codeNum=${registervo5.codeNum}"> 
+										<img alt="" src="/team4/resources/RequestImg/${registervo5.img}">
+									</a>
 								</td>
 							</tr>
 						</table>
 						<input type="hidden" name="keyword" value="category">
-						<input type="hidden" name="word" value="레저용품">
+						<input type="hidden" name="word" value="레져용품">
 					</form>
+					</c:forEach>
 				</td>
 			</tr>
 		</table>
@@ -167,7 +188,7 @@
 							</tr>
 							<tr>
 								<td colspan="2">
-									<img alt="" src="/team4/resources/BoardImg/${vo1.img }" onclick="showContents(${vo1.codeNum })">
+									<img alt="" src="/team4/resources/BoardImg/${vo1.img}" onclick="showContents(${vo1.codeNum })">
 								</td>
 							</tr>
 						</table>

@@ -2,6 +2,7 @@ package com.kosta.finalproject.controller.top;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -21,16 +22,21 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.kosta.finalproject.dao.BoardDaoImpl;
 import com.kosta.finalproject.dao.FinalDaoImpl;
 import com.kosta.finalproject.dao.QandADaoImpl;
-import com.kosta.finalproject.dao.RRBoardDao;
 import com.kosta.finalproject.dao.RRBoardDaoImpl;
+import com.kosta.finalproject.dao.RegisterBoardDaoImpl;
 import com.kosta.finalproject.vo.BoardVO;
 import com.kosta.finalproject.vo.QandAVO;
 import com.kosta.finalproject.vo.RRboardVO;
+import com.kosta.finalproject.vo.RegisterBoardVO;
 import com.kosta.finalproject.vo.UsersVO;
 
 @Controller
 @SessionAttributes({ "id" })
 public class MainController {
+	
+	@Autowired
+	private RegisterBoardDaoImpl registerBoardDaoImpl;
+	
 	@Autowired
 	private FinalDaoImpl finalDaoImpl;
 
@@ -47,17 +53,31 @@ public class MainController {
 	@RequestMapping("/main")
 	public String main(Model model) {
 		
-	RRboardVO vo1 =	RRBoardDaoImpl.getMain("강당");
-	RRboardVO vo2 =	RRBoardDaoImpl.getMain("사무실");
-	RRboardVO vo3 =	RRBoardDaoImpl.getMain("회의실");
-	RRboardVO vo4 =	RRBoardDaoImpl.getMain("공터");
-	RRboardVO vo5 =	RRBoardDaoImpl.getMain("기타");
-	
+		//장소대여 main
+		RRboardVO vo1 =	RRBoardDaoImpl.getMain("강당");
+		RRboardVO vo2 =	RRBoardDaoImpl.getMain("사무실");
+		RRboardVO vo3 =	RRBoardDaoImpl.getMain("회의실");
+		RRboardVO vo4 =	RRBoardDaoImpl.getMain("공터");
+		RRboardVO vo5 =	RRBoardDaoImpl.getMain("기타");
+		
 		model.addAttribute("vo1", vo1);
 		model.addAttribute("vo2", vo2);
 		model.addAttribute("vo3", vo3);
 		model.addAttribute("vo4", vo4);
 		model.addAttribute("vo5", vo5);
+		
+		//물건대여 main
+		List<RegisterBoardVO> registervo1 = registerBoardDaoImpl.getMain("DIY용품");
+		List<RegisterBoardVO> registervo2 = registerBoardDaoImpl.getMain("공구");
+		List<RegisterBoardVO> registervo3 = registerBoardDaoImpl.getMain("주방용품");
+		List<RegisterBoardVO> registervo4 = registerBoardDaoImpl.getMain("전자기기");
+		List<RegisterBoardVO> registervo5 = registerBoardDaoImpl.getMain("레져용품");
+		
+		model.addAttribute("registervo1", registervo1);
+		model.addAttribute("registervo2", registervo2);
+		model.addAttribute("registervo3", registervo3);
+		model.addAttribute("registervo4", registervo4);
+		model.addAttribute("registervo5", registervo5);
 
 		model.addAttribute("CONTENT", "mainpage.jsp");
 		return "main";

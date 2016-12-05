@@ -20,4 +20,5 @@ public interface RegisterBoardMapper {
 	public ArrayList<RegisterBoardVO> registercontent(int codeNum);
 	public ArrayList<RegisterBoardVO> registercount();
 	public void imgupdate(RegisterBoardVO vo);
+	public ArrayList<RegisterBoardVO> getMain(String category);
 }
