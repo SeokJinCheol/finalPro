@@ -9,8 +9,8 @@
 </head>
 <body>
 	<div class="w3-container">
-		<footer class="bottom w3-large" style="height: 100px;">
-			<div class=row style="margin-top:10px;">		
+		<footer class="bottom w3-large" style="background-color: #828b9d; ">
+			<div class=row style="margin-top:20px;">		
 				<table>
 					<tr>
 						<td colspan="2">
@@ -32,9 +32,9 @@
 						</td>
 						
 						<td>
-							<a href="https://www.facebook.com/BillyBury4/" target="_blank"><img src="/team4/resources/images/facebook.png"></a>
-							<a href="https://www.instagram.com/billybury4/" target="_blank"><img src="/team4/resources/images/instagram.png"></a>
-							<a href="https://twitter.com/BillyBury" target="_blank"><img src="/team4/resources/images/twitter.png"></a>
+							<a href="https://www.facebook.com/BillyBury4/" target="_blank"><img src="/team4/resources/images/facebook.png" class="bottom9292"></a>
+							<a href="https://www.instagram.com/billybury4/" target="_blank"><img src="/team4/resources/images/instagram.png" class="bottom9292"></a>
+							<a href="https://twitter.com/BillyBury" target="_blank"><img src="/team4/resources/images/twitter.png" class="bottom9292"></a>
 						</td>
 					</tr>
 				</table>　

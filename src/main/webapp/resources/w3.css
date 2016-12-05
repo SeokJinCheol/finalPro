@@ -2286,9 +2286,15 @@
 
 .bottom {
 	border-top: 2px solid black;
-	border-bottom: 2px solid black;
-	margin-bottom: 8px;
 	padding: 0.01em 16px;
+	margin-bottom: 0px;
+	color: #ededed;
+}
+
+.bottom9292{
+	background-color: white;
+	border-radius: 9px;
+	border:0px;
 }
 
 .bottom-index {
