@@ -7,8 +7,56 @@
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+.effect22 {
+	position: relative;
+	display: inline-block;
+	overflow: hidden; /* 불필요한 부분 가리기 */
+	padding: 1px;
+}
+.effect22:after {
+	content: "";
+	position: absolute;
+	z-index: 1;
+	width: 100px;
+	height: auto;
+	background: red;
+	content: "New";	/* 보여주는 텍스트 */
+	text-align: center;
+	color: #fff;
+	font-family: 'Arial';
+	font-weight: bold;
+	padding: 5px 10px;
+	left: -30px;
+	top: 3px;
+	transform: rotate(-35deg);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
 
-
+.effect {
+	position: relative;
+	display: inline-block;
+	overflow: hidden; /* 불필요한 부분 가리기 */
+	padding: 1px;
+}
+.effect:after {
+	content: "";
+	position: absolute;
+	z-index: 1;
+	width: 100px;
+	height: auto;
+	background: green;
+	content: "New";	/* 보여주는 텍스트 */
+	text-align: center;
+	color: #fff;
+	font-family: 'Arial';
+	font-weight: bold;
+	padding: 5px 10px;
+	left: -30px;
+	top: 3px;
+	transform: rotate(-35deg);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+/* ///////////////////////////////////// */
 .bt1 {
 	border: 0.5px solid gray;
 	border-top-left-radius: 5px;
