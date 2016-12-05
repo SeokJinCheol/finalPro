@@ -68,10 +68,13 @@
             <property name="defaultEncoding" value="UTF-8" />
       </bean>
       
-           
- <bean id="shutDown" class="com.kosta.finalproject.controller.top.ScedulerController" />
- <task:scheduler id="gsScheduler" pool-size="10" />
- <task:executor id="gsTaskExecutor" pool-size="10" />
- <task:annotation-driven executor="gsTaskExecutor"
-  scheduler="gsScheduler" />
+	   <!-- 스케줄 펑션을 위한 셋팅  -->        
+	 <bean id="shutDown" class="com.kosta.finalproject.controller.top.ScedulerController" />
+	 <task:scheduler id="gsScheduler" pool-size="10" />
+	 <task:executor id="gsTaskExecutor" pool-size="10" />
+	 <task:annotation-driven executor="gsTaskExecutor"
+	  scheduler="gsScheduler" />
+	  
+	  <!-- 제이슨 뷰를 위한 빈 -->
+	  <bean name="jsonview" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
 </beans>
