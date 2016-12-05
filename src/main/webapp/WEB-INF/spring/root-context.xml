@@ -36,8 +36,8 @@
       <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
       <!-- 아래의 부분은 오라클 버전이나 계정에따라 다르게적는다. -->
       <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-      <property name="username" value="kim" />
-      <property name="password" value="rlaguddbs1590" />
+      <property name="username" value="system" />
+      <property name="password" value="1129" />
    </bean>
 
    <!-- 트랜잭션 -->
@@ -68,11 +68,13 @@
             <property name="defaultEncoding" value="UTF-8" />
       </bean>
       
-           
- <bean id="shutDown" class="com.kosta.finalproject.controller.top.ScedulerController" />
- <task:scheduler id="gsScheduler" pool-size="10" />
- <task:executor id="gsTaskExecutor" pool-size="10" />
- <task:annotation-driven executor="gsTaskExecutor"
-  scheduler="gsScheduler" />
-  <bean name="jsonview" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+	   <!-- 스케줄 펑션을 위한 셋팅  -->        
+	 <bean id="shutDown" class="com.kosta.finalproject.controller.top.ScedulerController" />
+	 <task:scheduler id="gsScheduler" pool-size="10" />
+	 <task:executor id="gsTaskExecutor" pool-size="10" />
+	 <task:annotation-driven executor="gsTaskExecutor"
+	  scheduler="gsScheduler" />
+	  
+	  <!-- 제이슨 뷰를 위한 빈 -->
+	  <bean name="jsonview" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
 </beans>
