@@ -185,6 +185,7 @@ public class RequestBoardController {
       // 대여종료신청 page 이동
       String status = "대여종료신청";
       List<RequestBoardVO> requestboardstatus = requestBoardDaoImpl.requeststatus(status);
+      model.addAttribute("status", status);
       model.addAttribute("requestboardstatus", requestboardstatus);
       model.addAttribute("CONTENT", "menu/menu1/left_menu/requeststatus.jsp");
       model.addAttribute("LEFT", "menu/menu1/left.jsp");
