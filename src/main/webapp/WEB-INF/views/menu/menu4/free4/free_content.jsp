@@ -140,7 +140,7 @@
 
 			<!-- 리플 리스트 -->
 			<table id="replylist"
-				style="border-collapse: collapse; border-spacing: 0; width: 559px; height: 40px; text-align: center;">
+				style="border-collapse: collapse; border-spacing: 0; width: 559px; height: 43px; text-align: center;">
 			</table>
 		</div>
 	</div>
