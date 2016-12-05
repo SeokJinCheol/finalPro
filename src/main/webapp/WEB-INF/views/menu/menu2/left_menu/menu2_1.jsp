@@ -20,7 +20,7 @@
 <body>
 	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
 		<img src="/team4/resources/images/left-menu62.png" style="margin-right:10px;">
-	    <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">대 여 가 능 현 황</font>
+	    <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-styl	e: bold; font-size: 30px; ">대 여 가 능 현 황</font>
 	</div>
 
 	<div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
@@ -58,9 +58,9 @@
 							</tr>
 
 							<!-- 이미지 -->
-							<tr >
+							<tr>
 								<td  height=175 colspan="3" align="center">
-									<a href="registercontent?codeNum=${Registerpossibility.codeNum}"> 
+									<a class="effect" href="registercontent?codeNum=${Registerpossibility.codeNum}"> 
 										<img src="/team4/resources/RequestImg/${Registerpossibility.img}" style="width: 85%; height: 170px; border-radius: 7px;">
 									</a>
 								</td>

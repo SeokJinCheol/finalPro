@@ -60,7 +60,7 @@
 							<!-- 이미지 -->
 							<tr >
 								<td  height=175 colspan="3" align="center">
-									<a href="registercontent?codeNum=${requestlist.codeNum}"> 
+									<a class="effect" href="registercontent?codeNum=${requestlist.codeNum}"> 
 										<img src="/team4/resources/RequestImg/${requestlist.img}" style="width: 85%; height: 170px; border-radius: 7px;">
 									</a>
 								</td>
