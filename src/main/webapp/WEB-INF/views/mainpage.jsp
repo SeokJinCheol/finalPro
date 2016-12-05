@@ -293,9 +293,9 @@
 					<security:authorize ifAnyGranted="role_user, role_com, role_master">
 						<form action="menu2_1" method="post">
 							<c:forEach items="${registervo4}" var="registervo4" begin="0" end="0">
-								<table>
-									<tr>
-										<td align="left">
+								<table class="w3-card-8" style="background-color: white; border-radius: 7px; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
+									<tr style="background-color: #8DBAF5;" align=center height=30>
+										<td style="width: 40%;">
 											<b><input type=text class="free-insert-title" value="[ 전자기기 ]" style="width:90%; background-color: #8DBAF5; color: white; border: 0px; height: 23px; text-align: left;" readonly></b>
 										</td>
 										
@@ -325,9 +325,9 @@
 					<security:authorize ifNotGranted="role_user, role_com, role_master">
 						<form action="Login" method="post">
 							<c:forEach items="${registervo4}" var="registervo4" begin="0" end="0">
-								<table>
-									<tr>
-										<td align="left">
+								<table class="w3-card-8" style="background-color: white; border-radius: 7px; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
+									<tr style="background-color: #8DBAF5;" align=center height=30>
+										<td style="width: 40%;">
 											<b><input type=text class="free-insert-title" value="[ 전자기기 ]" style="width:90%; background-color: #8DBAF5; color: white; border: 0px; height: 23px; text-align: left;" readonly></b>
 										</td>
 										
@@ -360,9 +360,9 @@
 					<security:authorize ifAnyGranted="role_user, role_com, role_master">
 						<form action="menu2_1" method="post">
 							<c:forEach items="${registervo5}" var="registervo5" begin="0" end="0">
-								<table>
-									<tr>
-										<td align="left">
+								<table class="w3-card-8" style="background-color: white; border-radius: 7px; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
+									<tr style="background-color: #8DBAF5;" align=center height=30>
+										<td style="width: 40%;">
 											<b><input type=text class="free-insert-title" value="[ 레저용품 ]" style="width:90%; background-color: #8DBAF5; color: white; border: 0px; height: 23px; text-align: left;" readonly></b>
 										</td>
 	
@@ -392,9 +392,9 @@
 					<security:authorize ifNotGranted="role_user, role_com, role_master">
 						<form action="Login" method="post">
 							<c:forEach items="${registervo5}" var="registervo5" begin="0" end="0">
-								<table>
-									<tr>
-										<td align="left">
+								<table class="w3-card-8" style="background-color: white; border-radius: 7px; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
+									<tr style="background-color: #8DBAF5;" align=center height=30>
+										<td style="width: 40%;">
 											<b><input type=text class="free-insert-title" value="[ 레저용품 ]" style="width:90%; background-color: #8DBAF5; color: white; border: 0px; height: 23px; text-align: left;" readonly></b>
 										</td>
 	
