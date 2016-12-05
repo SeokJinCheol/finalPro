@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Q&A_상세보기</title>
+<title>상세보기</title>
 <!-- CSS 연결-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet"
@@ -108,7 +108,7 @@
 							style="float: left; width: 18%;">
 							<input class="free_delete-btn w3-card-4" type="submit"
 								value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;삭　제"
-								onclick="setpakageStatus(); return false;"> <input type="hidden"
+								onclick="updatesubmit(); return false;"> <input type="hidden"
 								name="bnum" value="${vo.bnum}">
 						</form>
 						&nbsp;&nbsp;&nbsp;
@@ -212,6 +212,12 @@ function getReplylist() {
       $("#replylist").html(str);
    });
 }
-
 </script>
+<script type="text/javascript">
+	function updatesubmit() {
+		if (confirm("삭제하시겠습니까??") == true) {
+			document.form.submit();
+		} else { return false; }
+	}
+	</script>
 </html>

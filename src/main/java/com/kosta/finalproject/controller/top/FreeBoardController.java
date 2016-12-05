@@ -22,10 +22,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.View;
-
 import com.kosta.finalproject.dao.FreeDaoImpl;
 import com.kosta.finalproject.vo.FreeBoardVO;
-import com.kosta.finalproject.vo.QandAVO;
 import com.kosta.finalproject.vo.UploadVO;
 
 @Controller
@@ -307,30 +305,18 @@ public class FreeBoardController {
 	//리플리스트
 	@RequestMapping("/free_replylist/{bnum}")
 	public ResponseEntity<ArrayList<FreeBoardVO>> free_replylist(@PathVariable("bnum") Integer bnum) {
-		/*
-		 * int pageSize = 10;
-		 * 
-		 * if (pageNum == null) pageNum = "1";
-		 * 
-		 * int currentPage = Integer.parseInt(pageNum);
-		 * 
-		 * int startrow = (currentPage * pageSize) - (pageSize - 1); int endrow
-		 * = currentPage * pageSize; int count = 0, number = 0; count =
-		 * qandADaoImpl.replyCount(bnum); int pageCount = Math.round(count /
-		 * pageSize + (count % pageSize == 0 ? 0 : 1));
-		 */
+		
 		ResponseEntity<ArrayList<FreeBoardVO>> entity = null;
-		// if (count > 0) {
+		
 		try {
-			// entity = new
-			// ResponseEntity<>(qandADaoImpl.selectReply(bnum,startrow,endrow),HttpStatus.OK);
+			
 			entity = new ResponseEntity<>(freeDaoImpl.selectBoardReply(bnum), HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
 		}
-		// 나짜변환 - > 스트링
+		// 날짜변환 - > 스트링
 		//
 		// }
 		return entity;
@@ -356,24 +342,5 @@ public class FreeBoardController {
 		return jsonview;
 	}
 
-	// 리플등록
-	/*@RequestMapping("/free4_reply")
-	public String free4_reply(Model model, HttpServletRequest request) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String session_id = auth.getName();
-		FreeBoardVO vo = new FreeBoardVO();
-		int bnum = Integer.parseInt(request.getParameter("bnum"));
-		int bgnum = bnum;
-		String contents = request.getParameter("contents");
-		String title = "[답변]" + request.getParameter("title");
-		String img = request.getParameter("img");
-		vo.setBgnum(bgnum);
-		vo.setContents(contents);
-		vo.setTitle(title);
-		vo.setId(session_id);
-		vo.setImg(img);
-		freeDaoImpl.writeBoard(vo);
-		model.addAttribute("bnum", bnum);
-		return "redirect:free_content";
-	}*/
+	
 }
