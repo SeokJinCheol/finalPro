@@ -16,6 +16,6 @@
 	</insert>
 
 	<select id="mymaillist" resultMap="MailBoard">
-		SELECT * FROM mail WHERE rid = #{session_id}
+		SELECT * FROM mail WHERE rid = #{session_id} ORDER BY mailNum DESC
 	</select>
 </mapper>
