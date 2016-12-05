@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +26,6 @@ import org.springframework.web.servlet.View;
 
 import com.kosta.finalproject.dao.BoardDaoImpl;
 import com.kosta.finalproject.vo.BoardVO;
-
 import com.kosta.finalproject.vo.UploadVO;
 
 @Controller
@@ -89,9 +87,7 @@ public class BoardController {
             model.addAttribute("keyword", keyword);
 
          }
-      } else {
-         list = Collections.EMPTY_LIST;
-      }
+      } 
       model.addAttribute("result", list);
       model.addAttribute("currentPage", new Integer(currentPage));
       model.addAttribute("count", new Integer(count));

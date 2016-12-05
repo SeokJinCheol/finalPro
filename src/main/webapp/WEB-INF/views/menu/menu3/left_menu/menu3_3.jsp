@@ -18,6 +18,18 @@
 		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">목 록 찾 기 & 대 여</font>
 	</div>
 	
+	<div class="w3-row" style="margin-top: 30px;">
+			<form action="mainSearch" method=post>
+				<select name="keyword" style="width: 15%; border-radius: 4px; text-align: center; height: 27px;">
+					<option value="place" style="text-align: center;">Place</option>
+				</select> 
+				
+				<input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" style="border-color: rgb(169, 169, 169);" required="required" /> 
+				<input type="submit" class="list-search" value="Search" style="width: 8%;">
+			</form>
+		</div>
+        <br> 
+        
 	<div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
 		<div style="margin-bottom: 20px; width:825px; background-color: #fafafa" class="w3-card-8">
         	<table style="height:403px; width:825px; padding: 20px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">

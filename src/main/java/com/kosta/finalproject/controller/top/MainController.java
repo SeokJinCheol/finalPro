@@ -162,15 +162,15 @@ public class MainController {
 					Registerpossibility = registerBoardDaoImpl.pselectTitle(packageStatus, word);
 		
 					model.addAttribute("Registerpossibility", Registerpossibility);
-					model.addAttribute("CONTENT", "goodsMainSearch.jsp");
+					model.addAttribute("CONTENT", "menu/menu2/left_menu/menu2_1.jsp");
 					model.addAttribute("LEFT", "menu/menu2/left.jsp");
 
 				} else if (keyword.equalsIgnoreCase("place") && word != null) {
 
 					RRpossibility = RRBoardDaoImpl.pselectPlace(packageStatus, word);
 					
-				    model.addAttribute("RRpossibility", RRpossibility);
-				    model.addAttribute("CONTENT", "placeMainSearch.jsp");
+				    model.addAttribute("list", RRpossibility);
+				    model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_3.jsp");
 				    model.addAttribute("LEFT", "menu/menu3/left.jsp");
 				
 			}

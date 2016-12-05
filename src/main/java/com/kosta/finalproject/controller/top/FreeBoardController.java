@@ -3,7 +3,6 @@ package com.kosta.finalproject.controller.top;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.View;
+
 import com.kosta.finalproject.dao.FreeDaoImpl;
 import com.kosta.finalproject.vo.FreeBoardVO;
 import com.kosta.finalproject.vo.UploadVO;
@@ -92,10 +92,7 @@ public class FreeBoardController {
 				model.addAttribute("word", word);
 				model.addAttribute("keyword", keyword);
 			}
-		} else {
-			list = Collections.EMPTY_LIST;
-			System.out.println("여기는 리스트가 비어있으면 와");
-		}
+		} 
 
 		model.addAttribute("result", list);
 		model.addAttribute("currentPage", new Integer(currentPage));

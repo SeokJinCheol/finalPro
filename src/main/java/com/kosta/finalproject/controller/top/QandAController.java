@@ -3,7 +3,6 @@ package com.kosta.finalproject.controller.top;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -94,10 +93,7 @@ public class QandAController {
 				model.addAttribute("word", word);
 				model.addAttribute("keyword", keyword);
 			}
-		} else {
-			list = Collections.emptyList();
-			System.out.println("여기는 리스트가 비어있으면 와");
-		}
+		} 
 
 		model.addAttribute("currentPage", new Integer(currentPage));
 		model.addAttribute("count", new Integer(count));

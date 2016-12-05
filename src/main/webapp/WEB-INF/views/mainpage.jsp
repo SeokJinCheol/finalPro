@@ -17,12 +17,11 @@
 			<td colspan="2" align=center style="margin-top:30px;">
 				<form action="mainSearch" method="post" style="margin-bottom:15px;">   
 					<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
-					    <option value="#" style="text-align: center;">선택하세요.</option>
 						<option value="goods" style="text-align:center;">물품대여</option>
 						<option value="place" style="text-align:center;">장소대여</option>
 					</select>
 					
-		   			<input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" style="border-color: rgb(169, 169, 169); " />
+		   			<input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" style="border-color: rgb(169, 169, 169);" required="required" />
 		   			<input type="submit" class="list-search" value ="Search" style="width:8%;">
 		  		</form>
 			</td>

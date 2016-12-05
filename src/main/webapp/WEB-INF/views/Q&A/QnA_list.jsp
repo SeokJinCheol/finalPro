@@ -33,7 +33,6 @@
 			<form action="QnA_list" method=post>
 				<select name="keyword"
 					style="width: 15%; border-radius: 4px; text-align: center; height: 27px;">
-					<option value="#" style="text-align: center;">선택하세요.</option>
 					<option value="title" style="text-align: center;">Title</option>
 					<option value="id" style="text-align: center;">I D</option>
 				</select> <input type="text" name="word" value="${word}"
