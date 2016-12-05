@@ -17,8 +17,8 @@
 		<img src="/team4/resources/images/box.png" style="margin-right: 10px;"> 
 		<font style="margin-right: 30px; font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px;">물 품 정 산</font>
 	</div>
-
 	<div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
+		<input type="button" value="엑셀저장" onclick="window.open('Excelaccount')">
 		<div style="margin-bottom: 20px; width:700px; background-color: #fafafa" class="w3-card-8">
 			<table style="height:403px; width:700px; padding: 20px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
 				<thead style="height:30px; table-layout:fixed">

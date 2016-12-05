@@ -470,6 +470,54 @@ public class RegisterBoardLeftController {
 
 		return "main";
 	}
+	
+	@RequestMapping("/Excelaccount")
+	public String Excelaccount(Model model) throws Exception {
+
+		// stroageBoard 갯수 받기
+		List<StorageBoardVO> storagecount = storageBoardDaoImpl.storageCount();
+		int count = storagecount.get(0).getsNum();
+
+		// storageBoard 정보 뿌리기
+		List<StorageBoardVO> storagelist = storageBoardDaoImpl.storageAll();
+
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		// 넘겨줄 배열값 생성
+		Date[] Date1 = new Date[count];
+		Date[] Date2 = new Date[count];
+		long[] rentDate = new long[count];
+		long[] pay = new long[count];
+		// 계산식
+		for (int i = 0; i < count; i++) {
+			// date 형변환
+			if (storagelist.get(i).getEndDate() != null) {
+				String sDate = storagelist.get(i).getStartDate();
+				Date1[i] = (Date) format.parse(sDate);
+				String eDate = storagelist.get(i).getEndDate();
+				Date2[i] = (Date) format.parse(eDate);
+				// 날짜 시간차
+				long rentTime = Date2[i].getTime() - Date1[i].getTime();
+				// 일수 변환
+				if (rentTime != 0) {
+					rentDate[i] = rentTime / (24 * 60 * 60 * 1000);
+					pay[i] = rentDate[i] * storagelist.get(i).getBill();
+				} else {
+					rentDate[i] = 0;
+					pay[i] = 0;
+				}
+			} else {
+				rentDate[i] = 0;
+				pay[i] = 0;
+			}
+
+		}
+
+		model.addAttribute("rentDate", rentDate);
+		model.addAttribute("pay", pay);
+		model.addAttribute("storagelist", storagelist);
+		
+		return "admin/Excelaccount";
+	}
 
 	@RequestMapping("/registercontent")
 	public String registercontent(HttpServletRequest request, Model model) throws Exception {
