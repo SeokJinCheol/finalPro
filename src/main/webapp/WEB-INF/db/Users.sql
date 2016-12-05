@@ -6,7 +6,8 @@ birthday varchar(50) null,
 phoneNum1 varchar(15), 
 phoneNum2 varchar(15), 
 email varchar(50),
-postcode varchar(20),
+postcode varchar(20),3
+
 address varchar(100),
 address2 varchar(100),
 memberRank varchar(15),

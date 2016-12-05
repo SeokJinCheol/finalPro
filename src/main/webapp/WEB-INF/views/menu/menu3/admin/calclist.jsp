@@ -114,10 +114,33 @@
 					</tr>
 				</tfoot>
 			</table>
+			<form action="Excelcalc" name="Excelcalc" id="Excelcalc" method="post">
+					<input type="submit" value="엑셀저장" onclick="Excelcalc(); return false;">
+					<input type="hidden" value="keyField">
+					<input type="hidden" value="keyWord">
+					<input type="hidden" value="month2">
+					<input type="hidden" value="month1">
+					</form>
 		</div>
 	</div>
 </body>
 <script type="text/javascript">
+
+	function Excelcalc(){
+		
+		getMonth();
+		
+		document.Excelcalc.month2.value=document.getElementById('search').elements['month2'].value;
+		document.Excelcalc.month1.value=document.getElementById('search').elements['month1'].value;
+
+		document.Excelcalc.keyField.value=document.getElementById('search').keyField.value;
+		document.Excelcalc.keyWord.value=document.getElementById('search').keyWord.value;
+
+		
+		document.getElementById('Excelcalc').submit();
+	}
+
+
 	window.onload = function() {
 		var now = new Date();
 		var date = (now.getYear() + 1900) + '-' + fncLPAD((now.getMonth() + 1));
