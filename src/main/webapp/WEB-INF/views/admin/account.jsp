@@ -21,7 +21,7 @@
 	<div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
 		<div style="margin-bottom: 20px; width:700px; background-color: #fafafa" class="w3-card-8">
 			<table style="height:403px; width:700px; padding: 20px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
-				<thead style="height:33px; table-layout:fixed">
+				<thead style="height:30px; table-layout:fixed">
 					<tr class="bottom-border2" style=" height:30px; margin-bottom: 20px; background-color: #80b5ea; color:white; text-align: center;">
 				        <td width=100 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">대 여 자</td>
 				        <td width=110 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">대여일자</td>
@@ -32,7 +32,7 @@
 				    </tr>
 				</thead>
 
-				<tbody style="height:343px; overflow-y: auto; position: absolute;">
+				<tbody style="height:340px; overflow-y: auto; position: absolute;">
 					<c:forEach items="${storagelist}" var="storagelist" begin="0" end="${fn:length(storagelist)}" varStatus="status">
 						<c:set var="total" value="${total+pay[status.index] }" />
 							<tr onMouseOver="this.style.backgroundColor='#eff7fc'" onMouseOut="this.style.backgroundColor='#fafafa'" style=" height:30px;">
