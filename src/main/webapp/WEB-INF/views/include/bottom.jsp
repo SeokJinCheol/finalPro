@@ -17,7 +17,7 @@
 							<font size="2">경기도 성남시 분당구 삼평동 대왕판교로 670길 유스페이스2 B동 8층</font>
 						</td>
 						
-						<td width="170px"></td>
+						<td width="210px"></td>
 						
 						<td rowspan="2" style="text-align: right">
 							<font size="2" >&nbsp;Made By | Sang-Seon | Jin-Cheol | Tae-Hun | Jin-ho | Hyung-Yoon | Ji-Hoon</font>
