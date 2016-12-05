@@ -20,7 +20,7 @@
 	
 	<div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
 		<div style="margin-bottom: 20px; width:700px; background-color: #fafafa" class="w3-card-8">
-			<table style="height:403px; width:700px; padding: 20px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
+			<table style="height:406px; width:700px; padding: 20px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
 				<thead style="height:30px; table-layout:fixed">
 					<tr class="bottom-border2" style=" height:30px; margin-bottom: 20px; background-color: #80b5ea; color:white; text-align: center;">
 				        <td width=100 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">대 여 자</td>
@@ -46,7 +46,7 @@
 					</c:forEach>
 				</tbody>
 				
-				<tfoot style="height:30px; table-layout:fixed">
+				<tfoot style="height:33px; table-layout:fixed">
 					<tr>
 						<th width=66 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">총 결 산</th>
 						<td colspan="4" style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">
