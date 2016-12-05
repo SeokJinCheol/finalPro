@@ -9,55 +9,74 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/w3.css" type="text/css" media="screen">
 </head>
 <body>
+	<div align=center class="w3-container" style="width: 1350px; height:500px; background-image: url('/team4/resources/images/back6.png'); background-repeat: no-repeat; background-size:cover; vertical-align:middle; display:table-cell;">
+
+		
 	<table>
 		<tr>
-			<td width=700 height="660" rowspan=4 class="img-margin-right w3-section" style="border-cellspacing:20;">
-				<img class="mySlides w3-animate-fading w3-round-large" src="/team4/resources/images/computer1.jpg">
-				<img class="mySlides w3-animate-fading w3-round-large" src="/team4/resources/images/val1.jpg">
-				<img class="mySlides w3-animate-fading w3-round-large" src="/team4/resources/images/kitchen1.jpg">
-				<img class="mySlides w3-animate-fading w3-round-large" src="/team4/resources/images/vacuum1.jpg">
-				<img class="mySlides w3-animate-fading w3-round-large" src="/team4/resources/images/cup1.jpg">
-				<img class="mySlides w3-animate-fading w3-round-large" src="/team4/resources/images/compu1.jpg">
-				<img class="mySlides w3-animate-fading w3-round-large" src="/team4/resources/images/piano1.jpg">
+			<td colspan="2" align=center style="margin-top:30px;">
+				<form action="mainSearch" method="post" style="margin-bottom:15px;">   
+					<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
+						<option value="title" style="text-align:center;">Title</option>
+						<option value="id" style="text-align:center;">I D</option>
+					</select>
+					
+		   			<input type="text" name="word" value="${word}" placeholder="&nbsp;Search . . . " class="free-search-title" style="border-color: rgb(169, 169, 169); " />
+		   			<input type="submit" class="list-search" value ="Search" style="width:8%;">
+		  		</form>
+			</td>
+		</tr>	
+	
+		<tr>
+			<td width=650 height="408" rowspan=4 class="img-margin-right w3-section">
+				<img width=650 height="408" class="mySlides w3-animate-fading w3-round-large" src="/team4/resources/images/computer1.jpg">
+				<img width=650 height="408" class="mySlides w3-animate-fading w3-round-large" src="/team4/resources/images/val1.jpg">
+				<img width=650 height="408" class="mySlides w3-animate-fading w3-round-large" src="/team4/resources/images/kitchen1.jpg">
+				<img width=650 height="408" class="mySlides w3-animate-fading w3-round-large" src="/team4/resources/images/vacuum1.jpg">
+				<img width=650 height="408" class="mySlides w3-animate-fading w3-round-large" src="/team4/resources/images/cup1.jpg">
+				<img width=650 height="408" class="mySlides w3-animate-fading w3-round-large" src="/team4/resources/images/compu1.jpg">
+				<img width=650 height="408"class="mySlides w3-animate-fading w3-round-large" src="/team4/resources/images/piano1.jpg">
 			</td>
 		</tr>
 		
 		<tr>
-			<td width="370" height="230" style="border-cellspacing:15;" class="w3-section">	
-				<img style="margin-left:10px;" class="mySlides2  w3-round-large" src="/team4/resources/images/baby2.jpg">
-				<img style="margin-left:10px;" class="mySlides2  w3-round-large" src="/team4/resources/images/kitchen2.jpg">
-				<img style="margin-left:10px;" class="mySlides2  w3-round-large" src="/team4/resources/images/vacuum2.jpg">
-				<img style="margin-left:10px;" class="mySlides2  w3-round-large" src="/team4/resources/images/computer2.jpg">
-				<img style="margin-left:10px;" class="mySlides2  w3-round-large" src="/team4/resources/images/m1.jpg">
-				<img style="margin-left:10px;" class="mySlides2  w3-round-large" src="/team4/resources/images/m2.jpg">
-				<img style="margin-left:10px;" class="mySlides2  w3-round-large" src="/team4/resources/images/m3.jpg">
+			<td width="200" height="135" style="" class="w3-section">	
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides2  w3-round-large" src="/team4/resources/images/baby2.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides2  w3-round-large" src="/team4/resources/images/kitchen2.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides2  w3-round-large" src="/team4/resources/images/vacuum2.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides2  w3-round-large" src="/team4/resources/images/computer2.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides2  w3-round-large" src="/team4/resources/images/m1.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides2  w3-round-large" src="/team4/resources/images/m2.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides2  w3-round-large" src="/team4/resources/images/m3.jpg">
 			</td>
 		</tr>
 		
 		<tr>
-			<td width="370" height="230" style="border-cellspacing:15;" class="w3-section">	
-				<img style="margin-left:10px;" class="mySlides3  w3-round-large" src="/team4/resources/images/kitchen2.jpg">
-				<img style="margin-left:10px;" class="mySlides3  w3-round-large" src="/team4/resources/images/vacuum2.jpg">
-				<img style="margin-left:10px;" class="mySlides3  w3-round-large" src="/team4/resources/images/computer2.jpg">
-				<img style="margin-left:10px;" class="mySlides3  w3-round-large" src="/team4/resources/images/baby2.jpg">
-				<img style="margin-left:10px;" class="mySlides3  w3-round-large" src="/team4/resources/images/m3.jpg">
-				<img style="margin-left:10px;" class="mySlides3  w3-round-large" src="/team4/resources/images/m4.jpg">
-				<img style="margin-left:10px;" class="mySlides3  w3-round-large" src="/team4/resources/images/m5.jpg">
+			<td width="200" height="135" style="" class="w3-section">	
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides3  w3-round-large" src="/team4/resources/images/kitchen2.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides3  w3-round-large" src="/team4/resources/images/vacuum2.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides3  w3-round-large" src="/team4/resources/images/computer2.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides3  w3-round-large" src="/team4/resources/images/baby2.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides3  w3-round-large" src="/team4/resources/images/m3.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides3  w3-round-large" src="/team4/resources/images/m4.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides3  w3-round-large" src="/team4/resources/images/m5.jpg">
 			</td>
 		</tr>
 
 		<tr>
-			<td width="370" height="230" style="border-cellspacing:15;" class="w3-section">	
-				<img style="margin-left:10px;" class="mySlides4  w3-round-large" src="/team4/resources/images/vacuum2.jpg">
-				<img style="margin-left:10px;" class="mySlides4  w3-round-large" src="/team4/resources/images/computer2.jpg">
-				<img style="margin-left:10px;" class="mySlides4  w3-round-large" src="/team4/resources/images/baby2.jpg">
-				<img style="margin-left:10px;" class="mySlides4  w3-round-large" src="/team4/resources/images/kitchen2.jpg">
-				<img style="margin-left:10px;" class="mySlides4  w3-round-large" src="/team4/resources/images/m5.jpg">
-				<img style="margin-left:10px;" class="mySlides4  w3-round-large" src="/team4/resources/images/m6.jpg">
-				<img style="margin-left:10px;" class="mySlides4  w3-round-large" src="/team4/resources/images/m1.jpg">
+			<td width="200" height="135" style="" class="w3-section">	
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides4  w3-round-large" src="/team4/resources/images/vacuum2.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides4  w3-round-large" src="/team4/resources/images/computer2.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides4  w3-round-large" src="/team4/resources/images/baby2.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides4  w3-round-large" src="/team4/resources/images/kitchen2.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides4  w3-round-large" src="/team4/resources/images/m5.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides4  w3-round-large" src="/team4/resources/images/m6.jpg">
+				<img width="200" height="135" style="margin-left:5px;" class="mySlides4  w3-round-large" src="/team4/resources/images/m1.jpg">
 			</td>
 		</tr>
 	</table>
+	</div>
+	<%-- 
 	<br><hr><br>
 	<div>
 		[물품]
@@ -272,7 +291,7 @@
 		<form action="showContentsForm" name="vo" method="post">
 						<input type="hidden" name="codeNum">
 					</form>
-	
+	 --%>
 </body>
 <script>
 	var myIndex = 0;
@@ -312,7 +331,7 @@
 	    x3[myIndex-1].style.display = "block";
 	    x4[myIndex-1].style.display = "block";
 	    
-	    setTimeout(carousel, 4000);
+	    setTimeout(carousel, 2500);
 	}
 	
 	function showContents(codeNum){
