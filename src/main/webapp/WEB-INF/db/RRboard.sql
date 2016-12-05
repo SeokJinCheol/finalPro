@@ -50,3 +50,4 @@ drop sequence rrb_seq;
 
 delete from requestBoard where codenum=22;
 
+SELECT * FROM RRBOARD where	category= '»ç¹«½Ç' and codeNum=#{(SELECT MAX(codeNum)AS codeNum FROM RRboard)

@@ -49,5 +49,6 @@ public class RRBoardController {
 		model.addAttribute("CONTENT", "menu/menu3/menu3.jsp");
 		model.addAttribute("LEFT", "menu/menu3/left.jsp");
 		return "main";
-	}
+	}	
+	
 }
