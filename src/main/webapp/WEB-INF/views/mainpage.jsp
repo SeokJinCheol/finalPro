@@ -106,7 +106,7 @@
 									
 									<tr>
 										<td colspan="2" align="center">
-											<a href="requestcontent?codeNum=${registervo1.codeNum}"> 
+											<a class="effect" href="requestcontent?codeNum=${registervo1.codeNum}"> 
 												<img width="200" height="180" src="/team4/resources/RequestImg/${registervo1.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;">
 											</a>
 										</td>
@@ -139,7 +139,7 @@
 									
 									<tr>
 										<td colspan="2" align="center">
-											<a href="Login"> 
+											<a class="effect" href="Login"> 
 												<img width="200" height="180" src="/team4/resources/RequestImg/${registervo1.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;">
 											</a>
 										</td>
@@ -174,7 +174,7 @@
 									
 									<tr>
 										<td colspan="2" align="center">
-											<a href="requestcontent?codeNum=${registervo2.codeNum}"> 
+											<a class="effect" href="requestcontent?codeNum=${registervo2.codeNum}"> 
 												<img width="200" height="180" src="/team4/resources/RequestImg/${registervo2.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;">
 											</a>
 										</td>
@@ -241,7 +241,7 @@
 									
 									<tr>
 										<td colspan="2" align="center">
-											<a href="requestcontent?codeNum=${registervo3.codeNum}"> 
+											<a class="effect" href="requestcontent?codeNum=${registervo3.codeNum}"> 
 												<img width="200" height="180" src="/team4/resources/RequestImg/${registervo3.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;">
 											</a>
 										</td>
@@ -273,7 +273,7 @@
 									
 									<tr>
 										<td colspan="2" align="center">
-											<a href="Login"> 
+											<a class="effect" href="Login"> 
 												<img width="200" height="180" src="/team4/resources/RequestImg/${registervo3.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;">
 											</a>
 										</td>
@@ -308,7 +308,7 @@
 									
 									<tr>
 										<td colspan="2" align="center">
-											<a href="requestcontent?codeNum=${registervo4.codeNum}"> 
+											<a class="effect" href="requestcontent?codeNum=${registervo4.codeNum}"> 
 												<img width="200" height="180" src="/team4/resources/RequestImg/${registervo4.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;">
 											</a>
 										</td>
@@ -340,7 +340,7 @@
 									
 									<tr>
 										<td colspan="2" align="center">
-											<a href="Login"> 
+											<a class="effect" href="Login"> 
 												<img width="200" height="180" src="/team4/resources/RequestImg/${registervo4.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;">
 											</a>
 										</td>
@@ -375,7 +375,7 @@
 									
 									<tr>
 										<td colspan="2" align="center">
-											<a href="requestcontent?codeNum=${registervo5.codeNum}"> 
+											<a class="effect" href="requestcontent?codeNum=${registervo5.codeNum}"> 
 												<img width="200" height="180" src="/team4/resources/RequestImg/${registervo5.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;">
 											</a>
 										</td>
@@ -407,7 +407,7 @@
 									
 									<tr>
 										<td colspan="2" align="center">
-											<a href="Login"> 
+											<a class="effect" href="Login"> 
 												<img width="200" height="180" src="/team4/resources/RequestImg/${registervo5.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;">
 											</a>
 										</td>
@@ -451,7 +451,9 @@
 								
 								<tr>
 									<td colspan="2" align="center"> 
-										<img width="200" height="180" src="/team4/resources/BoardImg/${vo1.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="showContents(${vo1.codeNum })">
+										<div class="effect22">
+											<img width="200" height="180" src="/team4/resources/BoardImg/${vo1.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="showContents(${vo1.codeNum })">
+										</div>
 									</td>
 								</tr>
 							</table>
@@ -480,7 +482,9 @@
 								
 								<tr>
 									<td colspan="2" align="center">
-										<img width="200" height="180" src="/team4/resources/BoardImg/${vo1.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="location.href='Login'">
+										<div class="effect22">
+											<img width="200" height="180" src="/team4/resources/BoardImg/${vo1.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="location.href='Login'">
+										</div>
 									</td>
 								</tr>
 							</table>
@@ -512,7 +516,9 @@
 								
 								<tr>
 									<td colspan="2" align="center">
-										<img width="200" height="180" src="/team4/resources/BoardImg/${vo2.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="showContents(${vo2.codeNum})">
+										<div class="effect22">
+											<img width="200" height="180" src="/team4/resources/BoardImg/${vo2.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="showContents(${vo2.codeNum})">
+										</div>
 									</td>
 								</tr>
 							</table>
@@ -541,7 +547,9 @@
 								
 								<tr>
 									<td colspan="2" align="center">
-										<img width="200" height="180" src="/team4/resources/BoardImg/${vo2.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="location.href='Login'">
+										<div class="effect22">
+											<img width="200" height="180" src="/team4/resources/BoardImg/${vo2.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="location.href='Login'">
+										</div>
 									</td>
 								</tr>
 							</table>
@@ -573,7 +581,9 @@
 								
 								<tr>
 									<td colspan="2" align="center">
-										<img width="200" height="180" src="/team4/resources/BoardImg/${vo3.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="showContents(${vo3.codeNum})">
+										<div class="effect22">
+											<img width="200" height="180" src="/team4/resources/BoardImg/${vo3.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="showContents(${vo3.codeNum})">
+										</div>
 									</td>
 								</tr>
 							</table>
@@ -602,7 +612,9 @@
 								
 								<tr>
 									<td colspan="2" align="center">
-										<img width="200" height="180" src="/team4/resources/BoardImg/${vo3.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="location.href='Login'">
+										<div class="effect22">
+											<img width="200" height="180" src="/team4/resources/BoardImg/${vo3.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="location.href='Login'">
+										</div>
 									</td>
 								</tr>
 							</table>
@@ -634,7 +646,9 @@
 								
 								<tr>
 									<td colspan="2" align="center">
-										<img width="200" height="180" src="/team4/resources/BoardImg/${vo4.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="showContents(${vo4.codeNum})">
+										<div class="effect22">
+											<img width="200" height="180" src="/team4/resources/BoardImg/${vo4.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="showContents(${vo4.codeNum})">
+										</div>
 									</td>
 								</tr>
 							</table>
@@ -663,7 +677,9 @@
 								
 								<tr>
 									<td colspan="2" align="center">
-										<img width="200" height="180" src="/team4/resources/BoardImg/${vo4.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="location.href='Login'">
+										<div class="effect22">
+											<img width="200" height="180" src="/team4/resources/BoardImg/${vo4.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="location.href='Login'">
+										</div>
 									</td>
 								</tr>
 							</table>
@@ -695,7 +711,9 @@
 								
 								<tr>
 									<td colspan="2" align="center">
-										<img width="200" height="180" src="/team4/resources/BoardImg/${vo5.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="showContents(${vo5.codeNum})">
+										<div class="effect22">
+											<img width="200" height="180" src="/team4/resources/BoardImg/${vo5.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="showContents(${vo5.codeNum})">
+										</div>
 									</td>
 								</tr>
 							</table>
@@ -724,7 +742,9 @@
 								
 								<tr>
 									<td colspan="2" align="center">
-										<img width="200" height="180" src="/team4/resources/BoardImg/${vo5.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="location.href='Login'">
+										<div class="effect22">
+											<img width="200" height="180" src="/team4/resources/BoardImg/${vo5.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;" onclick="location.href='Login'">
+										</div>
 									</td>
 								</tr>
 							</table>
