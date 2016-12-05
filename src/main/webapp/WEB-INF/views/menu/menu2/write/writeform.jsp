@@ -72,11 +72,11 @@
 						</tr>
 	
 						<tr height=35>
-							<td colspan="3" style="padding-left:2px; padding-top:0px;" class="bottom-border">
-								&nbsp;<input type="date" class="free-insert-title" style="width:35%; text-align: center" name="startDate" value="${RegisterBoardform.startDate}" required/>
+							<td align="center" colspan="3" style="padding-left:2px; padding-top:0px;" class="bottom-border">
+								&nbsp;<input type="date" class="free-insert-title" style="width:40%; font-size:10px; text-align: center" name="startDate" value="${RegisterBoardform.startDate}" min="${RegisterBoardform.startDate}" max="${RegisterBoardform.endDate}" required/>
 			                  	<!-- ~ 앞뒤로 ㄱ한자 1 숨겨져 있음 -->
 			                  	　~　
-			                  	<input type="date" class="free-insert-title" style="width:35%; text-align: center" value="${RegisterBoardform.endDate}" name="endDate" required/>
+			                  	<input type="date" class="free-insert-title" style="width:40%; font-size:10px; text-align: center" value="${RegisterBoardform.endDate}" min="${RegisterBoardform.startDate}" max="${RegisterBoardform.endDate}" name="endDate" required/>
 			                </td>
 						</tr>
 	

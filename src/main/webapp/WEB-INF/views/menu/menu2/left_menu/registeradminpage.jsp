@@ -72,7 +72,7 @@
 									<form action="startrentForm" method="post">
 										<input type="hidden" value="${rentterlist.codeNum}" name="codeNum">
 										
-										<input type="submit" value="" class="mycancel77-btn w3-card-4" onclick="in(${rentterlist.codeNum});	return false;">
+										<input type="submit" value="" class="mycancel2-btn77 w3-card-4" onclick="in(${rentterlist.codeNum});	return false;">
 									</form>
 								</c:if>
 				            	
