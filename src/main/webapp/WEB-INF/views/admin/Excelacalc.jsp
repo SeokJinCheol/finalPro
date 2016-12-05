@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%
-    response.setHeader("Content-Disposition","attachment;filename=RRBaccount.xls");
+    response.setHeader("Content-Disposition","attachment;filename=RPBaccount.xls");
     response.setHeader("Content-Description", "JSP Generated Data");
  %>
 
@@ -33,8 +33,8 @@
 					        </tr>
 					</c:forEach>
 					<tr>
-						<td>
-							총 금액　:　<fmt:formatNumber value="${total}" pattern="￦ ###,###"/> 원
+						<td colspan="6" align="right">
+							총 금액　:　<fmt:formatNumber value="${total}" pattern="￦ ###,###"/> 원 &nbsp;
 						</td>
 					</tr>
 			</table>
