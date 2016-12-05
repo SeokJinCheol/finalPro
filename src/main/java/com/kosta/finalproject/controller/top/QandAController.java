@@ -106,7 +106,7 @@ public class QandAController {
 		model.addAttribute("pageCount", pageCount);
 		model.addAttribute("pageSize", new Integer(pageSize));
 		model.addAttribute("CONTENT", "Q&A/QnA_list.jsp");
-		model.addAttribute("LEFT", "Q&A/left.jsp");
+		model.addAttribute("LEFT", "menu/menu4/left.jsp");
 
 		return "main";
 	}

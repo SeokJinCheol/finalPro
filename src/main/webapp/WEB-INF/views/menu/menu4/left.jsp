@@ -20,7 +20,15 @@
 			<img src="/team4/resources/images/freeboard1.png" style="margin-right:5px;">
 			<img src="/team4/resources/images/freeboard2.png" class="imgover" style="margin-right:5px;">
 			<font size="3px">&nbsp;자 유 게 시 판</font></a></div><br>	
-		
+		<div class="left-menu"><a href="QnA_list" class="rollover">
+			<img src="/team4/resources/images/left-question111.png" style="margin-right:5px;">
+			<img src="/team4/resources/images/left-question122.png" class="imgover" style="margin-right:5px;">
+			&nbsp;1&nbsp;:&nbsp;1　질　문</a></div><br>
+		<div class="left-menu"><a href="defaultQA" class="rollover">
+			<img src="/team4/resources/images/left-question1.png" style="margin-right:5px;">
+			<img src="/team4/resources/images/left-question2.png" class="imgover" style="margin-right:5px;">
+			&nbsp;자주 묻는 질문</a></div><br>
+
 		
 		<!-- 안쓰므로 주석처리 -->
 		<!-- <div class="left-menu"><a href="#" class="rollover">

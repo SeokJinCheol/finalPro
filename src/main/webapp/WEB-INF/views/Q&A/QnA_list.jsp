@@ -23,8 +23,7 @@
 		style="background: #6699DC; color: white; height: 100px; text-align: right; line-height: 130px;">
 		<img src="/team4/resources/images/left-question122.png"
 			style="margin-right: 10px;"> <font
-			style="margin-right: 30px; font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px;">Q
-			& A</font>
+			style="margin-right: 30px; font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px;">1&nbsp;:&nbsp;1　질　문</font>
 	</div>
 
 	<div align=center

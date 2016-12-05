@@ -13,16 +13,33 @@
 </head>
 <body>
 	<div class="w3-container" style="background: #fff;">
-		<ul class="main-logo w3-large w3-center" style="padding: 30px 0 0 0; margin-top:20px;">
+		<ul class="main-logo w3-large w3-center" style="padding: 3px 0 0 0; margin-top:20px;">
 		    <!-- 인증 NO -->
-			<security:authorize ifNotGranted="role_user, role_com, role_master">
-				<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="main"><img src="/team4/resources/images/home18.png">&nbsp;H o m e</a></li>
-				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><a href="about_us"><img src="/team4/resources/images/korea18.png">&nbsp;About us</a></li>
+		    <security:authorize ifNotGranted="role_user, role_com, role_master">
+			    <li style="width:83%"><p></p></li>
+				<li style="width:8%; padding: 3px 0 0 0; font-size: 1px;"><a href="Login"><img src="/team4/resources/images/login18.png">&nbsp;L o g i n</a></li>
+			   	<li style="width:1%"><p></p></li>
+			    <li style="width:8%; padding: 3px 0 0 0; font-size: 1px;"><a href="joinForm"><img src="/team4/resources/images/join18.png">&nbsp;J o i n</a></li>
+				<br><br>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+				
 				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QnA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
 				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><input class="button-write99" type="button"  name="cost" value="대여비용" style="margin-right:5px;" onclick="openCost(this.form)"></li>
 				<li style="width:25%; padding: 0 0 3px 0;"><img class="w3-animate-opacity" src="/team4/resources/images/test-top.png" onclick="location.href='main'"></li>
 				<li style="width:30%"><p></p></li>
 				
+				
+				<!-- 메인에서의 검색 -->
 				<%-- <li style="width:25%; padding: 45px 0 3px 0; font-size: 1px;">
 					<form action="mainSearch" method="post">   
 						<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
@@ -32,13 +49,19 @@
 						
 			   			<input type="text" name="word" value="${word}"/><input type="submit" value ="검색">
 			  		</form>
-               </li> --%>
+                </li> --%>
                
-		   		<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="Login"><img src="/team4/resources/images/login18.png">&nbsp;L o g i n</a></li>
-		   		<li style="width:1%"><p></p></li>
-		    	<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="joinForm"><img src="/team4/resources/images/join18.png">&nbsp;J o i n</a></li>
+		   		
 		    </security:authorize>
 		    
+		    
+		    
+		    
+		    
+		    
+		    <!-- ////////////////////////////////////////////////// -->
+		    <!-- ////////////////////////////////////////////////// -->
+		    <!-- ////////////////////////////////////////////////// -->
 		    <!-- 인증 Yes ==> 관리자가 아닐 경우 -->
 			<security:authorize ifAnyGranted="role_user, role_com">
 				<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="main"><img src="/team4/resources/images/home18.png">&nbsp;H o m e</a></li>
@@ -99,6 +122,7 @@
 			        <a href="siteintro">서 비 스 소 개</a>
 			        <a href="use">이 용 방 법</a>
 			    	<a href="rule">이 용 규 칙</a>
+			    	<a href="about_us">조　직　도</a>
 			    </div>	
 			</li>
 			
@@ -222,10 +246,13 @@
 
 			<li style="width:5%"><p></p></li>
 			
+			<!-- 게시판 -->
 			<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="free_list">게 시 판&nbsp;<i class="fa fa-caret-down"></i></a>
 				<div class="w3-dropdown-content w3-white w3-card-4">
 			        <a href="free_list">요 청 게 시 판</a>
 			    	<a href="free4_list">자 유 게 시 판</a>
+			    	<a href="QnA_list">1 : 1　질　문</a>
+			    	<a href="defaultQA">자주 묻는 질문</a>
 			    </div>	
 			</li>
 		</ul>
