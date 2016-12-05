@@ -42,7 +42,7 @@
 		</div>
 			
 		<div style="margin-bottom:20px;">
-			<table style="padding: 70px; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px; width:550px; height:250px;">
+			<table style="padding: 70px; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px; width:550px; height:253px;">
 				<tr>
 					<td colspan="4" style="height:27px;">
 						<h5><b>※ 패 널 티 규 정 ※</b></h5>
@@ -85,7 +85,7 @@
 		</div>
 			
 		<div style="margin-bottom:20px;">
-			<table style="padding: 70px; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 5px;width:550px; height:250px;">
+			<table style="padding: 70px; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 5px;width:550px; height:253px;">
 				<tr>
 					<td colspan="3" style="height:27px;">
 						<h5><b>※ 이 용 자 제 한 안 내 ※</b></h5>
