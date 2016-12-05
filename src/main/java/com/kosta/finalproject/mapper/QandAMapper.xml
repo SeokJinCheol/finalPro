@@ -4,72 +4,107 @@
 
 <!-- 여기는 매핑할 MemberMapper.java의 풀패키지명을 적어준다 -->
 <mapper namespace="com.kosta.finalproject.dao.QandAMapper">
-<resultMap type="QandAVO" id="QAboardResultMap">
-     <result property="bnum" column="bnum"/>
-      <result property="bgnum" column="bgnum"/>
-      <result property="date" column="bDate"/>
-      <result property="count" column="count"/>
-      <result property="title" column="title"/>
-      <result property="contents" column="contents"/>
-      <result property="id" column="id"/>
-      <result property="img" column="img"/>
-      <result property="category" column="category"/>
-      <result property="replyCount" column="replCount"/>
-   </resultMap>
-   
-   <select id="getContent" resultMap="QAboardResultMap">
-      SELECT TITLE,ID,CONTENT FROM QABoard WHERE BGNUM=#{bgnum}
-   </select>
-   
-   <insert id="writeMain" parameterType="com.kosta.finalproject.vo.QandAVO">
-      INSERT INTO QABoard VALUES(QABOARD_BNUM.NEXTVAL, #{bgnum}, #{title}, sysdate, #{contents}, #{id}, #{img}, 0, #{category})
-   </insert>
-   
-   <select id="showAll" resultMap="QAboardResultMap"  parameterType="com.kosta.finalproject.vo.QandAVO">
-      select * from (select * from (select rownum rnum ,bDate,bnum,category,title,id,img,count,(SELECT COUNT(*) FROM QABoard B WHERE B.bgnum=a.bnum) replyCount from QABoard a where bgnum = 0 )
-       where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow} order by rnum desc
-   </select>
-   
-   <select id="showthis" resultMap="QAboardResultMap" parameterType="com.kosta.finalproject.vo.QandAVO">
-      select * from QABoard where bnum = #{bnum}
-   </select>
-   
-   <update id="updateCount" parameterType="com.kosta.finalproject.vo.QandAVO">
-      UPDATE QABoard SET COUNT = COUNT+1 WHERE BNUM=#{bnum}
-   </update>
-   
-   <select id="selectReply" parameterType="com.kosta.finalproject.vo.QandAVO" resultMap="QAboardResultMap">
-      SELECT title,bDate,ID, CONTENTS, BNUM, BGNUM FROM QABoard WHERE BGNUM = #{bnum}
-   </select>
-   
-   <select id="selectTitle" parameterType="com.kosta.finalproject.vo.QandAVO" resultMap="QAboardResultMap">
-      select * from (select * from (select rownum rnum,bDate,bnum,category,title,id,img,count from QABoard where bgnum= 0 and title like  '%' || #{title} || '%' )
-       where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow} order by rnum desc
-   </select>
-   
-   <select id="ListAllCount" resultType="int">
-      SELECT COUNT(*) FROM QABoard where bgnum= 0
-      </select>
-      
-      <select id="getListTitleCount" resultType="Integer" parameterType="com.kosta.finalproject.vo.QandAVO">
-      SELECT COUNT(*) FROM QABoard where bgnum= 0 and title like  '%' || #{title} || '%'
-   </select>
-   
-   <select id="getListIDCount" resultType="Integer" parameterType="com.kosta.finalproject.vo.QandAVO">
-      SELECT COUNT(*) FROM QABoard where bgnum= 0 and id like  '%' || #{id} || '%'
-   </select>
-   
-   <select id="selectId" parameterType="com.kosta.finalproject.vo.QandAVO" resultMap="QAboardResultMap">
-      select * from (select * from (select rownum as rnum ,bDate,bnum,category,title,id,img,count from QABoard where bgnum= 0 and id like  '%' || #{id}  || '%')
-      where rnum <![CDATA[<=]]> #{endRow}) where rnum <![CDATA[>=]]> #{startRow} order by rnum desc
-   </select>
-   
-   <delete id="delete" parameterType="com.kosta.finalproject.vo.QandAVO">
-      delete from QABoard where bnum = #{bnum}
-   </delete>
-   
-   <update id="updateDetail" parameterType="com.kosta.finalproject.vo.QandAVO">
-      update QABoard set title = #{title},contents=#{contents},category=#{category},img=#{img} where bnum= #{bnum}
-   </update>
+	<resultMap type="QandAVO" id="QAboardResultMap">
+		<result property="bnum" column="bnum" />
+		<result property="bgnum" column="bgnum" />
+		<result property="date" column="bDate" />
+		<result property="count" column="count" />
+		<result property="title" column="title" />
+		<result property="contents" column="contents" />
+		<result property="id" column="id" />
+		<result property="img" column="img" />
+		<result property="category" column="category" />
+		<result property="replyCount" column="replCount" />
+	</resultMap>
+
+	<select id="getContent" resultMap="QAboardResultMap">
+		SELECT TITLE,ID,CONTENT FROM
+		QABoard WHERE BGNUM=#{bgnum}
+	</select>
+
+	<insert id="writeMain" parameterType="com.kosta.finalproject.vo.QandAVO">
+		INSERT INTO QABoard
+		VALUES(QABOARD_BNUM.NEXTVAL, #{bgnum}, #{title},
+		sysdate, #{contents},
+		#{id}, #{img}, 0, #{category})
+	</insert>
+
+	<select id="showAll" resultMap="QAboardResultMap"
+		parameterType="com.kosta.finalproject.vo.QandAVO">
+		select * from (select * from (select rownum	rnum,bnum,bDate,category,title,id,img,count,replyCount from (select
+		bnum,bDate,category,title,id,img,count,(SELECT COUNT(*) FROM QABoard B
+		WHERE B.bgnum=a.bnum) replyCount from QABoard a where bgnum = 0 ORDER
+		by bnum asc) ORDER by rnum desc ) where rnum <![CDATA[<=]]>
+		#{endRow}) where rnum <![CDATA[>=]]>
+		#{startRow}
+
+	</select>
+
+	<select id="showthis" resultMap="QAboardResultMap"
+		parameterType="com.kosta.finalproject.vo.QandAVO">
+		select * from QABoard where bnum = #{bnum}
+	</select>
+
+	<update id="updateCount" parameterType="com.kosta.finalproject.vo.QandAVO">
+		UPDATE QABoard SET COUNT
+		= COUNT+1 WHERE BNUM=#{bnum}
+	</update>
+
+	<select id="selectReply" parameterType="com.kosta.finalproject.vo.QandAVO"
+		resultMap="QAboardResultMap">
+		SELECT title,bDate,ID, CONTENTS, BNUM, BGNUM FROM QABoard
+		WHERE BGNUM =
+		#{bnum}
+	</select>
+
+	<select id="selectTitle" parameterType="com.kosta.finalproject.vo.QandAVO"
+		resultMap="QAboardResultMap">
+		select * from (select * from (select rownum
+		rnum,bDate,bnum,category,title,id,img,count from QABoard where bgnum=
+		0 and title like '%' || #{title} || '%' )
+		where rnum <![CDATA[<=]]>
+		#{endRow}) where rnum <![CDATA[>=]]>
+		#{startRow} order by rnum desc
+	</select>
+
+	<select id="ListAllCount" resultType="int">
+		SELECT COUNT(*) FROM
+		QABoard where bgnum= 0
+	</select>
+
+	<select id="getListTitleCount" resultType="Integer"
+		parameterType="com.kosta.finalproject.vo.QandAVO">
+		SELECT COUNT(*) FROM QABoard where bgnum= 0 and title
+		like '%' || #{title}
+		|| '%'
+	</select>
+
+	<select id="getListIDCount" resultType="Integer"
+		parameterType="com.kosta.finalproject.vo.QandAVO">
+		SELECT COUNT(*) FROM QABoard where bgnum= 0 and id like
+		'%' || #{id} || '%'
+	</select>
+
+	<select id="selectId" parameterType="com.kosta.finalproject.vo.QandAVO"
+		resultMap="QAboardResultMap">
+		select * from (select * from (select rownum as rnum
+		,bDate,bnum,category,title,id,img,count from QABoard where bgnum= 0
+		and id like '%' || #{id} || '%')
+		where rnum <![CDATA[<=]]>
+		#{endRow}) where rnum <![CDATA[>=]]>
+		#{startRow} order by rnum desc
+	</select>
+
+	<delete id="delete" parameterType="com.kosta.finalproject.vo.QandAVO">
+		delete from QABoard where bnum
+		= #{bnum}
+	</delete>
+
+	<update id="updateDetail" parameterType="com.kosta.finalproject.vo.QandAVO">
+		update QABoard set title
+		=
+		#{title},contents=#{contents},category=#{category},img=#{img} where
+		bnum= #{bnum}
+	</update>
 </mapper>
 

@@ -28,8 +28,13 @@
 		            	<tr align="center" height="35">
 			            	<td width=30 class="top-bottom-border">
 		                    	<select name="category" required style="border-radius:4px; text-align:center; height:27px;">
+		                    	<c:if test="${session_id != 'admin'}">
 		                        	<option value="1:1 질문" style="text-align:center;">1:1 질문</option>
 		                        	<option value="건의사항" style="text-align:center;">건의사항</option>
+		                        </c:if>
+		                        <c:if test="${session_id == 'admin' }">
+		                        <option value="공지사항" style="text-align:center;">공지사항</option>
+		                        </c:if>
 		                     	</select>
 		                  	</td>
 			            

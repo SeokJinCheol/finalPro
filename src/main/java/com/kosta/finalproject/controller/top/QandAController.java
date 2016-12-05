@@ -126,7 +126,7 @@ public class QandAController {
 
 		model.addAttribute("session_id", session_id);
 		model.addAttribute("CONTENT", "Q&A/QnA_update.jsp");
-		model.addAttribute("LEFT", "Q&A/left.jsp");
+		model.addAttribute("LEFT", "menu/menu4/left.jsp");
 
 		return "main";
 	}
@@ -193,7 +193,7 @@ public class QandAController {
 
 		model.addAttribute("session_id", session_id);
 		model.addAttribute("CONTENT", "Q&A/QnA_write.jsp");
-		model.addAttribute("LEFT", "Q&A/left.jsp");
+		model.addAttribute("LEFT", "menu/menu4/left.jsp");
 
 		return "main";
 	}
@@ -241,14 +241,6 @@ public class QandAController {
 
 		System.out.println(bgnum);
 
-		/*
-		 * if (bgnum.equals("")) {
-		 * 
-		 * }
-		 * 
-		 * else { vo.setBgnum(Integer.parseInt(bgnum)); }
-		 */
-
 		vo.setImg(img);
 		vo.setTitle(title);
 		vo.setId(id);
@@ -260,7 +252,7 @@ public class QandAController {
 		return "redirect:QnA_list";
 	}
 
-	// 리플달기
+	// 리플달기(ajax)
 	@RequestMapping(value = "/QnA_reply", method = RequestMethod.POST)
 	public View QnA_replywrite(Model model, HttpServletRequest request, HttpServletResponse response) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -297,51 +289,35 @@ public class QandAController {
 
 		qandADaoImpl.updateCount(bnum);
 		QandAVO vo = qandADaoImpl.showthis(bnum);
-		// ArrayList<QandAVO> list = qandADaoImpl.selectReply(bnum);
+		
 
 		model.addAttribute("session_id", session_id);
-		// model.addAttribute("list", list);
+	
 		model.addAttribute("vo", vo);
 		model.addAttribute("CONTENT", "Q&A/QnA_content.jsp");
-		model.addAttribute("LEFT", "Q&A/left.jsp");
+		model.addAttribute("LEFT", "menu/menu4/left.jsp");
 
 		return "main";
 	}
 
-	// 리플 리스트(AJax)
+	// 리플 리스트(getJSON)
 	@RequestMapping(value = "/QnA_replylist/{bnum}", method = RequestMethod.GET)
 	public ResponseEntity<ArrayList<QandAVO>> QnA_replylist(@PathVariable("bnum") Integer bnum) {
-		/*
-		 * int pageSize = 10;
-		 * 
-		 * if (pageNum == null) pageNum = "1";
-		 * 
-		 * int currentPage = Integer.parseInt(pageNum);
-		 * 
-		 * int startrow = (currentPage * pageSize) - (pageSize - 1); int endrow
-		 * = currentPage * pageSize; int count = 0, number = 0; count =
-		 * qandADaoImpl.replyCount(bnum); int pageCount = Math.round(count /
-		 * pageSize + (count % pageSize == 0 ? 0 : 1));
-		 */
+		
 		ResponseEntity<ArrayList<QandAVO>> entity = null;
-		// if (count > 0) {
+		
 		try {
-			// entity = new
-			// ResponseEntity<>(qandADaoImpl.selectReply(bnum,startrow,endrow),HttpStatus.OK);
 			entity = new ResponseEntity<>(qandADaoImpl.selectReply(bnum), HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
 		}
-		// 나짜변환 - > 스트링
-		//
-		// }
 		return entity;
 
 	}
 
-	// 글삭제
+	// 글삭제(ajax)
 	@RequestMapping("/QnA_delete")
 	public String QnA_delete(Model model, HttpServletRequest request) {
 		String bnum = request.getParameter("bnum");
