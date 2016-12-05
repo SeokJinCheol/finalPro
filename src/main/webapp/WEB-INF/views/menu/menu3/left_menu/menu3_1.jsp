@@ -465,13 +465,10 @@
 		
 	    searchDetailAddrFromCoords(mouseEvent.latLng, function(status, result) {
 	        if (status === daum.maps.services.Status.OK) {
-	        	var detailAddr = !!result[0].roadAddress.name ? '<div>도로명주소 : ' + result[0].roadAddress.name + '</div>' : '';
-	            detailAddr += '<div>지번 주소 : ' + result[0].jibunAddress.name + '</div>';
+	        	var detailAddr = !!result[0].roadAddress.name ? '' : '';
+	            detailAddr += '<div style="font-size:3px;">' + result[0].jibunAddress.name + '</div>';
 	            
-	            var content = '<div class="bAddr">' +
-	                            '<span class="title">법정동 주소정보</span>' + 
-	                            detailAddr + 
-	                        '</div>';             
+	            var content = '<div>' + detailAddr + '</div>';             
 	                        
 	            // 마커를 클릭한 위치에 표시합니다 
 	            marker.setPosition(mouseEvent.latLng);
