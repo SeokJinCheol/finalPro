@@ -62,7 +62,6 @@ public class RegisterBoardController {
 		// 일정 종료
 		List<RegisterBoardVO> count = registerBoardDaoImpl.registercount();
 		int registercount = count.get(0).getCodeNum();
-		System.out.println(registercount);
 		
 		if(registercount != 0){
 
