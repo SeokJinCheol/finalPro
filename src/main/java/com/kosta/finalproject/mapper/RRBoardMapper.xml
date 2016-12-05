@@ -17,6 +17,22 @@
       </where>
    </select>
    
+      <select id="SelectALL2" parameterType="com.kosta.finalproject.vo.RRboardVO"
+      resultType="com.kosta.finalproject.vo.RRboardVO">
+      SELECT * FROM RRBOARD
+
+
+      <where>
+         <if test="packageStatus != null">
+            packageStatus like #{packageStatus} AND
+         </if> 
+       
+       category=#{category} and
+       
+    <![CDATA[ ENDDATE > SYSDATE ORDER BY CODENUM desc]]>
+      </where>
+   </select>
+   
     <select id="SelectALLAD" parameterType="com.kosta.finalproject.vo.RRboardVO"
       resultType="com.kosta.finalproject.vo.RRboardVO">
       SELECT * FROM RRBOARD
@@ -168,4 +184,14 @@
 		registerId=#{registerId},
 		img=#{img}	where	codeNum= #{codeNum}
 	</update>
+	
+	<!-- main  -->
+
+	<select id="getMain" resultType="com.kosta.finalproject.vo.RRboardVO">
+		SELECT * FROM RRBOARD
+		<where>
+		codeNum=(SELECT MAX(codeNum)AS codeNum FROM RRboard where category=#{string})
+		</where>
+	</select>
+	
 </mapper>

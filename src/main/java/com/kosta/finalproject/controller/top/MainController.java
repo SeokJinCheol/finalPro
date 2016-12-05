@@ -21,8 +21,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.kosta.finalproject.dao.BoardDaoImpl;
 import com.kosta.finalproject.dao.FinalDaoImpl;
 import com.kosta.finalproject.dao.QandADaoImpl;
+import com.kosta.finalproject.dao.RRBoardDao;
+import com.kosta.finalproject.dao.RRBoardDaoImpl;
 import com.kosta.finalproject.vo.BoardVO;
 import com.kosta.finalproject.vo.QandAVO;
+import com.kosta.finalproject.vo.RRboardVO;
 import com.kosta.finalproject.vo.UsersVO;
 
 @Controller
@@ -37,9 +40,25 @@ public class MainController {
 	@Autowired
 	private QandADaoImpl qandADaoImpl;
 
+	@Autowired
+	private RRBoardDaoImpl	RRBoardDaoImpl;
+	
 	// Main
 	@RequestMapping("/main")
 	public String main(Model model) {
+		
+	RRboardVO vo1 =	RRBoardDaoImpl.getMain("강당");
+	RRboardVO vo2 =	RRBoardDaoImpl.getMain("사무실");
+	RRboardVO vo3 =	RRBoardDaoImpl.getMain("회의실");
+	RRboardVO vo4 =	RRBoardDaoImpl.getMain("공터");
+	RRboardVO vo5 =	RRBoardDaoImpl.getMain("기타");
+	
+		model.addAttribute("vo1", vo1);
+		model.addAttribute("vo2", vo2);
+		model.addAttribute("vo3", vo3);
+		model.addAttribute("vo4", vo4);
+		model.addAttribute("vo5", vo5);
+
 		model.addAttribute("CONTENT", "mainpage.jsp");
 		return "main";
 	}

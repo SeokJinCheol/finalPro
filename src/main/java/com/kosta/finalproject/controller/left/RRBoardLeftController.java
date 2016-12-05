@@ -187,8 +187,28 @@ public class RRBoardLeftController {
 	}
 
 	// 리스트형 대관 확인
-	@RequestMapping("/menu3_3")
-	public String menu3_3(Model model) {
+	@RequestMapping(value="/menu3_3" ,method=RequestMethod.POST)
+	public String menu3_3_post(Model model, @RequestParam("category")String category) {
+
+		RRboardVO vo = new RRboardVO();
+
+		vo.setPackageStatus("대여가능");
+		vo.setCategory(category);
+		
+		List<RRboardVO> result = dao.SelectALL2(vo);
+
+		System.out.println("size=" + result.size());
+
+		model.addAttribute("total", result.size());
+		model.addAttribute("list", result);
+		model.addAttribute("CONTENT", "menu/menu3/left_menu/menu3_3.jsp");
+		model.addAttribute("LEFT", "menu/menu3/left.jsp");
+		return "main";
+	}
+
+	// 리스트형 대관 확인
+	@RequestMapping(value="/menu3_3" ,method=RequestMethod.GET)
+	public String menu3_3_get(Model model) {
 
 		RRboardVO vo = new RRboardVO();
 
@@ -204,7 +224,7 @@ public class RRBoardLeftController {
 		model.addAttribute("LEFT", "menu/menu3/left.jsp");
 		return "main";
 	}
-
+	
 	// 관리자 대관 확인 수정
 	@RequestMapping(value = "/RRlist", method = RequestMethod.GET)
 	public String RRlistGet(Model model) {

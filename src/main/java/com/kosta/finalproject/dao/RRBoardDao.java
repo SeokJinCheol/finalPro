@@ -9,6 +9,8 @@ import com.kosta.finalproject.vo.SearchVO;
 public interface RRBoardDao {
 
 	List<RRboardVO> SelectALL(RRboardVO vo);
+	
+	List<RRboardVO> SelectALL2(RRboardVO vo);
 
 	List<RRboardVO> SelectALLAD(RRboardVO vo);
 	
@@ -43,4 +45,7 @@ public interface RRBoardDao {
 	public  List<RRboardVO> myRoomlist(String session_id);
 	
 	public void RRBupdate(RRboardVO vo);
+	
+	//main
+	public RRboardVO getMain(String string);
 }

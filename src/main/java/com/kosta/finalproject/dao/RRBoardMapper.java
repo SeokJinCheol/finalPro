@@ -10,6 +10,8 @@ public interface RRBoardMapper {
 
 	List<RRboardVO> SelectALL(RRboardVO vo);
 	
+	List<RRboardVO> SelectALL2(RRboardVO vo);
+	
 	List<RRboardVO> SelectALLAD(RRboardVO vo);
 	
 	public void RRboardinsert(RRboardVO vo);
@@ -46,4 +48,8 @@ public interface RRBoardMapper {
 	
 	public void RRBupdate(RRboardVO vo);
 
+	//main
+	public RRboardVO getMain(String string);
+
+	
 }

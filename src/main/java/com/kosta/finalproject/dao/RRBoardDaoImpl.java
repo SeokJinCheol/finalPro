@@ -22,6 +22,11 @@ public class RRBoardDaoImpl implements RRBoardDao {
 		return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.SelectALL", vo);
 	}
 
+	public List<RRboardVO> SelectALL2(RRboardVO vo) {
+
+		return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.SelectALL2", vo);
+	}
+	
 	public List<RRboardVO> SelectALLAD(RRboardVO vo){
 
 		return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.SelectALLAD", vo);
@@ -107,6 +112,10 @@ public class RRBoardDaoImpl implements RRBoardDao {
 	public void RRBupdate(RRboardVO vo) {
 		// TODO Auto-generated method stub
 		sqlSession.update("com.kosta.finalproject.dao.RRBoardMapper.RRBupdate",vo);
+	}
+
+	public RRboardVO getMain(String string) {
+		return sqlSession.selectOne("com.kosta.finalproject.dao.RRBoardMapper.getMain",string);
 	}
 
 }

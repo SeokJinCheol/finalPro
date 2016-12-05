@@ -152,6 +152,106 @@
 			</tr>
 		</table>
 	</div>
+	
+	<!-- 대관  -->
+	
+		<div>
+		<table>
+			<tr>
+				<td>
+					<form action="menu3_3" method="post">
+						<table>
+							<tr>
+								<td align="left">[강당]</td>
+								<td align="right"><button onclick="script:submit()">+더보기</button></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<img alt="" src="/team4/resources/BoardImg/${vo1.img }" onclick="showContents(${vo1.codeNum })">
+								</td>
+							</tr>
+						</table>
+						<input type="hidden" name="category" value="강당">
+						<input type="hidden" name="codeNum" value="${vo1.codeNum }">
+					</form>
+				
+				</td>
+				<td>
+					<form action="menu3_3" method="post">
+						<table>
+							<tr>
+								<td align="left">[사무실]</td>
+								<td align="right"><button onclick="script:submit()">+더보기</button></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<img alt="" src="/team4/resources/BoardImg/${vo2.img }" onclick="showContents(${vo2.codeNum })">
+								</td>
+							</tr>
+						</table>
+						<input type="hidden" name="category" value="사무실">
+						<input type="hidden" name="codeNum" value="${vo2.codeNum }">
+					</form>
+				</td>
+				<td>
+					<form action="menu3_3" method="post">
+						<table>
+							<tr>
+								<td align="left">[회의실]</td>
+								<td align="right"><button onclick="script:submit()">+더보기</button></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<img alt="" src="/team4/resources/BoardImg/${vo3.img }" onclick="showContents(${vo3.codeNum })">
+								</td>
+							</tr>
+						</table>
+						<input type="hidden" name="category" value="회의실">
+						<input type="hidden" name="codeNum" value="${vo3.codeNum }">
+					</form>
+				</td>
+				<td>
+					<form action="menu3_3" method="post">
+						<table>
+							<tr>
+								<td align="left">[공터]</td>
+								<td align="right"><button onclick="script:submit()">+더보기</button></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<img alt="" src="/team4/resources/BoardImg/${vo4.img }" onclick="showContents(${vo4.codeNum })">
+								</td>
+							</tr>
+						</table>
+						<input type="hidden" name="category" value="category">
+						<input type="hidden" name="codeNum" value="${vo4.codeNum }">
+					</form>
+				</td>
+				<td>
+					<form action="menu3_3" method="post">
+						<table>
+							<tr>
+								<td align="left">[기타]</td>
+								<td align="right"><button onclick="script:submit()">+더보기</button></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<img alt="" src="/team4/resources/BoardImg/${vo5.img }" onclick="showContents(${vo5.codeNum })">
+								</td>
+							</tr>
+						</table>
+						<input type="hidden" name="category" value="기타">
+						<input type="hidden" name="codeNum" value="${vo5.codeNum }">
+					</form>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+		<form action="showContentsForm" name="vo" method="post">
+						<input type="hidden" name="codeNum">
+					</form>
+	
 </body>
 <script>
 	var myIndex = 0;
@@ -193,5 +293,11 @@
 	    
 	    setTimeout(carousel, 4000);
 	}
+	
+	function showContents(codeNum){
+		document.vo.codeNum.value=codeNum;
+		document.vo.submit();
+	}
+	
 </script>
 </html>
