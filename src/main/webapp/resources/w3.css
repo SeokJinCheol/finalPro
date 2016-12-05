@@ -7,6 +7,39 @@
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+.bt1 {
+	border: 0.5px solid gray;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding: 3px 0 3px 0;
+	font-size: 1px;
+}
+
+.bt2 {
+	border: 0.5px solid gray;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-left: 0px;
+	padding: 3px 0 3px 0;
+	font-size: 1px;
+}
+
+.bt3 {
+	border: 0.5px solid gray;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	padding: 3px 0 3px 0;
+	font-size: 1px;
+}
+
+.bt4{
+	border-top:0.5px solid gray;
+	border-bottom:0.5px solid gray;
+	padding: 3px 0 3px 0;
+	font-size: 1px;
+}
+
+/* ///////////////////////////////////////////// */
 .left {
 	height: 250px;
 	float: left;
@@ -2273,19 +2306,17 @@
 
 .main-logo li a {
 	padding: 3px;
+	text-decoration: none;
+	color: #c0c0c0;
 }
 
 .main-logo li a:hover {
-	border-bottom: 0.8px solid black;
-	border-bottom-color: black;
+	color: black;
+	font: bolder;
 }
 
 .main-logo li {
-	float: left
-}
-
-.main-logo a {
-	text-decoration: none !important
+	float: left;
 }
 
 .w3-panel_content {
@@ -2327,6 +2358,10 @@ progress {
 }
 
 audio
+
+
+
+
 
 
 
@@ -2589,7 +2624,11 @@ audio
 
 
 
+
+
  
+
+
 
 
 
@@ -2768,7 +2807,11 @@ controls
 
 
 
+
+
  
+
+
 
 
 
@@ -3032,7 +3075,13 @@ display
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -3208,7 +3257,13 @@ display
 
 
 
+
+
 none
+
+
+
+
 
 
 
@@ -3559,6 +3614,10 @@ height
 
 
 
+
+
+
+
 :
 
 
@@ -3647,7 +3706,11 @@ height
 
 
 
+
+
  
+
+
 
 
 
@@ -3963,6 +4026,10 @@ svg
 
 
 
+
+
+
+
 :not
 
 
@@ -4051,7 +4118,11 @@ svg
 
 
 
+
+
  
+
+
 
 
 
@@ -4228,7 +4299,11 @@ svg
 
 
 
+
+
  
+
+
 
 
 
@@ -4492,7 +4567,13 @@ overflow
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -4668,7 +4749,13 @@ overflow
 
 
 
+
+
 hidden
+
+
+
+
 
 
 
@@ -5933,7 +6020,11 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -6196,6 +6287,10 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
+	
+	
 	:not
 	
 	
@@ -6284,7 +6379,11 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -6461,7 +6560,11 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -6725,7 +6828,13 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
+	
+	
 	:
+	
+	
 	
 	
 	
@@ -6901,7 +7010,13 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
 	none
+	
+	
+	
+	
 	
 	
 	
@@ -7252,6 +7367,10 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
+	
+	
 	:
 	
 	
@@ -7340,7 +7459,11 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -7520,6 +7643,10 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 	
 	
 	
+	
+	
+
+
 
 
 
@@ -8182,7 +8309,15 @@ input[type=checkbox].w3-check:disabled+.w3-validate, input[type=radio].w3-radio:
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -8537,7 +8672,15 @@ transform
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -8900,7 +9043,15 @@ keyframes w3-spin { 0%{
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -9255,7 +9406,15 @@ transform
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -9710,7 +9869,15 @@ opacity
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -10067,7 +10234,15 @@ opacity
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -10430,7 +10605,15 @@ opacity
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -10787,7 +10970,15 @@ opacity
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 

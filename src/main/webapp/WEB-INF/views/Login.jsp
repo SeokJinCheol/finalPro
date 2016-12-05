@@ -9,6 +9,11 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/login.css" type="text/css" media="screen">
 </head>	
 <body>
+	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right;line-height: 130px;">
+		<img src="/team4/resources/images/login32.png" style="margin-right:10px;">
+		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">로　그　인</font>
+	</div>
+	
 	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height:500px; vertical-align:middle; display:table-cell;">
 		<div style="width:35%;" align=center>
 			<div class="w3-rest w3-container w3-round-large w3-card-8 login-page" style="margin-bottom:30px; background-color: #fff">
