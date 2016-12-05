@@ -67,18 +67,18 @@
 								</td>
 							</tr>
 							<tr height=33 style="padding-bottom:2px;">
-                                <c:if test="${session_id != Registerpossibility.reaquestId}">
-								    <td  height=30 style="width: 140px;" align="left">
-										<form action="RegisterUpForm" method="post">
-											<input type="hidden" value="${Registerpossibility.codeNum}" name="codeNum">
-												<b><input type="submit" class="good1 w3-card-4" value="신청하기" onMouseOver="this.style.backgroundColor='#4593e0'"onMouseOut="this.style.backgroundColor='#80b5ea'" style="background-color: #80b5ea;"></b>
-										</form>
-									</td>
+								<c:if test="${session_id != Registerpossibility.reaquestId}">
+											<td  height=30 style="width: 140px;" align="left">
+												<form action="RegisterUpForm" method="post">
+													<input type="hidden" value="${Registerpossibility.codeNum}" name="codeNum">
+													　<b><input type="submit" class="good1 w3-card-4" value="신청하기" onMouseOver="this.style.backgroundColor='#4593e0'"onMouseOut="this.style.backgroundColor='#80b5ea'" style="background-color: #80b5ea;"></b>
+												</form>
+											</td>
 								</c:if>
 								<c:if test="${session_id == Registerpossibility.reaquestId}">
-								     <td height=30 style="width: 140px;" align="left">
-									     <b><input type="text" class="good1 w3-card-4" value="본인품목" style="background-color: #80b5ea; cursor: default;" readonly></b>
-								     </td>
+											<td height=30 style="width: 140px;" align="left">
+												　<b><input type="text" class="good1 w3-card-4" value="본인품목" style="background-color: #80b5ea; cursor: default;" readonly></b>
+											<td>
 								</c:if>
 								
 								<!-- 쪽지 보내기 -->
@@ -118,17 +118,17 @@
 							
 							<tr height=33 style="padding-bottom:2px;">
                                 <c:if test="${session_id != Registerpossibility.reaquestId}">
-								    <td  height=30 style="width: 140px;" align="left">
-										<form action="RegisterUpForm" method="post">
-											<input type="hidden" value="${Registerpossibility.codeNum}" name="codeNum">
-												<b><input type="submit" class="good1 w3-card-4" value="신청하기" onMouseOver="this.style.backgroundColor='#4593e0'"onMouseOut="this.style.backgroundColor='#80b5ea'" style="background-color: #80b5ea;"></b>
-										</form>
-									</td>
+											<td  height=30 style="width: 140px;" align="left">
+												<form action="RegisterUpForm" method="post">
+													<input type="hidden" value="${Registerpossibility.codeNum}" name="codeNum">
+													　<b><input type="submit" class="good1 w3-card-4" value="신청하기" onMouseOver="this.style.backgroundColor='#4593e0'"onMouseOut="this.style.backgroundColor='#80b5ea'" style="background-color: #80b5ea;"></b>
+												</form>
+											</td>
 								</c:if>
 								<c:if test="${session_id == Registerpossibility.reaquestId}">
-								     <td height=30 style="width: 140px;" align="left">
-									     <b><input type="text" class="good1 w3-card-4" value="본인품목" style="background-color: #80b5ea; cursor: default;" readonly></b>
-								     </td>
+											<td height=30 style="width: 140px;" align="left">
+												　<b><input type="text" class="good1 w3-card-4" value="본인품목" style="background-color: #80b5ea; cursor: default;" readonly></b>
+											<td>
 								</c:if>
 								
 								<!-- 쪽지 보내기 -->
