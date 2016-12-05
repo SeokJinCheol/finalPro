@@ -5354,7 +5354,7 @@ ul.w3-ul li:last-child {
 	z-index: 100;
 }
 
-/* 마우스 올릴 때, 최후 색변화 */
+/* 마우스 올릴 때, 맨 위의 메뉴바최후 색변화 */
 .w3-navbar li a:hover {
 	border: 0px solid #fff;
 	background-image: linear-gradient(20deg, #65B2FF, #65B2FF 50%, #fff 50%, #fff);

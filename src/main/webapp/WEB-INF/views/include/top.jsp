@@ -51,16 +51,17 @@
 		</ul>
 	</div>
 	
+	<!-- 메뉴바 -->
 	<div class="w3-container" style="height:50px;">
 		<ul class="w3-navbar w3-center" style="height:50px; ">
 			<li style="width:2%"><p></p></li>
 			
-			<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="siteintro">사 이 트 소 개&nbsp;<i class="fa fa-caret-down"></i></a>
-				<div class="w3-dropdown-content w3-white w3-card-4">
+			<li style="width:15%; margin-top: 3px; border-top-left-radius: 7px; border-top-right-radius: 7px;" class="w3-dropdown-hover"><b><a href="siteintro">사 이 트 소 개&nbsp;<i class="fa fa-caret-down"></i></b></a>
+				<div class="w3-dropdown-content w3-white w3-card-4" style="border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border-top-right-radius: 7px;">
 			        <a href="siteintro">서 비 스 소 개</a>
 			        <a href="use">이 용 방 법</a>
 			    	<a href="rule">이 용 규 칙</a>
-			    	<a href="about_us">About Us</a>
+			    	<a href="about_us" >About Us</a>
 			    </div>	
 			</li>
 			
@@ -70,8 +71,8 @@
 			<security:authorize ifNotGranted="role_master">
 				<!-- 비회원인 경우 -->
 				<security:authorize ifNotGranted="role_user, role_com, role_master">
-					<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="Login">물 품 등 록&nbsp;<i class="fa fa-caret-down"></i></a>
-						<div class="w3-dropdown-content w3-white w3-card-4">
+					<li style="width:15%; margin-top: 3px; border-top-left-radius: 7px; border-top-right-radius: 7px;" class="w3-dropdown-hover"><b><a href="Login">물 품 등 록&nbsp;<i class="fa fa-caret-down"></i></b></a>
+						<div class="w3-dropdown-content w3-white w3-card-4" style="border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border-top-right-radius: 7px;">
 				        	<a href="Login">전 체 등 록 목 록</a>
 				        	<a href="Login">업 체 별 등 록 현 황</a>
 				        	<a href="Login">개 인 별 등 록 현 황</a>
@@ -82,8 +83,8 @@
 		    	
 		    	<!-- 회원인 경우 -->
 				<security:authorize ifAnyGranted="role_user, role_com">
-					<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="menu1">물 품 등 록&nbsp;<i class="fa fa-caret-down"></i></a>
-						<div class="w3-dropdown-content w3-white w3-card-4">
+					<li style="width:15%; margin-top: 3px; border-top-left-radius: 7px; border-top-right-radius: 7px;" class="w3-dropdown-hover"><b><a href="menu1">물 품 등 록&nbsp;<i class="fa fa-caret-down"></i></b></a>
+						<div class="w3-dropdown-content w3-white w3-card-4" style="border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border-top-right-radius: 7px;">
 				        	<a href="menu1">전 체 등 록 목 록</a>
 				        	<a href="menu1_1">업 체 별 등 록 현 황</a>
 				        	<a href="menu1_2">개 인 별 등 록 현 황</a>
@@ -95,8 +96,8 @@
 	        
 	        <!-- Menu1_관리자인 경우 -->
 	        <security:authorize ifAnyGranted="role_master">
-	       		<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="menu1">물 품 등 록&nbsp;<i class="fa fa-caret-down"></i></a>
-					<div class="w3-dropdown-content w3-white w3-card-4">
+	       		<li style="width:15%; margin-top: 3px; border-top-left-radius: 7px; border-top-right-radius: 7px;" class="w3-dropdown-hover"><b><a href="menu1">물 품 등 록&nbsp;<i class="fa fa-caret-down"></i></b></a>
+					<div class="w3-dropdown-content w3-white w3-card-4" style="border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border-top-right-radius: 7px;">
 	       				<a href="menu1">전 체 등 록 목 록</a>
 	       				<a href="rentready">심 사 대 기 현 황</a>
 	       				<a href="rentend">대 여 종 료 대 기</a>
@@ -110,8 +111,8 @@
 			<security:authorize ifNotGranted="role_master">
 				<!-- 비회원인 경우 -->
 				<security:authorize ifNotGranted="role_user, role_com, role_master">
-					<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="Login">물 품 대 여&nbsp;<i class="fa fa-caret-down"></i></a>
-						<div class="w3-dropdown-content w3-white w3-card-4" >
+					<li style="width:15%; margin-top: 3px; border-top-left-radius: 7px; border-top-right-radius: 7px;" class="w3-dropdown-hover"><b><a href="Login">물 품 대 여&nbsp;<i class="fa fa-caret-down"></i></b></a>
+						<div class="w3-dropdown-content w3-white w3-card-4" style="border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border-top-right-radius: 7px;">
 				        	<a href="Login">전 체 대 여 목 록</a>
 				        	<a href="Login">대 여 가 능 현 황</a>
 				        	<a href="Login">나 의 대 여 현 황</a>
@@ -121,8 +122,8 @@
 		    	
 		    	<!-- 회원인 경우 -->
 				<security:authorize ifAnyGranted="role_user, role_com">
-					<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="menu2">물 품 대 여&nbsp;<i class="fa fa-caret-down"></i></a>
-						<div class="w3-dropdown-content w3-white w3-card-4" >
+					<li style="width:15%; margin-top: 3px; border-top-left-radius: 7px; border-top-right-radius: 7px;" class="w3-dropdown-hover"><b><a href="menu2">물 품 대 여&nbsp;<i class="fa fa-caret-down"></i></b></a>
+						<div class="w3-dropdown-content w3-white w3-card-4" style="border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border-top-right-radius: 7px;">
 				        	<a href="menu2">전 체 대 여 목 록</a>
 				        	<a href="menu2_1">대 여 가 능 현 황</a>
 				        	<a href="menu2_2">나 의 대 여 현 황</a>
@@ -133,8 +134,8 @@
 	        
 	        <!-- Menu2_관리자인 경우 -->
 	        <security:authorize ifAnyGranted="role_master">
-	       		<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="menu2">물 품 대 여&nbsp;<i class="fa fa-caret-down"></i></a>
-					<div class="w3-dropdown-content w3-white w3-card-4" >
+	       		<li style="width:15%; margin-top: 3px; border-top-left-radius: 7px; border-top-right-radius: 7px;" class="w3-dropdown-hover"><b><a href="menu2">물 품 대 여&nbsp;<i class="fa fa-caret-down"></i></b></a>
+					<div class="w3-dropdown-content w3-white w3-card-4" style="border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border-top-right-radius: 7px;">
 	       				<a href="menu2">전 체 대 여 목 록</a>
 	       				<a href="rentreadylist">물 품 대 여 관 리</a>
 	       				<a href="rentoutlist">물 품 반 납 관 리</a>
@@ -148,8 +149,8 @@
 			<security:authorize ifNotGranted="role_master">
 				<!-- 비회원인 경우 -->
 				<security:authorize ifNotGranted="role_user, role_com, role_master">
-					<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="Login">장 소 대 여&nbsp;<i class="fa fa-caret-down"></i></a>
-						<div class="w3-dropdown-content w3-white w3-card-4" >
+					<li style="width:15%; margin-top: 3px; border-top-left-radius: 7px; border-top-right-radius: 7px;" class="w3-dropdown-hover"><b><a href="Login">장 소 대 여&nbsp;<i class="fa fa-caret-down"></i></b></a>
+						<div class="w3-dropdown-content w3-white w3-card-4" style="border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border-top-right-radius: 7px;">
 				        	<a href="Login">장 소 등 록 하 기</a>
 					        <a href="Login">지 도 찾 기 & 대 여</a>
 					    	<a href="Login">목 록 찾 기 & 대 여</a>
@@ -159,8 +160,8 @@
 		    	
 		    	<!-- 회원인 경우 -->
 				<security:authorize ifAnyGranted="role_user, role_com">
-					<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="menu3">장 소 대 여&nbsp;<i class="fa fa-caret-down"></i></a>
-						<div class="w3-dropdown-content w3-white w3-card-4" >
+					<li style="width:15%; margin-top: 3px; border-top-left-radius: 7px; border-top-right-radius: 7px;" class="w3-dropdown-hover"><b><a href="menu3">장 소 대 여&nbsp;<i class="fa fa-caret-down"></i></b></a>
+						<div class="w3-dropdown-content w3-white w3-card-4" style="border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border-top-right-radius: 7px;">
 				        	<a href="menu3_1">장 소 등 록 하 기</a>
 					        <a href="menu3_2">지 도 찾 기 & 대 여</a>
 					    	<a href="menu3_3">목 록 찾 기 & 대 여</a>
@@ -171,8 +172,8 @@
 			
 			<!-- Menu3_관리자인 경우 -->
 	        <security:authorize ifAnyGranted="role_master">
-	       		<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="menu3">장 소 대 여&nbsp;<i class="fa fa-caret-down"></i></a>
-					<div class="w3-dropdown-content w3-white w3-card-4" >
+	       		<li style="width:15%; margin-top: 3px; border-top-left-radius: 7px; border-top-right-radius: 7px;" class="w3-dropdown-hover"><b><a href="menu3">장 소 대 여&nbsp;<i class="fa fa-caret-down"></i></b></a>
+					<div class="w3-dropdown-content w3-white w3-card-4" style="border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border-top-right-radius: 7px;">
 	       				<a href="RRlist">장 소 등 록 관 리</a>
 			    		<a href="menu3_5">장 소 대 여 관 리</a>
 			    		<a href="menu3_1">장 소 등 록 하 기</a>
@@ -185,8 +186,8 @@
 			<li style="width:5%"><p></p></li>
 			
 			<!-- 게시판 -->
-			<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="free_list">게 시 판&nbsp;<i class="fa fa-caret-down"></i></a>
-				<div class="w3-dropdown-content w3-white w3-card-4">
+			<li style="width:15%; margin-top: 3px; border-top-left-radius: 7px; border-top-right-radius: 7px;" class="w3-dropdown-hover"><b><a href="free_list">게 시 판&nbsp;<i class="fa fa-caret-down"></i></b></a>
+				<div class="w3-dropdown-content w3-white w3-card-4" style="border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border-top-right-radius: 7px;">
 			        <a href="free_list">요 청 게 시 판</a>
 			    	<a href="free4_list">자 유 게 시 판</a>
 			    	<a href="QnA_list">1 : 1　질　문</a>
