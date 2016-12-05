@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kosta.finalproject.dao.DefaultQADaoImpl;
 import com.kosta.finalproject.vo.DefaultQAVO;
-import com.kosta.finalproject.vo.QandAVO;
+
 
 
 
@@ -35,7 +35,7 @@ public class QALeftController {
 
 	      int startrow = (currentPage * pageSize) - (pageSize - 1);
 	      int endrow = currentPage * pageSize;
-	      int count = 0, number = 0;
+	      int count = 0;
 	      List<DefaultQAVO> list = null;
 	    
 	         count = defaultQADaoImpl.listAllCount();  ///
