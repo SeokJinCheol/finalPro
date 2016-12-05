@@ -17,8 +17,8 @@
 		<img src="/team4/resources/images/box.png" style="margin-right: 10px;"> 
 		<font style="margin-right: 30px; font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px;">물 품 정 산</font>
 	</div>
+	
 	<div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
-		<input type="button" value="엑셀저장" onclick="window.open('Excelaccount')">
 		<div style="margin-bottom: 20px; width:700px; background-color: #fafafa" class="w3-card-8">
 			<table style="height:403px; width:700px; padding: 20px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
 				<thead style="height:30px; table-layout:fixed">
@@ -49,8 +49,12 @@
 				<tfoot style="height:30px; table-layout:fixed">
 					<tr>
 						<th width=66 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">총 결 산</th>
-						<td colspan="7" style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">
+						<td colspan="4" style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">
 							총 금액　:　<fmt:formatNumber value="${total}" pattern="￦ ###,###"/> 원
+						</td>
+						
+						<td style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;" align=right>
+							<input type="button" onclick="window.open('Excelaccount')" class="excel-btn w3-card-4" style="margin-right:20px;">
 						</td>
 					</tr>
 				</tfoot>

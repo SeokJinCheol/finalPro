@@ -108,19 +108,22 @@
 				<tfoot style="height:30px; table-layout:fixed">
 					<tr>
 						<th width=66 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">총 결 산</th>
-						<td colspan="7" style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">
+						<td colspan="6" style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;">
 							총 금액　:　<fmt:formatNumber value="${total}" pattern="￦ ###,###"/> 원
+						</td>
+						<td style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000;" align=right>
+							<form action="Excelcalc" name="Excelcalc" id="Excelcalc" method="post">
+								<input type="submit" value="" onclick="Excelcalc(); return false;" class="excel-btn w3-card-4" style="margin-right:20px;">
+								
+								<input type="hidden" value="keyField">
+								<input type="hidden" value="keyWord">
+								<input type="hidden" value="month2">
+								<input type="hidden" value="month1">
+							</form>
 						</td>
 					</tr>
 				</tfoot>
 			</table>
-			<form action="Excelcalc" name="Excelcalc" id="Excelcalc" method="post">
-					<input type="submit" value="엑셀저장" onclick="Excelcalc(); return false;">
-					<input type="hidden" value="keyField">
-					<input type="hidden" value="keyWord">
-					<input type="hidden" value="month2">
-					<input type="hidden" value="month1">
-					</form>
 		</div>
 	</div>
 </body>
