@@ -36,8 +36,8 @@
       <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
       <!-- 아래의 부분은 오라클 버전이나 계정에따라 다르게적는다. -->
       <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-      <property name="username" value="system" />
-      <property name="password" value="1129" />
+      <property name="username" value="kim" />
+      <property name="password" value="rlaguddbs1590" />
    </bean>
 
    <!-- 트랜잭션 -->
@@ -74,4 +74,5 @@
  <task:executor id="gsTaskExecutor" pool-size="10" />
  <task:annotation-driven executor="gsTaskExecutor"
   scheduler="gsScheduler" />
+  <bean name="jsonview" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
 </beans>
