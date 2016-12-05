@@ -39,7 +39,7 @@
 		</div>
 
 		<div style="margin-bottom: 20px; width:816px; background-color: #fafafa;" class="w3-card-8">
-			<table style="height:400px; width:816px; padding: 20px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
+			<table style="height:403px; width:816px; padding: 20px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 5px; padding-bottom: 10px;">
 				<thead style="height:30px; table-layout:fixed">
 					<tr class="bottom-border2" style=" height:30px; margin-bottom: 20px; background-color: #80b5ea; color:white; text-align: center;">
 				        <td width=66 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">No.</td>
