@@ -80,12 +80,16 @@
 									</form>
 								</c:if>
 								
-								<c:if test="${MyRegisterselect.packageStatus != '대여신청'}">
+								<c:if test="${MyRegisterselect.packageStatus == '대여중'}">
 									<div style="margin-top:10px; font-family: 'Jeju Gothic', sans-serif;">[ 반납신청 ]</div>
 								</c:if>
 								
 								<c:if test="${MyRegisterselect.packageStatus == '대여신청'}">
 									<div style="margin-top:10px; font-family: 'Jeju Gothic', sans-serif;">[ 신청취소 ]</div>
+								</c:if>
+								
+								<c:if test="${MyRegisterselect.packageStatus != '대여신청' and MyRegisterselect.packageStatus != '대여중'}">
+									<div style="margin-top:10px; font-family: 'Jeju Gothic', sans-serif; font-size: 13px;">[ ${MyRegisterselect.packageStatus}중 ]</div>
 								</c:if>
 	                    	</td>
 					</tr>
