@@ -16,7 +16,7 @@
 		<div class="left-menu"><a href="siteintro" class="rollover">
 			<img src="/team4/resources/images/service1.png" style="margin-right:5px;">
 			<img src="/team4/resources/images/service2.png" class="imgover" style="margin-right:5px;">
-			&nbsp;서 비 스 소 개</a></div><br>	
+			&nbsp;서 비 스 소 개</a></div><br>
 		<div class="left-menu"><a href="use" class="rollover">
 			<img src="/team4/resources/images/left-use11.png" style="margin-right:5px;">
 			<img src="/team4/resources/images/left-use12.png" class="imgover" style="margin-right:5px;">
@@ -25,6 +25,10 @@
 			<img src="/team4/resources/images/left-use21.png" style="margin-right:5px;">
 			<img src="/team4/resources/images/left-use22.png" class="imgover" style="margin-right:5px;">
 			&nbsp;이 용 규 칙</a></div><br>
+		<div class="left-menu"><a href="about_us" class="rollover">
+			<img src="/team4/resources/images/korea.png" style="margin-right:5px;">
+			<img src="/team4/resources/images/korea.png" class="imgover" style="margin-right:5px;">
+			&nbsp;About Us</a></div><br>
 		
 		<!-- 안쓰는 메뉴 주석처리 -->
 		<!-- <div class="left-menu"><a href="#" class="rollover">

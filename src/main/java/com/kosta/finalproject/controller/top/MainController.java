@@ -88,6 +88,8 @@ public class MainController {
 	@RequestMapping("/about_us")
 	public String about_us(Model model) {
 		model.addAttribute("CONTENT", "about_us.jsp");
+		model.addAttribute("LEFT", "menu/menu5/left.jsp");
+		
 		return "main";
 	}
 	

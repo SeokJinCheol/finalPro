@@ -13,108 +13,46 @@
 </head>
 <body>
 	<div class="w3-container" style="background: #fff;">
-		<ul class="main-logo w3-large w3-center" style="padding: 3px 0 0 0; margin-top:20px;">
-		    <!-- 인증 NO -->
+		<ul class="main-logo w3-large w3-center" style="padding: 3px 0 0 0; margin-top:20px; margin-bottom:15px;">
+		    <!-- 인증 NO ==> 비회원일 경우 -->
 		    <security:authorize ifNotGranted="role_user, role_com, role_master">
-			    <li style="width:83%"><p></p></li>
-				<li style="width:8%; padding: 3px 0 0 0; font-size: 1px;"><a href="Login"><img src="/team4/resources/images/login18.png">&nbsp;L o g i n</a></li>
-			   	<li style="width:1%"><p></p></li>
-			    <li style="width:8%; padding: 3px 0 0 0; font-size: 1px;"><a href="joinForm"><img src="/team4/resources/images/join18.png">&nbsp;J o i n</a></li>
-				<br><br>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-				
-				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QnA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
-				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><input class="button-write99" type="button"  name="cost" value="대여비용" style="margin-right:5px;" onclick="openCost(this.form)"></li>
-				<li style="width:25%; padding: 0 0 3px 0;"><img class="w3-animate-opacity" src="/team4/resources/images/test-top.png" onclick="location.href='main'"></li>
-				<li style="width:30%"><p></p></li>
-				
-				
-				<!-- 메인에서의 검색 -->
-				<%-- <li style="width:25%; padding: 45px 0 3px 0; font-size: 1px;">
-					<form action="mainSearch" method="post">   
-						<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
-							<option value="title" style="text-align:center;">Title</option>
-							<option value="id" style="text-align:center;">I D</option>
-						</select>
-						
-			   			<input type="text" name="word" value="${word}"/><input type="submit" value ="검색">
-			  		</form>
-                </li> --%>
-               
-		   		
+			    <li style="width:5%"><p></p></li>
+			    <li style="width:7%; padding: 55px 0 0 0; font-size: 1px;"><input class="button-write99" type="button"  name="cost" value="예상비용" style="margin-right:5px;" onclick="openCost(this.form)"></li>
+			    <li style="width:25%"><p></p></li>
+			    <li style="width:25%; padding: 7px 0 0 0;"><img class="w3-animate-opacity" src="/team4/resources/images/main-toptop.png" onclick="location.href='main'" style="border-bottom:0.5px solid black;"></li>
+				<li style="width:26%"><p></p></li>
+
+				<li style="width:6%; border:0.5px solid gray; border-top-left-radius:5px; border-bottom-left-radius:5px; padding: 3px 0 3px 0; font-size: 1px;"><a href="Login"><img src="/team4/resources/images/login18.png">&nbsp;L o g i n</a></li>
+			    <li style="width:6%; border:0.5px solid gray; border-top-right-radius:5px; border-bottom-right-radius:5px; border-left:0px; padding: 3px 0 3px 0; font-size: 1px;"><a href="joinForm"><img src="/team4/resources/images/join18.png">&nbsp;J o i n</a></li>
 		    </security:authorize>
 		    
-		    
-		    
-		    
-		    
-		    
-		    <!-- ////////////////////////////////////////////////// -->
-		    <!-- ////////////////////////////////////////////////// -->
-		    <!-- ////////////////////////////////////////////////// -->
 		    <!-- 인증 Yes ==> 관리자가 아닐 경우 -->
 			<security:authorize ifAnyGranted="role_user, role_com">
-				<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="main"><img src="/team4/resources/images/home18.png">&nbsp;H o m e</a></li>
-				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><a href="about_us"><img src="/team4/resources/images/korea18.png">&nbsp;About us</a></li>
-				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QnA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
-				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><input class="button-write99" type="button"  name="cost" value="대여비용" style="margin-right:5px;" onclick="openCost(this.form)"></li>
-				<li style="width:25%; padding: 0 0 3px 0;"><img class="w3-animate-opacity" src="/team4/resources/images/test-top.png" onclick="location.href='main'"></li>
-				<li style="width:30%"><p></p></li>
-				
-				<%-- <li style="width:25%; padding: 45px 0 3px 0; font-size: 1px;">
-					<form action="mainSearch" method="post">   
-						<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
-							<option value="title" style="text-align:center;">Title</option>
-							<option value="id" style="text-align:center;">I D</option>
-						</select>
-						
-			   			<input type="text" name="word" value="${word}"/><input type="submit" value ="검색">
-			  		</form>
-               </li> --%>
-				
-		   		<li style="width:9%; padding: 45px 0 3px 0; font-size: 1px;"><a href="<c:url value="j_spring_security_logout"/>"><img src="/team4/resources/images/logout18.png">&nbsp;L o g o u t</a></li>
-		    	<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="mypage"><img src="/team4/resources/images/mypage18.png">&nbsp;My Page</a></li>
+				<li style="width:5%"><p></p></li>
+			    <li style="width:7%; padding: 55px 0 0 0; font-size: 1px;"><input class="button-write99" type="button"  name="cost" value="예상비용" style="margin-right:5px;" onclick="openCost(this.form)"></li>
+			    <li style="width:25%"><p></p></li>
+			    <li style="width:25%; padding: 7px 0 0 0;"><img class="w3-animate-opacity" src="/team4/resources/images/main-toptop.png" onclick="location.href='main'" style="border-bottom:0.5px solid black;"></li>
+				<li style="width:22%"><p></p></li>
+				<li style="width:8%; padding: 3px 0 0 0; font-size: 1px;"><a href="<c:url value="j_spring_security_logout"/>"><img src="/team4/resources/images/logout18.png">&nbsp;L o g o u t</a></li>
+			    <li style="width:8%; padding: 3px 0 0 0; font-size: 1px;"><a href="mypage"><img src="/team4/resources/images/mypage18.png">&nbsp;My Page</a></li>
 		    </security:authorize>
-		    
+
 		    <!-- 인증 Yes ==> 관리자일 경우 -->
 			<security:authorize ifAnyGranted="role_master">
-				<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="main"><img src="/team4/resources/images/home18.png">&nbsp;H o m e</a></li>
-				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><a href="about_us"><img src="/team4/resources/images/korea18.png">&nbsp;About us</a></li>
-				<li style="width:6%; padding: 45px 0 3px 0; font-size: 1px;"><a href="QnA_list"><img src="/team4/resources/images/qanda18.png">&nbsp;Q & A</a></li>
-				<li style="width:7%; padding: 45px 0 3px 0; font-size: 1px;"><input class="button-write99" type="button"  name="cost" value="대여비용" style="margin-right:5px;" onclick="openCost(this.form)"></li>
-				<li style="width:25%; padding: 0 0 3px 0;"><img class="w3-animate-opacity" src="/team4/resources/images/test-top.png" onclick="location.href='main'"></li>
-				<li style="width:22%"><p></p></li>
-				
-				<%-- <li style="width:25%; padding: 45px 0 3px 0; font-size: 1px;">
-					<form action="mainSearch" method="post">   
-						<select name="keyword" style="width:15%; border-radius:4px; text-align:center; height:27px;">
-							<option value="title" style="text-align:center;">Title</option>
-							<option value="id" style="text-align:center;">I D</option>
-						</select>
-						
-			   			<input type="text" name="word" value="${word}"/><input type="submit" value ="검색">
-			  		</form>
-                </li> --%>
-
-		   		<li style="width:9%; padding: 45px 0 3px 0; font-size: 1px;"><a href="<c:url value="j_spring_security_logout"/>"><img src="/team4/resources/images/logout18.png">&nbsp;L o g o u t</a></li>	
-		    	<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="mypage"><img src="/team4/resources/images/mypage18.png">&nbsp;My Page</a></li>
-		    	<li style="width:8%; padding: 45px 0 3px 0; font-size: 1px;"><a href="list"><img src="/team4/resources/images/setting.png">&nbsp;A d m i n</a></li>																																	
-		    </security:authorize>
+				<li style="width:5%"><p></p></li>
+			    <li style="width:7%; padding: 55px 0 0 0; font-size: 1px;"><input class="button-write99" type="button"  name="cost" value="예상비용" style="margin-right:5px;" onclick="openCost(this.form)"></li>
+			    <li style="width:25%"><p></p></li>
+			    <li style="width:25%; padding: 7px 0 0 0;"><img class="w3-animate-opacity" src="/team4/resources/images/main-toptop.png" onclick="location.href='main'" style="border-bottom:0.5px solid black;"></li>
+				<li style="width:14%"><p></p></li>
+				<li style="width:8%; padding: 3px 0 0 0; font-size: 1px;"><a href="<c:url value="j_spring_security_logout"/>"><img src="/team4/resources/images/logout18.png">&nbsp;L o g o u t</a></li>
+			    <li style="width:8%; padding: 3px 0 0 0; font-size: 1px;"><a href="mypage"><img src="/team4/resources/images/mypage18.png">&nbsp;My Page</a></li>
+		    	<li style="width:8%; padding: 3px 0 0 0; font-size: 1px;"><a href="list"><img src="/team4/resources/images/setting.png">&nbsp;A d m i n</a></li>	
+			</security:authorize>
 		</ul>
 	</div>
 	
 	<div class="w3-container" style="height:50px;">
-		<ul class="w3-navbar w3-center" style="height:50px; border-top:0.5px solid black; ">
+		<ul class="w3-navbar w3-center" style="height:50px; ">
 			<li style="width:2%"><p></p></li>
 			
 			<li style="width:15%; margin-top: 3px;" class="w3-dropdown-hover"><a href="siteintro">사 이 트 소 개&nbsp;<i class="fa fa-caret-down"></i></a>
@@ -122,7 +60,7 @@
 			        <a href="siteintro">서 비 스 소 개</a>
 			        <a href="use">이 용 방 법</a>
 			    	<a href="rule">이 용 규 칙</a>
-			    	<a href="about_us">조　직　도</a>
+			    	<a href="about_us">About Us</a>
 			    </div>	
 			</li>
 			

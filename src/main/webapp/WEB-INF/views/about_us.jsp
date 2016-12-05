@@ -12,8 +12,13 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/w3.css" type="text/css" media="screen">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/login.css" type="text/css" media="screen">
 </head>
-<body>	
-	<div align=center class="w3-container" style="width: 1350px; height:500px; vertical-align:middle; display:table-cell;">
+<body>
+	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right;line-height: 130px;">
+		<img src="/team4/resources/images/korea.png" style="margin-right:10px;">
+		<font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">About Us</font>
+	</div>
+
+	<div align=center class="w3-container" style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
 		<div style="margin-bottom:20px; margin-top:20px;">
 			<div>
 				<table style="padding-left:40px; padding-right:40px; padding-top: 10px;">
