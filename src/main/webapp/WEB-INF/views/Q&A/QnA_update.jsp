@@ -84,7 +84,7 @@
 								value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수　정" /> &nbsp;&nbsp;&nbsp;
 							<input type="button" class="free_insert-btn w3-card-4"
 								value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;취　소"
-								onclick="location.href='QnA_list'" />
+								onclick="javascript:window.history.back();" />
 						</p>
 					</c:if>
 
