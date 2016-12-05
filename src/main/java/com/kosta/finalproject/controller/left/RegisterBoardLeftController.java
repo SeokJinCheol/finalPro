@@ -2,7 +2,6 @@ package com.kosta.finalproject.controller.left;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -57,7 +56,6 @@ public class RegisterBoardLeftController {
 		// 검색 확인
 		String keyword = request.getParameter("keyword");
 		String word = request.getParameter("word");
-		String id = request.getParameter("id");
 
 		// 대여목록
 		List<RegisterBoardVO> Registerpossibility = null;
@@ -122,8 +120,6 @@ public class RegisterBoardLeftController {
 			model.addAttribute("word", word);
 			model.addAttribute("keyword", keyword);
 
-		} else {
-			Registerpossibility = Collections.EMPTY_LIST;
 		}
 
 		model.addAttribute("Registerpossibility", Registerpossibility);

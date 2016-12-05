@@ -119,7 +119,6 @@ public class RegisterBoardDaoImpl implements RegisterBoardDao{
 	public ArrayList<RegisterBoardVO> registercontent(int codeNum) {
 		ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
 		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
-		RegisterBoardVO vo = new RegisterBoardVO();
 		result = mapper.registercontent(codeNum);
 		return result;
 	}

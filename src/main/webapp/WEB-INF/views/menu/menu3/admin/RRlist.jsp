@@ -47,7 +47,7 @@
 		</div>
 
 		<div style="margin-bottom: 20px; width:820px; background-color: #fafafa;" class="w3-card-8">
-			<table style="height:400px; width:820px; padding: 20px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 20px; padding-bottom: 20px;">
+			<table style="height:403px; width:820px; padding: 20px; text-align:center; border-collapse: collapse; border-spacing: 0; padding-top: 20px; padding-bottom: 20px;">
 				<thead style="height:30px; table-layout:fixed">
 					<tr class="bottom-border2" style=" height:30px; margin-bottom: 20px; background-color: #80b5ea; color:white; text-align: center;">
 				        <td width=80 style="font-family: 'Jeju Gothic', sans-serif; border-top: 2px solid #000; border-right: 1px solid #fff;">외관사진</td>
