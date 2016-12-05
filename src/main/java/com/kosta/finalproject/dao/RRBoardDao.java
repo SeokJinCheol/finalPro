@@ -1,9 +1,11 @@
 package com.kosta.finalproject.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.kosta.finalproject.vo.RPboardVO;
 import com.kosta.finalproject.vo.RRboardVO;
+import com.kosta.finalproject.vo.RegisterBoardVO;
 import com.kosta.finalproject.vo.SearchVO;
 
 public interface RRBoardDao {
@@ -48,4 +50,7 @@ public interface RRBoardDao {
 	
 	//main
 	public RRboardVO getMain(String string);
+	
+	//장소검색
+	public ArrayList<RRboardVO> pselectPlace(String packageStatus, String word);
 }

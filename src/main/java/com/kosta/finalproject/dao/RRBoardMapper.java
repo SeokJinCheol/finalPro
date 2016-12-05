@@ -1,9 +1,11 @@
 package com.kosta.finalproject.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.kosta.finalproject.vo.RPboardVO;
 import com.kosta.finalproject.vo.RRboardVO;
+import com.kosta.finalproject.vo.RegisterBoardVO;
 import com.kosta.finalproject.vo.SearchVO;
 
 public interface RRBoardMapper {
@@ -51,5 +53,5 @@ public interface RRBoardMapper {
 	//main
 	public RRboardVO getMain(String string);
 
-	
+	public ArrayList<RRboardVO> pselectPlace(RRboardVO vo);
 }

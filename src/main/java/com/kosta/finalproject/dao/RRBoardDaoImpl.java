@@ -1,5 +1,6 @@
 package com.kosta.finalproject.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -116,6 +117,18 @@ public class RRBoardDaoImpl implements RRBoardDao {
 
 	public RRboardVO getMain(String string) {
 		return sqlSession.selectOne("com.kosta.finalproject.dao.RRBoardMapper.getMain",string);
+	}
+
+	// °Ë»ö
+	@Override
+	public ArrayList<RRboardVO> pselectPlace(String packageStatus, String word) {
+		ArrayList<RRboardVO> result = new ArrayList<RRboardVO>();
+		RRBoardMapper mapper = sqlSession.getMapper(RRBoardMapper.class);
+		RRboardVO vo = new  RRboardVO();
+		vo.setWord(word);
+		vo.setPackageStatus(packageStatus);
+		result = mapper.pselectPlace(vo);
+		return result;
 	}
 
 }

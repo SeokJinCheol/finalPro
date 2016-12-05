@@ -194,4 +194,12 @@
 		</where>
 	</select>
 	
+	<resultMap type="RRboardVO" id="RRBoard">
+	    <result property="codeNum" column="codeNum" />
+		<result property="category" column="category" />
+	</resultMap>
+	<select id="pselectPlace" resultMap="RRBoard" parameterType="com.kosta.finalproject.vo.RRboardVO">
+		SELECT * FROM RRBOARD WHERE packageStatus = #{packageStatus} and title like  '%' || #{word} || '%' ORDER BY codeNum DESC
+	</select>
+	
 </mapper>

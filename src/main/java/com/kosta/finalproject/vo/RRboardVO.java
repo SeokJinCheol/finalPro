@@ -4,7 +4,16 @@ public class RRboardVO {
 
 	int codeNum, bill;
 	String category, title, contents, adress, spotNum, packageStatus, img, reaquestId, registerId, company;
-	String startDate, endDate, userstartDate, userendDate;
+	String startDate, endDate, userstartDate, userendDate, word;
+
+	
+	public String getWord() {
+		return word;
+	}
+
+	public void setWord(String word) {
+		this.word = word;
+	}
 
 	public int getCodeNum() {
 		return codeNum;
