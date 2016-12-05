@@ -2,7 +2,6 @@ package com.kosta.finalproject.controller.top;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -50,8 +49,7 @@ public class RegisterBoardController {
 		// 검색 확인
 		String keyword = request.getParameter("keyword");
 		String word = request.getParameter("word");
-		String id = request.getParameter("id");
-
+		
 		// 전체 등록글
 		List<RegisterBoardVO> Registerselect = null;
 
@@ -115,10 +113,8 @@ public class RegisterBoardController {
 			model.addAttribute("word", word);
 			model.addAttribute("keyword", keyword);
 
-		} else {
-			Registerselect = Collections.EMPTY_LIST;
 		}
-
+		
 		model.addAttribute("LEFT", "menu/menu2/left.jsp");
 		model.addAttribute("CONTENT", "menu/menu2/menu2.jsp");
 		model.addAttribute("Registerselect", Registerselect);

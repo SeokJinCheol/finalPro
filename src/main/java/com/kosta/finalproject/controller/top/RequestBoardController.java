@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -50,7 +49,6 @@ public class RequestBoardController {
 		//검색 확인
 		String keyword = request.getParameter("keyword");
 		String word = request.getParameter("word");
-		String id = request.getParameter("id");
 				
 		// 전체 등록글
 		List<RequestBoardVO> requestlist = null;
@@ -68,8 +66,6 @@ public class RequestBoardController {
 			model.addAttribute("word", word);
 			model.addAttribute("keyword", keyword);
 			
-		} else {
-			requestlist = Collections.EMPTY_LIST;
 		}
 
 		model.addAttribute("LEFT", "menu/menu1/left.jsp");
@@ -167,8 +163,6 @@ public class RequestBoardController {
 
    @RequestMapping("/Requestboardend")
    public String Requestboardend(Model model, HttpServletRequest request) {
-	   
-	  String pagecheck = request.getParameter("pagecheck");
 
       // id 받아오기
       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
