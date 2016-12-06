@@ -206,7 +206,7 @@
 									
 									<tr>
 										<td colspan="2" align="center">
-											<a href="Login"> 
+											<a class="effect" href="Login"> 
 												<img width="200" height="180" src="/team4/resources/RequestImg/${registervo2.img}" style="border-radius: 7px; margin-bottom:2px; margin-top:4px;">
 											</a>
 										</td>
