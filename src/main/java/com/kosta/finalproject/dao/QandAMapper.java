@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.kosta.finalproject.vo.QandAVO;
 
-
 public interface QandAMapper {
 	public void writeMain(QandAVO vo);
 
@@ -29,7 +28,4 @@ public interface QandAMapper {
 	public void delete(QandAVO vo);
 
 	public void updateDetail(QandAVO vo);
-	
-	
-
 }

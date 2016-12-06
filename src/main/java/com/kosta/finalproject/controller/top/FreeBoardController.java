@@ -29,7 +29,6 @@ import com.kosta.finalproject.vo.UploadVO;
 @Controller
 @SessionAttributes({ "id" })
 public class FreeBoardController {
-
 	@Autowired
 	private FreeDaoImpl freeDaoImpl;
 
@@ -40,7 +39,6 @@ public class FreeBoardController {
 	public String FreeList(Model model, HttpServletRequest request) {
 		String keyword = request.getParameter("keyword");
 		String word = request.getParameter("word");
-		String id = request.getParameter("id");
 
 		int pageSize = 10;
 
@@ -51,7 +49,7 @@ public class FreeBoardController {
 
 		int currentPage = Integer.parseInt(pageNum);
 
-		int count = 0, number = 0;
+		int count = 0;
 		List<FreeBoardVO> list = null;
 		if (keyword == null) {
 			count = freeDaoImpl.getListAllCount();
@@ -60,8 +58,8 @@ public class FreeBoardController {
 		} else if (keyword.equalsIgnoreCase("id") && word != null) {
 			count = freeDaoImpl.getListIDCount(word);
 		}
-		
-		int endrow = count - ((currentPage-1)*pageSize);
+
+		int endrow = count - ((currentPage - 1) * pageSize);
 		int startrow = endrow - pageSize + 1;
 
 		int pageCount = Math.round(count / pageSize + (count % pageSize == 0 ? 0 : 1));
@@ -92,7 +90,7 @@ public class FreeBoardController {
 				model.addAttribute("word", word);
 				model.addAttribute("keyword", keyword);
 			}
-		} 
+		}
 
 		model.addAttribute("result", list);
 		model.addAttribute("currentPage", new Integer(currentPage));
@@ -104,6 +102,7 @@ public class FreeBoardController {
 
 		return "main";
 	}
+
 	@RequestMapping(value = "/free_update_get")
 	public String free_update(Model model, HttpServletRequest request) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -132,33 +131,38 @@ public class FreeBoardController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 
-		//파일이 null 이 아니면 실행.
-	      String fileName = null;
-	      
-	      System.out.println("이미지 처리 시작");
-	      MultipartFile uploadfile = dto.getFile();
-	      if (uploadfile != null) {
-	          fileName = uploadfile.getOriginalFilename();
-	          if(!fileName.equals("")){
-	             dto.setOname(fileName);
-	             try {
-	                 File file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/FreeBoardImg/" + fileName);
-	                    while(file.exists()) {
-	                       int indexes = fileName.lastIndexOf(".");
-	                       System.out.println("순서 = "+indexes);
-	                       String extension = fileName.substring(indexes);
-	                       System.out.println("확장자 = "+extension);
-	                       String newFileName = fileName.substring(0, indexes)+"_"+extension;
-	                       System.out.println("새 파일 이름 = "+newFileName);
-	                       fileName = newFileName;
-	                       file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/FreeBoardImg/" + newFileName);
-	                    }
-	                 uploadfile.transferTo(file);
-	             } catch (IOException e) {
-	                 e.printStackTrace();
-	             } // try - catch
-	          } else fileName = "no_img.jpg";
-	      }
+		// 파일이 null 이 아니면 실행.
+		String fileName = null;
+
+		System.out.println("이미지 처리 시작");
+		MultipartFile uploadfile = dto.getFile();
+		if (uploadfile != null) {
+			fileName = uploadfile.getOriginalFilename();
+			if (!fileName.equals("")) {
+				dto.setOname(fileName);
+				try {
+					File file = new File(
+							"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/FreeBoardImg/"
+									+ fileName);
+					while (file.exists()) {
+						int indexes = fileName.lastIndexOf(".");
+						System.out.println("순서 = " + indexes);
+						String extension = fileName.substring(indexes);
+						System.out.println("확장자 = " + extension);
+						String newFileName = fileName.substring(0, indexes) + "_" + extension;
+						System.out.println("새 파일 이름 = " + newFileName);
+						fileName = newFileName;
+						file = new File(
+								"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/FreeBoardImg/"
+										+ newFileName);
+					}
+					uploadfile.transferTo(file);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else
+				fileName = "no_img.jpg";
+		}
 
 		FreeBoardVO vo = new FreeBoardVO();
 
@@ -206,38 +210,42 @@ public class FreeBoardController {
 	// 글쓰기 기능 수행
 	@RequestMapping("/free_write2")
 	public String free_write2(Model model, HttpServletRequest request, UploadVO dto) {
-		//파일이 null 이 아니면 실행.
-	      String fileName = null;
-	      
-	      System.out.println("이미지 처리 시작");
-	      MultipartFile uploadfile = dto.getFile();
-	      if (uploadfile != null) {
-	          fileName = uploadfile.getOriginalFilename();
-	          if(!fileName.equals("")){
-	             dto.setOname(fileName);
-	             try {
-	                 File file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/FreeBoardImg/" + fileName);
-	                    while(file.exists()) {
-	                       int indexes = fileName.lastIndexOf(".");
-	                       System.out.println("순서 = "+indexes);
-	                       String extension = fileName.substring(indexes);
-	                       System.out.println("확장자 = "+extension);
-	                       String newFileName = fileName.substring(0, indexes)+"_"+extension;
-	                       System.out.println("새 파일 이름 = "+newFileName);
-	                       fileName = newFileName;
-	                       file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/FreeBoardImg/" + newFileName);
-	                    }
-	                 uploadfile.transferTo(file);
-	             } catch (IOException e) {
-	                 e.printStackTrace();
-	             } // try - catch
-	          } else fileName = "no_img.jpg";
-	      }
-			// 데이터 베이스 처리를 현재 위치에서 처리
+		// 파일이 null 이 아니면 실행.
+		String fileName = null;
+
+		System.out.println("이미지 처리 시작");
+		MultipartFile uploadfile = dto.getFile();
+		if (uploadfile != null) {
+			fileName = uploadfile.getOriginalFilename();
+			if (!fileName.equals("")) {
+				dto.setOname(fileName);
+				try {
+					File file = new File(
+							"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/FreeBoardImg/"
+									+ fileName);
+					while (file.exists()) {
+						int indexes = fileName.lastIndexOf(".");
+						System.out.println("순서 = " + indexes);
+						String extension = fileName.substring(indexes);
+						System.out.println("확장자 = " + extension);
+						String newFileName = fileName.substring(0, indexes) + "_" + extension;
+						System.out.println("새 파일 이름 = " + newFileName);
+						fileName = newFileName;
+						file = new File(
+								"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/FreeBoardImg/"
+										+ newFileName);
+					}
+					uploadfile.transferTo(file);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else
+				fileName = "no_img.jpg";
+		}
+		// 데이터 베이스 처리를 현재 위치에서 처리
 		System.out.println("데이터 베이스 처리 시작");
 
 		FreeBoardVO vo = new FreeBoardVO();
-		String bgnum = request.getParameter("bnum");
 		String title = request.getParameter("title");
 		String id = request.getParameter("id");
 		String contents = request.getParameter("contents");
@@ -249,7 +257,6 @@ public class FreeBoardController {
 		vo.setContents(contents);
 
 		freeDaoImpl.writeBoard(vo);
-
 
 		return "redirect:free4_list";
 	}
@@ -264,61 +271,59 @@ public class FreeBoardController {
 
 		freeDaoImpl.updateBoardCount(bnum);
 		FreeBoardVO vo = freeDaoImpl.showBoardthis(bnum);
-		//ArrayList<FreeBoardVO> list = freeDaoImpl.selectBoardReply(bnum);
 
 		model.addAttribute("session_id", session_id);
-		//model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
 		model.addAttribute("CONTENT", "menu/menu4/free4/free_content.jsp");
 		model.addAttribute("LEFT", "menu/menu4/left.jsp");
 
 		return "main";
 	}
+
 	// 리플달기
-		@RequestMapping(value = "/free_reply", method = RequestMethod.POST)
-		public View free_replywrite(Model model, HttpServletRequest request, HttpServletResponse response) {
-			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-			String session_id = auth.getName();
-			FreeBoardVO vo = new FreeBoardVO();
+	@RequestMapping(value = "/free_reply", method = RequestMethod.POST)
+	public View free_replywrite(Model model, HttpServletRequest request, HttpServletResponse response) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String session_id = auth.getName();
+		FreeBoardVO vo = new FreeBoardVO();
 
-			String contents = request.getParameter("contents");
-			String title = "[답변]" + request.getParameter("title");
-			int bnum = Integer.parseInt(request.getParameter("bnum"));
-			int bgnum = bnum;
+		String contents = request.getParameter("contents");
+		String title = "[답변]" + request.getParameter("title");
+		int bnum = Integer.parseInt(request.getParameter("bnum"));
+		int bgnum = bnum;
 
-			String img = "reply";
-			
-			vo.setBgnum(bgnum);
-			vo.setContents(contents);
-			vo.setTitle(title);
-			vo.setId(session_id);
-			vo.setImg(img);
-			freeDaoImpl.writeBoard(vo);
-			model.addAttribute("vo", vo);
-			System.out.println("bnum1=" + bnum);
-			return jsonview;
+		String img = "reply";
 
-		}
-	//리플리스트
+		vo.setBgnum(bgnum);
+		vo.setContents(contents);
+		vo.setTitle(title);
+		vo.setId(session_id);
+		vo.setImg(img);
+		freeDaoImpl.writeBoard(vo);
+		model.addAttribute("vo", vo);
+		System.out.println("bnum1=" + bnum);
+		return jsonview;
+
+	}
+
+	// 리플리스트
 	@RequestMapping("/free_replylist/{bnum}")
 	public ResponseEntity<ArrayList<FreeBoardVO>> free_replylist(@PathVariable("bnum") Integer bnum) {
-		
+
 		ResponseEntity<ArrayList<FreeBoardVO>> entity = null;
-		
+
 		try {
-			
+
 			entity = new ResponseEntity<>(freeDaoImpl.selectBoardReply(bnum), HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
 		}
-		// 날짜변환 - > 스트링
-		//
-		// }
+		
 		return entity;
-
 	}
+
 	// 글삭제
 	@RequestMapping("/free_delete")
 	public String free_delete(Model model, HttpServletRequest request) {
@@ -329,15 +334,11 @@ public class FreeBoardController {
 	}
 
 	// 리플삭제
-	@RequestMapping(value="/free_re_delete",method=RequestMethod.POST)
+	@RequestMapping(value = "/free_re_delete", method = RequestMethod.POST)
 	public View free_re_delete(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String reply_bnum = request.getParameter("reply_bnum");
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String session_id = auth.getName();
 		freeDaoImpl.deleteBoard(Integer.parseInt(reply_bnum));
 
 		return jsonview;
 	}
-
-	
 }

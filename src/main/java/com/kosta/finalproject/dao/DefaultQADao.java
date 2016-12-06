@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import com.kosta.finalproject.vo.DefaultQAVO;
 
 public interface DefaultQADao {
-public void insert(DefaultQAVO vo);
-public ArrayList<DefaultQAVO> showAll(int startrow,int endrow);
-public int listAllCount();
+	public void insert(DefaultQAVO vo);
+
+	public ArrayList<DefaultQAVO> showAll(int startrow, int endrow);
+
+	public int listAllCount();
 }

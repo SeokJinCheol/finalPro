@@ -28,10 +28,9 @@ import com.kosta.finalproject.vo.UploadVO;
 
 @Controller
 public class RRBoardLeftController {
-
 	@Autowired
 	MailImpl mailImpl;
-	
+
 	@Autowired
 	private RRBoardDaoImpl dao;
 
@@ -96,8 +95,7 @@ public class RRBoardLeftController {
 		 * try { startDate = sdf.parse(request.getParameter("startDate"));
 		 * endDate = sdf.parse(request.getParameter("endDate"));
 		 * 
-		 * } catch (ParseException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); }
+		 * } catch (ParseException e) { e.printStackTrace(); }
 		 */
 		// vo 삽입
 		vo.setStartDate(request.getParameter("startDate"));
@@ -110,7 +108,7 @@ public class RRBoardLeftController {
 		vo.setAdress(request.getParameter("adress"));
 		vo.setSpotNum(request.getParameter("spotNum"));
 		vo.setContents(request.getParameter("contents"));
-		if (fileName.equals(null)||fileName.length()<1) {
+		if (fileName.equals(null) || fileName.length() < 1) {
 			vo.setImg("이미지없음.jpg");
 		} else {
 			vo.setImg(fileName);
@@ -135,8 +133,9 @@ public class RRBoardLeftController {
 
 		// 체크
 		RRboardVO vo = dao.getcontents(codeNum);
+
 		// vo 전송
-		model.addAttribute("vo", dao.getcontents(codeNum));
+		model.addAttribute("vo", vo);
 		model.addAttribute("CONTENT", "menu/menu3/showContentsForm.jsp");
 		model.addAttribute("LEFT", "menu/menu3/left.jsp");
 		return "main";
@@ -146,7 +145,7 @@ public class RRBoardLeftController {
 	public String insertSubmit(Model model, @RequestParam("codeNum") int codeNum,
 			@RequestParam("contents") String contents, @RequestParam("bill") int bill,
 			@RequestParam("userstartDate") String userstartDate, @RequestParam("userendDate") String userendDate) {
-		
+
 		// 세션 아이디 가져 오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
@@ -186,14 +185,14 @@ public class RRBoardLeftController {
 	}
 
 	// 리스트형 대관 확인
-	@RequestMapping(value="/menu3_3" ,method=RequestMethod.POST)
-	public String menu3_3_post(Model model, @RequestParam("category")String category) {
+	@RequestMapping(value = "/menu3_3", method = RequestMethod.POST)
+	public String menu3_3_post(Model model, @RequestParam("category") String category) {
 
 		RRboardVO vo = new RRboardVO();
 
 		vo.setPackageStatus("대여가능");
 		vo.setCategory(category);
-		
+
 		List<RRboardVO> result = dao.SelectALL2(vo);
 
 		System.out.println("size=" + result.size());
@@ -206,7 +205,7 @@ public class RRBoardLeftController {
 	}
 
 	// 리스트형 대관 확인
-	@RequestMapping(value="/menu3_3" ,method=RequestMethod.GET)
+	@RequestMapping(value = "/menu3_3", method = RequestMethod.GET)
 	public String menu3_3_get(Model model) {
 
 		RRboardVO vo = new RRboardVO();
@@ -223,7 +222,7 @@ public class RRBoardLeftController {
 		model.addAttribute("LEFT", "menu/menu3/left.jsp");
 		return "main";
 	}
-	
+
 	// 관리자 대관 확인 수정
 	@RequestMapping(value = "/RRlist", method = RequestMethod.GET)
 	public String RRlistGet(Model model) {
@@ -247,7 +246,7 @@ public class RRBoardLeftController {
 		RRboardVO vo = new RRboardVO();
 
 		System.out.println(status);
-		
+
 		vo.setPackageStatus(status);
 
 		List<RRboardVO> result = dao.SelectALLAD(vo);
@@ -260,8 +259,8 @@ public class RRBoardLeftController {
 		model.addAttribute("LEFT", "menu/menu3/left.jsp");
 		return "main";
 	}
-	
-	//관리자 rrb수저페이지
+
+	// 관리자 rrb수저페이지
 	@RequestMapping("/modyADRRB")
 	public String modyADRRB(Model model, @RequestParam("codeNum") int codeNum) {
 
@@ -272,12 +271,14 @@ public class RRBoardLeftController {
 
 		// 체크
 		RRboardVO vo = dao.getcontents(codeNum);
+
 		// vo 전송
-		model.addAttribute("vo", dao.getcontents(codeNum));
+		model.addAttribute("vo", vo);
 		model.addAttribute("CONTENT", "menu/menu3/admin/modyRRB.jsp");
 		model.addAttribute("LEFT", "menu/menu3/left.jsp");
 		return "main";
 	}
+
 	// 관리자 RRBupdate
 	@RequestMapping("/RRBADupdate")
 	public String RRBADupdate(Model model, UploadVO dto, @RequestParam("contents") String contents,
@@ -336,7 +337,7 @@ public class RRBoardLeftController {
 		vo.setRegisterId(session_id);
 		vo.setCodeNum(codeNum);
 
-		if (fileName.equals(null)||fileName.length()<1) {
+		if (fileName.equals(null) || fileName.length() < 1) {
 			vo.setImg("이미지없음.jpg");
 		} else {
 			vo.setImg(fileName);
@@ -349,10 +350,9 @@ public class RRBoardLeftController {
 		return "redirect:RRlist";
 	}
 
-
 	@RequestMapping("/setRRBstatus")
 	public String RRset(Model model, @RequestParam("status") String status, @RequestParam("codeNum") int codeNum,
-			@RequestParam("Rid")String rid) {
+			@RequestParam("Rid") String rid) {
 
 		RRboardVO vo = new RRboardVO();
 
@@ -363,22 +363,21 @@ public class RRBoardLeftController {
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
-		
+
 		// 현재시간 가져오기
 		long time = System.currentTimeMillis();
 		SimpleDateFormat ctime = new SimpleDateFormat("yyyy-MM-dd");
 		String CurrentTime = ctime.format(new Date(time));
 
 		MailVO mailvo = new MailVO();
-		
+
 		mailvo.setRid(rid);
 		mailvo.setSid(session_id);
-		mailvo.setText(codeNum+"번 글의 상태가 "+status+"로 변경 됐습니다.");
+		mailvo.setText(codeNum + "번 글의 상태가 " + status + "로 변경 됐습니다.");
 		mailvo.setSenddate(CurrentTime);
 
 		mailImpl.sendmail(mailvo);
 
-		
 		return "redirect:RRlist?status='허가대기'";
 	}
 
@@ -528,7 +527,7 @@ public class RRBoardLeftController {
 
 	@RequestMapping("/setRPBstatus")
 	public String setRPBstatus(Model model, @RequestParam("seqNum") int seqNum, @RequestParam("status") String status,
-			@RequestParam("Rid")String rid, @RequestParam("codeNum")int codeNum) {
+			@RequestParam("Rid") String rid, @RequestParam("codeNum") int codeNum) {
 		// vo 생성
 		RPboardVO vo = new RPboardVO();
 		// 세팅
@@ -538,20 +537,20 @@ public class RRBoardLeftController {
 		System.out.println("sta" + status);
 
 		dao.setRPBstatus(vo);
-		
+
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
-		
+
 		// 현재시간 가져오기
 		long time = System.currentTimeMillis();
 		SimpleDateFormat ctime = new SimpleDateFormat("yyyy-MM-dd");
 		String CurrentTime = ctime.format(new Date(time));
 
 		MailVO mailvo = new MailVO();
-		
+
 		mailvo.setRid(rid);
 		mailvo.setSid(session_id);
-		mailvo.setText(codeNum+"번 글에 대한 대관 신청 상태가 "+status+"로 변경 됐습니다.");
+		mailvo.setText(codeNum + "번 글에 대한 대관 신청 상태가 " + status + "로 변경 됐습니다.");
 		mailvo.setSenddate(CurrentTime);
 
 		mailImpl.sendmail(mailvo);
@@ -613,9 +612,10 @@ public class RRBoardLeftController {
 		return "main";
 	}
 
-	//자기 상태 수정
+	// 자기 상태 수정
 	@RequestMapping("/setMyRRBstatus")
-	public String setMyRRBstatus(Model model, @RequestParam("status") String status, @RequestParam("codeNum") int codeNum) {
+	public String setMyRRBstatus(Model model, @RequestParam("status") String status,
+			@RequestParam("codeNum") int codeNum) {
 
 		RRboardVO vo = new RRboardVO();
 
@@ -626,7 +626,7 @@ public class RRBoardLeftController {
 
 		return "redirect:myRRBlist";
 	}
-	
+
 	// RRBupdate
 	@RequestMapping("/RRBupdate")
 	public String RRBupdate(Model model, UploadVO dto, @RequestParam("contents") String contents,
@@ -685,7 +685,7 @@ public class RRBoardLeftController {
 		vo.setRegisterId(session_id);
 		vo.setCodeNum(codeNum);
 
-		if (fileName.equals(null)||fileName.length()<1) {
+		if (fileName.equals(null) || fileName.length() < 1) {
 			vo.setImg("이미지없음.jpg");
 		} else {
 			vo.setImg(fileName);

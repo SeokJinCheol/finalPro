@@ -10,7 +10,7 @@ import com.kosta.finalproject.vo.CheckBoardVO;
 
 @Repository
 public class CheckBoardDaoImpl implements CheckBoardDao {
-	
+
 	@Autowired
 	private SqlSession sqlSession;
 
@@ -40,11 +40,11 @@ public class CheckBoardDaoImpl implements CheckBoardDao {
 
 	@Override
 	public ArrayList<CheckBoardVO> codeNumselect(int codeNum) {
-		
+
 		ArrayList<CheckBoardVO> result = new ArrayList<CheckBoardVO>();
 		CheckBoardMapper mapper = sqlSession.getMapper(CheckBoardMapper.class);
 		result = mapper.codeNumselect(codeNum);
-		
+
 		return result;
 	}
 }

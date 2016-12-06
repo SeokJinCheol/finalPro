@@ -9,8 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.kosta.finalproject.vo.RegisterBoardVO;
 
 @Repository
-public class RegisterBoardDaoImpl implements RegisterBoardDao{
-	
+public class RegisterBoardDaoImpl implements RegisterBoardDao {
 	@Autowired
 	private SqlSession sqlSession;
 
@@ -25,17 +24,17 @@ public class RegisterBoardDaoImpl implements RegisterBoardDao{
 		ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
 		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
 		result = mapper.Registerselect();
-		
+
 		return result;
 	}
 
 	@Override
 	public ArrayList<RegisterBoardVO> RegisterUpForm(String codeNum) {
-		
+
 		ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
 		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
 		result = mapper.RegisterUpForm(codeNum);
-		
+
 		return result;
 	}
 
@@ -53,21 +52,21 @@ public class RegisterBoardDaoImpl implements RegisterBoardDao{
 
 	@Override
 	public ArrayList<RegisterBoardVO> MyRegisterselect(String session_id) {
-		
+
 		ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
 		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
 		result = mapper.MyRegisterselect(session_id);
-		
+
 		return result;
 	}
 
 	@Override
 	public ArrayList<RegisterBoardVO> Registerpossibility(String possibility) {
-		
+
 		ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
 		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
 		result = mapper.Registerpossibility(possibility);
-		
+
 		return result;
 	}
 
@@ -76,7 +75,7 @@ public class RegisterBoardDaoImpl implements RegisterBoardDao{
 		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
 		mapper.registerdelete(vo);
 	}
-	
+
 	@Override
 	public ArrayList<RegisterBoardVO> selectTitle(String word) {
 		ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
@@ -97,13 +96,13 @@ public class RegisterBoardDaoImpl implements RegisterBoardDao{
 	public ArrayList<RegisterBoardVO> pselectTitle(String packageStatus, String word) {
 		ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
 		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
-		RegisterBoardVO vo = new  RegisterBoardVO();
+		RegisterBoardVO vo = new RegisterBoardVO();
 		vo.setWord(word);
 		vo.setPackageStatus(packageStatus);
 		result = mapper.pselectTitle(vo);
 		return result;
 	}
-	
+
 	@Override
 	public ArrayList<RegisterBoardVO> pselectCategory(String packageStatus, String word) {
 		ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
@@ -122,14 +121,14 @@ public class RegisterBoardDaoImpl implements RegisterBoardDao{
 		result = mapper.registercontent(codeNum);
 		return result;
 	}
-	
-	   @Override
-	   public ArrayList<RegisterBoardVO> registercount() {
-	      ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
-	      RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
-	      result = mapper.registercount();
-	      return result;
-	   }
+
+	@Override
+	public ArrayList<RegisterBoardVO> registercount() {
+		ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
+		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
+		result = mapper.registercount();
+		return result;
+	}
 
 	@Override
 	public void imgupdate(RegisterBoardVO vo) {
@@ -139,12 +138,9 @@ public class RegisterBoardDaoImpl implements RegisterBoardDao{
 
 	@Override
 	public ArrayList<RegisterBoardVO> getMain(String category) {
-	      ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
-	      RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
-	      result = mapper.getMain(category);
-	      return result;
+		ArrayList<RegisterBoardVO> result = new ArrayList<RegisterBoardVO>();
+		RegisterBoardMapper mapper = sqlSession.getMapper(RegisterBoardMapper.class);
+		result = mapper.getMain(category);
+		return result;
 	}
-	
-	
-
 }

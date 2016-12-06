@@ -2,7 +2,6 @@ package com.kosta.finalproject.dao;
 
 import java.util.ArrayList;
 
-
 import com.kosta.finalproject.vo.QandAVO;
 
 public interface QandADao {
@@ -29,6 +28,4 @@ public interface QandADao {
 	public void delete(int bnum);
 
 	public void updateDetail(QandAVO vo);
-	//////////////////////////
-	 // =
 }

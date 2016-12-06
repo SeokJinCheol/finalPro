@@ -6,8 +6,12 @@ import com.kosta.finalproject.vo.CheckBoardVO;
 
 public interface CheckBoardDao {
 	public void CheckBoardInsert(CheckBoardVO vo);
+
 	public void Checkrentterup(CheckBoardVO vo);
+
 	public void packageStatus(CheckBoardVO vo);
+
 	public void checkdelect(CheckBoardVO vo);
+
 	public ArrayList<CheckBoardVO> codeNumselect(int codeNum);
 }

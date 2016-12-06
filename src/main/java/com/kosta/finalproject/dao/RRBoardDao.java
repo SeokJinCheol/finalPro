@@ -5,17 +5,16 @@ import java.util.List;
 
 import com.kosta.finalproject.vo.RPboardVO;
 import com.kosta.finalproject.vo.RRboardVO;
-import com.kosta.finalproject.vo.RegisterBoardVO;
 import com.kosta.finalproject.vo.SearchVO;
 
 public interface RRBoardDao {
 
 	List<RRboardVO> SelectALL(RRboardVO vo);
-	
+
 	List<RRboardVO> SelectALL2(RRboardVO vo);
 
 	List<RRboardVO> SelectALLAD(RRboardVO vo);
-	
+
 	public void RRboardinsert(RRboardVO vo);
 
 	public RRboardVO getcontents(int codeNum);
@@ -35,22 +34,22 @@ public interface RRBoardDao {
 	public void setRPBstatus(RPboardVO vo);
 
 	public List<RPboardVO> SelectCalc(SearchVO vo);
-	
+
 	// task work
 	public void setRPBtask();
 
 	public void setRRtask();
 
 	// mypage
-	public  List<RPboardVO> myRentlist(String session_id);
+	public List<RPboardVO> myRentlist(String session_id);
 
-	public  List<RRboardVO> myRoomlist(String session_id);
-	
+	public List<RRboardVO> myRoomlist(String session_id);
+
 	public void RRBupdate(RRboardVO vo);
-	
-	//main
+
+	// main
 	public RRboardVO getMain(String string);
-	
-	//장소검색
+
+	// 장소검색
 	public ArrayList<RRboardVO> pselectPlace(String packageStatus, String word);
 }

@@ -25,15 +25,13 @@ public class MypageController {
 
 	@Autowired
 	private RegisterBoardDaoImpl registerBoardDaoImpl;
-	
-    @Autowired
-    private RequestBoardDaoImpl requestBoardDaoImpl;
 
+	@Autowired
+	private RequestBoardDaoImpl requestBoardDaoImpl;
 
 	// 나의 대여 목록
 	@RequestMapping("/myrentlist")
 	public String myrentlist(Model model) {
-
 		// 로그인 정보 확인
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();

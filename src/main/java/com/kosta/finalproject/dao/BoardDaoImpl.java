@@ -1,7 +1,6 @@
 package com.kosta.finalproject.dao;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +10,13 @@ import com.kosta.finalproject.vo.BoardVO;
 
 @Repository
 public class BoardDaoImpl implements BoardDao {
-	
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	@Override
 	public void insertMember(BoardVO vo) {
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
 		BoardMapper.insertMember(vo);
-
 	}
 
 	// 댓글 등록
@@ -38,11 +35,11 @@ public class BoardDaoImpl implements BoardDao {
 
 		return result;
 	}
-	
-	// 상세페이지 리플 
-    @Override
+
+	// 상세페이지 리플
+	@Override
 	public ArrayList<BoardVO> recontentget(int bgnum) {
-    	ArrayList<BoardVO> result = new ArrayList<BoardVO>();
+		ArrayList<BoardVO> result = new ArrayList<BoardVO>();
 		BoardMapper BoardMapper = sqlSession.getMapper(BoardMapper.class);
 		result = BoardMapper.recontentget(bgnum);
 
@@ -173,9 +170,4 @@ public class BoardDaoImpl implements BoardDao {
 		list = BoardMapper.selectId(vo);
 		return list;
 	}
-	
-	
-	
-	///////////////
-   
 }

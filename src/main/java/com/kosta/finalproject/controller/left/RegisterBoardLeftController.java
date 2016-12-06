@@ -69,13 +69,13 @@ public class RegisterBoardLeftController {
 		// 일정 종료
 		List<RegisterBoardVO> count = registerBoardDaoImpl.registercount();
 		int registercount = count.get(0).getCodeNum();
-		
-		if(registercount != 0 ){
-		
+
+		if (registercount != 0) {
+
 			SimpleDateFormat simpledate = new SimpleDateFormat("yyyy-MM-dd");
 			Date nowDate = simpledate.parse(CurrentTime);
 			Registerpossibility = registerBoardDaoImpl.Registerselect();
-	
+
 			int i = 0;
 			while (true) {
 				if (Registerpossibility.get(i).getPackageStatus().equals("대여가능")) {
@@ -90,7 +90,7 @@ public class RegisterBoardLeftController {
 						registervo.setPackageStatus(Status);
 						registervo.setCodeNum(codeNum);
 						registerBoardDaoImpl.packageStatus(registervo);
-	
+
 						// 체크 리스트 상황 변경
 						CheckBoardVO checkvo = new CheckBoardVO();
 						checkvo.setCodeNum(codeNum);
@@ -149,21 +149,22 @@ public class RegisterBoardLeftController {
 	// 리뷰작성 대여종료
 	@RequestMapping("/reviewendrent")
 	public String reviewendrent(Model model, HttpServletRequest request) {
-		
+
 		// 로그인 정보 확인
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 		model.addAttribute("session_id", session_id);
-		
-		//마이페이지 판별
+
+		// 마이페이지 판별
 		String mypage = request.getParameter("mypage");
 		model.addAttribute("mypage", mypage);
 
 		int codeNum = Integer.parseInt(request.getParameter("codeNum"));
 		model.addAttribute("codeNum", codeNum);
-		if(mypage.equals("mypage")){
+		if (mypage.equals("mypage")) {
 			model.addAttribute("LEFT", "join/mypage_left.jsp");
-		}else model.addAttribute("LEFT", "menu/menu2/left.jsp");
+		} else
+			model.addAttribute("LEFT", "menu/menu2/left.jsp");
 		model.addAttribute("CONTENT", "menu/menu2/Review.jsp");
 		return "main";
 	}
@@ -171,8 +172,8 @@ public class RegisterBoardLeftController {
 	// 반납 신청
 	@RequestMapping("/endrent")
 	public String endrent(Model model, HttpServletRequest request) {
-		
-		//마이페이지 판별
+
+		// 마이페이지 판별
 		String mypage = request.getParameter("mypage");
 		model.addAttribute("mypage", mypage);
 
@@ -210,22 +211,21 @@ public class RegisterBoardLeftController {
 
 		model.addAttribute("MyRegisterselect", MyRegisterselect);
 
-		
-		if(mypage.equals("mypage")){
+		if (mypage.equals("mypage")) {
 			model.addAttribute("LEFT", "join/mypage_left.jsp");
 			model.addAttribute("CONTENT", "join/myrentlist.jsp");
 		} else {
 			model.addAttribute("LEFT", "menu/menu2/left.jsp");
 			model.addAttribute("CONTENT", "menu/menu2/left_menu/menu2_2.jsp");
 		}
-		
+
 		return "main";
 	}
 
 	// 대여 취소
 	@RequestMapping("/rentcancel")
 	public String rentcancel(Model model, HttpServletRequest request) {
-		
+
 		String mypage = request.getParameter("mypage");
 		String pagecheck = request.getParameter("pagecheck");
 
@@ -280,15 +280,15 @@ public class RegisterBoardLeftController {
 			model.addAttribute("LEFT", "menu/menu2/left.jsp");
 
 		} else {
-			
-			if(mypage.equals("mypage")){
+
+			if (mypage.equals("mypage")) {
 
 				List<RegisterBoardVO> MyRegisterselect = registerBoardDaoImpl.MyRegisterselect(session_id);
 				model.addAttribute("MyRegisterselect", MyRegisterselect);
 				model.addAttribute("CONTENT", "join/myrentlist.jsp");
 				model.addAttribute("LEFT", "join/mypage_left.jsp");
 			} else {
-			// 나의 대여목록
+				// 나의 대여목록
 				List<RegisterBoardVO> MyRegisterselect = registerBoardDaoImpl.MyRegisterselect(session_id);
 				model.addAttribute("MyRegisterselect", MyRegisterselect);
 				model.addAttribute("CONTENT", "menu/menu2/left_menu/menu2_2.jsp");
@@ -309,7 +309,7 @@ public class RegisterBoardLeftController {
 
 		String possibility = "대여신청";
 		model.addAttribute("possibility", possibility);
-		
+
 		List<RegisterBoardVO> rentreadylist = registerBoardDaoImpl.Registerpossibility(possibility);
 
 		model.addAttribute("rentreadylist", rentreadylist);
@@ -331,7 +331,7 @@ public class RegisterBoardLeftController {
 		// 대여가능 게시판 반납신청
 		RegisterBoardVO registervo = new RegisterBoardVO();
 		String packageStatus = "대여가능";
-		
+
 		registervo.setCodeNum(Integer.parseInt(request.getParameter("codeNum")));
 		registervo.setPackageStatus(packageStatus);
 		registervo.setRegisterId("");
@@ -368,7 +368,7 @@ public class RegisterBoardLeftController {
 
 		String possibility = "반납신청";
 		model.addAttribute("possibility", possibility);
-		
+
 		List<RegisterBoardVO> rentreadylist = registerBoardDaoImpl.Registerpossibility(possibility);
 		model.addAttribute("rentreadylist", rentreadylist);
 		model.addAttribute("CONTENT", "menu/menu2/left_menu/registeradminpage.jsp");
@@ -379,7 +379,7 @@ public class RegisterBoardLeftController {
 
 	@RequestMapping("/storageendrent")
 	public String storageendrent(Model model, HttpServletRequest request) {
-		
+
 		// 로그인 정보 확인
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
@@ -409,9 +409,9 @@ public class RegisterBoardLeftController {
 
 		String possibility = "반납신청";
 		model.addAttribute("possibility", possibility);
-		
+
 		List<RegisterBoardVO> rentreadylist = registerBoardDaoImpl.Registerpossibility(possibility);
-		
+
 		model.addAttribute("rentreadylist", rentreadylist);
 		model.addAttribute("CONTENT", "menu/menu2/left_menu/registeradminpage.jsp");
 		model.addAttribute("LEFT", "menu/menu2/left.jsp");
@@ -470,7 +470,7 @@ public class RegisterBoardLeftController {
 
 		return "main";
 	}
-	
+
 	@RequestMapping("/Excelaccount")
 	public String Excelaccount(Model model) throws Exception {
 
@@ -515,7 +515,7 @@ public class RegisterBoardLeftController {
 		model.addAttribute("rentDate", rentDate);
 		model.addAttribute("pay", pay);
 		model.addAttribute("storagelist", storagelist);
-		
+
 		return "admin/Excelaccount";
 	}
 
@@ -528,9 +528,9 @@ public class RegisterBoardLeftController {
 
 		List<RegisterBoardVO> registercontent = registerBoardDaoImpl.registercontent(codeNum);
 
-	    List<ReviewVO> reviews = reviewImpl.reviewselect(codeNum);
+		List<ReviewVO> reviews = reviewImpl.reviewselect(codeNum);
 
-	    model.addAttribute("reviews", reviews);
+		model.addAttribute("reviews", reviews);
 		model.addAttribute("session_id", session_id);
 		model.addAttribute("result", registercontent);
 		model.addAttribute("LEFT", "menu/menu2/left.jsp");

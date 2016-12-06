@@ -8,7 +8,7 @@ public class BoardVO {
 	int bNum, bgnum, groupnum, ranknum;
 	String title, contents, id, img, category;
 	int startRow, endRow, readcount;
-	@JsonFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	Timestamp bDate;
 
 	public int getReadcount() {
@@ -114,5 +114,4 @@ public class BoardVO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-
 }

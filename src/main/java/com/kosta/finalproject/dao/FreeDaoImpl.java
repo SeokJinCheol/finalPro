@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.kosta.finalproject.vo.BoardVO;
 import com.kosta.finalproject.vo.FreeBoardVO;
 
 @Repository
@@ -123,5 +122,4 @@ public class FreeDaoImpl implements FreeBoardDao {
 		freeMapper.updateBoardDetail(vo);
 
 	}
-
 }

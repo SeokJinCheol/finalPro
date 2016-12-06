@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.kosta.finalproject.vo.ReviewVO;
 
 @Repository
-public class ReviewImpl implements ReviewDao{
-	
+public class ReviewImpl implements ReviewDao {
+
 	@Autowired
 	private SqlSession sqlSession;
 
@@ -19,7 +19,7 @@ public class ReviewImpl implements ReviewDao{
 		ReviewMapper mapper = sqlSession.getMapper(ReviewMapper.class);
 		mapper.reviewinsert(vo);
 	}
-	
+
 	@Override
 	public ArrayList<ReviewVO> reviewselect(int codeNum) {
 		ArrayList<ReviewVO> result = new ArrayList<ReviewVO>();

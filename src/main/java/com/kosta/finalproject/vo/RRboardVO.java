@@ -6,7 +6,6 @@ public class RRboardVO {
 	String category, title, contents, adress, spotNum, packageStatus, img, reaquestId, registerId, company;
 	String startDate, endDate, userstartDate, userendDate, word;
 
-	
 	public String getWord() {
 		return word;
 	}

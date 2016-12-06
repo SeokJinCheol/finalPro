@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.View;
 
+import com.kosta.finalproject.dao.DefaultQADaoImpl;
 import com.kosta.finalproject.dao.QandADaoImpl;
+import com.kosta.finalproject.vo.DefaultQAVO;
 import com.kosta.finalproject.vo.QandAVO;
 import com.kosta.finalproject.vo.UploadVO;
 
@@ -30,7 +32,46 @@ public class QandAController {
 	@Autowired
 	private QandADaoImpl qandADaoImpl;
 
+	@Autowired
+	private DefaultQADaoImpl defaultQADaoImpl;
+
 	private View jsonview;
+
+	// FAQ
+	@RequestMapping("/defaultQA")
+	public String defaultQA(Model model, HttpServletRequest request) {
+		int pageSize = 10;
+
+		String pageNum = request.getParameter("pageNum");
+
+		if (pageNum == null)
+			pageNum = "1";
+
+		int currentPage = Integer.parseInt(pageNum);
+
+		int startrow = (currentPage * pageSize) - (pageSize - 1);
+		int endrow = currentPage * pageSize;
+		int count = 0;
+		List<DefaultQAVO> list = null;
+
+		count = defaultQADaoImpl.listAllCount(); ///
+
+		int pageCount = Math.round(count / pageSize + (count % pageSize == 0 ? 0 : 1));
+
+		if (count > 0) {
+
+			list = defaultQADaoImpl.showAll(startrow, endrow);
+			model.addAttribute("list", list);
+		}
+
+		model.addAttribute("currentPage", new Integer(currentPage));
+		model.addAttribute("count", new Integer(count));
+		model.addAttribute("pageCount", pageCount);
+		model.addAttribute("pageSize", new Integer(pageSize));
+		model.addAttribute("CONTENT", "Q&A/DefaultQnA.jsp");
+		model.addAttribute("LEFT", "menu/menu4/left.jsp");
+		return "main";
+	}
 
 	// 자유게시판
 	@RequestMapping("/QnA_list")
@@ -52,7 +93,7 @@ public class QandAController {
 
 		int currentPage = Integer.parseInt(pageNum);
 
-		int count =0;
+		int count = 0;
 		List<QandAVO> list = null;
 		if (keyword == null) {
 			count = qandADaoImpl.ListAllCount(); ///
@@ -61,8 +102,8 @@ public class QandAController {
 		} else if (keyword.equalsIgnoreCase("id") && word != null) {
 			count = qandADaoImpl.getListIDCount(word);
 		}
-		
-		int endrow = count - ((currentPage-1)*pageSize);
+
+		int endrow = count - ((currentPage - 1) * pageSize);
 		int startrow = endrow - pageSize + 1;
 
 		int pageCount = Math.round(count / pageSize + (count % pageSize == 0 ? 0 : 1));
@@ -93,7 +134,7 @@ public class QandAController {
 				model.addAttribute("word", word);
 				model.addAttribute("keyword", keyword);
 			}
-		} 
+		}
 
 		model.addAttribute("currentPage", new Integer(currentPage));
 		model.addAttribute("count", new Integer(count));
@@ -132,33 +173,38 @@ public class QandAController {
 	public String QnA_update2(Model model, HttpServletRequest request, UploadVO dto) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
-		//파일이 null 이 아니면 실행.
-	      String fileName = null;
-	      
-	      System.out.println("이미지 처리 시작");
-	      MultipartFile uploadfile = dto.getFile();
-	      if (uploadfile != null) {
-	          fileName = uploadfile.getOriginalFilename();
-	          if(!fileName.equals("")){
-	             dto.setOname(fileName);
-	             try {
-	                 File file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/QandAImg/" + fileName);
-	                    while(file.exists()) {
-	                       int indexes = fileName.lastIndexOf(".");
-	                       System.out.println("순서 = "+indexes);
-	                       String extension = fileName.substring(indexes);
-	                       System.out.println("확장자 = "+extension);
-	                       String newFileName = fileName.substring(0, indexes)+"_"+extension;
-	                       System.out.println("새 파일 이름 = "+newFileName);
-	                       fileName = newFileName;
-	                       file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/QandAImg/" + newFileName);
-	                    }
-	                 uploadfile.transferTo(file);
-	             } catch (IOException e) {
-	                 e.printStackTrace();
-	             } // try - catch
-	          } else fileName = "no_img.jpg";
-	      }
+		// 파일이 null 이 아니면 실행.
+		String fileName = null;
+
+		System.out.println("이미지 처리 시작");
+		MultipartFile uploadfile = dto.getFile();
+		if (uploadfile != null) {
+			fileName = uploadfile.getOriginalFilename();
+			if (!fileName.equals("")) {
+				dto.setOname(fileName);
+				try {
+					File file = new File(
+							"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/QandAImg/"
+									+ fileName);
+					while (file.exists()) {
+						int indexes = fileName.lastIndexOf(".");
+						System.out.println("순서 = " + indexes);
+						String extension = fileName.substring(indexes);
+						System.out.println("확장자 = " + extension);
+						String newFileName = fileName.substring(0, indexes) + "_" + extension;
+						System.out.println("새 파일 이름 = " + newFileName);
+						fileName = newFileName;
+						file = new File(
+								"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/QandAImg/"
+										+ newFileName);
+					}
+					uploadfile.transferTo(file);
+				} catch (IOException e) {
+					e.printStackTrace();
+				} // try - catch
+			} else
+				fileName = "no_img.jpg";
+		}
 
 		QandAVO vo = new QandAVO();
 		String category = request.getParameter("category");
@@ -197,34 +243,39 @@ public class QandAController {
 	// 글쓰기 기능 수행
 	@RequestMapping("/QnA_write2")
 	public String QnA_write2(Model model, HttpServletRequest request, UploadVO dto) {
-		//파일이 null 이 아니면 실행.
-	      String fileName = null;
-	      
-	      System.out.println("이미지 처리 시작");
-	      MultipartFile uploadfile = dto.getFile();
-	      if (uploadfile != null) {
-	          fileName = uploadfile.getOriginalFilename();
-	          if(!fileName.equals("")){
-	             dto.setOname(fileName);
-	             try {
-	                 File file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/QandAImg/" + fileName);
-	                    while(file.exists()) {
-	                       int indexes = fileName.lastIndexOf(".");
-	                       System.out.println("순서 = "+indexes);
-	                       String extension = fileName.substring(indexes);
-	                       System.out.println("확장자 = "+extension);
-	                       String newFileName = fileName.substring(0, indexes)+"_"+extension;
-	                       System.out.println("새 파일 이름 = "+newFileName);
-	                       fileName = newFileName;
-	                       file = new File("C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/QandAImg/" + newFileName);
-	                    }
-	                 uploadfile.transferTo(file);
-	             } catch (IOException e) {
-	                 e.printStackTrace();
-	             } // try - catch
-	          } else fileName = "no_img.jpg";
-	      }
-			// 데이터 베이스 처리를 현재 위치에서 처리
+		// 파일이 null 이 아니면 실행.
+		String fileName = null;
+
+		System.out.println("이미지 처리 시작");
+		MultipartFile uploadfile = dto.getFile();
+		if (uploadfile != null) {
+			fileName = uploadfile.getOriginalFilename();
+			if (!fileName.equals("")) {
+				dto.setOname(fileName);
+				try {
+					File file = new File(
+							"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/QandAImg/"
+									+ fileName);
+					while (file.exists()) {
+						int indexes = fileName.lastIndexOf(".");
+						System.out.println("순서 = " + indexes);
+						String extension = fileName.substring(indexes);
+						System.out.println("확장자 = " + extension);
+						String newFileName = fileName.substring(0, indexes) + "_" + extension;
+						System.out.println("새 파일 이름 = " + newFileName);
+						fileName = newFileName;
+						file = new File(
+								"C:/finalproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/team4/resources/QandAImg/"
+										+ newFileName);
+					}
+					uploadfile.transferTo(file);
+				} catch (IOException e) {
+					e.printStackTrace();
+				} // try - catch
+			} else
+				fileName = "no_img.jpg";
+		}
+		// 데이터 베이스 처리를 현재 위치에서 처리
 		System.out.println("데이터 베이스 처리 시작");
 
 		QandAVO vo = new QandAVO();
@@ -285,10 +336,9 @@ public class QandAController {
 
 		qandADaoImpl.updateCount(bnum);
 		QandAVO vo = qandADaoImpl.showthis(bnum);
-		
 
 		model.addAttribute("session_id", session_id);
-	
+
 		model.addAttribute("vo", vo);
 		model.addAttribute("CONTENT", "Q&A/QnA_content.jsp");
 		model.addAttribute("LEFT", "menu/menu4/left.jsp");
@@ -299,9 +349,9 @@ public class QandAController {
 	// 리플 리스트(getJSON)
 	@RequestMapping(value = "/QnA_replylist/{bnum}", method = RequestMethod.GET)
 	public ResponseEntity<ArrayList<QandAVO>> QnA_replylist(@PathVariable("bnum") Integer bnum) {
-		
+
 		ResponseEntity<ArrayList<QandAVO>> entity = null;
-		
+
 		try {
 			entity = new ResponseEntity<>(qandADaoImpl.selectReply(bnum), HttpStatus.OK);
 		} catch (Exception e) {
@@ -313,7 +363,7 @@ public class QandAController {
 
 	}
 
-	// 글삭제(ajax)
+	// 글삭제
 	@RequestMapping("/QnA_delete")
 	public String QnA_delete(Model model, HttpServletRequest request) {
 		String bnum = request.getParameter("bnum");
@@ -322,7 +372,7 @@ public class QandAController {
 		return "redirect:QnA_list";
 	}
 
-	// 리플삭제
+	// 리플삭제(ajax)
 	@RequestMapping("/QnA_re_delete")
 	public View QnA_re_delete(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String reply_bnum = request.getParameter("reply_bnum");

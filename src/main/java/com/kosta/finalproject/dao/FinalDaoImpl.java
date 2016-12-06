@@ -98,7 +98,7 @@ public class FinalDaoImpl implements FinalDao {
 
 		sqlSession.delete("com.kosta.finalproject.dao.FinalMapper.deleteRank", vo);
 	}
-	
+
 	// 회원 전체 수 확인
 	@Override
 	public int getAdAllCount() {

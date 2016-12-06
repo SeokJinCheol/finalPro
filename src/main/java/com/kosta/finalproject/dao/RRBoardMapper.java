@@ -5,23 +5,21 @@ import java.util.List;
 
 import com.kosta.finalproject.vo.RPboardVO;
 import com.kosta.finalproject.vo.RRboardVO;
-import com.kosta.finalproject.vo.RegisterBoardVO;
 import com.kosta.finalproject.vo.SearchVO;
 
 public interface RRBoardMapper {
 
 	List<RRboardVO> SelectALL(RRboardVO vo);
-	
+
 	List<RRboardVO> SelectALL2(RRboardVO vo);
-	
+
 	List<RRboardVO> SelectALLAD(RRboardVO vo);
-	
+
 	public void RRboardinsert(RRboardVO vo);
 
 	public RRboardVO getcontents(int codeNum);
 
 	public void setRRStatus(RRboardVO vo);
-	
 
 	// rp 보드 관련
 
@@ -36,8 +34,7 @@ public interface RRBoardMapper {
 	public void setRPBstatus(RPboardVO vo);
 
 	public List<RPboardVO> SelectCalc(SearchVO vo);
-	
-	
+
 	// task work
 	public void setRPBtask();
 
@@ -47,10 +44,10 @@ public interface RRBoardMapper {
 	public List<RPboardVO> myRentlist(String session_id);
 
 	public List<RRboardVO> myRoomlist(String session_id);
-	
+
 	public void RRBupdate(RRboardVO vo);
 
-	//main
+	// main
 	public RRboardVO getMain(String string);
 
 	public ArrayList<RRboardVO> pselectPlace(RRboardVO vo);

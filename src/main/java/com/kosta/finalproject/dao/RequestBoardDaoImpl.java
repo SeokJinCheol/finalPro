@@ -118,7 +118,7 @@ public class RequestBoardDaoImpl implements RequestBoardDao {
 		result = mapper.selectTitle(word);
 		return result;
 	}
-	
+
 	@Override
 	public ArrayList<RequestBoardVO> selectCategory(String word) {
 		ArrayList<RequestBoardVO> result = new ArrayList<RequestBoardVO>();

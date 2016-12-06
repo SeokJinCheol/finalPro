@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class UseController {
-
 	@RequestMapping("/use")
 	public String use(Model model) {
 		model.addAttribute("CONTENT", "menu/menu5/left_menu/use.jsp");
@@ -41,5 +40,4 @@ public class UseController {
 		model.addAttribute("LEFT", "menu/menu5/left.jsp");
 		return "main";
 	}
-
 }

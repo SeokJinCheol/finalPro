@@ -49,7 +49,7 @@ public class RegisterBoardController {
 		// 검색 확인
 		String keyword = request.getParameter("keyword");
 		String word = request.getParameter("word");
-		
+
 		// 전체 등록글
 		List<RegisterBoardVO> Registerselect = null;
 
@@ -62,13 +62,13 @@ public class RegisterBoardController {
 		// 일정 종료
 		List<RegisterBoardVO> count = registerBoardDaoImpl.registercount();
 		int registercount = count.get(0).getCodeNum();
-		
-		if(registercount != 0){
+
+		if (registercount != 0) {
 
 			SimpleDateFormat simpledate = new SimpleDateFormat("yyyy-MM-dd");
 			Date nowDate = simpledate.parse(CurrentTime);
 			Registerselect = registerBoardDaoImpl.Registerselect();
-	
+
 			int i = 0;
 			while (true) {
 				if (Registerselect.get(i).getPackageStatus().equals("대여가능")) {
@@ -83,7 +83,7 @@ public class RegisterBoardController {
 						registervo.setPackageStatus(Status);
 						registervo.setCodeNum(codeNum);
 						registerBoardDaoImpl.packageStatus(registervo);
-	
+
 						// 체크 리스트 상황 변경
 						CheckBoardVO checkvo = new CheckBoardVO();
 						checkvo.setCodeNum(codeNum);
@@ -113,7 +113,7 @@ public class RegisterBoardController {
 			model.addAttribute("keyword", keyword);
 
 		}
-		
+
 		model.addAttribute("LEFT", "menu/menu2/left.jsp");
 		model.addAttribute("CONTENT", "menu/menu2/menu2.jsp");
 		model.addAttribute("Registerselect", Registerselect);
@@ -324,8 +324,8 @@ public class RegisterBoardController {
 	// 대여시작 폼
 	@RequestMapping("/startrentForm")
 	public String startrentForm(Model model, HttpServletRequest request) {
-		
-		//마이페이지 판별
+
+		// 마이페이지 판별
 		String mypage = request.getParameter("mypage");
 		model.addAttribute("mypage", mypage);
 
@@ -347,5 +347,4 @@ public class RegisterBoardController {
 
 		return "main";
 	}
-
 }

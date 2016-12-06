@@ -53,5 +53,4 @@ public class MailController {
 
 		return "mail/sendmailOK";
 	}
-
 }

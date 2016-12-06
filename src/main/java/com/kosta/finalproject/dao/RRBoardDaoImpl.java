@@ -27,13 +27,12 @@ public class RRBoardDaoImpl implements RRBoardDao {
 
 		return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.SelectALL2", vo);
 	}
-	
-	public List<RRboardVO> SelectALLAD(RRboardVO vo){
+
+	public List<RRboardVO> SelectALLAD(RRboardVO vo) {
 
 		return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.SelectALLAD", vo);
 	}
 
-	
 	@Override
 	public void RRboardinsert(RRboardVO vo) {
 
@@ -94,29 +93,28 @@ public class RRBoardDaoImpl implements RRBoardDao {
 
 	@Override
 	public void setRRtask() {
-		
+
 		sqlSession.update("com.kosta.finalproject.dao.RRBoardMapper.setRRtask");
 	}
 
 	public List<RPboardVO> myRentlist(String session_id) {
-		
+
 		return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.myRentlist", session_id);
-	
+
 	}
-	
+
 	public List<RRboardVO> myRoomlist(String session_id) {
-		
+
 		return sqlSession.selectList("com.kosta.finalproject.dao.RRBoardMapper.myRoomlist", session_id);
 
 	}
 
 	public void RRBupdate(RRboardVO vo) {
-		// TODO Auto-generated method stub
-		sqlSession.update("com.kosta.finalproject.dao.RRBoardMapper.RRBupdate",vo);
+		sqlSession.update("com.kosta.finalproject.dao.RRBoardMapper.RRBupdate", vo);
 	}
 
 	public RRboardVO getMain(String string) {
-		return sqlSession.selectOne("com.kosta.finalproject.dao.RRBoardMapper.getMain",string);
+		return sqlSession.selectOne("com.kosta.finalproject.dao.RRBoardMapper.getMain", string);
 	}
 
 	// °Ë»ö
@@ -124,7 +122,7 @@ public class RRBoardDaoImpl implements RRBoardDao {
 	public ArrayList<RRboardVO> pselectPlace(String packageStatus, String word) {
 		ArrayList<RRboardVO> result = new ArrayList<RRboardVO>();
 		RRBoardMapper mapper = sqlSession.getMapper(RRBoardMapper.class);
-		RRboardVO vo = new  RRboardVO();
+		RRboardVO vo = new RRboardVO();
 		vo.setWord(word);
 		vo.setPackageStatus(packageStatus);
 		result = mapper.pselectPlace(vo);

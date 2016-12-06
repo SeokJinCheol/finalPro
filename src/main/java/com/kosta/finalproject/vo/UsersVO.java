@@ -3,7 +3,7 @@ package com.kosta.finalproject.vo;
 public class UsersVO {
 	String id, name, pwd, birthday, phoneNum1, phoneNum2, email, address, address2, memberRank, company, postcode;
 	int startRow, endRow;
-	
+
 	public int getStartRow() {
 		return startRow;
 	}

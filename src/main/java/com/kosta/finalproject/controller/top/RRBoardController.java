@@ -42,19 +42,18 @@ public class RRBoardController {
 			inpo += "{ codeNum : '" + result.get(i).getCodeNum() + "', spotNum : new daum.maps.LatLng"
 					+ result.get(i).getSpotNum() + ", adress : '" + result.get(i).getAdress() + "', startDate : '"
 					+ result.get(i).getStartDate() + "', endDate : '" + result.get(i).getEndDate() + "', title : '"
-					+ result.get(i).getTitle() +"'}";
+					+ result.get(i).getTitle() + "'}";
 
 		}
 
-		System.out.println(inpo);
 		model.addAttribute("total", result.size());
 		model.addAttribute("inpo", inpo);
 		model.addAttribute("list", result);
 		model.addAttribute("CONTENT", "menu/menu3/menu3.jsp");
 		model.addAttribute("LEFT", "menu/menu3/left.jsp");
 		return "main";
-	}	
-	
+	}
+
 	@RequestMapping("/Excelcalc")
 	public String Excelcalc(Model model, HttpServletRequest request) throws Exception {
 
@@ -89,46 +88,30 @@ public class RRBoardController {
 		System.out.println("key:" + key);
 
 		List<RPboardVO> result = dao.SelectCalc(vo);
-		
+
 		model.addAttribute("storagelist", result);
 		return "admin/Excelacalc";
-		
-/*
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		// 넘겨줄 배열값 생성
-		Date[] Date1 = new Date[count];
-		Date[] Date2 = new Date[count];
-		long[] rentDate = new long[count];
-		long[] pay = new long[count];
-		// 계산식
-		for (int i = 0; i < count; i++) {
-			// date 형변환
-			if (storagelist.get(i).getEndDate() != null) {
-				String sDate = storagelist.get(i).getStartDate();
-				Date1[i] = (Date) format.parse(sDate);
-				String eDate = storagelist.get(i).getEndDate();
-				Date2[i] = (Date) format.parse(eDate);
-				// 날짜 시간차
-				long rentTime = Date2[i].getTime() - Date1[i].getTime();
-				// 일수 변환
-				if (rentTime != 0) {
-					rentDate[i] = rentTime / (24 * 60 * 60 * 1000);
-					pay[i] = rentDate[i] * storagelist.get(i).getBill();
-				} else {
-					rentDate[i] = 0;
-					pay[i] = 0;
-				}
-			} else {
-				rentDate[i] = 0;
-				pay[i] = 0;
-			}
 
-		}
-
-		model.addAttribute("rentDate", rentDate);
-		model.addAttribute("pay", pay);
-		model.addAttribute("storagelist", storagelist);
-		
-		return "admin/Excelaccount";*/
+		/*
+		 * DateFormat format = new SimpleDateFormat("yyyy-MM-dd"); // 넘겨줄 배열값 생성
+		 * Date[] Date1 = new Date[count]; Date[] Date2 = new Date[count];
+		 * long[] rentDate = new long[count]; long[] pay = new long[count]; //
+		 * 계산식 for (int i = 0; i < count; i++) { // date 형변환 if
+		 * (storagelist.get(i).getEndDate() != null) { String sDate =
+		 * storagelist.get(i).getStartDate(); Date1[i] = (Date)
+		 * format.parse(sDate); String eDate = storagelist.get(i).getEndDate();
+		 * Date2[i] = (Date) format.parse(eDate); // 날짜 시간차 long rentTime =
+		 * Date2[i].getTime() - Date1[i].getTime(); // 일수 변환 if (rentTime != 0)
+		 * { rentDate[i] = rentTime / (24 * 60 * 60 * 1000); pay[i] =
+		 * rentDate[i] * storagelist.get(i).getBill(); } else { rentDate[i] = 0;
+		 * pay[i] = 0; } } else { rentDate[i] = 0; pay[i] = 0; }
+		 * 
+		 * }
+		 * 
+		 * model.addAttribute("rentDate", rentDate); model.addAttribute("pay",
+		 * pay); model.addAttribute("storagelist", storagelist);
+		 * 
+		 * return "admin/Excelaccount";
+		 */
 	}
 }
