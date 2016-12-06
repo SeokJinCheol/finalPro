@@ -137,10 +137,21 @@
 									</c:if>
 								</c:if>
 
-								<!-- 쪽지 보내기 -->
-								<td height=30 style="width: 140px; padding-right:10px;" align="right">
-									<input type=text class="good11" value="${requestlist.reaquestId}" onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">
-								</td>
+								<!-- 쪽지보내기 -->
+								<!-- ID가 4자 이상일 경우 줄여쓰기 기능 -->
+			             		<c:choose>
+				             		<c:when test="${fn:length(requestlist.reaquestId) > 4 }">
+										<td height=30 style="width: 150px; padding-right:20px;" align="right">
+											<input type=text class="good11" value="${fn:substring(requestlist.reaquestId,0,4)}.." onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">
+										</td>
+									</c:when>
+									
+									<c:otherwise>
+										<td height=30 style="width: 150px; padding-right:20px;" align="right">
+											<input type=text class="good11" value="${requestlist.reaquestId}" onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">
+										</td>
+									</c:otherwise>
+								</c:choose>
 							</tr>
 						</table>
 					</div>
@@ -228,10 +239,21 @@
 									</c:if>
 								</c:if>
 								
-								<!-- 쪽지 보내기 -->
-								<td height=30 style="width: 140px; padding-right:10px;" align="right">
-									<input type=text class="good11" value="${requestlist.reaquestId}" onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">
-								</td>
+								<!-- 쪽지보내기 -->
+								<!-- ID가 4자 이상일 경우 줄여쓰기 기능 -->
+			             		<c:choose>
+				             		<c:when test="${fn:length(requestlist.reaquestId) > 4 }">
+										<td height=30 style="width: 150px; padding-right:20px;" align="right">
+											<input type=text class="good11" value="${fn:substring(requestlist.reaquestId,0,4)}.." onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">
+										</td>
+									</c:when>
+									
+									<c:otherwise>
+										<td height=30 style="width: 150px; padding-right:20px;" align="right">
+											<input type=text class="good11" value="${requestlist.reaquestId}" onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">
+										</td>
+									</c:otherwise>
+								</c:choose>
 							</tr>
 						</table>
 					</div>

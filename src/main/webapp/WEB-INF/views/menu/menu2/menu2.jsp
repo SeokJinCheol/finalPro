@@ -20,7 +20,7 @@
 <body>
 	<div class="row" style="background:#6699DC; color:white; height:100px; text-align: right; line-height: 130px;">
 		<img src="/team4/resources/images/free_list.png" style="margin-right:10px;">
-	    <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">전 체 등 록 된 목 록</font>
+	    <font style="margin-right: 30px;font-family: 'Hanna', fantasy; font-style: bold; font-size: 30px; ">전 체 대 여 목 록</font>
 	</div>
 
 	<div align=center style="background: #f5f6f7; width: 1350px; height: 500px; vertical-align: middle; display: table-cell;">
@@ -140,10 +140,21 @@
 			                        </c:if>
 			                     </c:if>
 
-								<!-- 쪽지 보내기 -->
-								<td height=30 style="width: 140px; padding-right:10px;" align="right">
-									<input type=text class="good11" value="${requestlist.reaquestId}" onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">
-								</td>
+								<!-- 쪽지보내기 -->
+								<!-- ID가 4자 이상일 경우 줄여쓰기 기능 -->
+			             		<c:choose>
+				             		<c:when test="${fn:length(requestlist.reaquestId) > 4 }">
+										<td height=30 style="width: 150px; padding-right:20px;" align="right">
+											<input type=text class="good11" value="${fn:substring(requestlist.reaquestId,0,4)}.." onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">
+										</td>
+									</c:when>
+									
+									<c:otherwise>
+										<td height=30 style="width: 150px; padding-right:20px;" align="right">
+											<input type=text class="good11" value="${requestlist.reaquestId}" onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">
+										</td>
+									</c:otherwise>
+								</c:choose>
 							</tr>
 						</table>
 					</div>
@@ -249,10 +260,21 @@
 			                        </c:if>
 			                     </c:if>
 								
-								<!-- 쪽지 보내기 -->
-								<td height=30 style="width: 140px; padding-right:10px;" align="right">
-									<input type=text class="good11" value="${requestlist.reaquestId}" onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">
-								</td>
+								<!-- 쪽지보내기 -->
+								<!-- ID가 4자 이상일 경우 줄여쓰기 기능 -->
+			             		<c:choose>
+				             		<c:when test="${fn:length(requestlist.reaquestId) > 4 }">
+										<td height=30 style="width: 150px; padding-right:20px;" align="right">
+											<input type=text class="good11" value="${fn:substring(requestlist.reaquestId,0,4)}.." onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">
+										</td>
+									</c:when>
+									
+									<c:otherwise>
+										<td height=30 style="width: 150px; padding-right:20px;" align="right">
+											<input type=text class="good11" value="${requestlist.reaquestId}" onclick="window.open('mail?rid=${requestlist.reaquestId}', '','width=400, height=350, status=1')">
+										</td>
+									</c:otherwise>
+								</c:choose>
 							</tr>
 						</table>
 					</div>
