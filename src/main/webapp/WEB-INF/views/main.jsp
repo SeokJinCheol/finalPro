@@ -5,6 +5,8 @@
 <html>
 <head>
 <title>Billy Bury</title>
+<link rel="shortcut icon" type="image/x-icon" href="/team4/resources/images/link1.ico"/>
+<link rel="icon" href="/team4/resources/images/link2.gif" type="image/gif" >
 <!-- CSS 연결-->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/w3.css" type="text/css" media="screen">
 </head>
