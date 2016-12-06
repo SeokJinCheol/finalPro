@@ -67,10 +67,22 @@
 								<td width=50 style="border-bottom: 3px solid #fff;">
 									${list.codeNum }
 								</td>
+
+								<!-- ID가 7자 이상일 경우 줄여쓰기 기능 -->
+			             		<c:choose>
+				             		<c:when test="${fn:length(list.reaquestId) > 7 }">
+										<td width=80 style="border-bottom: 3px solid #fff;">
+											<c:out value="${fn:substring(list.reaquestId,0,6)}.." />
+										</td>
+									</c:when>
+									
+									<c:otherwise>
+										<td width=80 style="border-bottom: 3px solid #fff;">
+											<c:out value="${list.reaquestId}" />
+										</td>
+									</c:otherwise>
+								</c:choose>
 								
-								<td width=80 style="border-bottom: 3px solid #fff;">
-									${list.reaquestId }
-								</td>
 		
 								<td width=140 style="border-bottom: 3px solid #fff; text-align: left;">
 									　${list.userstartDate}<br>　　~　${list.userendDate}
