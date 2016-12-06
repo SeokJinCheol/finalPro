@@ -59,7 +59,7 @@
 							
 				<tr>
 					<td style="margin-top:0px; margin-bottom:0px; height:45px;">
-						<input type="number" min="1" max="99999" name="times"  placeholder=" 대여일수를 입력하세요." style="width:100%; height:30px; margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border-color: rgb(169, 169, 169);" class="free-search-title" required>
+						<input type="number" min="1" max="99999" name="times"  placeholder=" 대 여 일 수" style="width:100%; height:30px; margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; border-color: rgb(169, 169, 169);" class="free-search-title" required>
 					</td>
 				</tr>
 			</table>
