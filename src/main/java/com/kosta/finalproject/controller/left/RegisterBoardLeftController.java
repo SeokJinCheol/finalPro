@@ -46,7 +46,7 @@ public class RegisterBoardLeftController {
 	@RequestMapping("/menu2_1")
 	public String menu2_1(Model model, HttpServletRequest request) throws Exception {
 
-		// id 받아오기
+		// id 받아오기 업업
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String session_id = auth.getName();
 		model.addAttribute("session_id", session_id);
