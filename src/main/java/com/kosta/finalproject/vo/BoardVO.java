@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-//VO_Test_1
+//VO_Test_1_2
 public class BoardVO {
 	int bNum, bgnum, groupnum, ranknum;
 	String title, contents, id, img, category;
